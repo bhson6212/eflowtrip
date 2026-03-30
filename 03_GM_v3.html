@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EFLOW · GM | Ultium 800V + AFPM</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg-dark:   #0D1117;
+  --bg-card:   #161B22;
+  --bg-card2:  #1C2333;
+  --accent-blue:  #3B82F6;
+  --accent-cyan:  #06B6D4;
+  --accent-green: #10B981;
+  --text-primary: #F0F6FC;
+  --text-secondary: #8B949E;
+  --border: rgba(255,255,255,0.08);
+  --gold: #F59E0B;
+}
+
+html {
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #080C14;
+  margin: 0;
+  overflow: hidden;
+}
+
+/* ── Slideshow container ── */
+.slideshow {
+  position: relative;
+  width: 1280px;
+  height: 720px;
+  transform-origin: center center;
+  flex-shrink: 0;
+}
+
+/* ── Individual slide ── */
+.slide {
+  position: absolute;
+  inset: 0;
+  width: 1280px;
+  height: 720px;
+  background: var(--bg-dark);
+  display: none;
+  overflow: hidden;
+}
+.slide.active { display: block; }
+
+/* ── Common: top bar ── */
+.slide-topbar {
+  position: absolute;
+  top: 28px;
+  left: 52px;
+  right: 52px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+.slide-logo {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--text-secondary);
+}
+.slide-num {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  letter-spacing: 1px;
+}
+
+/* ── Common: bottom progress ── */
+.progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: var(--accent-blue);
+  transition: width 0.4s ease;
+}
+
+/* ── Glow ── */
+.glow-tr {
+  position: absolute;
+  top: -120px;
+  right: -120px;
+  width: 560px;
+  height: 560px;
+  background: radial-gradient(circle, rgba(59,130,246,0.07) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+.glow-bl {
+  position: absolute;
+  bottom: -120px;
+  left: -80px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(6,182,212,0.05) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Slide content wrapper ── */
+.slide-body {
+  position: absolute;
+  top: 80px;
+  left: 52px;
+  right: 52px;
+  bottom: 32px;
+  z-index: 1;
+}
+
+/* ── pill badge ── */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--accent-blue);
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent-blue);
+  letter-spacing: 0.5px;
+}
+
+/* ── Section label (H3 style) ── */
+.sec-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--accent-cyan);
+  margin-bottom: 8px;
+}
+
+/* ── Card base ── */
+.card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 28px;
+}
+
+/* ─────────────────────────────────
+   SLIDE 1 — COVER
+───────────────────────────────── */
+#s1 .slide-body {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.s1-left {
+  width: 40%;
+  padding-right: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+}
+
+.s1-meeting {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 18px;
+  margin-bottom: 14px;
+}
+
+.s1-title {
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  line-height: 1.12;
+  margin-bottom: 20px;
+}
+
+.s1-tagline {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+.s1-right {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.s1-chart-caption {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 10px;
+  letter-spacing: 0.2px;
+}
+
+/* ─────────────────────────────────
+   SLIDE 2 — MARKET TIMING
+───────────────────────────────── */
+#s2 .s2-title-block {
+  margin-bottom: 24px;
+}
+
+#s2 h2 {
+  font-size: 38px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  line-height: 1.15;
+}
+
+.s2-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.s2-cards .card .card-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.s2-cards .card .card-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+
+.s2-cards .card .card-body {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* ─────────────────────────────────
+   SLIDE 3 — 3 PROOF POINTS
+───────────────────────────────── */
+.s3-content {
+  display: flex;
+  gap: 40px;
+  height: calc(100% - 50px);
+}
+
+.s3-left {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.s3-left h2 {
+  font-size: 34px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+  margin-bottom: 30px;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.tl-item {
+  display: flex;
+  gap: 18px;
+  padding-bottom: 24px;
+  position: relative;
+}
+
+.tl-item:last-child { padding-bottom: 0; }
+
+.tl-dot-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.tl-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.tl-line {
+  flex: 1;
+  width: 2px;
+  background: var(--border);
+  margin-top: 4px;
+}
+
+.tl-item:last-child .tl-line { display: none; }
+
+.tl-text .tl-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  padding-top: 1px;
+}
+
+.tl-text .tl-sub {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.s3-right {
+  width: 55%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  align-content: center;
+}
+
+.metric-box {
+  background: var(--bg-card);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.metric-val {
+  font-size: 52px;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.metric-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* ─────────────────────────────────
+   SLIDE 4 — SERIES A
+───────────────────────────────── */
+.s4-content {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  height: calc(100% - 52px);
+}
+
+.s4-top {
+  margin-bottom: 4px;
+}
+
+.s4-top h2 {
+  font-size: 34px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+}
+
+.s4-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  flex: 1;
+}
+
+.s4-card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.s4-card-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+}
+
+.s4-card-value {
+  font-size: 38px;
+  font-weight: 900;
+  color: var(--accent-blue);
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+.s4-card-sub {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.flow-chart {
+  display: flex;
+  align-items: center;
+  background: var(--bg-card);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  padding: 14px 20px;
+  gap: 0;
+}
+
+.fc-node {
+  flex: 1;
+  background: var(--bg-card2);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  padding: 10px 14px;
+  text-align: center;
+}
+
+.fc-node .fn-year {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent-blue);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.fc-node .fn-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.fc-node .fn-sub {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: 3px;
+}
+
+.fc-node.ipo {
+  border-color: rgba(245,158,11,0.4);
+}
+
+.fc-node.ipo .fn-year { color: var(--gold); }
+
+.fc-arrow {
+  color: var(--accent-blue);
+  font-size: 18px;
+  padding: 0 10px;
+  flex-shrink: 0;
+}
+
+/* ─────────────────────────────────
+   SLIDE 5 — REVENUE
+───────────────────────────────── */
+.s5-content {
+  display: flex;
+  gap: 40px;
+  height: calc(100% - 52px);
+}
+
+.s5-left {
+  width: 38%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.s5-left h2 {
+  font-size: 34px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  margin-bottom: 6px;
+}
+
+.s5-sub {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+.rev-stack { display: flex; flex-direction: column; }
+
+.rev-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px dashed rgba(255,255,255,0.07);
+}
+
+.rev-item:last-child { border-bottom: none; }
+
+.rev-year {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  width: 36px;
+  flex-shrink: 0;
+}
+
+.rev-val {
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 1;
+  width: 88px;
+  flex-shrink: 0;
+}
+
+.rev-desc {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.s5-right {
+  width: 62%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ─────────────────────────────────
+   SLIDE 6 — CTA
+───────────────────────────────── */
+.s6-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  gap: 0;
+}
+
+.s6-title {
+  font-size: 42px;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+  margin-bottom: 12px;
+  max-width: 760px;
+}
+
+.s6-sub {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+}
+
+.cta-box {
+  background: var(--bg-card);
+  border: 1px solid rgba(59,130,246,0.5);
+  border-radius: 12px;
+  padding: 28px 48px;
+  margin-bottom: 28px;
+  width: 860px;
+}
+
+.cta-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--accent-cyan);
+  margin-bottom: 18px;
+}
+
+.cta-options {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.cta-pill {
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  background: var(--bg-card2);
+}
+
+.s6-footer {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* ── Dot nav ── */
+.dots-nav {
+  position: fixed;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 100;
+  align-items: center;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background: var(--accent-blue);
+  width: 24px;
+  border-radius: 8px;
+}
+</style>
+</head>
+<body>
+
+<div class="slideshow" id="slideshow">
+
+  <!-- ═══════════════════════════
+       SLIDE 1 — COVER
+  ════════════════════════════ -->
+  <section class="slide active" id="s1">
+    <div class="glow-tr"></div>
+
+    <div class="slide-topbar">
+      <span class="slide-logo"><img src="images/Logo_EFLOW_white.svg" alt="EFLOW" style="height:20px; width:auto;"></span>
+      <span class="slide-num">01 / 06</span>
+    </div>
+
+    <div class="slide-body">
+      <div class="s1-left">
+        <div class="pill">CONFIDENTIAL · 2026.04.01 San Jose</div>
+        <p class="s1-meeting">Han DG · 2:00 PM</p>
+        <h1 class="s1-title" style="font-size:52px;">GM</h1>
+        <p class="s1-tagline">
+          <span style="font-size:22px;font-weight:400;color:var(--accent-cyan);display:block;margin-bottom:8px;">Ultium 800V + AFPM</span>
+          <span style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;">
+            <span style="background:rgba(59,130,246,0.12);border:1px solid rgba(59,130,246,0.3);border-radius:6px;padding:3px 10px;font-size:12px;font-weight:600;color:var(--accent-blue);">800V Native</span>
+            <span style="background:rgba(6,182,212,0.10);border:1px solid rgba(6,182,212,0.3);border-radius:6px;padding:3px 10px;font-size:12px;font-weight:600;color:var(--accent-cyan);">25 kg</span>
+            <span style="background:rgba(16,185,129,0.10);border:1px solid rgba(16,185,129,0.3);border-radius:6px;padding:3px 10px;font-size:12px;font-weight:600;color:var(--accent-green);">440 Nm</span>
+            <span style="background:rgba(245,158,11,0.10);border:1px solid rgba(245,158,11,0.3);border-radius:6px;padding:3px 10px;font-size:12px;font-weight:600;color:var(--gold);">Drop-in Compatible</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="s1-right">
+        <!-- Ultium Platform Abstract SVG -->
+        <svg width="680" height="390" viewBox="0 0 680 390" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Platform label -->
+          <text x="340" y="28" fill="#8B949E" font-size="11" font-weight="600" text-anchor="middle"
+                font-family="Inter" letter-spacing="2">GM ULTIUM PLATFORM</text>
+
+          <!-- Battery module grid (Ultium pouch cells) -->
+          <rect x="60" y="48" width="560" height="180" rx="10"
+                fill="#3B82F6" fill-opacity="0.07" stroke="#3B82F6" stroke-width="1.5"/>
+          <text x="340" y="44" fill="#3B82F6" font-size="10" font-weight="700" text-anchor="middle"
+                font-family="Inter" letter-spacing="1">ULTIUM BATTERY MODULES</text>
+
+          <!-- Battery cells 4×3 grid -->
+          <rect x="78"  y="64" width="118" height="52" rx="5" fill="#3B82F6" fill-opacity="0.12" stroke="#3B82F6" stroke-width="1" stroke-opacity="0.5"/>
+          <rect x="208" y="64" width="118" height="52" rx="5" fill="#3B82F6" fill-opacity="0.12" stroke="#3B82F6" stroke-width="1" stroke-opacity="0.5"/>
+          <rect x="338" y="64" width="118" height="52" rx="5" fill="#3B82F6" fill-opacity="0.12" stroke="#3B82F6" stroke-width="1" stroke-opacity="0.5"/>
+          <rect x="468" y="64" width="118" height="52" rx="5" fill="#3B82F6" fill-opacity="0.12" stroke="#3B82F6" stroke-width="1" stroke-opacity="0.5"/>
+          <rect x="78"  y="126" width="118" height="52" rx="5" fill="#3B82F6" fill-opacity="0.12" stroke="#3B82F6" stroke-width="1" stroke-opacity="0.5"/>
+          <rect x="208" y="126" width="118" height="52" rx="5" fill="#3B82F6" fill-opacity="0.12" stroke="#3B82F6" stroke-width="1" stroke-opacity="0.5"/>
+          <rect x="338" y="126" width="118" height="52" rx="5" fill="#3B82F6" fill-opacity="0.12" stroke="#3B82F6" stroke-width="1" stroke-opacity="0.5"/>
+          <rect x="468" y="126" width="118" height="52" rx="5" fill="#3B82F6" fill-opacity="0.12" stroke="#3B82F6" stroke-width="1" stroke-opacity="0.5"/>
+
+          <!-- 800V label inside battery -->
+          <text x="340" y="158" fill="#3B82F6" font-size="14" font-weight="800" text-anchor="middle"
+                font-family="Inter">800V NATIVE</text>
+
+          <!-- Front motor: iDS AX (cyan highlight) -->
+          <rect x="100" y="256" width="140" height="70" rx="8"
+                fill="rgba(6,182,212,0.08)" stroke="#06B6D4" stroke-width="2"/>
+          <text x="170" y="282" fill="#06B6D4" font-size="10" font-weight="700" text-anchor="middle" font-family="Inter">iDS AX</text>
+          <text x="170" y="296" fill="#06B6D4" font-size="9" text-anchor="middle" font-family="Inter">FRONT MOTOR</text>
+          <text x="170" y="313" fill="#06B6D4" font-size="9" font-weight="600" text-anchor="middle" font-family="Inter">25 kg · 440 Nm</text>
+
+          <!-- Rear motor: iDS AX (cyan highlight) -->
+          <rect x="440" y="256" width="140" height="70" rx="8"
+                fill="rgba(6,182,212,0.08)" stroke="#06B6D4" stroke-width="2"/>
+          <text x="510" y="282" fill="#06B6D4" font-size="10" font-weight="700" text-anchor="middle" font-family="Inter">iDS AX</text>
+          <text x="510" y="296" fill="#06B6D4" font-size="9" text-anchor="middle" font-family="Inter">REAR MOTOR</text>
+          <text x="510" y="313" fill="#06B6D4" font-size="9" font-weight="600" text-anchor="middle" font-family="Inter">25 kg · 440 Nm</text>
+
+          <!-- Center inverter -->
+          <rect x="280" y="256" width="120" height="70" rx="8"
+                fill="#1C2333" stroke="#8B949E" stroke-width="1" stroke-opacity="0.4"/>
+          <text x="340" y="282" fill="#8B949E" font-size="10" font-weight="600" text-anchor="middle" font-family="Inter">INVERTER</text>
+          <text x="340" y="298" fill="#8B949E" font-size="9" text-anchor="middle" font-family="Inter">800V 기본 대응</text>
+          <text x="340" y="313" fill="#10B981" font-size="9" font-weight="600" text-anchor="middle" font-family="Inter">재설계 Zero</text>
+
+          <!-- Power lines -->
+          <line x1="240" y1="228" x2="170" y2="256" stroke="#3B82F6" stroke-width="1.5" stroke-opacity="0.4" stroke-dasharray="4,3"/>
+          <line x1="340" y1="228" x2="340" y2="256" stroke="#3B82F6" stroke-width="1.5" stroke-opacity="0.4" stroke-dasharray="4,3"/>
+          <line x1="440" y1="228" x2="510" y2="256" stroke="#3B82F6" stroke-width="1.5" stroke-opacity="0.4" stroke-dasharray="4,3"/>
+
+          <!-- Weight savings annotation -->
+          <rect x="60" y="342" width="560" height="36" rx="6"
+                fill="rgba(16,185,129,0.06)" stroke="rgba(16,185,129,0.2)" stroke-width="1"/>
+          <text x="340" y="365" fill="#10B981" font-size="11" font-weight="600" text-anchor="middle"
+                font-family="Inter">듀얼 모터 구성 시 최대 40 kg 경량화 — 배터리 원가 절감 또는 주행거리 연장 선택</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="progress-bar" style="width:16.67%"></div>
+  </section>
+
+
+  <!-- ═══════════════════════════
+       SLIDE 2 — GM의 과제
+  ════════════════════════════ -->
+  <section class="slide" id="s2">
+    <div class="glow-tr"></div>
+    <div class="slide-topbar">
+      <span class="slide-logo"><img src="images/Logo_EFLOW_white.svg" alt="EFLOW" style="height:20px; width:auto;"></span>
+      <span class="slide-num">02 / 06</span>
+    </div>
+
+    <div class="slide-body" style="display:flex;flex-direction:column;">
+      <div style="margin-bottom:18px;">
+        <p class="sec-label">GM 대형 플랫폼 3가지 압박</p>
+        <h2 style="font-size:34px;font-weight:800;color:var(--text-primary);letter-spacing:-0.5px;">iDS AX가 Ultium에 답하는 방식</h2>
+      </div>
+
+      <div style="display:flex;gap:20px;flex:1;min-height:0;">
+        <!-- Left: 3 problem cards -->
+        <div style="width:55%;display:flex;flex-direction:column;gap:12px;">
+          <div class="card" style="flex:1;padding:16px 20px;">
+            <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;
+                      color:var(--accent-blue);margin-bottom:8px;">압박 1 — 전략 전환</p>
+            <p style="font-size:14px;font-weight:700;color:var(--text-primary);margin-bottom:6px;">BEV 손실 후 하이브리드/EREV 가속</p>
+            <p style="font-size:12px;color:var(--text-secondary);line-height:1.6;">BEV 전용 라인업 수익성 악화 → 고효율 EREV·하이브리드 전환 가속. 발전용 모터 성능이 핵심 변수.</p>
+          </div>
+          <div class="card" style="flex:1;padding:16px 20px;">
+            <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;
+                      color:var(--accent-red, #EF4444);margin-bottom:8px;">압박 2 — 중량 문제</p>
+            <p style="font-size:14px;font-weight:700;color:var(--text-primary);margin-bottom:6px;">Silverado EV 3.87톤 차체 중량</p>
+            <p style="font-size:12px;color:var(--text-secondary);line-height:1.6;">무거운 차체 = 배터리 소모 증가. 모터 중량 절감이 직접적인 주행거리·원가 개선으로 연결.</p>
+          </div>
+          <div class="card" style="flex:1;padding:16px 20px;">
+            <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;
+                      color:var(--accent-cyan);margin-bottom:8px;">압박 3 — 비용 압박</p>
+            <p style="font-size:14px;font-weight:700;color:var(--text-primary);margin-bottom:6px;">800V 전환 비용 최소화 압박</p>
+            <p style="font-size:12px;color:var(--text-secondary);line-height:1.6;">400V 기반 모터 → 800V 전환 시 절연계 재설계 필요. 추가 R&D 비용 + 개발 기간 지연.</p>
+          </div>
+        </div>
+
+        <!-- Right: 3 metric boxes -->
+        <div style="width:45%;display:flex;flex-direction:column;justify-content:center;gap:14px;">
+          <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;
+                    color:var(--accent-green);margin-bottom:2px;">eFlow iDS AX 수치</p>
+          <div style="background:var(--bg-card2);border-radius:12px;
+                      border:1px solid rgba(59,130,246,0.2);padding:18px 22px;text-align:center;">
+            <div style="font-size:48px;font-weight:900;color:var(--accent-blue);line-height:1;">40%</div>
+            <div style="font-size:12px;font-weight:600;color:var(--text-secondary);margin-top:4px;">경량화</div>
+            <div style="font-size:11px;color:var(--text-secondary);margin-top:2px;">35~45 kg → 25 kg</div>
+          </div>
+          <div style="background:var(--bg-card2);border-radius:12px;
+                      border:1px solid rgba(6,182,212,0.2);padding:18px 22px;text-align:center;">
+            <div style="font-size:48px;font-weight:900;color:var(--accent-cyan);line-height:1;">800V</div>
+            <div style="font-size:12px;font-weight:600;color:var(--text-secondary);margin-top:4px;">기본 대응</div>
+            <div style="font-size:11px;color:var(--text-secondary);margin-top:2px;">재설계 불필요 · Zero 비용</div>
+          </div>
+          <div style="background:var(--bg-card2);border-radius:12px;
+                      border:1px solid rgba(16,185,129,0.2);padding:18px 22px;text-align:center;">
+            <div style="font-size:48px;font-weight:900;color:var(--accent-green);line-height:1;">440<span style="font-size:24px;">Nm</span></div>
+            <div style="font-size:12px;font-weight:600;color:var(--text-secondary);margin-top:4px;">피크 토크</div>
+            <div style="font-size:11px;color:var(--text-secondary);margin-top:2px;">300~380 Nm 대비 +46%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="progress-bar" style="width:33.33%"></div>
+  </section>
+
+
+  <!-- ═══════════════════════════
+       SLIDE 3 — 800V 호환성 표
+  ════════════════════════════ -->
+  <section class="slide" id="s3">
+    <div class="slide-topbar">
+      <span class="slide-logo"><img src="images/Logo_EFLOW_white.svg" alt="EFLOW" style="height:20px; width:auto;"></span>
+      <span class="slide-num">03 / 06</span>
+    </div>
+
+    <div class="slide-body" style="display:flex;flex-direction:column;">
+      <div style="margin-bottom:14px;">
+        <p class="sec-label">800V 호환성</p>
+        <h2 style="font-size:32px;font-weight:800;color:var(--text-primary);letter-spacing:-0.5px;">Ultium + iDS AX — 즉시 통합 가능</h2>
+      </div>
+
+      <!-- Comparison table -->
+      <div style="flex:1;overflow:hidden;">
+        <table style="width:100%;border-collapse:collapse;">
+          <thead>
+            <tr>
+              <th style="background:rgba(255,255,255,0.05);color:var(--text-secondary);font-size:11px;
+                          font-weight:700;text-transform:uppercase;letter-spacing:1.5px;
+                          padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);">항목</th>
+              <th style="background:rgba(255,255,255,0.05);color:var(--text-secondary);font-size:11px;
+                          font-weight:700;text-transform:uppercase;letter-spacing:1.5px;
+                          padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);">일반 라디얼</th>
+              <th style="background:rgba(6,182,212,0.08);color:var(--accent-cyan);font-size:11px;
+                          font-weight:700;text-transform:uppercase;letter-spacing:1.5px;
+                          padding:10px 14px;text-align:left;border-bottom:1px solid rgba(6,182,212,0.3);">iDS AX</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding:9px 14px;font-size:13px;color:var(--text-secondary);border-bottom:1px solid var(--border);">무게</td>
+              <td style="padding:9px 14px;font-size:13px;color:var(--text-secondary);border-bottom:1px solid var(--border);">35~45 kg</td>
+              <td style="padding:9px 14px;font-size:13px;color:var(--accent-green);font-weight:700;border-bottom:1px solid var(--border);">25 kg (↓40%)</td>
+            </tr>
+            <tr>
+              <td style="padding:9px 14px;font-size:13px;color:var(--text-secondary);border-bottom:1px solid var(--border);">피크 토크</td>
+              <td style="padding:9px 14px;font-size:13px;color:var(--text-secondary);border-bottom:1px solid var(--border);">300~380 Nm</td>
+              <td style="padding:9px 14px;font-size:13px;color:var(--accent-green);font-weight:700;border-bottom:1px solid var(--border);">440 Nm</td>
+            </tr>
+            <tr>
+              <td style="padding:9px 14px;font-size:13px;color:var(--text-secondary);border-bottom:1px solid var(--border);">축방향 길이</td>
+              <td style="padding:9px 14px;font-size:13px;color:var(--text-secondary);border-bottom:1px solid var(--border);">길다</td>
+              <td style="padding:9px 14px;font-size:13px;color:var(--accent-green);font-weight:700;border-bottom:1px solid var(--border);">극히 짧음</td>
+            </tr>
+            <tr>
+              <td style="padding:9px 14px;font-size:13px;color:var(--text-secondary);border-bottom:1px solid var(--border);">800V 대응</td>
+              <td style="padding:9px 14px;font-size:13px;color:#EF4444;border-bottom:1px solid var(--border);">재설계 필요</td>
+              <td style="padding:9px 14px;font-size:13px;color:var(--accent-green);font-weight:700;border-bottom:1px solid var(--border);">기본 설계 완료</td>
+            </tr>
+            <tr>
+              <td style="padding:9px 14px;font-size:13px;color:var(--text-secondary);border-bottom:1px solid var(--border);">냉각 방식</td>
+              <td style="padding:9px 14px;font-size:13px;color:var(--text-secondary);border-bottom:1px solid var(--border);">공랭 / 수랭</td>
+              <td style="padding:9px 14px;font-size:13px;color:var(--accent-green);font-weight:700;border-bottom:1px solid var(--border);">밀폐 오일냉각</td>
+            </tr>
+            <tr>
+              <td style="padding:9px 14px;font-size:13px;color:var(--text-secondary);">고온 내구</td>
+              <td style="padding:9px 14px;font-size:13px;color:var(--text-secondary);">~120°C</td>
+              <td style="padding:9px 14px;font-size:13px;color:var(--accent-green);font-weight:700;">150°C 연속구동</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Bottom highlight -->
+      <div style="background:rgba(6,182,212,0.06);border:1px solid rgba(6,182,212,0.25);
+                  border-radius:10px;padding:13px 20px;margin-top:14px;flex-shrink:0;">
+        <p style="font-size:13px;font-weight:700;color:var(--accent-cyan);">
+          Drop-in compatible — GM Ultium 아키텍처 재설계 비용 Zero
+        </p>
+      </div>
+    </div>
+
+    <div class="progress-bar" style="width:50%"></div>
+  </section>
+
+
+  <!-- ═══════════════════════════
+       SLIDE 4 — 경량화 효과 시뮬레이션
+  ════════════════════════════ -->
+  <section class="slide" id="s4">
+    <div class="glow-bl"></div>
+    <div class="slide-topbar">
+      <span class="slide-logo"><img src="images/Logo_EFLOW_white.svg" alt="EFLOW" style="height:20px; width:auto;"></span>
+      <span class="slide-num">04 / 06</span>
+    </div>
+
+    <div class="slide-body">
+      <div class="s4-content">
+        <div class="s4-top">
+          <p class="sec-label">경량화 효과 시뮬레이션</p>
+          <h2 style="font-size:34px;font-weight:800;color:var(--text-primary);letter-spacing:-0.5px;">모터 1 kg 절감 = 배터리 재할당</h2>
+        </div>
+
+        <!-- Two scenario cards -->
+        <div class="s4-cards">
+          <div class="s4-card">
+            <p class="s4-card-label">Silverado EV 듀얼 모터 기준</p>
+            <p class="s4-card-value" style="font-size:32px;">20~40 kg</p>
+            <p class="s4-card-sub">총 절감 가능 중량 (듀얼 모터 구성 시)</p>
+          </div>
+          <div class="s4-card">
+            <p class="s4-card-label">시나리오 A — 원가 절감</p>
+            <p class="s4-card-value" style="font-size:26px;color:var(--accent-cyan);line-height:1.2;">배터리 셀<br>감축</p>
+            <p class="s4-card-sub">동일 주행거리 유지 시 배터리 원가 ↓</p>
+          </div>
+          <div class="s4-card">
+            <p class="s4-card-label">시나리오 B — 주행거리 연장</p>
+            <p class="s4-card-value" style="font-size:26px;color:var(--accent-green);line-height:1.2;">주행거리<br>연장</p>
+            <p class="s4-card-sub">배터리 셀 수 유지 시 차체 총중량 감소 → 항속 ↑</p>
+          </div>
+        </div>
+
+        <!-- Visual: scale infographic SVG -->
+        <div class="flow-chart" style="padding:16px 24px;justify-content:center;gap:0;">
+          <svg width="800" height="110" viewBox="0 0 800 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Scale beam -->
+            <line x1="400" y1="20" x2="400" y2="55" stroke="#8B949E" stroke-width="2" stroke-opacity="0.5"/>
+            <line x1="150" y1="55" x2="650" y2="55" stroke="#8B949E" stroke-width="2" stroke-opacity="0.5"/>
+            <!-- Left pan (Motor weight) — slightly down = heavier -->
+            <line x1="200" y1="55" x2="200" y2="68" stroke="#8B949E" stroke-width="1.5" stroke-opacity="0.4"/>
+            <rect x="110" y="68" width="180" height="32" rx="6"
+                  fill="rgba(239,68,68,0.10)" stroke="#EF4444" stroke-width="1.5"/>
+            <text x="200" y="89" fill="#EF4444" font-size="12" font-weight="700" text-anchor="middle" font-family="Inter">라디얼 모터: 40 kg</text>
+            <!-- Right pan (iDS AX) — higher = lighter -->
+            <line x1="600" y1="55" x2="600" y2="58" stroke="#8B949E" stroke-width="1.5" stroke-opacity="0.4"/>
+            <rect x="510" y="58" width="180" height="32" rx="6"
+                  fill="rgba(16,185,129,0.10)" stroke="#10B981" stroke-width="1.5"/>
+            <text x="600" y="79" fill="#10B981" font-size="12" font-weight="700" text-anchor="middle" font-family="Inter">iDS AX: 25 kg (↓37.5%)</text>
+            <!-- Pivot -->
+            <circle cx="400" cy="18" r="6" fill="#8B949E" fill-opacity="0.6"/>
+            <!-- Savings label -->
+            <text x="400" y="108" fill="#06B6D4" font-size="11" font-weight="600" text-anchor="middle" font-family="Inter">절감 15 kg/모터 × 2 = 최대 30 kg → 배터리 원가 절감 또는 주행거리 연장 선택</text>
+          </svg>
+        </div>
+
+        <!-- Bottom note -->
+        <div style="background:rgba(245,158,11,0.05);border:1px solid rgba(245,158,11,0.18);
+                    border-radius:8px;padding:12px 18px;margin-top:4px;">
+          <p style="font-size:12.5px;color:var(--text-secondary);line-height:1.6;">
+            대형 SUV/트럭 플랫폼에서 <span style="color:var(--gold);font-weight:700;">marginal gain이 아닌 meaningful range extension</span>
+            — Silverado EV · Suburban급 경쟁력 직접 향상
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="progress-bar" style="width:66.67%"></div>
+  </section>
+
+
+  <!-- ═══════════════════════════
+       SLIDE 5 — GM 모빌리티 생태계 확장
+  ════════════════════════════ -->
+  <section class="slide" id="s5">
+    <div class="slide-topbar">
+      <span class="slide-logo"><img src="images/Logo_EFLOW_white.svg" alt="EFLOW" style="height:20px; width:auto;"></span>
+      <span class="slide-num">05 / 06</span>
+    </div>
+
+    <div class="slide-body" style="display:flex;flex-direction:column;">
+      <div style="margin-bottom:18px;">
+        <p class="sec-label">파생 수요</p>
+        <h2 style="font-size:32px;font-weight:800;color:var(--text-primary);letter-spacing:-0.5px;">GM 모빌리티 생태계 전반으로의 확장</h2>
+      </div>
+
+      <!-- 3 cards -->
+      <div style="display:flex;gap:18px;flex:1;min-height:0;">
+        <div class="card" style="flex:1;padding:22px 24px;">
+          <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;
+                    color:var(--accent-blue);margin-bottom:12px;">GM Defense</p>
+          <p style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:12px;">수소전기 플랫폼<br>고토크밀도 제한 공간</p>
+          <ul style="list-style:none;padding:0;">
+            <li style="font-size:12.5px;color:var(--text-secondary);padding:5px 0 5px 16px;
+                       border-bottom:1px solid var(--border);position:relative;">
+              <span style="position:absolute;left:0;color:var(--accent-blue);">—</span>군용 차량 공간 제약 극한
+            </li>
+            <li style="font-size:12.5px;color:var(--text-secondary);padding:5px 0 5px 16px;
+                       border-bottom:1px solid var(--border);position:relative;">
+              <span style="position:absolute;left:0;color:var(--accent-blue);">—</span>고토크밀도 필수 — 팬케이크형 AFPM 최적
+            </li>
+            <li style="font-size:12.5px;color:var(--text-secondary);padding:5px 0 5px 16px;position:relative;">
+              <span style="position:absolute;left:0;color:var(--accent-blue);">—</span>내환경성·고온 내구 150°C 연속구동
+            </li>
+          </ul>
+        </div>
+
+        <div class="card" style="flex:1;padding:22px 24px;">
+          <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;
+                    color:var(--accent-cyan);margin-bottom:12px;">Cruise 로보택시</p>
+          <p style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:12px;">자율주행 친화적<br>모터 특성 필요</p>
+          <ul style="list-style:none;padding:0;">
+            <li style="font-size:12.5px;color:var(--text-secondary);padding:5px 0 5px 16px;
+                       border-bottom:1px solid var(--border);position:relative;">
+              <span style="position:absolute;left:0;color:var(--accent-cyan);">—</span>저소음·저진동 — AFPM 구조적 우위
+            </li>
+            <li style="font-size:12.5px;color:var(--text-secondary);padding:5px 0 5px 16px;
+                       border-bottom:1px solid var(--border);position:relative;">
+              <span style="position:absolute;left:0;color:var(--accent-cyan);">—</span>정밀 토크 제어 — 자율주행 응답성
+            </li>
+            <li style="font-size:12.5px;color:var(--text-secondary);padding:5px 0 5px 16px;position:relative;">
+              <span style="position:absolute;left:0;color:var(--accent-cyan);">—</span>경량화 → 플릿 운영비 절감
+            </li>
+          </ul>
+        </div>
+
+        <div class="card" style="flex:1;padding:22px 24px;">
+          <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;
+                    color:var(--accent-green);margin-bottom:12px;">상용 플릿</p>
+          <p style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:12px;">연속 고토크 출력<br>열 스로틀링 Zero</p>
+          <ul style="list-style:none;padding:0;">
+            <li style="font-size:12.5px;color:var(--text-secondary);padding:5px 0 5px 16px;
+                       border-bottom:1px solid var(--border);position:relative;">
+              <span style="position:absolute;left:0;color:var(--accent-green);">—</span>플릿 연속 운행 — 열 축적 없음
+            </li>
+            <li style="font-size:12.5px;color:var(--text-secondary);padding:5px 0 5px 16px;
+                       border-bottom:1px solid var(--border);position:relative;">
+              <span style="position:absolute;left:0;color:var(--accent-green);">—</span>밀폐 오일냉각 — 유지보수 최소화
+            </li>
+            <li style="font-size:12.5px;color:var(--text-secondary);padding:5px 0 5px 16px;position:relative;">
+              <span style="position:absolute;left:0;color:var(--accent-green);">—</span>TCO 개선 직결
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom message -->
+      <div style="background:rgba(6,182,212,0.05);border:1px solid rgba(6,182,212,0.2);
+                  border-radius:10px;padding:13px 20px;margin-top:14px;flex-shrink:0;text-align:center;">
+        <p style="font-size:13px;font-weight:700;color:var(--accent-cyan);">
+          단일 AFPM 플랫폼으로 GM 전체 모빌리티 생태계 대응 가능
+        </p>
+      </div>
+    </div>
+
+    <div class="progress-bar" style="width:83.33%"></div>
+  </section>
+
+
+  <!-- ═══════════════════════════
+       SLIDE 6 — CTA / CLOSING
+  ════════════════════════════ -->
+  <section class="slide" id="s6">
+    <div class="glow-tr"></div>
+    <div class="glow-bl"></div>
+
+    <div class="slide-topbar">
+      <span class="slide-logo"><img src="images/Logo_EFLOW_white.svg" alt="EFLOW" style="height:20px; width:auto;"></span>
+      <span class="slide-num">06 / 06</span>
+    </div>
+
+    <div class="slide-body" style="display:flex;align-items:center;justify-content:center;">
+      <div class="s6-content">
+        <p class="sec-label" style="margin-bottom:14px;">Drop-in 평가 — 재설계 없이 시작</p>
+        <h1 class="s6-title">We're not asking GM<br>to redesign anything.</h1>
+        <p class="s6-sub">기존 Ultium 아키텍처에서 더 가볍고 강한 모터로 교체</p>
+
+        <div class="cta-box">
+          <p class="cta-label">다음 단계</p>
+          <div class="cta-options">
+            <div class="cta-pill">기술 담당자 연결 → 파워트레인 통합 검토</div>
+            <div class="cta-pill">CTO Frank Heller 기술 브리핑</div>
+            <div class="cta-pill">60일 평가 프로그램 제안</div>
+          </div>
+        </div>
+
+        <p class="s6-footer">EFLOW Co., Ltd. | eflow.youme@gmail.com | 2026.04.01 San Jose</p>
+      </div>
+    </div>
+
+    <div class="progress-bar" style="width:100%"></div>
+  </section>
+
+</div><!-- /slideshow -->
+
+
+<!-- Dot navigation -->
+<div class="dots-nav" id="dotsNav">
+  <div class="dot active"  onclick="goTo(0)"></div>
+  <div class="dot"         onclick="goTo(1)"></div>
+  <div class="dot"         onclick="goTo(2)"></div>
+  <div class="dot"         onclick="goTo(3)"></div>
+  <div class="dot"         onclick="goTo(4)"></div>
+  <div class="dot"         onclick="goTo(5)"></div>
+</div>
+
+
+<script>
+  let cur = 0;
+  const slides = document.querySelectorAll('.slide');
+  const dots   = document.querySelectorAll('.dot');
+
+  function goTo(n) {
+    slides[cur].classList.remove('active');
+    dots[cur].classList.remove('active');
+    cur = Math.max(0, Math.min(n, slides.length - 1));
+    slides[cur].classList.add('active');
+    dots[cur].classList.add('active');
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown')  goTo(cur + 1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')    goTo(cur - 1);
+  });
+
+  // Touch/swipe support
+  let touchX = 0;
+  document.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; });
+  document.addEventListener('touchend',   e => {
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 50) goTo(dx < 0 ? cur + 1 : cur - 1);
+  });
+
+  // Auto-scale to viewport
+  function scaleSlideshow() {
+    const slideshow = document.querySelector('.slideshow');
+    const scaleX = window.innerWidth / 1280;
+    const scaleY = window.innerHeight / 720;
+    const scale = Math.min(scaleX, scaleY) * 0.95;
+    slideshow.style.transform = `scale(${scale})`;
+  }
+
+  window.addEventListener('resize', scaleSlideshow);
+  window.addEventListener('load', scaleSlideshow);
+</script>
+</body>
+</html>

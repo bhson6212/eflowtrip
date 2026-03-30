@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>05 · Mobility VC | EFLOW 미팅 준비자료</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black:     #0a0a0a;
+    --gray-800:  #222222;
+    --gray-600:  #555555;
+    --gray-400:  #999999;
+    --gray-100:  #f2f2f2;
+    --gray-50:   #fafafa;
+    --white:     #ffffff;
+    --bd:        1px solid #d8d8d8;
+    --bd-hvy:    2px solid #0a0a0a;
+  }
+
+  body {
+    font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+    background: var(--white);
+    color: var(--black);
+    font-size: 13px;
+    line-height: 1.8;
+    padding: 60px 0 100px;
+  }
+
+  .doc { max-width: 860px; margin: 0 auto; padding: 0 52px; }
+
+  /* ── 문서 헤더 ── */
+  .doc-header {
+    border-top: var(--bd-hvy);
+    border-bottom: var(--bd-hvy);
+    padding: 24px 0 20px;
+    margin-bottom: 48px;
+  }
+  .eyebrow {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--gray-400); margin-bottom: 10px;
+  }
+  .doc-header h1 {
+    font-size: 23px; font-weight: 800; letter-spacing: -0.02em;
+    line-height: 1.3; margin-bottom: 20px;
+  }
+  .meta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 12px 28px;
+  }
+  .meta-item .k {
+    font-size: 9.5px; font-weight: 700; letter-spacing: 0.13em;
+    text-transform: uppercase; color: var(--gray-400);
+    display: block; margin-bottom: 2px;
+  }
+  .meta-item .v { font-size: 12.5px; font-weight: 700; }
+
+  /* ── 파트 배너 ── */
+  .part-banner {
+    background: var(--black); color: var(--white);
+    padding: 10px 16px; font-size: 11px; font-weight: 800;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    margin: 44px 0 28px;
+  }
+
+  /* ── 섹션 ── */
+  .sec { margin-bottom: 36px; }
+  .sec-title {
+    display: flex; align-items: baseline; gap: 10px;
+    border-bottom: var(--bd); padding-bottom: 8px; margin-bottom: 18px;
+  }
+  .sec-title .tag {
+    font-size: 9.5px; font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--gray-400); white-space: nowrap;
+  }
+  .sec-title .ttl { font-size: 13.5px; font-weight: 800; }
+
+  /* ── 본문 ── */
+  p { font-size: 13px; line-height: 1.8; color: var(--gray-800); margin-bottom: 10px; }
+  p:last-child { margin-bottom: 0; }
+  strong { color: var(--black); font-weight: 800; }
+
+  /* ── 한 줄 요약 강조 ── */
+  .headline {
+    border: var(--bd-hvy); padding: 18px 22px; margin: 0 0 36px;
+  }
+  .headline p {
+    font-size: 14.5px; font-weight: 800; font-style: italic;
+    color: var(--black); line-height: 1.65; margin-bottom: 0;
+  }
+
+  /* ── 조건 블록 ── */
+  .cond {
+    background: var(--gray-50); border: var(--bd);
+    padding: 14px 18px; margin: 12px 0;
+    font-size: 12px; line-height: 2; color: var(--gray-800);
+    font-family: 'Courier New', monospace;
+  }
+
+  /* ── 표 ── */
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 12.5px; }
+  th {
+    background: var(--gray-100); border: var(--bd);
+    padding: 8px 12px; text-align: left;
+    font-size: 10.5px; font-weight: 800; letter-spacing: 0.05em; color: var(--gray-800);
+  }
+  td { border: var(--bd); padding: 9px 12px; vertical-align: top; line-height: 1.65; }
+  tr:nth-child(even) td { background: var(--gray-50); }
+
+  /* ── 검증 근거 3단 ── */
+  .evidence { margin: 14px 0; }
+  .ev-block {
+    border: var(--bd); margin-bottom: 12px;
+  }
+  .ev-block:last-child { margin-bottom: 0; }
+  .ev-head {
+    background: var(--gray-100); padding: 9px 16px;
+    font-size: 11px; font-weight: 800; letter-spacing: 0.08em;
+    border-bottom: var(--bd); color: var(--black);
+  }
+  .ev-body { padding: 14px 16px; }
+  .ev-body .cond { margin: 0; }
+
+  /* ── 흐름 다이어그램 ── */
+  .flow {
+    display: flex; align-items: stretch;
+    border: var(--bd); margin: 12px 0; overflow: hidden;
+  }
+  .flow-node {
+    flex: 1; padding: 14px 16px; text-align: center;
+    background: var(--gray-50); border-right: var(--bd);
+    font-size: 12px; font-weight: 700; line-height: 1.5;
+  }
+  .flow-node:last-child { border-right: none; }
+  .flow-node .fn-sub {
+    font-size: 10.5px; font-weight: 400;
+    color: var(--gray-400); display: block; margin-top: 4px;
+  }
+  .flow-arrow {
+    display: flex; align-items: center;
+    padding: 0 6px; font-size: 16px;
+    color: var(--gray-400); background: var(--white);
+    border-right: var(--bd); flex-shrink: 0;
+  }
+
+  /* ── Series A 조건 카드 ── */
+  .condition-cards {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 10px; margin: 12px 0;
+  }
+  .cc {
+    border: var(--bd); padding: 14px 16px;
+  }
+  .cc .cc-label {
+    font-size: 9.5px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--gray-400); margin-bottom: 6px;
+  }
+  .cc .cc-value { font-size: 19px; font-weight: 800; line-height: 1.2; }
+  .cc .cc-sub { font-size: 11px; color: var(--gray-400); margin-top: 4px; }
+
+  /* ── 매출 궤도 로드맵 ── */
+  .roadmap { border: var(--bd); margin: 12px 0; }
+  .rm-row {
+    display: grid; grid-template-columns: 100px 1fr;
+    border-bottom: var(--bd);
+  }
+  .rm-row:last-child { border-bottom: none; }
+  .rm-year {
+    padding: 16px 18px;
+    border-right: var(--bd);
+    background: var(--gray-50);
+  }
+  .rm-year .ry-val { font-size: 16px; font-weight: 800; }
+  .rm-year .ry-rev { font-size: 12px; font-weight: 800; color: var(--black); margin-top: 3px; }
+  .rm-content {
+    padding: 16px 18px;
+  }
+  .rm-content ul { list-style: none; padding: 0; }
+  .rm-content ul li {
+    font-size: 12.5px; line-height: 1.7; color: var(--gray-800);
+    padding: 3px 0 3px 14px; position: relative;
+    border-bottom: 1px solid var(--gray-100);
+  }
+  .rm-content ul li:last-child { border-bottom: none; }
+  .rm-content ul li::before { content: '—'; position: absolute; left: 0; color: var(--gray-400); }
+
+  /* ── IPO 로드맵 표 ── */
+  /* (표 스타일 공용 사용) */
+
+  /* ── 제안 박스 ── */
+  .proposal {
+    border: var(--bd-hvy); padding: 20px 22px; margin: 14px 0;
+  }
+  .proposal .prop-quote {
+    font-size: 13px; font-style: italic; color: var(--black);
+    line-height: 1.8; margin-bottom: 14px;
+    padding-bottom: 14px; border-bottom: var(--bd);
+  }
+  .proposal .prop-cta {
+    font-size: 13px; font-weight: 800; color: var(--black);
+  }
+
+  /* ── 구분선 ── */
+  hr.hvy { border: none; border-top: var(--bd-hvy); margin: 48px 0; }
+
+  /* ── 푸터 ── */
+  .doc-footer {
+    border-top: var(--bd-hvy); margin-top: 60px; padding-top: 14px;
+    display: flex; justify-content: space-between;
+    font-size: 10.5px; color: var(--gray-400);
+  }
+
+  @media print {
+    body { padding: 0; }
+    .doc { padding: 0 28px; max-width: 100%; }
+    .part-banner { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+<div class="doc">
+
+  <!-- 문서 헤더 -->
+  <div class="doc-header">
+    <div class="eyebrow">EFLOW 미국 출장 준비자료 · 05 / 08</div>
+    <h1>Mobility VC<br>— Teo</h1>
+    <div class="meta-grid">
+      <div class="meta-item">
+        <span class="k">미팅 일시</span>
+        <span class="v">2026. 4. 1 (수) 3:00 – 3:30 PM</span>
+      </div>
+      <div class="meta-item">
+        <span class="k">장소</span>
+        <span class="v">San Jose</span>
+      </div>
+      <div class="meta-item">
+        <span class="k">산출물 구성</span>
+        <span class="v">투자 요약 1장 (매출 궤도 + IPO 로드맵)</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 파트 배너 -->
+  <div class="part-banner">산출물 — 투자 요약 1장 (매출 궤도 + IPO 로드맵)</div>
+
+
+  <!-- 한 줄 요약 -->
+  <div class="headline">
+    <p>"전 세계 5개사 미만만 양산 가능한 소형 AFPM 모터 — 유럽 실적으로 검증된 유일한 한국 기업이, EREV·드론·로봇 전환기의 정점에서 Series A를 엽니다."</p>
+  </div>
+
+
+  <!-- 1. 왜 지금인가 -->
+  <div class="sec">
+    <div class="sec-title">
+      <span class="tag">시장 타이밍</span>
+      <span class="ttl">왜 지금인가</span>
+    </div>
+
+    <div class="cond">
+      순수 BEV 시장이 조정 국면에 진입하면서 Ford, GM, 현대차 등<br>
+      주요 OEM이 일제히 EREV·하이브리드 라인업으로 선회 중<br>
+      <br>
+      이 전환의 핵심 부품 = 고효율·경량 발전용 모터<br>
+      전 세계에서 이를 양산할 수 있는 기업 → 5개사 미만<br>
+      EFLOW가 그 중 하나
+    </div>
+  </div>
+
+
+  <!-- 2. 3가지 검증 근거 -->
+  <div class="sec">
+    <div class="sec-title">
+      <span class="tag">검증 근거</span>
+      <span class="ttl">3가지 검증된 근거</span>
+    </div>
+
+    <div class="evidence">
+
+      <!-- 근거 1 -->
+      <div class="ev-block">
+        <div class="ev-head">① 기술 계보 — YASA 검증</div>
+        <div class="ev-body">
+          <div class="flow">
+            <div class="flow-node">
+              YASA
+              <span class="fn-sub">동일 AFPM 기술 계보</span>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-node">
+              Mercedes-Benz 인수
+              <span class="fn-sub">AFPM 기술 가치 글로벌 공인</span>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-node">
+              eFlow (독립 유지)
+              <span class="fn-sub">인수 대신 독립을 선택 — 지금은</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 근거 2 -->
+      <div class="ev-block">
+        <div class="ev-head">② 반복 매출 — PoC가 아닙니다</div>
+        <div class="ev-body">
+          <table>
+            <thead><tr><th>지표</th><th>내용</th></tr></thead>
+            <tbody>
+              <tr><td>유럽 B2B 고객사</td><td><strong>25개사</strong> 실공급 운용 중</td></tr>
+              <tr><td>재주문률</td><td><strong>98%</strong></td></tr>
+              <tr><td>독일 드론 확정 수주</td><td><strong>20,000 유닛</strong> (2026년 9월 양산)</td></tr>
+              <tr><td>SCOOBIC 독점 공급</td><td>3년 계약 (연 10.7억 원, 2024–2027)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 근거 3 -->
+      <div class="ev-block">
+        <div class="ev-head">③ 누적 투자 신뢰성</div>
+        <div class="ev-body">
+          <table>
+            <thead><tr><th>항목</th><th>내용</th></tr></thead>
+            <tbody>
+              <tr><td>누적 투자</td><td><strong>78억 원</strong> (Seed + Pre-A 완료)</td></tr>
+              <tr><td>주요 투자사</td><td>Quantum Ventures Korea, 성우하이텍(2대주주 7.77%), 한화증권, 원익투자파트너스 등</td></tr>
+              <tr><td>수상</td><td><strong>CES 2026 혁신상</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- 3. Series A 투자 조건 -->
+  <div class="sec">
+    <div class="sec-title">
+      <span class="tag">투자 조건</span>
+      <span class="ttl">Series A 투자 조건</span>
+    </div>
+
+    <div class="condition-cards">
+      <div class="cc">
+        <div class="cc-label">Pre-money</div>
+        <div class="cc-value">620억 원</div>
+        <div class="cc-sub">Post-money 800억 원</div>
+      </div>
+      <div class="cc">
+        <div class="cc-label">목표 조달액</div>
+        <div class="cc-value">180억 원</div>
+        <div class="cc-sub">2026년 하반기 오픈</div>
+      </div>
+      <div class="cc">
+        <div class="cc-label">신디케이트 구성</div>
+        <div class="cc-value" style="font-size:14px; margin-top:4px;">전략적 투자자<br>중심</div>
+        <div class="cc-sub">선택적 구성 중</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 4. 매출 궤도 -->
+  <div class="sec">
+    <div class="sec-title">
+      <span class="tag">성장 시나리오</span>
+      <span class="ttl">매출 궤도 — 3단계 성장 시나리오</span>
+    </div>
+
+    <div class="roadmap">
+      <div class="rm-row">
+        <div class="rm-year">
+          <div class="ry-val">2026</div>
+          <div class="ry-rev">100억 원</div>
+        </div>
+        <div class="rm-content">
+          <ul>
+            <li>드론 사업부 출범</li>
+            <li>독일 20,000 유닛 양산 개시</li>
+            <li>루마니아 유럽 생산거점 가동</li>
+          </ul>
+        </div>
+      </div>
+      <div class="rm-row">
+        <div class="rm-year">
+          <div class="ry-val">2028</div>
+          <div class="ry-rev">300억 원</div>
+        </div>
+        <div class="rm-content">
+          <ul>
+            <li>로봇 액추에이터 양산 본격화</li>
+            <li>미국 시장 본격 진입 (Series B 연계)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="rm-row">
+        <div class="rm-year">
+          <div class="ry-val">2030</div>
+          <div class="ry-rev">1,000억 원</div>
+        </div>
+        <div class="rm-content">
+          <ul>
+            <li>글로벌 소형 AFPM Top 3 진입</li>
+            <li>CAGR 104% 목표</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 5. IPO 로드맵 -->
+  <div class="sec">
+    <div class="sec-title">
+      <span class="tag">IPO 로드맵</span>
+      <span class="ttl">단계별 자금 조달 및 IPO 계획</span>
+    </div>
+
+    <table>
+      <thead>
+        <tr><th>시점</th><th>이정표</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>2026</strong></td>
+          <td>Series A (180억 원) — 유럽 생산거점 가동 + 로봇 액추에이터 R&D</td>
+        </tr>
+        <tr>
+          <td><strong>2028</strong></td>
+          <td>Series B (300억 원) — 미국 공장 설립 + 글로벌 SOP</td>
+        </tr>
+        <tr>
+          <td><strong>2029</strong></td>
+          <td><strong>KOSDAQ 상장 목표</strong> — 목표 시가총액 5,000억 원</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- 6. Mobility VC 제안 -->
+  <div class="sec">
+    <div class="sec-title">
+      <span class="tag">제안</span>
+      <span class="ttl">Mobility VC에 드리는 제안</span>
+    </div>
+
+    <div class="proposal">
+      <div class="prop-quote">
+        "EFLOW는 Series A 신디케이트를 선택적으로 구성합니다.<br>
+        우리가 찾는 투자자는 수표가 아니라 미국 시장의 문을 여는 파트너입니다.<br>
+        OEM 소개, 플릿 오퍼레이터 연결, 방산 테크 네트워크 —<br>
+        Mobility VC가 그 역할을 함께 할 수 있다면,"
+      </div>
+      <div class="prop-cta">
+        lead 또는 co-lead 포지션을 우선적으로 논의할 의향이 있습니다.
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 푸터 -->
+  <div class="doc-footer">
+    <span>EFLOW Co., Ltd. | YouMe Yi | eflow.youme@gmail.com</span>
+    <span>미팅 준비자료 05/08 · 2026. 4. 1</span>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>04 · Tensor Auto | EFLOW 미팅 준비자료</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black:     #0a0a0a;
+    --gray-800:  #222222;
+    --gray-600:  #555555;
+    --gray-400:  #999999;
+    --gray-100:  #f2f2f2;
+    --gray-50:   #fafafa;
+    --white:     #ffffff;
+    --bd:        1px solid #d8d8d8;
+    --bd-hvy:    2px solid #0a0a0a;
+  }
+
+  body {
+    font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+    background: var(--white);
+    color: var(--black);
+    font-size: 13px;
+    line-height: 1.8;
+    padding: 60px 0 100px;
+  }
+
+  .doc { max-width: 860px; margin: 0 auto; padding: 0 52px; }
+
+  .doc-header {
+    border-top: var(--bd-hvy); border-bottom: var(--bd-hvy);
+    padding: 24px 0 20px; margin-bottom: 48px;
+  }
+  .eyebrow {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--gray-400); margin-bottom: 10px;
+  }
+  .doc-header h1 {
+    font-size: 23px; font-weight: 800; letter-spacing: -0.02em;
+    line-height: 1.3; margin-bottom: 20px;
+  }
+  .meta-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 12px 28px;
+  }
+  .meta-item .k {
+    font-size: 9.5px; font-weight: 700; letter-spacing: 0.13em;
+    text-transform: uppercase; color: var(--gray-400); display: block; margin-bottom: 2px;
+  }
+  .meta-item .v { font-size: 12.5px; font-weight: 700; }
+
+  .part-banner {
+    background: var(--black); color: var(--white);
+    padding: 10px 16px; font-size: 11px; font-weight: 800;
+    letter-spacing: 0.14em; text-transform: uppercase; margin: 44px 0 28px;
+  }
+
+  .sec { margin-bottom: 36px; }
+  .sec-title {
+    display: flex; align-items: baseline; gap: 10px;
+    border-bottom: var(--bd); padding-bottom: 8px; margin-bottom: 18px;
+  }
+  .sec-title .tag {
+    font-size: 9.5px; font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--gray-400); white-space: nowrap;
+  }
+  .sec-title .ttl { font-size: 13.5px; font-weight: 800; }
+
+  p { font-size: 13px; line-height: 1.8; color: var(--gray-800); margin-bottom: 10px; }
+  p:last-child { margin-bottom: 0; }
+  strong { color: var(--black); font-weight: 800; }
+
+  .headline {
+    border: var(--bd-hvy); padding: 18px 22px; margin: 0 0 36px;
+  }
+  .headline p {
+    font-size: 14px; font-weight: 800; font-style: italic;
+    color: var(--black); line-height: 1.7; margin-bottom: 0;
+  }
+
+  .cond {
+    background: var(--gray-50); border: var(--bd);
+    padding: 14px 18px; margin: 12px 0;
+    font-size: 12px; line-height: 2; color: var(--gray-800);
+    font-family: 'Courier New', monospace;
+  }
+
+  .feature-block { border: var(--bd); margin-bottom: 14px; }
+  .feature-block:last-child { margin-bottom: 0; }
+  .feature-head {
+    background: var(--gray-100); padding: 10px 16px;
+    font-size: 11.5px; font-weight: 800; letter-spacing: 0.04em;
+    border-bottom: var(--bd); color: var(--black);
+    display: flex; align-items: baseline; gap: 12px;
+  }
+  .feature-num { font-size: 18px; font-weight: 800; min-width: 20px; }
+  .feature-body { padding: 16px 18px; }
+  .feature-body .cond { margin: 0; }
+
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 12.5px; }
+  th {
+    background: var(--gray-100); border: var(--bd);
+    padding: 8px 12px; text-align: left;
+    font-size: 10.5px; font-weight: 800; letter-spacing: 0.05em; color: var(--gray-800);
+  }
+  td { border: var(--bd); padding: 9px 12px; vertical-align: top; line-height: 1.65; }
+  tr:nth-child(even) td { background: var(--gray-50); }
+
+  .quote {
+    border: var(--bd); border-left: 4px solid var(--black);
+    background: var(--gray-50); padding: 16px 20px; margin: 14px 0;
+  }
+  .quote p {
+    font-size: 13px; font-style: italic;
+    color: var(--black); margin-bottom: 0; line-height: 1.75;
+  }
+
+  .proposal { border: var(--bd-hvy); padding: 20px 22px; margin: 14px 0; }
+  .proposal .prop-title {
+    font-size: 11px; font-weight: 800; letter-spacing: 0.12em;
+    text-transform: uppercase; margin-bottom: 14px;
+    padding-bottom: 8px; border-bottom: var(--bd);
+  }
+  .proposal .prop-sub {
+    font-size: 12px; color: var(--gray-600);
+    margin-top: 12px; padding-top: 12px; border-top: var(--bd);
+  }
+
+  .doc-footer {
+    border-top: var(--bd-hvy); margin-top: 60px; padding-top: 14px;
+    display: flex; justify-content: space-between;
+    font-size: 10.5px; color: var(--gray-400);
+  }
+
+  @media print {
+    body { padding: 0; }
+    .doc { padding: 0 28px; max-width: 100%; }
+    .part-banner { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+<div class="doc">
+
+  <!-- 문서 헤더 -->
+  <div class="doc-header">
+    <div class="eyebrow">EFLOW 미국 출장 준비자료 · 04 / 08</div>
+    <h1>Tensor Auto<br>— Jewel Li</h1>
+    <div class="meta-grid">
+      <div class="meta-item">
+        <span class="k">미팅 일시</span>
+        <span class="v">2026. 4. 1 (수) 2:30 – 3:00 PM</span>
+      </div>
+      <div class="meta-item">
+        <span class="k">장소</span>
+        <span class="v">San Jose</span>
+      </div>
+      <div class="meta-item">
+        <span class="k">산출물 구성</span>
+        <span class="v">자율주행 제어 친화적 모터 특성 요약</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 파트 배너 -->
+  <div class="part-banner">산출물 — 자율주행 제어 친화적 모터 특성 요약</div>
+
+
+  <!-- 핵심 전제 -->
+  <div class="headline">
+    <p>"모터가 예측대로 움직이지 않으면, 알고리즘의 예측 모델이 무너진다."</p>
+  </div>
+
+
+  <!-- 배경 -->
+  <div class="sec">
+    <div class="sec-title">
+      <span class="tag">배경</span>
+      <span class="ttl">자율주행 소프트웨어의 진짜 적</span>
+    </div>
+    <p>Level 4 자율주행은 수 밀리초 단위로 제어 명령을 모터에 전달한다. 이 명령이 물리적 차량 거동으로 오차 없이 구현되어야 AI가 작동한다.</p>
+    <p>모터의 출력이 강한가가 아니라,<br>
+    <strong>모터가 얼마나 정직하게 제어 명령을 따르는가</strong> — 이것이 핵심이다.</p>
+  </div>
+
+
+  <!-- 3가지 특성 -->
+  <div class="sec">
+    <div class="sec-title">
+      <span class="tag">핵심 특성</span>
+      <span class="ttl">eFlow AFPM — 자율주행 제어 친화적 특성 3가지</span>
+    </div>
+
+    <div class="feature-block">
+      <div class="feature-head">
+        <span class="feature-num">①</span>
+        Zero Cogging — 저속 정밀 제어 정확도 향상
+      </div>
+      <div class="feature-body">
+        <div class="cond">
+          문제: 일반 모터의 코깅 토크(Cogging Torque)<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ 자석과 슬롯 간 자기적 끌림 현상<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ 저속 구간에서 토크 리플(Torque Ripple) 발생<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ AI 궤적 계산과 실제 차량 움직임 간 오차 발생<br>
+          <br>
+          eFlow 해법: SMC(연자성 복합소재) 스테이터 적용<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ 3D 자속 경로 최적화<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ 코깅 토크 최소화<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ FOC(Field Oriented Control) 벡터 제어로 토크 리플 보상<br>
+          <br>
+          결과: 도심 교차로·저속 정밀 주차 구간에서<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AI 제어 명령 = 차량 물리 거동 일치율 극대화
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-block">
+      <div class="feature-head">
+        <span class="feature-num">②</span>
+        Zero Derating — 알고리즘 예측 모델 안정성 확보
+      </div>
+      <div class="feature-body">
+        <div class="cond">
+          문제: 일반 모터의 열 스로틀링(Thermal Derating)<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ 고속·고부하 주행 중 모터 발열<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ 출력 강제 저하 발생<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ AI가 예측한 가속·감속 프로파일과 실제 출력 불일치<br>
+          <br>
+          eFlow 해법: 밀폐형 오일 냉각 구조<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ 스테이터·로터 분리 냉각<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ 150°C 연속 구동 가능 (기존 모터 120°C 대비)<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ 고부하 구간에서도 출력 편차 없음<br>
+          <br>
+          결과: 어떤 주행 조건에서도 AI 예측 모델이<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;동일한 모터 출력 응답을 기대할 수 있음
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-block">
+      <div class="feature-head">
+        <span class="feature-num">③</span>
+        Low Noise · Vibration — 센서 간섭 원천 차단
+      </div>
+      <div class="feature-body">
+        <div class="cond">
+          문제: 모터 진동·소음의 센서 간섭<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ 차체에 탑재된 LiDAR·레이더 센서<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ 모터 진동이 센서 측정값에 노이즈로 유입<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ 물체 인식 정확도 저하<br>
+          <br>
+          eFlow 해법: AFPM 팬케이크 구조 특성상 저진동·저소음<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ 크로스 롤러 베어링 적용, 축방향·반경방향 하중 동시 지지<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ NVH(소음·진동·하시니스) 설계 최적화<br>
+          <br>
+          결과: LiDAR·레이더 센서 측정 정확도 유지<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ AI 인식 모델 입력 데이터 품질 보호
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 요약 표 -->
+  <div class="sec">
+    <div class="sec-title">
+      <span class="tag">한눈에 보기</span>
+      <span class="ttl">제어 친화성 요약</span>
+    </div>
+    <table>
+      <thead>
+        <tr><th>특성</th><th>일반 모터</th><th>eFlow AFPM</th><th>자율주행 영향</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>코깅 토크</td>
+          <td>발생</td>
+          <td><strong>최소화 (SMC 스테이터)</strong></td>
+          <td>저속 정밀 제어 오차 감소</td>
+        </tr>
+        <tr>
+          <td>열 스로틀링</td>
+          <td>발생</td>
+          <td><strong>없음 (밀폐 오일 냉각)</strong></td>
+          <td>예측 모델 안정성 확보</td>
+        </tr>
+        <tr>
+          <td>진동·소음</td>
+          <td>발생</td>
+          <td><strong>최소화 (AFPM 구조)</strong></td>
+          <td>센서 간섭 차단</td>
+        </tr>
+        <tr>
+          <td>연속 구동 온도</td>
+          <td>120°C</td>
+          <td><strong>150°C</strong></td>
+          <td>극한 주행 조건 대응</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- Level 4 메시지 -->
+  <div class="sec">
+    <div class="sec-title">
+      <span class="tag">Level 4 플랫폼</span>
+      <span class="ttl">핵심 메시지</span>
+    </div>
+    <div class="quote">
+      <p>"For a Level 4 platform, the motor needs to be invisible to the control system —<br>
+      it does exactly what it's told, every time."</p>
+    </div>
+  </div>
+
+
+  <!-- 제안 -->
+  <div class="sec">
+    <div class="sec-title">
+      <span class="tag">제안</span>
+      <span class="ttl">Co-Validation 프로그램</span>
+    </div>
+    <div class="proposal">
+      <div class="prop-title">프로그램 구조</div>
+      <div class="cond" style="margin:0;">
+        eFlow 모터 &nbsp;→&nbsp; Tensor Auto 테스트 플랫폼 탑재<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;Tensor 팀 피드백 → eFlow 다음 이터레이션 반영<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;드라이브트레인 아키텍처 공동 검증
+      </div>
+      <div class="prop-sub">상호 구속 없음. 데이터 기반 판단.</div>
+    </div>
+  </div>
+
+
+  <!-- 푸터 -->
+  <div class="doc-footer">
+    <span>EFLOW Co., Ltd. | CEO 윤수한 | eflow1227@gmail.com</span>
+    <span>미팅 준비자료 04/08 · 2026. 4. 1</span>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>07 · Tesla (Richard Jung) | EFLOW 미팅 준비자료</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black:     #0a0a0a;
+    --gray-800:  #222222;
+    --gray-600:  #555555;
+    --gray-400:  #999999;
+    --gray-100:  #f2f2f2;
+    --gray-50:   #fafafa;
+    --white:     #ffffff;
+    --bd:        1px solid #d8d8d8;
+    --bd-hvy:    2px solid #0a0a0a;
+  }
+
+  body {
+    font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+    background: var(--white);
+    color: var(--black);
+    font-size: 13px;
+    line-height: 1.8;
+    padding: 60px 0 100px;
+  }
+
+  .doc { max-width: 860px; margin: 0 auto; padding: 0 52px; }
+
+  /* ── 문서 헤더 ── */
+  .doc-header {
+    border-top: var(--bd-hvy);
+    border-bottom: var(--bd-hvy);
+    padding: 24px 0 20px;
+    margin-bottom: 48px;
+  }
+  .eyebrow {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--gray-400); margin-bottom: 10px;
+  }
+  .doc-header h1 {
+    font-size: 23px; font-weight: 800; letter-spacing: -0.02em;
+    line-height: 1.3; margin-bottom: 20px;
+  }
+  .meta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 12px 28px;
+  }
+  .meta-item .k {
+    font-size: 9.5px; font-weight: 700; letter-spacing: 0.13em;
+    text-transform: uppercase; color: var(--gray-400);
+    display: block; margin-bottom: 2px;
+  }
+  .meta-item .v { font-size: 12.5px; font-weight: 700; }
+
+  /* ── 파트 배너 ── */
+  .part-banner {
+    background: var(--black); color: var(--white);
+    padding: 10px 16px; font-size: 11px; font-weight: 800;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    margin: 44px 0 28px;
+  }
+
+  /* ── 섹션 ── */
+  .sec { margin-bottom: 36px; }
+  .sec-title {
+    display: flex; align-items: baseline; gap: 10px;
+    border-bottom: var(--bd); padding-bottom: 8px; margin-bottom: 18px;
+  }
+  .sec-title .tag {
+    font-size: 9.5px; font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--gray-400); white-space: nowrap;
+  }
+  .sec-title .ttl { font-size: 13.5px; font-weight: 800; }
+
+  /* ── 본문 ── */
+  p { font-size: 13px; line-height: 1.8; color: var(--gray-800); margin-bottom: 10px; }
+  p:last-child { margin-bottom: 0; }
+  strong { color: var(--black); font-weight: 800; }
+
+  /* ── 핵심 전제 강조 ── */
+  .headline {
+    border: var(--bd-hvy); padding: 18px 22px; margin: 0 0 36px;
+  }
+  .headline p {
+    font-size: 13.5px; font-weight: 800; font-style: italic;
+    color: var(--black); line-height: 1.7; margin-bottom: 0;
+  }
+
+  /* ── 포인트 번호 배너 ── */
+  .point-banner {
+    background: var(--gray-100); border: var(--bd);
+    border-left: 4px solid var(--black);
+    padding: 9px 16px; margin-bottom: 14px;
+    font-size: 11.5px; font-weight: 800; color: var(--black);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── 조건 블록 ── */
+  .cond {
+    background: var(--gray-50); border: var(--bd);
+    padding: 14px 18px; margin: 12px 0;
+    font-size: 12px; line-height: 2; color: var(--gray-800);
+    font-family: 'Courier New', monospace;
+  }
+
+  /* ── 표 ── */
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 12.5px; }
+  th {
+    background: var(--gray-100); border: var(--bd);
+    padding: 8px 12px; text-align: left;
+    font-size: 10.5px; font-weight: 800; letter-spacing: 0.05em; color: var(--gray-800);
+  }
+  td { border: var(--bd); padding: 9px 12px; vertical-align: top; line-height: 1.65; }
+  tr:nth-child(even) td { background: var(--gray-50); }
+
+  /* ── 원가 비교 카드 ── */
+  .cost-compare {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0; margin: 12px 0; border: var(--bd);
+  }
+  .cost-col { padding: 18px 20px; }
+  .cost-col:first-child { border-right: var(--bd); }
+  .cost-col .ch {
+    font-size: 10px; font-weight: 800; letter-spacing: 0.12em;
+    text-transform: uppercase; padding-bottom: 8px;
+    margin-bottom: 12px; border-bottom: var(--bd);
+  }
+  .cost-col .ch.bad  { color: var(--gray-400); }
+  .cost-col .ch.good { color: var(--black); }
+  .cost-val {
+    font-size: 28px; font-weight: 800; line-height: 1.1; margin-bottom: 4px;
+  }
+  .cost-sub { font-size: 11.5px; color: var(--gray-600); }
+
+  /* ── 무게 비교 카드 ── */
+  .weight-row {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 10px; margin: 12px 0;
+  }
+  .wc { border: var(--bd); padding: 14px 16px; }
+  .wc .wl {
+    font-size: 9.5px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--gray-400); margin-bottom: 6px;
+  }
+  .wc .wv { font-size: 22px; font-weight: 800; line-height: 1.2; }
+  .wc .ws { font-size: 11px; color: var(--gray-600); margin-top: 4px; }
+
+  /* ── 시나리오 박스 ── */
+  .scenario-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 12px; margin: 14px 0;
+  }
+  .scenario { border: var(--bd); }
+  .scenario .sh {
+    background: var(--gray-100); padding: 9px 14px;
+    font-size: 10.5px; font-weight: 800; letter-spacing: 0.08em;
+    border-bottom: var(--bd); color: var(--black);
+  }
+  .scenario .sb {
+    padding: 14px 16px;
+    font-family: 'Courier New', monospace;
+    font-size: 11.5px; line-height: 1.9; color: var(--gray-800);
+  }
+
+  /* ── Semi 적용 종합 수치 ── */
+  .semi-block {
+    border: var(--bd); margin: 14px 0;
+  }
+  .semi-head {
+    background: var(--gray-100); padding: 9px 16px;
+    font-size: 10.5px; font-weight: 800; letter-spacing: 0.08em;
+    border-bottom: var(--bd); color: var(--black);
+  }
+  .semi-body { padding: 14px 18px; }
+  .semi-body .cond { margin: 0; }
+
+  /* ── 신뢰성 표 ── */
+
+  /* ── 제안 박스 ── */
+  .proposal {
+    border: var(--bd-hvy); padding: 20px 22px; margin: 14px 0;
+  }
+  .proposal .prop-quote {
+    font-size: 13.5px; font-weight: 800; font-style: italic;
+    color: var(--black); line-height: 1.7; margin-bottom: 12px;
+    padding-bottom: 12px; border-bottom: var(--bd);
+  }
+  .proposal .prop-sub {
+    font-size: 12.5px; color: var(--gray-800); font-style: italic;
+  }
+
+  /* ── 푸터 ── */
+  .doc-footer {
+    border-top: var(--bd-hvy); margin-top: 60px; padding-top: 14px;
+    display: flex; justify-content: space-between;
+    font-size: 10.5px; color: var(--gray-400);
+  }
+
+  @media print {
+    body { padding: 0; }
+    .doc { padding: 0 28px; max-width: 100%; }
+    .part-banner { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+<div class="doc">
+
+  <!-- 문서 헤더 -->
+  <div class="doc-header">
+    <div class="eyebrow">EFLOW 미국 출장 준비자료 · 07 / 08</div>
+    <h1>Tesla — 모빌리티 사업부 / Capex GSM<br>Richard Jung</h1>
+    <div class="meta-grid">
+      <div class="meta-item">
+        <span class="k">미팅 일시</span>
+        <span class="v">2026. 4. 1 (수) 4:00 – 4:30 PM</span>
+      </div>
+      <div class="meta-item">
+        <span class="k">장소</span>
+        <span class="v">San Jose</span>
+      </div>
+      <div class="meta-item">
+        <span class="k">산출물 구성</span>
+        <span class="v">생산 원가 절감 시나리오 수치 요약</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 파트 배너 -->
+  <div class="part-banner">산출물 — 생산 원가 절감 시나리오 수치 요약</div>
+
+
+  <!-- 핵심 전제 -->
+  <div class="headline">
+    <p>
+      "Tesla Capex의 질문은 하나입니다:<br>
+      '이 모터를 대량으로 사면 우리 원가가 얼마나 달라지는가?'<br>
+      아래 3가지 수치가 그 답입니다."
+    </p>
+  </div>
+
+
+  <!-- 포인트 1: 제조 공정 -->
+  <div class="sec">
+    <div class="sec-title">
+      <span class="tag">원가 절감 포인트 1</span>
+      <span class="ttl">제조 공정 — CapEx 혁신</span>
+    </div>
+
+    <div class="point-banner">기존 라디얼 모터 vs EFLOW iDS AX — 제조 방식 비교</div>
+
+    <div class="cost-compare">
+      <div class="cost-col">
+        <div class="ch bad">기존 라디얼 모터</div>
+        <ul style="list-style:none; padding:0; font-size:12.5px; color:var(--gray-800);">
+          <li style="padding:4px 0; border-bottom:1px solid var(--gray-100);">복잡한 3D 권선 공정 필수</li>
+          <li style="padding:4px 0; border-bottom:1px solid var(--gray-100);">고인건비 · 저자동화율</li>
+          <li style="padding:4px 0;">기가팩토리 적용 한계</li>
+        </ul>
+      </div>
+      <div class="cost-col">
+        <div class="ch good">EFLOW iDS AX</div>
+        <ul style="list-style:none; padding:0; font-size:12.5px; color:var(--gray-800);">
+          <li style="padding:4px 0; border-bottom:1px solid var(--gray-100);">단순화된 2D 평면 권선 구조</li>
+          <li style="padding:4px 0; border-bottom:1px solid var(--gray-100);"><strong>100% 자동화 설계</strong> (Day 1부터)</li>
+          <li style="padding:4px 0; border-bottom:1px solid var(--gray-100);">코어 부품 40개 → 금형 <strong>1개</strong>로 일체 성형</li>
+          <li style="padding:4px 0;">조립 라인 공간 축소 + 로봇 자동화율 극대화</li>
+        </ul>
+      </div>
+    </div>
+
+    <p style="font-size:12.5px; color:var(--gray-600); margin-top:8px;">
+      → Giga 스케일 적용 시 모터 조립 라인 CapEx 절감 직결
+    </p>
+  </div>
+
+
+  <!-- 포인트 2: BOM 구조 -->
+  <div class="sec">
+    <div class="sec-title">
+      <span class="tag">원가 절감 포인트 2</span>
+      <span class="ttl">BOM 구조 혁신</span>
+    </div>
+
+    <div class="cond">
+      더블 로터 + 싱글 스테이터 구조<br>
+      <br>
+      → 부품 수(Part Count) 업계 최소화<br>
+      → 조립 단계 감소 → 생산 사이클타임 단축<br>
+      → 고장 발생 지점 축소 → 보증 수리(Warranty) 비용 감소
+    </div>
+
+    <div class="cost-compare">
+      <div class="cost-col">
+        <div class="ch bad">업계 평균 모터 생산 원가</div>
+        <div class="cost-val">$800</div>
+        <div class="cost-sub">라디얼 모터 기준</div>
+      </div>
+      <div class="cost-col">
+        <div class="ch good">EFLOW iDS AX 생산 원가</div>
+        <div class="cost-val">$400</div>
+        <div class="cost-sub"><strong>50% 절감</strong> — 독자 금형 공정 기반</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 포인트 3: 경량화 -->
+  <div class="sec">
+    <div class="sec-title">
+      <span class="tag">원가 절감 포인트 3</span>
+      <span class="ttl">경량화 페이로드 경제학</span>
+    </div>
+
+    <div class="weight-row">
+      <div class="wc">
+        <div class="wl">업계 평균 동급 모터</div>
+        <div class="wv">35–45 kg</div>
+        <div class="ws">라디얼 플럭스 기준</div>
+      </div>
+      <div class="wc">
+        <div class="wl">EFLOW iDS AX</div>
+        <div class="wv">25 kg</div>
+        <div class="ws">팬케이크 구조</div>
+      </div>
+      <div class="wc">
+        <div class="wl">절감 중량</div>
+        <div class="wv">최대 13 kg</div>
+        <div class="ws">1대당 절감량</div>
+      </div>
+    </div>
+
+    <div class="semi-block">
+      <div class="semi-head">Tesla Semi 1대 기준 적용 시나리오 — 모터 3기 장착 가정</div>
+      <div class="semi-body">
+        <div class="cond">
+          총 경량화 효과 : 13 kg × 3기 = <strong>39 kg / 대</strong><br>
+          연간 50,000대 : 39 kg × 50,000대 = <strong>195만 kg 절감</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="scenario-grid">
+      <div class="scenario">
+        <div class="sh">옵션 A — 배터리 셀 감소</div>
+        <div class="sb">
+          동일 주행거리 유지하면서<br>
+          배터리 셀 수 축소<br>
+          → 셀 원가 절감 직결
+        </div>
+      </div>
+      <div class="scenario">
+        <div class="sh">옵션 B — 적재량 증가</div>
+        <div class="sb">
+          배터리 유지 + 화물 적재<br>
+          가능 중량 39 kg 증가<br>
+          → 운송 수익성 개선
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 신뢰성 -->
+  <div class="sec">
+    <div class="sec-title">
+      <span class="tag">양산 레퍼런스</span>
+      <span class="ttl">신뢰성 — 양산 레퍼런스</span>
+    </div>
+
+    <table>
+      <thead><tr><th>항목</th><th>내용</th></tr></thead>
+      <tbody>
+        <tr><td>유럽 B2B 납품 실적</td><td><strong>25개 고객사</strong> 실공급 운용 중</td></tr>
+        <tr><td>재주문률</td><td><strong>98%</strong></td></tr>
+        <tr><td>고속 내구 시험</td><td><strong>12,700 rpm</strong> 밀폐 오일 냉각 조건 완료</td></tr>
+        <tr><td>피크 토크</td><td><strong>440 Nm</strong> (동급 라디얼 300–380 Nm 대비 우위)</td></tr>
+        <tr><td>연속 구동 온도</td><td><strong>150°C</strong> 대응 (업계 120°C 대비)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- 제안 -->
+  <div class="sec">
+    <div class="sec-title">
+      <span class="tag">제안</span>
+      <span class="ttl">다음 단계</span>
+    </div>
+
+    <div class="proposal">
+      <div class="prop-quote">
+        "Tesla 테스트 벤치에서 60일 기술 평가."
+      </div>
+      <div class="prop-sub">
+        공급사 승인 요청이 아닙니다.<br>
+        <strong>숫자로 증명하는 시간입니다.</strong>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 푸터 -->
+  <div class="doc-footer">
+    <span>EFLOW Co., Ltd. | YouMe Yi | eflow.youme@gmail.com</span>
+    <span>미팅 준비자료 07/08 · 2026. 4. 1</span>
+  </div>
+
+</div>
+</body>
+</html>

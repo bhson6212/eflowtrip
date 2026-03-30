@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EFLOW · Mobility VC | Series A</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg-dark:   #0D1117;
+  --bg-card:   #161B22;
+  --bg-card2:  #1C2333;
+  --accent-blue:  #3B82F6;
+  --accent-cyan:  #06B6D4;
+  --accent-green: #10B981;
+  --text-primary: #F0F6FC;
+  --text-secondary: #8B949E;
+  --border: rgba(255,255,255,0.08);
+  --gold: #F59E0B;
+}
+
+html {
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #080C14;
+  margin: 0;
+  overflow: hidden;
+}
+
+/* ── Slideshow container ── */
+.slideshow {
+  position: relative;
+  width: 1280px;
+  height: 720px;
+  transform-origin: center center;
+  flex-shrink: 0;
+}
+
+/* ── Individual slide ── */
+.slide {
+  position: absolute;
+  inset: 0;
+  width: 1280px;
+  height: 720px;
+  background: var(--bg-dark);
+  display: none;
+  overflow: hidden;
+}
+.slide.active { display: block; }
+
+/* ── Common: top bar ── */
+.slide-topbar {
+  position: absolute;
+  top: 28px;
+  left: 52px;
+  right: 52px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+.slide-logo {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--text-secondary);
+}
+.slide-num {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  letter-spacing: 1px;
+}
+
+/* ── Common: bottom progress ── */
+.progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: var(--accent-blue);
+  transition: width 0.4s ease;
+}
+
+/* ── Glow ── */
+.glow-tr {
+  position: absolute;
+  top: -120px;
+  right: -120px;
+  width: 560px;
+  height: 560px;
+  background: radial-gradient(circle, rgba(59,130,246,0.07) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+.glow-bl {
+  position: absolute;
+  bottom: -120px;
+  left: -80px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(6,182,212,0.05) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Slide content wrapper ── */
+.slide-body {
+  position: absolute;
+  top: 80px;
+  left: 52px;
+  right: 52px;
+  bottom: 32px;
+  z-index: 1;
+}
+
+/* ── pill badge ── */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--accent-blue);
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent-blue);
+  letter-spacing: 0.5px;
+}
+
+/* ── Section label (H3 style) ── */
+.sec-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--accent-cyan);
+  margin-bottom: 8px;
+}
+
+/* ── Card base ── */
+.card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 28px;
+}
+
+/* ─────────────────────────────────
+   SLIDE 1 — COVER
+───────────────────────────────── */
+#s1 .slide-body {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.s1-left {
+  width: 40%;
+  padding-right: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+}
+
+.s1-meeting {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 18px;
+  margin-bottom: 14px;
+}
+
+.s1-title {
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  line-height: 1.12;
+  margin-bottom: 20px;
+}
+
+.s1-tagline {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+.s1-right {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.s1-chart-caption {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 10px;
+  letter-spacing: 0.2px;
+}
+
+/* ─────────────────────────────────
+   SLIDE 2 — MARKET TIMING
+───────────────────────────────── */
+#s2 .s2-title-block {
+  margin-bottom: 24px;
+}
+
+#s2 h2 {
+  font-size: 38px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  line-height: 1.15;
+}
+
+.s2-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.s2-cards .card .card-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.s2-cards .card .card-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+
+.s2-cards .card .card-body {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* ─────────────────────────────────
+   SLIDE 3 — 3 PROOF POINTS
+───────────────────────────────── */
+.s3-content {
+  display: flex;
+  gap: 40px;
+  height: calc(100% - 50px);
+}
+
+.s3-left {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.s3-left h2 {
+  font-size: 34px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+  margin-bottom: 30px;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.tl-item {
+  display: flex;
+  gap: 18px;
+  padding-bottom: 24px;
+  position: relative;
+}
+
+.tl-item:last-child { padding-bottom: 0; }
+
+.tl-dot-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.tl-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.tl-line {
+  flex: 1;
+  width: 2px;
+  background: var(--border);
+  margin-top: 4px;
+}
+
+.tl-item:last-child .tl-line { display: none; }
+
+.tl-text .tl-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  padding-top: 1px;
+}
+
+.tl-text .tl-sub {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.s3-right {
+  width: 55%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  align-content: center;
+}
+
+.metric-box {
+  background: var(--bg-card);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.metric-val {
+  font-size: 52px;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.metric-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* ─────────────────────────────────
+   SLIDE 4 — SERIES A
+───────────────────────────────── */
+.s4-content {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  height: calc(100% - 52px);
+}
+
+.s4-top {
+  margin-bottom: 4px;
+}
+
+.s4-top h2 {
+  font-size: 34px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+}
+
+.s4-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  flex: 1;
+}
+
+.s4-card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.s4-card-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+}
+
+.s4-card-value {
+  font-size: 38px;
+  font-weight: 900;
+  color: var(--accent-blue);
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+.s4-card-sub {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.flow-chart {
+  display: flex;
+  align-items: center;
+  background: var(--bg-card);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  padding: 14px 20px;
+  gap: 0;
+}
+
+.fc-node {
+  flex: 1;
+  background: var(--bg-card2);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  padding: 10px 14px;
+  text-align: center;
+}
+
+.fc-node .fn-year {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent-blue);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.fc-node .fn-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.fc-node .fn-sub {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: 3px;
+}
+
+.fc-node.ipo {
+  border-color: rgba(245,158,11,0.4);
+}
+
+.fc-node.ipo .fn-year { color: var(--gold); }
+
+.fc-arrow {
+  color: var(--accent-blue);
+  font-size: 18px;
+  padding: 0 10px;
+  flex-shrink: 0;
+}
+
+/* ─────────────────────────────────
+   SLIDE 5 — REVENUE
+───────────────────────────────── */
+.s5-content {
+  display: flex;
+  gap: 40px;
+  height: calc(100% - 52px);
+}
+
+.s5-left {
+  width: 38%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.s5-left h2 {
+  font-size: 34px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  margin-bottom: 6px;
+}
+
+.s5-sub {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+.rev-stack { display: flex; flex-direction: column; }
+
+.rev-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px dashed rgba(255,255,255,0.07);
+}
+
+.rev-item:last-child { border-bottom: none; }
+
+.rev-year {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  width: 36px;
+  flex-shrink: 0;
+}
+
+.rev-val {
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 1;
+  width: 88px;
+  flex-shrink: 0;
+}
+
+.rev-desc {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.s5-right {
+  width: 62%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ─────────────────────────────────
+   SLIDE 6 — CTA
+───────────────────────────────── */
+.s6-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  gap: 0;
+}
+
+.s6-title {
+  font-size: 42px;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+  margin-bottom: 12px;
+  max-width: 760px;
+}
+
+.s6-sub {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+}
+
+.cta-box {
+  background: var(--bg-card);
+  border: 1px solid rgba(59,130,246,0.5);
+  border-radius: 12px;
+  padding: 28px 48px;
+  margin-bottom: 28px;
+  width: 860px;
+}
+
+.cta-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--accent-cyan);
+  margin-bottom: 18px;
+}
+
+.cta-options {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.cta-pill {
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  background: var(--bg-card2);
+}
+
+.s6-footer {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* ── Dot nav ── */
+.dots-nav {
+  position: fixed;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 100;
+  align-items: center;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background: var(--accent-blue);
+  width: 24px;
+  border-radius: 8px;
+}
+</style>
+</head>
+<body>
+
+<div class="slideshow" id="slideshow">
+
+  <!-- ═══════════════════════════
+       SLIDE 1 — COVER
+  ════════════════════════════ -->
+  <section class="slide active" id="s1">
+    <div class="glow-tr"></div>
+
+    <div class="slide-topbar">
+      <span class="slide-logo"><img src="images/Logo_EFLOW_white.svg" alt="EFLOW" style="height:20px; width:auto;"></span>
+      <span class="slide-num">01 / 06</span>
+    </div>
+
+    <div class="slide-body">
+      <div class="s1-left">
+        <div class="pill">2026.04.01  San Jose</div>
+        <p class="s1-meeting">Mobility VC — Teo</p>
+        <h1 class="s1-title">Selectively<br>composing<br>our Series A.</h1>
+        <p class="s1-tagline">
+          전 세계 5개사 미만만 양산 가능한 소형 AFPM 모터<br>
+          유럽 실적으로 검증된 유일한 한국 기업이,<br>
+          EREV·드론·로봇 전환기의 정점에서 Series A를 엽니다.
+        </p>
+      </div>
+
+      <div class="s1-right">
+        <!-- Bar chart SVG: 18B / 60B / 150B -->
+        <svg width="640" height="400" viewBox="0 0 640 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Grid lines (horizontal) -->
+          <line x1="60" y1="340" x2="610" y2="340" stroke="white" stroke-opacity="0.06" stroke-width="1"/>
+          <line x1="60" y1="264" x2="610" y2="264" stroke="white" stroke-opacity="0.06" stroke-width="1"/>
+          <line x1="60" y1="188" x2="610" y2="188" stroke="white" stroke-opacity="0.06" stroke-width="1"/>
+          <line x1="60" y1="112" x2="610" y2="112" stroke="white" stroke-opacity="0.06" stroke-width="1"/>
+          <line x1="60" y1="36"  x2="610" y2="36"  stroke="white" stroke-opacity="0.06" stroke-width="1"/>
+          <!-- Y axis -->
+          <line x1="60" y1="36" x2="60" y2="344" stroke="white" stroke-opacity="0.06" stroke-width="1"/>
+          <!-- Y labels (max 200B, step 50B, height 304px) -->
+          <text x="52" y="344" fill="#8B949E" font-size="11" text-anchor="end" font-family="Inter">0</text>
+          <text x="52" y="268" fill="#8B949E" font-size="11" text-anchor="end" font-family="Inter">50B</text>
+          <text x="52" y="192" fill="#8B949E" font-size="11" text-anchor="end" font-family="Inter">100B</text>
+          <text x="52" y="116" fill="#8B949E" font-size="11" text-anchor="end" font-family="Inter">150B</text>
+          <text x="52" y="40"  fill="#8B949E" font-size="11" text-anchor="end" font-family="Inter">200B</text>
+
+          <!-- Bar 1: 2026 · 18B — height = (18/200)*304 = 27.4 → y=344-27=317 -->
+          <defs>
+            <linearGradient id="barGrad1" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#3B82F6" stop-opacity="1"/>
+              <stop offset="100%" stop-color="#3B82F6" stop-opacity="0.6"/>
+            </linearGradient>
+            <linearGradient id="barGrad2" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#06B6D4" stop-opacity="1"/>
+              <stop offset="100%" stop-color="#06B6D4" stop-opacity="0.6"/>
+            </linearGradient>
+            <linearGradient id="barGrad3" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#10B981" stop-opacity="1"/>
+              <stop offset="100%" stop-color="#10B981" stop-opacity="0.6"/>
+            </linearGradient>
+            <!-- Ascending trend arrow gradient -->
+            <linearGradient id="trendGrad" gradientUnits="userSpaceOnUse" x1="165" y1="317" x2="570" y2="36">
+              <stop offset="0%"   stop-color="#3B82F6" stop-opacity="0.9"/>
+              <stop offset="50%"  stop-color="#06B6D4" stop-opacity="0.95"/>
+              <stop offset="100%" stop-color="#10B981" stop-opacity="1"/>
+            </linearGradient>
+            <!-- Ascending area fill gradient -->
+            <linearGradient id="trendAreaGrad" gradientUnits="userSpaceOnUse" x1="165" y1="36" x2="165" y2="344">
+              <stop offset="0%"   stop-color="#10B981" stop-opacity="0.15"/>
+              <stop offset="100%" stop-color="#3B82F6" stop-opacity="0"/>
+            </linearGradient>
+            <!-- Arrowhead marker -->
+            <marker id="trendArrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+              <polygon points="0,0 10,4 0,8" fill="#10B981"/>
+            </marker>
+          </defs>
+
+          <!-- Ascending trend area fill -->
+          <path d="M165,317 C245,300 265,258 320,253 C378,248 425,138 475,116 C510,102 545,58 570,36 L570,344 L165,344 Z"
+                fill="url(#trendAreaGrad)"/>
+
+          <!-- Ascending trend line -->
+          <path d="M165,317 C245,300 265,258 320,253 C378,248 425,138 475,116 C510,102 545,58 570,36"
+                stroke="url(#trendGrad)" stroke-width="2.5" fill="none"
+                stroke-linecap="round" stroke-linejoin="round"
+                marker-end="url(#trendArrow)"/>
+
+          <!-- Dot at each bar top -->
+          <circle cx="165" cy="317" r="5" fill="#3B82F6" stroke="#0D1117" stroke-width="2"/>
+          <circle cx="320" cy="253" r="5" fill="#06B6D4" stroke="#0D1117" stroke-width="2"/>
+          <circle cx="475" cy="116" r="5" fill="#10B981" stroke="#0D1117" stroke-width="2"/>
+
+          <rect x="110" y="317" width="110" height="27" rx="5" fill="url(#barGrad1)"/>
+          <text x="165" y="309" fill="#3B82F6" font-size="13" font-weight="700" text-anchor="middle" font-family="Inter">₩18B</text>
+          <text x="165" y="368" fill="#8B949E" font-size="13" text-anchor="middle" font-family="Inter">2026</text>
+
+          <!-- Bar 2: 2028 · 60B — height = (60/200)*304 = 91.2 → y=344-91=253 -->
+          <rect x="265" y="253" width="110" height="91" rx="5" fill="url(#barGrad2)"/>
+          <text x="320" y="245" fill="#06B6D4" font-size="13" font-weight="700" text-anchor="middle" font-family="Inter">₩60B</text>
+          <text x="320" y="368" fill="#8B949E" font-size="13" text-anchor="middle" font-family="Inter">2028</text>
+
+          <!-- Bar 3: 2030 · 150B — height = (150/200)*304 = 228 → y=344-228=116 -->
+          <rect x="420" y="116" width="110" height="228" rx="5" fill="url(#barGrad3)"/>
+          <text x="475" y="108" fill="#10B981" font-size="13" font-weight="700" text-anchor="middle" font-family="Inter">₩150B</text>
+          <text x="475" y="368" fill="#8B949E" font-size="13" text-anchor="middle" font-family="Inter">2030</text>
+        </svg>
+        <p class="s1-chart-caption">Pre-money ₩62B · H2 2026 · Series A</p>
+      </div>
+    </div>
+
+    <div class="progress-bar" style="width:16.67%"></div>
+  </section>
+
+
+  <!-- ═══════════════════════════
+       SLIDE 2 — MARKET TIMING
+  ════════════════════════════ -->
+  <section class="slide" id="s2">
+    <div class="slide-topbar">
+      <span class="slide-logo"><img src="images/Logo_EFLOW_white.svg" alt="EFLOW" style="height:20px; width:auto;"></span>
+      <span class="slide-num">02 / 06</span>
+    </div>
+
+    <div class="slide-body">
+      <div class="s2-title-block">
+        <p class="sec-label">왜 지금인가</p>
+        <h2>EV 시장 전환점 — AFPM의 변곡점</h2>
+      </div>
+
+      <div class="s2-cards">
+        <div class="card">
+          <p class="card-label" style="color:var(--accent-blue);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:2px;margin-bottom:10px;">BEV 조정 국면</p>
+          <p class="card-title" style="font-size:20px;font-weight:700;color:var(--text-primary);line-height:1.3;margin-bottom:12px;">OEM 일제히<br>EREV로 선회</p>
+          <p class="card-body" style="font-size:13px;color:var(--text-secondary);line-height:1.7;">순수 BEV 시장이 조정 국면에 진입하면서 Ford, GM, 현대차 등 주요 OEM이 EREV·하이브리드 라인업으로 전환 중</p>
+        </div>
+        <div class="card">
+          <p class="card-label" style="color:var(--accent-cyan);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:2px;margin-bottom:10px;">핵심 부품</p>
+          <p class="card-title" style="font-size:20px;font-weight:700;color:var(--text-primary);line-height:1.3;margin-bottom:12px;">고효율·경량<br>발전용 모터</p>
+          <p class="card-body" style="font-size:13px;color:var(--text-secondary);line-height:1.7;">이 전환의 핵심 부품 = 고효율·경량 발전용 모터. 전 세계에서 이를 양산할 수 있는 기업은 5개사 미만</p>
+        </div>
+        <div class="card">
+          <p class="card-label" style="color:var(--accent-green);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:2px;margin-bottom:10px;">EFLOW 포지션</p>
+          <p class="card-title" style="font-size:20px;font-weight:700;color:var(--text-primary);line-height:1.3;margin-bottom:12px;">그 5개사 중<br>유일한 한국 기업</p>
+          <p class="card-body" style="font-size:13px;color:var(--text-secondary);line-height:1.7;">EFLOW는 유럽 B2B 25개사 실공급·98% 재주문률을 보유한 AFPM 소형 모터 양산 기업</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="progress-bar" style="width:33.33%"></div>
+  </section>
+
+
+  <!-- ═══════════════════════════
+       SLIDE 3 — 3 PROOF POINTS
+  ════════════════════════════ -->
+  <section class="slide" id="s3">
+    <div class="slide-topbar">
+      <span class="slide-logo"><img src="images/Logo_EFLOW_white.svg" alt="EFLOW" style="height:20px; width:auto;"></span>
+      <span class="slide-num">03 / 06</span>
+    </div>
+
+    <div class="slide-body">
+      <p class="sec-label" style="margin-bottom:12px;">검증 근거</p>
+
+      <div class="s3-content">
+        <div class="s3-left">
+          <h2>3가지<br>검증된 사실</h2>
+
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="tl-dot-wrap">
+                <div class="tl-dot" style="background:var(--accent-blue);"></div>
+                <div class="tl-line"></div>
+              </div>
+              <div class="tl-text">
+                <p class="tl-title">① 기술 계보 — YASA 검증</p>
+                <p class="tl-sub">YASA → Mercedes-Benz 인수 · AFPM 기술 가치 글로벌 공인<br>eFlow = 동일 특허 계보, 독립 유지를 선택</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot-wrap">
+                <div class="tl-dot" style="background:var(--accent-cyan);"></div>
+                <div class="tl-line"></div>
+              </div>
+              <div class="tl-text">
+                <p class="tl-title">② 반복 매출 — PoC가 아닙니다</p>
+                <p class="tl-sub">유럽 25개 B2B · 98% 재주문률<br>독일 드론 20,000 유닛 확정 수주 (2026.09 양산)</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot-wrap">
+                <div class="tl-dot" style="background:var(--accent-green);"></div>
+              </div>
+              <div class="tl-text">
+                <p class="tl-title">③ 시장 타이밍</p>
+                <p class="tl-sub">OEM EREV 전환 = AFPM 수요 변곡점<br>누적 투자 78억 원 · CES 2026 혁신상</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="s3-right">
+          <div class="metric-box">
+            <div class="metric-val" style="color:var(--accent-blue);">25</div>
+            <div class="metric-label">유럽 B2B 고객사</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val" style="color:var(--accent-cyan);">98%</div>
+            <div class="metric-label">재주문률</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val" style="color:var(--accent-green);font-size:38px;">20,000</div>
+            <div class="metric-label">드론 확정 수주 (유닛)</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val" style="color:var(--gold);">7년</div>
+            <div class="metric-label">AFPM 단일 기술 집중</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="progress-bar" style="width:50%"></div>
+  </section>
+
+
+  <!-- ═══════════════════════════
+       SLIDE 4 — SERIES A
+  ════════════════════════════ -->
+  <section class="slide" id="s4">
+    <div class="slide-topbar">
+      <span class="slide-logo"><img src="images/Logo_EFLOW_white.svg" alt="EFLOW" style="height:20px; width:auto;"></span>
+      <span class="slide-num">04 / 06</span>
+    </div>
+
+    <div class="slide-body">
+      <div class="s4-content">
+        <div class="s4-top">
+          <p class="sec-label">투자 조건</p>
+          <h2 style="font-size:34px;font-weight:800;color:var(--text-primary);letter-spacing:-0.5px;">Series A — 투자 구조</h2>
+        </div>
+
+        <div class="s4-cards">
+          <div class="s4-card">
+            <p class="s4-card-label">Pre-money Valuation</p>
+            <p class="s4-card-value">₩62B</p>
+            <p class="s4-card-sub">Post-money ₩80B</p>
+          </div>
+          <div class="s4-card">
+            <p class="s4-card-label">목표 조달액</p>
+            <p class="s4-card-value" style="color:var(--accent-cyan);">₩18B</p>
+            <p class="s4-card-sub">2026년 하반기 오픈</p>
+          </div>
+          <div class="s4-card">
+            <p class="s4-card-label">신디케이트 구성</p>
+            <p class="s4-card-value" style="font-size:22px;color:var(--accent-green);line-height:1.3;margin-top:4px;">전략적 투자자<br>중심</p>
+            <p class="s4-card-sub">선택적 구성 중</p>
+          </div>
+        </div>
+
+        <!-- Horizontal flow chart -->
+        <div class="flow-chart">
+          <div class="fc-node">
+            <span class="fn-year">2026 · Series A</span>
+            <p class="fn-title">유럽 생산거점 가동</p>
+            <p class="fn-sub">루마니아 · 드론 양산</p>
+          </div>
+          <div class="fc-arrow">→</div>
+          <div class="fc-node">
+            <span class="fn-year">2027~2028</span>
+            <p class="fn-title">로봇 액추에이터 SOP</p>
+            <p class="fn-sub">R&amp;D → 양산 전환</p>
+          </div>
+          <div class="fc-arrow">→</div>
+          <div class="fc-node">
+            <span class="fn-year">2028 · Series B</span>
+            <p class="fn-title">미국 시장 진입</p>
+            <p class="fn-sub">미국 공장 설립 · 글로벌 SOP</p>
+          </div>
+          <div class="fc-arrow">→</div>
+          <div class="fc-node ipo">
+            <span class="fn-year">2029</span>
+            <p class="fn-title" style="color:var(--gold);">KOSDAQ IPO</p>
+            <p class="fn-sub">목표 시가총액 5,000억 원</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="progress-bar" style="width:66.67%"></div>
+  </section>
+
+
+  <!-- ═══════════════════════════
+       SLIDE 5 — REVENUE TRAJECTORY
+  ════════════════════════════ -->
+  <section class="slide" id="s5">
+    <div class="slide-topbar">
+      <span class="slide-logo"><img src="images/Logo_EFLOW_white.svg" alt="EFLOW" style="height:20px; width:auto;"></span>
+      <span class="slide-num">05 / 06</span>
+    </div>
+
+    <div class="slide-body">
+      <p class="sec-label" style="margin-bottom:10px;">성장 시나리오</p>
+
+      <div class="s5-content">
+        <div class="s5-left">
+          <h2>매출 궤도</h2>
+          <p class="s5-sub">EREV 발전기 + 드론 납품 기반</p>
+
+          <div class="rev-stack">
+            <div class="rev-item">
+              <span class="rev-year">2026</span>
+              <span class="rev-val" style="color:var(--accent-blue);">₩18B</span>
+              <span class="rev-desc">드론 사업부 출범<br>독일 20,000 유닛 양산 개시</span>
+            </div>
+            <div class="rev-item">
+              <span class="rev-year">2028</span>
+              <span class="rev-val" style="color:var(--accent-cyan);">₩60B</span>
+              <span class="rev-desc">로봇 액추에이터 양산 본격화<br>미국 시장 진입</span>
+            </div>
+            <div class="rev-item">
+              <span class="rev-year">2030</span>
+              <span class="rev-val" style="color:var(--accent-green);">₩150B</span>
+              <span class="rev-desc">글로벌 소형 AFPM Top 3<br>CAGR 104% 목표</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="s5-right">
+          <!-- Line chart SVG -->
+          <svg width="700" height="460" viewBox="0 0 700 460" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="lineArea" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#06B6D4" stop-opacity="0.25"/>
+                <stop offset="100%" stop-color="#06B6D4" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+
+            <!-- Grid (x: 70..650, y: 40..400, h=360, max=200B) -->
+            <line x1="70" y1="40"  x2="70"  y2="404" stroke="white" stroke-opacity="0.06"/>
+            <line x1="70" y1="400" x2="660" y2="400" stroke="white" stroke-opacity="0.06"/>
+            <line x1="70" y1="310" x2="660" y2="310" stroke="white" stroke-opacity="0.06"/>
+            <line x1="70" y1="220" x2="660" y2="220" stroke="white" stroke-opacity="0.06"/>
+            <line x1="70" y1="130" x2="660" y2="130" stroke="white" stroke-opacity="0.06"/>
+            <line x1="70" y1="40"  x2="660" y2="40"  stroke="white" stroke-opacity="0.06"/>
+
+            <!-- Y labels (50B steps, scale: 360px/200B = 1.8px/B) -->
+            <text x="62" y="404" fill="#8B949E" font-size="11" text-anchor="end" font-family="Inter">0</text>
+            <text x="62" y="314" fill="#8B949E" font-size="11" text-anchor="end" font-family="Inter">50B</text>
+            <text x="62" y="224" fill="#8B949E" font-size="11" text-anchor="end" font-family="Inter">100B</text>
+            <text x="62" y="134" fill="#8B949E" font-size="11" text-anchor="end" font-family="Inter">150B</text>
+            <text x="62" y="44"  fill="#8B949E" font-size="11" text-anchor="end" font-family="Inter">200B</text>
+
+            <!-- x positions: 2026=140, 2027=277, 2028=414, 2029=551, 2030=650 -->
+            <!-- y = 400 - val*1.8 -->
+            <!-- 18B → y=367.6  30B → y=346  60B → y=292  100B → y=220  150B → y=130 -->
+
+            <!-- Area fill -->
+            <path d="M140,368 C200,355 240,346 277,346 C330,342 370,292 414,292 C466,292 500,220 551,220 C595,215 625,135 650,130 L650,400 L140,400 Z"
+                  fill="url(#lineArea)"/>
+
+            <!-- Line -->
+            <path d="M140,368 C200,355 240,346 277,346 C330,342 370,292 414,292 C466,292 500,220 551,220 C595,215 625,135 650,130"
+                  stroke="#06B6D4" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+            <!-- Data points -->
+            <circle cx="140" cy="368" r="7" fill="#3B82F6" stroke="#0D1117" stroke-width="2"/>
+            <circle cx="277" cy="346" r="6" fill="#3B82F6" stroke="#0D1117" stroke-width="2" opacity="0.7"/>
+            <circle cx="414" cy="292" r="7" fill="#06B6D4" stroke="#0D1117" stroke-width="2"/>
+            <circle cx="551" cy="220" r="6" fill="#06B6D4" stroke="#0D1117" stroke-width="2" opacity="0.7"/>
+            <circle cx="650" cy="130" r="8" fill="#10B981" stroke="#0D1117" stroke-width="2"/>
+
+            <!-- Value labels -->
+            <text x="140" y="354" fill="#3B82F6" font-size="12" font-weight="700" text-anchor="middle" font-family="Inter">18B</text>
+            <text x="414" y="278" fill="#06B6D4" font-size="12" font-weight="700" text-anchor="middle" font-family="Inter">60B</text>
+            <text x="650" y="116" fill="#10B981" font-size="12" font-weight="700" text-anchor="middle" font-family="Inter">150B</text>
+
+            <!-- X labels -->
+            <text x="140" y="428" fill="#8B949E" font-size="12" text-anchor="middle" font-family="Inter">2026</text>
+            <text x="277" y="428" fill="#8B949E" font-size="12" text-anchor="middle" font-family="Inter">2027</text>
+            <text x="414" y="428" fill="#8B949E" font-size="12" text-anchor="middle" font-family="Inter">2028</text>
+            <text x="551" y="428" fill="#8B949E" font-size="12" text-anchor="middle" font-family="Inter">2029</text>
+            <text x="650" y="428" fill="#8B949E" font-size="12" text-anchor="middle" font-family="Inter">2030</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="progress-bar" style="width:83.33%"></div>
+  </section>
+
+
+  <!-- ═══════════════════════════
+       SLIDE 6 — CTA / CLOSING
+  ════════════════════════════ -->
+  <section class="slide" id="s6">
+    <div class="glow-tr"></div>
+    <div class="glow-bl"></div>
+
+    <div class="slide-topbar">
+      <span class="slide-logo"><img src="images/Logo_EFLOW_white.svg" alt="EFLOW" style="height:20px; width:auto;"></span>
+      <span class="slide-num">06 / 06</span>
+    </div>
+
+    <div class="slide-body" style="display:flex;align-items:center;justify-content:center;">
+      <div class="s6-content">
+        <p class="sec-label" style="margin-bottom:14px;">Mobility VC에 드리는 제안</p>
+        <h1 class="s6-title">Selectively composing<br>our Series A syndicate.</h1>
+        <p class="s6-sub">US 시장 문 열어줄 전략적 투자자를 찾고 있습니다</p>
+
+        <div class="cta-box">
+          <p class="cta-label">다음 단계</p>
+          <div class="cta-options">
+            <div class="cta-pill">Technical DD</div>
+            <div class="cta-pill">Series A Briefing</div>
+            <div class="cta-pill">CTO Call — Frank Heller</div>
+          </div>
+        </div>
+
+        <p class="s6-footer">EFLOW Co., Ltd. | eflow.youme@gmail.com | 2026.04.01 San Jose</p>
+      </div>
+    </div>
+
+    <div class="progress-bar" style="width:100%"></div>
+  </section>
+
+</div><!-- /slideshow -->
+
+
+<!-- Dot navigation -->
+<div class="dots-nav" id="dotsNav">
+  <div class="dot active"  onclick="goTo(0)"></div>
+  <div class="dot"         onclick="goTo(1)"></div>
+  <div class="dot"         onclick="goTo(2)"></div>
+  <div class="dot"         onclick="goTo(3)"></div>
+  <div class="dot"         onclick="goTo(4)"></div>
+  <div class="dot"         onclick="goTo(5)"></div>
+</div>
+
+
+<script>
+  let cur = 0;
+  const slides = document.querySelectorAll('.slide');
+  const dots   = document.querySelectorAll('.dot');
+
+  function goTo(n) {
+    slides[cur].classList.remove('active');
+    dots[cur].classList.remove('active');
+    cur = Math.max(0, Math.min(n, slides.length - 1));
+    slides[cur].classList.add('active');
+    dots[cur].classList.add('active');
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown')  goTo(cur + 1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')    goTo(cur - 1);
+  });
+
+  // Touch/swipe support
+  let touchX = 0;
+  document.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; });
+  document.addEventListener('touchend',   e => {
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 50) goTo(dx < 0 ? cur + 1 : cur - 1);
+  });
+
+  // Auto-scale to viewport
+  function scaleSlideshow() {
+    const slideshow = document.querySelector('.slideshow');
+    const scaleX = window.innerWidth / 1280;
+    const scaleY = window.innerHeight / 720;
+    const scale = Math.min(scaleX, scaleY) * 0.95;
+    slideshow.style.transform = `scale(${scale})`;
+  }
+
+  window.addEventListener('resize', scaleSlideshow);
+  window.addEventListener('load', scaleSlideshow);
+</script>
+</body>
+</html>

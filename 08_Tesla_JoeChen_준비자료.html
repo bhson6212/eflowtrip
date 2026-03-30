@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>08 · Tesla (Joe Chen) | EFLOW 미팅 준비자료</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black:     #0a0a0a;
+    --gray-800:  #222222;
+    --gray-600:  #555555;
+    --gray-400:  #999999;
+    --gray-100:  #f2f2f2;
+    --gray-50:   #fafafa;
+    --white:     #ffffff;
+    --bd:        1px solid #d8d8d8;
+    --bd-hvy:    2px solid #0a0a0a;
+  }
+
+  body {
+    font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+    background: var(--white);
+    color: var(--black);
+    font-size: 13px;
+    line-height: 1.8;
+    padding: 60px 0 100px;
+  }
+
+  .doc { max-width: 860px; margin: 0 auto; padding: 0 52px; }
+
+  /* ── 문서 헤더 ── */
+  .doc-header {
+    border-top: var(--bd-hvy);
+    border-bottom: var(--bd-hvy);
+    padding: 24px 0 20px;
+    margin-bottom: 48px;
+  }
+  .eyebrow {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--gray-400); margin-bottom: 10px;
+  }
+  .doc-header h1 {
+    font-size: 23px; font-weight: 800; letter-spacing: -0.02em;
+    line-height: 1.3; margin-bottom: 20px;
+  }
+  .inbound-badge {
+    display: inline-block;
+    border: var(--bd-hvy); padding: 4px 12px;
+    font-size: 10px; font-weight: 800; letter-spacing: 0.14em;
+    text-transform: uppercase; margin-bottom: 14px;
+  }
+  .meta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 12px 28px;
+  }
+  .meta-item .k {
+    font-size: 9.5px; font-weight: 700; letter-spacing: 0.13em;
+    text-transform: uppercase; color: var(--gray-400);
+    display: block; margin-bottom: 2px;
+  }
+  .meta-item .v { font-size: 12.5px; font-weight: 700; }
+
+  /* ── 파트 배너 ── */
+  .part-banner {
+    background: var(--black); color: var(--white);
+    padding: 10px 16px; font-size: 11px; font-weight: 800;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    margin: 44px 0 28px;
+  }
+  .part-banner.light {
+    background: var(--gray-100); color: var(--gray-800);
+  }
+
+  /* ── 섹션 ── */
+  .sec { margin-bottom: 36px; }
+  .sec-title {
+    display: flex; align-items: baseline; gap: 10px;
+    border-bottom: var(--bd); padding-bottom: 8px; margin-bottom: 18px;
+  }
+  .sec-title .tag {
+    font-size: 9.5px; font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--gray-400); white-space: nowrap;
+  }
+  .sec-title .ttl { font-size: 13.5px; font-weight: 800; }
+
+  /* ── 본문 ── */
+  p { font-size: 13px; line-height: 1.8; color: var(--gray-800); margin-bottom: 10px; }
+  p:last-child { margin-bottom: 0; }
+  strong { color: var(--black); font-weight: 800; }
+
+  /* ── 핵심 전제 강조 ── */
+  .headline {
+    border: var(--bd-hvy); padding: 18px 22px; margin: 0 0 36px;
+  }
+  .headline p {
+    font-size: 13.5px; font-weight: 800; font-style: italic;
+    color: var(--black); line-height: 1.7; margin-bottom: 0;
+  }
+
+  /* ── 조건 블록 ── */
+  .cond {
+    background: var(--gray-50); border: var(--bd);
+    padding: 14px 18px; margin: 12px 0;
+    font-size: 12px; line-height: 2; color: var(--gray-800);
+    font-family: 'Courier New', monospace;
+  }
+
+  /* ── 4대 요구사항 블록 ── */
+  .req-block { border: var(--bd); margin-bottom: 12px; }
+  .req-block:last-child { margin-bottom: 0; }
+  .req-head {
+    background: var(--gray-100); padding: 9px 16px;
+    font-size: 11px; font-weight: 800; letter-spacing: 0.06em;
+    border-bottom: var(--bd); color: var(--black);
+    display: flex; align-items: baseline; gap: 10px;
+  }
+  .req-num {
+    font-size: 16px; font-weight: 800; color: var(--black);
+    min-width: 24px;
+  }
+  .req-body { padding: 14px 18px; }
+  .req-body .cond { margin: 0; }
+
+  /* ── 표 ── */
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 12.5px; }
+  th {
+    background: var(--gray-100); border: var(--bd);
+    padding: 8px 12px; text-align: left;
+    font-size: 10.5px; font-weight: 800; letter-spacing: 0.05em; color: var(--gray-800);
+  }
+  td { border: var(--bd); padding: 9px 12px; vertical-align: top; line-height: 1.65; }
+  tr:nth-child(even) td { background: var(--gray-50); }
+
+  /* ── 시장 규모 블록 ── */
+  .market-block {
+    border: var(--bd); margin: 14px 0;
+  }
+  .market-head {
+    background: var(--gray-100); padding: 9px 16px;
+    font-size: 10.5px; font-weight: 800; letter-spacing: 0.08em;
+    border-bottom: var(--bd); color: var(--black);
+  }
+  .market-body { padding: 14px 18px; }
+  .market-body .cond { margin: 0; }
+
+  /* ── IP 원칙 ── */
+
+  /* ── Win-Win 표 ── */
+
+  /* ── 다음 단계 옵션 ── */
+  .next-steps {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 10px; margin: 12px 0;
+  }
+  .ns { border: var(--bd); padding: 16px; }
+  .ns .ns-opt {
+    font-size: 18px; font-weight: 800; margin-bottom: 8px;
+    padding-bottom: 8px; border-bottom: var(--bd);
+  }
+  .ns .ns-desc { font-size: 12px; color: var(--gray-800); line-height: 1.65; }
+
+  /* ── 구분선 ── */
+  hr.hvy { border: none; border-top: var(--bd-hvy); margin: 52px 0; }
+
+  /* ── 푸터 ── */
+  .doc-footer {
+    border-top: var(--bd-hvy); margin-top: 60px; padding-top: 14px;
+    display: flex; justify-content: space-between;
+    font-size: 10.5px; color: var(--gray-400);
+  }
+
+  @media print {
+    body { padding: 0; }
+    .doc { padding: 0 28px; max-width: 100%; }
+    .part-banner { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+<div class="doc">
+
+  <!-- 문서 헤더 -->
+  <div class="doc-header">
+    <div class="eyebrow">EFLOW 미국 출장 준비자료 · 08 / 08</div>
+    <div class="inbound-badge">⭐ 인바운드 미팅 — 상대방이 먼저 연락</div>
+    <h1>Tesla — Optimus 팀 / Capex<br>Joe Chen</h1>
+    <div class="meta-grid">
+      <div class="meta-item">
+        <span class="k">미팅 일시</span>
+        <span class="v">2026. 4. 1 (수) 5:30 – 6:00 PM</span>
+      </div>
+      <div class="meta-item">
+        <span class="k">장소</span>
+        <span class="v">San Jose</span>
+      </div>
+      <div class="meta-item">
+        <span class="k">미팅 성격</span>
+        <span class="v">Joe Chen이 LinkedIn으로 먼저 요청</span>
+      </div>
+      <div class="meta-item">
+        <span class="k">산출물 구성</span>
+        <span class="v">액추에이터 기술 요약 + 공동개발 제안 초안</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- PART 1: Optimus 액추에이터 기술 요약 -->
+  <div class="part-banner">산출물 ① — Optimus 액추에이터 기술 요약</div>
+
+
+  <!-- 핵심 전제 -->
+  <div class="headline">
+    <p>
+      "Optimus에 필요한 관절 액추에이터는 4가지를 동시에 충족해야 합니다:<br>
+      강할 것 / 가벼울 것 / 충격을 흘릴 것 / 대량생산이 가능할 것.<br>
+      EFLOW iDS AX AFPM 모터는 이 4가지를 하나의 구조로 구현합니다."
+    </p>
+  </div>
+
+
+  <!-- 4대 요구사항 -->
+  <div class="sec">
+    <div class="sec-title">
+      <span class="tag">기술 요약</span>
+      <span class="ttl">Optimus 4대 요구사항 — EFLOW AFPM 대응</span>
+    </div>
+
+    <!-- 요구 1 -->
+    <div class="req-block">
+      <div class="req-head">
+        <span class="req-num">1</span>
+        압도적 토크 밀도 — 감속기 의존도 축소
+      </div>
+      <div class="req-body">
+        <div class="cond">
+          EFLOW iDS AX: 25 kg에서 440 Nm<br>
+          <br>
+          → 높은 토크밀도로 고비율 감속기 의존도 대폭 축소<br>
+          → 준직접 구동(Quasi-direct drive) 아키텍처 실현<br>
+          → 기존 유성 롤러 나사 방식 대비 외부 충격 흡수 구조적 우위
+        </div>
+      </div>
+    </div>
+
+    <!-- 요구 2 -->
+    <div class="req-block">
+      <div class="req-head">
+        <span class="req-num">2</span>
+        백드라이버빌리티 — 외력에 자연스럽게 반응
+      </div>
+      <div class="req-body">
+        <div class="cond">
+          SMC(연자성 복합소재) 스테이터 적용<br>
+          → 코깅 토크 최소화 설계 (Zero-cogging 구현)<br>
+          → 제어 시스템 신호에 저항 없이 즉각 반응<br>
+          → 외부 충격을 흘려보내는 기계적 순응성 확보<br>
+          → 낙하·충격 시 관절 파손 리스크 구조적 감소
+        </div>
+      </div>
+    </div>
+
+    <!-- 요구 3 -->
+    <div class="req-block">
+      <div class="req-head">
+        <span class="req-num">3</span>
+        밀폐 바디 내 열 관리
+      </div>
+      <div class="req-body">
+        <div class="cond">
+          밀폐형 오일 냉각 (스테이터·로터 분리 냉각)<br>
+          → 에어갭에 오일 비접촉 — 냉각 효율 극대화<br>
+          → 150°C 연속 구동 대응 (기존 업계 120°C 대비 우위)<br>
+          → 밀폐 섀시 내 열 거동 예측 가능 → 제어 알고리즘 안정성 확보<br>
+          → 12,700 rpm 밀폐 오일 냉각 조건 테스트 완료
+        </div>
+      </div>
+    </div>
+
+    <!-- 요구 4 -->
+    <div class="req-block">
+      <div class="req-head">
+        <span class="req-num">4</span>
+        양산성 — Tesla 철학과의 정렬
+      </div>
+      <div class="req-body">
+        <div class="cond">
+          2D 평면 권선 구조 → 100% 자동화 라인 설계 기반<br>
+          코어 부품 40개 → 금형 1개 일체 성형 (독점 노하우)<br>
+          생산 원가 $400 (업계 $800 대비 50% 절감)<br>
+          유럽 25개 B2B 고객사 실양산 납품 / 98% 재주문률<br>
+          <br>
+          "하나 잘 만드는 것"이 아니라 "100만개 일관되게 만드는 것" — 가능합니다.
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 시장 규모 -->
+  <div class="sec">
+    <div class="sec-title">
+      <span class="tag">시장 규모</span>
+      <span class="ttl">왜 지금 결정이 중요한가</span>
+    </div>
+
+    <div class="market-block">
+      <div class="market-head">Tesla Optimus 연 100만대 양산 목표 기준</div>
+      <div class="market-body">
+        <div class="cond">
+          Tesla Optimus 연 100만대 양산 목표<br>
+          → 1대당 관절 액추에이터 약 28개 필요<br>
+          → 총 수요: 연간 약 2,800만개 조인트 모터<br>
+          <br>
+          공동개발 파트너로 진입하는 것과<br>
+          완성된 공급망에 후발로 진입하는 것은<br>
+          원가·IP·관계의 모든 면에서 다릅니다.
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 구분선 -->
+  <hr class="hvy">
+
+
+  <!-- PART 2: 공동개발 제안 초안 -->
+  <div class="part-banner light">산출물 ② — 공동개발 제안 초안</div>
+
+
+  <!-- Joint Development Structure -->
+  <div class="sec">
+    <div class="sec-title">
+      <span class="tag">구조</span>
+      <span class="ttl">Joint Development Structure</span>
+    </div>
+
+    <table>
+      <thead><tr><th>구분</th><th>내용</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>EFLOW 제공</strong></td>
+          <td>
+            AFPM 원천 IP 및 설계 플랫폼 (84건 보유)<br>
+            자동화 평면 권선 제조 노하우<br>
+            Optimus 관절 규격 맞춤 전용 변형 모델 개발
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Tesla 제공</strong></td>
+          <td>
+            Optimus 관절 기구 설계 요건 및 제어 인터페이스 정의<br>
+            전용 변형 모델 개발비 및 설비 자본(Capex) 투자<br>
+            Optimus 플랫폼 내 우선 검증 기회 부여
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- IP 원칙 -->
+  <div class="sec">
+    <div class="sec-title">
+      <span class="tag">IP 원칙</span>
+      <span class="ttl">지식재산권 구조</span>
+    </div>
+
+    <div class="cond">
+      핵심 AFPM 원천 IP &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→&nbsp; EFLOW 귀속<br>
+      Tesla 전용 변형 모델 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→&nbsp; Tesla 독점 사용권<br>
+      공동 개발 파생 IP &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→&nbsp; 별도 협의
+    </div>
+  </div>
+
+
+  <!-- Win-Win 구조 -->
+  <div class="sec">
+    <div class="sec-title">
+      <span class="tag">상호 편익</span>
+      <span class="ttl">Win-Win 구조</span>
+    </div>
+
+    <table>
+      <thead>
+        <tr><th>항목</th><th>EFLOW가 얻는 것</th><th>Tesla가 얻는 것</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>레퍼런스</td>
+          <td>글로벌 최고 수준 기술 레퍼런스</td>
+          <td>공급망 리스크 감소 (독점 변형 모델 확보)</td>
+        </tr>
+        <tr>
+          <td>제조</td>
+          <td>양산 스케일을 통한 제조 고도화</td>
+          <td>원가 통제권 (공동개발 파트너 가격 구조)</td>
+        </tr>
+        <tr>
+          <td>신뢰성</td>
+          <td>—</td>
+          <td>양산 불가 리스크 제거 (유럽 실양산 검증 기업)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- 다음 단계 -->
+  <div class="sec">
+    <div class="sec-title">
+      <span class="tag">다음 단계</span>
+      <span class="ttl">유연하게 선택하세요</span>
+    </div>
+
+    <div class="next-steps">
+      <div class="ns">
+        <div class="ns-opt">옵션 A</div>
+        <div class="ns-desc">엔지니어링 팀 대상 기술 데이터 패키지 제공</div>
+      </div>
+      <div class="ns">
+        <div class="ns-opt">옵션 B</div>
+        <div class="ns-desc">독일·한국 생산시설 방문<br>(CTO Frank Heller 직접 면담)</div>
+      </div>
+      <div class="ns">
+        <div class="ns-opt">옵션 C</div>
+        <div class="ns-desc">CTO Frank Heller와 직접 기술 콜 세팅</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 푸터 -->
+  <div class="doc-footer">
+    <span>EFLOW Co., Ltd. | YouMe Yi | eflow.youme@gmail.com</span>
+    <span>미팅 준비자료 08/08 · 2026. 4. 1</span>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+05_MobilityVC_v3.html 파일을 복사해서 03_GM_v3.html 로 저장한 다음,
+03_GM_준비자료.html 의 내용을 참고해서 슬라이드 내용만 교체해줘.
+CSS, 네비게이션, 스케일 코드는 절대 건드리지 말 것.
+로고는 좌상단에 1개만. 슬라이드 6장.
+
+Slide 1: Cover — GM / Ultium 800V + AFPM / Han DG · 2:00 PM
+우측 SVG: Ultium 플랫폼 추상화 (배터리 모듈 + 모터 배치 다이어그램)
+하단: "800V Native · 25kg · 440Nm · Drop-in Compatible"
+
+Slide 2: GM의 과제 — 대형 플랫폼 3가지 압박
+카드1: BEV 손실 후 하이브리드/EREV 가속
+카드2: Silverado EV 3.87톤 차체 중량 문제
+카드3: 800V 전환 비용 최소화 압박
+우측 수치 박스: "40%" 경량화 / "800V" 기본 대응 / "440Nm" 피크 토크
+
+Slide 3: 800V 호환성 표
+타이틀: "Ultium + iDS AX — 즉시 통합 가능"
+비교표:
+항목 / 일반 라디얼 / iDS AX
+무게 / 35~45kg / 25kg (↓40%)
+피크 토크 / 300~380Nm / 440Nm
+축방향 길이 / 길다 / 극히 짧음
+800V 대응 / 재설계 필요 / 기본 설계 완료
+냉각 방식 / 공랭/수랭 / 밀폐 오일냉각
+고온 내구 / ~120°C / 150°C 연속구동
+하단 강조: "Drop-in compatible — GM Ultium 아키텍처 재설계 비용 Zero"
+
+Slide 4: 경량화 효과 시뮬레이션
+타이틀: "모터 1kg 절감 = 배터리 재할당"
+좌측: Silverado EV 기준 계산
+듀얼 모터 적용 시 총 절감: 20~40kg
+절감 중량 → 배터리 셀 감축(원가↓) 또는 주행거리 연장 선택
+우측 SVG: 저울 인포그래픽 (모터 중량 vs 배터리 셀)
+하단: "대형 SUV/트럭 플랫폼에서 marginal gain이 아닌 meaningful range extension"
+
+Slide 5: GM Defense / Cruise 파생 수요
+타이틀: "GM 모빌리티 생태계 전반으로의 확장"
+카드1: GM Defense — 수소전기 플랫폼, 고토크밀도 제한 공간
+카드2: Cruise 로보택시 — 자율주행 친화적 모터 특성 필요
+카드3: 상용 플릿 — 연속 고토크 출력, 열 스로틀링 Zero
+하단: "단일 AFPM 플랫폼으로 GM 전체 모빌리티 생태계 대응 가능"
+
+Slide 6: Next Steps
+타이틀: "Drop-in 평가 — 재설계 없이 시작"
+메인: "We're not asking GM to redesign anything."
+서브: "기존 Ultium 아키텍처에서 더 가볍고 강한 모터로 교체"
+CTA 박스:
+- 기술 담당자 연결 → 파워트레인 통합 검토
+- CTO Frank Heller 기술 브리핑
+- 60일 평가 프로그램 제안
+footer: "EFLOW Co., Ltd. | eflow.youme@gmail.com | 2026.04.01 San Jose"

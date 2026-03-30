@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>02 · Ford | EFLOW 미팅 준비자료</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black:     #0a0a0a;
+    --gray-800:  #222222;
+    --gray-600:  #555555;
+    --gray-400:  #999999;
+    --gray-100:  #f2f2f2;
+    --gray-50:   #fafafa;
+    --white:     #ffffff;
+    --bd:        1px solid #d8d8d8;
+    --bd-hvy:    2px solid #0a0a0a;
+  }
+
+  body {
+    font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+    background: var(--white);
+    color: var(--black);
+    font-size: 13px;
+    line-height: 1.8;
+    padding: 60px 0 100px;
+  }
+
+  .doc { max-width: 860px; margin: 0 auto; padding: 0 52px; }
+
+  /* ── 문서 헤더 ── */
+  .doc-header {
+    border-top: var(--bd-hvy);
+    border-bottom: var(--bd-hvy);
+    padding: 24px 0 20px;
+    margin-bottom: 48px;
+  }
+  .eyebrow {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--gray-400); margin-bottom: 10px;
+  }
+  .doc-header h1 {
+    font-size: 23px; font-weight: 800; letter-spacing: -0.02em;
+    line-height: 1.3; margin-bottom: 20px;
+  }
+  .meta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 12px 28px;
+  }
+  .meta-item .k {
+    font-size: 9.5px; font-weight: 700; letter-spacing: 0.13em;
+    text-transform: uppercase; color: var(--gray-400);
+    display: block; margin-bottom: 2px;
+  }
+  .meta-item .v { font-size: 12.5px; font-weight: 700; }
+
+  /* ── 파트 배너 ── */
+  .part-banner {
+    background: var(--black); color: var(--white);
+    padding: 10px 16px; font-size: 11px; font-weight: 800;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    margin: 44px 0 28px;
+  }
+  .part-banner.light {
+    background: var(--gray-100); color: var(--gray-800);
+  }
+
+  /* ── 섹션 ── */
+  .sec { margin-bottom: 36px; }
+  .sec-title {
+    display: flex; align-items: baseline; gap: 10px;
+    border-bottom: var(--bd); padding-bottom: 8px; margin-bottom: 18px;
+  }
+  .sec-title .tag {
+    font-size: 9.5px; font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--gray-400); white-space: nowrap;
+  }
+  .sec-title .ttl { font-size: 13.5px; font-weight: 800; }
+
+  /* ── 본문 ── */
+  p { font-size: 13px; line-height: 1.8; color: var(--gray-800); margin-bottom: 10px; }
+  p:last-child { margin-bottom: 0; }
+  strong { color: var(--black); font-weight: 800; }
+
+  /* ── 조건/구조 블록 ── */
+  .cond {
+    background: var(--gray-50); border: var(--bd);
+    padding: 14px 18px; margin: 12px 0;
+    font-size: 12px; line-height: 2; color: var(--gray-800);
+    font-family: 'Courier New', monospace;
+  }
+
+  /* ── 불릿 리스트 ── */
+  ul.bl { list-style: none; padding: 0; margin: 0; }
+  ul.bl li {
+    padding: 5px 0 5px 16px; position: relative;
+    font-size: 12.5px; line-height: 1.7; color: var(--gray-800);
+    border-bottom: 1px solid var(--gray-100);
+  }
+  ul.bl li:last-child { border-bottom: none; }
+  ul.bl li::before { content: '—'; position: absolute; left: 0; color: var(--gray-400); }
+
+  /* ── 표 ── */
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 12.5px; }
+  th {
+    background: var(--gray-100); border: var(--bd);
+    padding: 8px 12px; text-align: left;
+    font-size: 10.5px; font-weight: 800; letter-spacing: 0.05em; color: var(--gray-800);
+  }
+  td { border: var(--bd); padding: 9px 12px; vertical-align: top; line-height: 1.65; }
+  tr:nth-child(even) td { background: var(--gray-50); }
+
+  /* ── 2컬럼 비교 ── */
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 12px 0; border: var(--bd); }
+  .cmp-col { padding: 16px; }
+  .cmp-col:first-child { border-right: var(--bd); }
+  .cmp-head {
+    font-size: 10px; font-weight: 800; letter-spacing: 0.12em;
+    text-transform: uppercase; padding-bottom: 8px;
+    margin-bottom: 12px; border-bottom: var(--bd);
+  }
+  .cmp-head.bad  { color: var(--gray-400); }
+  .cmp-head.good { color: var(--black); }
+
+  /* ── 플레이스홀더 ── */
+  .ph {
+    border: 1px dashed #bbbbbb;
+    background: var(--gray-50);
+    padding: 28px 20px; margin: 14px 0; text-align: center;
+  }
+  .ph .pl {
+    font-size: 10px; font-weight: 800; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--gray-400); margin-bottom: 6px;
+  }
+  .ph .pd { font-size: 12px; color: var(--gray-600); line-height: 1.7; }
+
+  /* ── 핵심 질문 강조 박스 ── */
+  .highlight {
+    border: var(--bd-hvy); padding: 16px 20px; margin: 12px 0;
+  }
+  .highlight p {
+    font-size: 14px; font-weight: 800; font-style: italic;
+    color: var(--black); margin-bottom: 0; line-height: 1.6;
+  }
+
+  /* ── 패키징 다이어그램 박스 ── */
+  .pkg-diagram {
+    border: var(--bd); margin: 14px 0;
+  }
+  .pkg-row {
+    display: grid; grid-template-columns: 1fr 1fr;
+  }
+  .pkg-cell {
+    padding: 20px 22px; border-right: var(--bd);
+  }
+  .pkg-cell:last-child { border-right: none; }
+  .pkg-cell .pc-head {
+    font-size: 10px; font-weight: 800; letter-spacing: 0.13em;
+    text-transform: uppercase; color: var(--gray-400);
+    margin-bottom: 14px; padding-bottom: 8px; border-bottom: var(--bd);
+  }
+  .pkg-cell .pc-head.bad  { color: var(--gray-400); }
+  .pkg-cell .pc-head.good { color: var(--black); }
+  .pkg-visual {
+    font-family: 'Courier New', monospace;
+    font-size: 11.5px; line-height: 1.9;
+    color: var(--gray-800); margin-bottom: 12px;
+  }
+  .pkg-result {
+    font-size: 11.5px; color: var(--gray-600);
+    border-top: var(--bd); padding-top: 10px; line-height: 1.7;
+  }
+  .pkg-result strong { color: var(--black); }
+
+  /* ── 제안 박스 ── */
+  .proposal {
+    border: var(--bd-hvy); padding: 18px 20px; margin: 14px 0;
+  }
+  .proposal .prop-title {
+    font-size: 11px; font-weight: 800; letter-spacing: 0.12em;
+    text-transform: uppercase; margin-bottom: 14px;
+    padding-bottom: 8px; border-bottom: var(--bd);
+  }
+  .proposal ul.bl li { font-size: 12.5px; }
+
+  /* ── 구분선 ── */
+  hr.hvy { border: none; border-top: var(--bd-hvy); margin: 52px 0; }
+
+  /* ── 푸터 ── */
+  .doc-footer {
+    border-top: var(--bd-hvy); margin-top: 60px; padding-top: 14px;
+    display: flex; justify-content: space-between;
+    font-size: 10.5px; color: var(--gray-400);
+  }
+
+  @media print {
+    body { padding: 0; }
+    .doc { padding: 0 28px; max-width: 100%; }
+    .part-banner { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+<div class="doc">
+
+  <!-- 문서 헤더 -->
+  <div class="doc-header">
+    <div class="eyebrow">EFLOW 미국 출장 준비자료 · 02 / 08</div>
+    <h1>Ford<br>— Anirudh Ravisundar</h1>
+    <div class="meta-grid">
+      <div class="meta-item">
+        <span class="k">미팅 일시</span>
+        <span class="v">2026. 4. 1 (수) 11:00 – 11:30 AM</span>
+      </div>
+      <div class="meta-item">
+        <span class="k">장소</span>
+        <span class="v">San Jose</span>
+      </div>
+      <div class="meta-item">
+        <span class="k">산출물 구성</span>
+        <span class="v">EREV REX 시스템 구조도 + iDS AX 패키징 비교</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- PART 1: EREV REX 시스템 구조도 -->
+  <div class="part-banner">산출물 ① — EREV REX 시스템 구조도</div>
+
+
+  <!-- 1-1. Ford EREV 핵심 딜레마 -->
+  <div class="sec">
+    <div class="sec-title">
+      <span class="tag">배경</span>
+      <span class="ttl">Ford EREV의 핵심 딜레마</span>
+    </div>
+
+    <div class="cond">
+      소비자 요구: 700마일+ 주행거리 &nbsp;+&nbsp; 프렁크 공간 유지<br>
+      기존 문제 : REX 발전기(라디얼 모터) 탑재 시 프렁크 공간 잠식
+    </div>
+
+    <p>F-150 Lightning이 시장에서 보낸 신호는 명확하다. 운전자는 주행거리를 원하지만, 적재 공간도 포기하지 않는다.</p>
+    <p><strong>EREV는 정답이다 — 단, 발전기가 공간을 먹지 않아야 한다.</strong></p>
+  </div>
+
+
+  <!-- 1-2. REX 발전기에서 AFPM이 유리한 이유 -->
+  <div class="sec">
+    <div class="sec-title">
+      <span class="tag">기술 근거</span>
+      <span class="ttl">REX 발전기에서 AFPM이 유리한 이유</span>
+    </div>
+
+    <p>EREV의 REX 발전기는 내연기관처럼 넓은 RPM 범위를 쓰지 않는다. <strong>최적 효율 RPM 대역 한 곳에 고정</strong>하여 운전한다.</p>
+
+    <div class="compare">
+      <div class="cmp-col">
+        <div class="cmp-head bad">라디얼 모터 — 비효율</div>
+        <ul class="bl">
+          <li>넓은 RPM 범위 대응 설계</li>
+          <li>REX 고정 RPM 운전 시 설계 조건과 불일치</li>
+          <li>고정 RPM 구간 효율 저하</li>
+        </ul>
+      </div>
+      <div class="cmp-col">
+        <div class="cmp-head good">eFlow AFPM — 최적</div>
+        <ul class="bl">
+          <li>고정 RPM 고효율 대역이 유독 넓음</li>
+          <li>REX 운전 조건에 구조적으로 최적 부합</li>
+          <li><strong>AFPM은 REX 발전기 용도에 구조적으로 유리</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 1-3. EREV REX 시스템 구조 -->
+  <div class="sec">
+    <div class="sec-title">
+      <span class="tag">시스템 구조</span>
+      <span class="ttl">EREV REX 시스템 구조 — AFPM 적용 시</span>
+    </div>
+
+    <div class="cond">
+[가솔린 엔진]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓ 고정 RPM 회전<br>
+[eFlow AFPM 발전기] &nbsp;← 팬케이크 구조, 축 방향 길이 최소<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓ 전력 생성<br>
+[배터리 충전 / 구동 모터 직결]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓<br>
+[후륜 구동]
+    </div>
+
+    <p style="margin-top:14px;">결과: 엔진-발전기 통합 파워트레인 전체 길이 단축 → <strong>프렁크 공간 확보 가능</strong></p>
+
+    <div class="ph">
+      <div class="pl">시각자료 영역 — EREV REX 시스템 구조도</div>
+      <div class="pd">
+        가솔린 엔진 → AFPM 발전기 → 배터리/구동모터 → 후륜 흐름도<br>
+        기존 라디얼 REX 구성 대비 파워트레인 전체 길이 단축 효과 시각화<br>
+        프렁크 공간 확보 영역 표시
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 1-4. 양산 신뢰성 근거 -->
+  <div class="sec">
+    <div class="sec-title">
+      <span class="tag">신뢰성 근거</span>
+      <span class="ttl">양산 신뢰성 근거</span>
+    </div>
+
+    <table>
+      <thead><tr><th>항목</th><th>내용</th></tr></thead>
+      <tbody>
+        <tr><td>유럽 B2B 납품 실적</td><td><strong>25개 고객사</strong> 실양산 공급 중</td></tr>
+        <tr><td>재주문률</td><td><strong>98%</strong></td></tr>
+        <tr><td>냉각 통합</td><td>기존 변속기 오일 회로 연동 가능, 별도 냉각 루프 불필요</td></tr>
+        <tr><td>미국 공급망</td><td>독일·한국 생산 기반 + 미국 파트너(성우하이텍) 협력 구조</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- 구분선 -->
+  <hr class="hvy">
+
+
+  <!-- PART 2: iDS AX 패키징 비교 -->
+  <div class="part-banner light">산출물 ② — iDS AX 패키징 비교</div>
+
+
+  <!-- 2-1. 핵심 질문 -->
+  <div class="sec">
+    <div class="sec-title">
+      <span class="tag">핵심 질문</span>
+      <span class="ttl">이 자료가 답해야 하는 것</span>
+    </div>
+    <div class="highlight">
+      <p>"발전기를 넣어도 프렁크를 지킬 수 있는가?"</p>
+    </div>
+    <p>답은 모터의 <strong>축 방향 길이</strong>에 달려 있다.</p>
+  </div>
+
+
+  <!-- 2-2. 패키징 비교 다이어그램 -->
+  <div class="sec">
+    <div class="sec-title">
+      <span class="tag">패키징 비교</span>
+      <span class="ttl">라디얼 모터 vs iDS AX — 엔진 축 직결 시 비교</span>
+    </div>
+
+    <div class="pkg-diagram">
+      <div class="pkg-row">
+        <div class="pkg-cell">
+          <div class="pc-head bad">라디얼 모터 — 원통형</div>
+          <div class="pkg-visual">
+  ←——————— 축 방향 길이 (길다) ————————→<br>
+  ┌──────────────────────────────┐<br>
+  │&nbsp;&nbsp;○○○○○○○○○○○○○○○○○○○○○○○&nbsp;&nbsp;│<br>
+  └──────────────────────────────┘
+          </div>
+          <div class="pkg-result">
+            엔진 축에 직결 시<br>
+            파워트레인 전체 길이 증가<br>
+            → <strong>프렁크 공간 잠식</strong>
+          </div>
+        </div>
+        <div class="pkg-cell">
+          <div class="pc-head good">eFlow iDS AX — 팬케이크형</div>
+          <div class="pkg-visual">
+  ←— 축 방향 길이 (극히 짧다) —→<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;┌──────────┐<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;○○○○○&nbsp;&nbsp;│<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──────────┘
+          </div>
+          <div class="pkg-result">
+            엔진 축에 직결 시<br>
+            파워트레인 전체 길이 최소화<br>
+            → <strong>프렁크 공간 확보</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ph">
+      <div class="pl">시각자료 영역 — 패키징 비교 이미지</div>
+      <div class="pd">
+        라디얼 모터 vs iDS AX 실제 외형 크기 비교<br>
+        F-150 엔진룸 단면에 각각 탑재 시 축 방향 점유 길이 오버레이<br>
+        프렁크 확보 가능 공간 치수 표시
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 2-3. 패키징 우위가 만드는 비즈니스 가치 -->
+  <div class="sec">
+    <div class="sec-title">
+      <span class="tag">비즈니스 가치</span>
+      <span class="ttl">패키징 우위가 만드는 비즈니스 가치</span>
+    </div>
+
+    <table>
+      <thead>
+        <tr><th>항목</th><th>라디얼 모터 REX</th><th>eFlow iDS AX REX</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>축 방향 길이</td><td>길다</td><td><strong>극히 짧음</strong></td></tr>
+        <tr><td>프렁크 공간</td><td>잠식</td><td><strong>유지 가능</strong></td></tr>
+        <tr><td>700마일 주행거리</td><td>달성 가능</td><td><strong>달성 가능</strong></td></tr>
+        <tr><td>냉각 구조 통합</td><td>별도 루프 필요</td><td><strong>기존 오일 회로 연동</strong></td></tr>
+        <tr><td>소비자 가치</td><td>주행거리 or 공간</td><td><strong>주행거리 + 공간 동시</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- 2-4. 제안 -->
+  <div class="sec">
+    <div class="sec-title">
+      <span class="tag">제안</span>
+      <span class="ttl">30일 기술 타당성 검토 (Technical Feasibility Review)</span>
+    </div>
+
+    <div class="proposal">
+      <div class="prop-title">제안 구조</div>
+      <ul class="bl">
+        <li>eFlow CTO → 모터 외형 데이터(Envelope Data) 제공</li>
+        <li>Ford 파워트레인 팀 → EREV 아키텍처 내 탑재 적합성 평가</li>
+        <li>상호 구속 없음, 데이터 기반 판단</li>
+      </ul>
+    </div>
+  </div>
+
+
+  <!-- 푸터 -->
+  <div class="doc-footer">
+    <span>EFLOW Co., Ltd. | CEO 윤수한 | eflow1227@gmail.com</span>
+    <span>미팅 준비자료 02/08 · 2026. 4. 1</span>
+  </div>
+
+</div>
+</body>
+</html>
