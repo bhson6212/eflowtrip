@@ -1,51 +1,52 @@
-05_MobilityVC_v3.html 파일을 복사해서 03_GM_v3.html 로 저장한 다음,
-03_GM_준비자료.html 의 내용을 참고해서 슬라이드 내용만 교체해줘.
+05_MobilityVC_v3.html 파일을 복사해서 08_Tesla_JoeChen_v3.html 로 저장한 다음,
+08_Tesla_JoeChen_준비자료.html 의 내용을 참고해서 슬라이드 내용만 교체해줘.
 CSS, 네비게이션, 스케일 코드는 절대 건드리지 말 것.
 로고는 좌상단에 1개만. 슬라이드 6장.
 
-Slide 1: Cover — GM / Ultium 800V + AFPM / Han DG · 2:00 PM
-우측 SVG: Ultium 플랫폼 추상화 (배터리 모듈 + 모터 배치 다이어그램)
-하단: "800V Native · 25kg · 440Nm · Drop-in Compatible"
+Slide 1: Cover / 메인 Tesla Optimus / 서브 Humanoid Actuator / 담당자 Joe Chen Capex 5:30 PM 인바운드 미팅 표시(⭐ INBOUND) / 우측 SVG 휴머노이드 로봇 관절 추상화(원형 관절 3개 세로 연결, 각 관절에 동심원 모터 단면, --accent-blue) / 하단 "25kg · 440Nm · Zero Cogging · Back-drivable · Mass Production Ready"
 
-Slide 2: GM의 과제 — 대형 플랫폼 3가지 압박
-카드1: BEV 손실 후 하이브리드/EREV 가속
-카드2: Silverado EV 3.87톤 차체 중량 문제
-카드3: 800V 전환 비용 최소화 압박
-우측 수치 박스: "40%" 경량화 / "800V" 기본 대응 / "440Nm" 피크 토크
+Slide 2: Joe Chen이 먼저 연락한 이유 / 타이틀 인바운드 리드의 의미 / 좌측: Optimus 핵심 과제 카드 4개:
+카드1: 관절 액추에이터 토크밀도 극대화(무게 최소화)
+카드2: 백드라이버빌리티(외력에 저항없이 자연스럽게 반응)
+카드3: 밀폐 로봇 바디 내 발열 제어
+카드4: Tesla 생산철학 - 양산 불가능한 것은 관심없음
+/ 우측 수치박스 4개: "440Nm/25kg" 토크밀도, "Zero Cogging" SMC스테이터, "150°C" 연속구동, "자동화 설계" 양산 가능
 
-Slide 3: 800V 호환성 표
-타이틀: "Ultium + iDS AX — 즉시 통합 가능"
-비교표:
-항목 / 일반 라디얼 / iDS AX
-무게 / 35~45kg / 25kg (↓40%)
-피크 토크 / 300~380Nm / 440Nm
-축방향 길이 / 길다 / 극히 짧음
-800V 대응 / 재설계 필요 / 기본 설계 완료
-냉각 방식 / 공랭/수랭 / 밀폐 오일냉각
-고온 내구 / ~120°C / 150°C 연속구동
-하단 강조: "Drop-in compatible — GM Ultium 아키텍처 재설계 비용 Zero"
+Slide 3: Optimus 맞춤 포지셔닝 / 타이틀 강하고 가볍고 정직한 모터 / 3열 카드:
+카드1 배지 Strong(--accent-blue): 25kg에서 440Nm, 압도적 토크밀도, 고비율 감속기 의존도 대폭 감소, 준직접구동(Quasi-direct drive) 실현
+카드2 배지 Light(--accent-cyan): 팬케이크 구조 극히 짧은 축방향, 로봇 관절 내부 완전 매립, 기존 대비 무게 30% 절감
+카드3 배지 Honest(--accent-green): SMC스테이터 코깅토크 제거, 제어신호에 즉각 응답(지연없음), 밀폐오일냉각으로 열거동 예측 가능
 
-Slide 4: 경량화 효과 시뮬레이션
-타이틀: "모터 1kg 절감 = 배터리 재할당"
-좌측: Silverado EV 기준 계산
-듀얼 모터 적용 시 총 절감: 20~40kg
-절감 중량 → 배터리 셀 감축(원가↓) 또는 주행거리 연장 선택
-우측 SVG: 저울 인포그래픽 (모터 중량 vs 배터리 셀)
-하단: "대형 SUV/트럭 플랫폼에서 marginal gain이 아닌 meaningful range extension"
+Slide 4: 백드라이버빌리티 + 열관리 / 타이틀 Optimus가 넘어지지 않는 이유 / 좌측 45%:
+백드라이버빌리티:
+- 외부 충격 저항없이 흡수
+- 체중 2~3배 충격 대응
+- 기존 유성롤러스크류 한계 극복
+- Zero Cogging = 완벽한 기계적 순응성
+/ 우측 55%:
+열관리:
+- 밀폐 섀시 내 발열 제어
+- 스테이터·로터 별도 오일냉각
+- 150°C 연속구동 검증
+- 알고리즘 예측 모델 안정성 확보
+하단 강조박스: "Optimus Gen2 57kg 기준 매 걸음 체중 2~3배 충격 — eFlow AFPM이 흡수합니다"
 
-Slide 5: GM Defense / Cruise 파생 수요
-타이틀: "GM 모빌리티 생태계 전반으로의 확장"
-카드1: GM Defense — 수소전기 플랫폼, 고토크밀도 제한 공간
-카드2: Cruise 로보택시 — 자율주행 친화적 모터 특성 필요
-카드3: 상용 플릿 — 연속 고토크 출력, 열 스로틀링 Zero
-하단: "단일 AFPM 플랫폼으로 GM 전체 모빌리티 생태계 대응 가능"
+Slide 5: 공동개발 구조 제안 / 타이틀 100만대 양산을 위한 Joint Lab / 좌측:
+Tesla 역할:
+- Optimus 관절 외경(OD) 축소형 독점 변형 모델 정의
+- 개발비 + 설비 자본(Capex) 투자
+- 독점 변형 모델 사용권 확보
+/ 우측:
+eFlow 역할:
+- 원천 IP + 평면 자동화 권선 노하우
+- 모터 아키텍처 + 양산 제조
+- 핵심 IP 귀속 유지
+하단 플로우: [Joint Lab 구성] → [전용 액추에이터 개발] → [Tesla 독점 변형] → [100만대 양산]
+노트: "Tesla에는 공급망 리스크 감소 + 원가 통제권 / eFlow에는 글로벌 최고 레퍼런스 + 기술 고도화"
 
-Slide 6: Next Steps
-타이틀: "Drop-in 평가 — 재설계 없이 시작"
-메인: "We're not asking GM to redesign anything."
-서브: "기존 Ultium 아키텍처에서 더 가볍고 강한 모터로 교체"
-CTA 박스:
-- 기술 담당자 연결 → 파워트레인 통합 검토
-- CTO Frank Heller 기술 브리핑
-- 60일 평가 프로그램 제안
-footer: "EFLOW Co., Ltd. | eflow.youme@gmail.com | 2026.04.01 San Jose"
+Slide 6: Next Steps / 메인 "Joe, 무엇이 가장 유용할까요?" / 서브 "우리는 형식에 유연합니다" / 3개 CTA 박스 가로 배치:
+박스1(--accent-blue 테두리): "기술 데이터 패키지" / 엔지니어링팀 검토용 / 모터 스펙 + 토크밀도 데이터
+박스2(--accent-cyan 테두리): "생산시설 방문" / 독일 또는 한국 / Frank Heller CTO 직접 미팅
+박스3(--accent-green 테두리): "CTO 콜" / Frank Heller 직접 연결 / 공동개발 구조 논의
+하단: "2,800만 개 관절 모터 — 우리가 만들 수 있습니다"
+footer: EFLOW Co., Ltd. eflow.youme@gmail.com 2026.04.01 San Jose
