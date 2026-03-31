@@ -217,7 +217,12 @@ body {
    SLIDE 2 — MARKET TIMING
 ───────────────────────────────── */
 #s2 .s2-title-block {
-  margin-bottom: 24px;
+  margin-bottom: 38px;
+}
+#s2 .s2-cards .card {
+  min-height: 270px;
+  display: flex;
+  flex-direction: column;
 }
 
 #s2 h2 {
@@ -618,6 +623,20 @@ body {
   color: var(--text-secondary);
 }
 
+/* ─────────────────────────────────
+   SLIDE 4 OVERRIDES
+───────────────────────────────── */
+#s4 .s4-cards {
+  flex: 0.75;
+}
+#s4 .flow-chart {
+  flex: 1;
+  align-items: stretch;
+}
+#s4 .flow-chart .fc-node {
+  padding: 28px 32px;
+}
+
 /* ── Dot nav ── */
 .dots-nav {
   position: fixed;
@@ -654,6 +673,18 @@ body {
        SLIDE 1 — COVER
   ════════════════════════════ -->
   <section class="slide active" id="s1">
+    <!-- Geometric line background -->
+    <svg style="position:absolute;top:0;left:0;width:1280px;height:720px;pointer-events:none;z-index:0;" viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="lineGeo" patternUnits="userSpaceOnUse" width="70" height="70">
+          <line x1="0" y1="35" x2="70" y2="35" stroke="white" stroke-opacity="0.035" stroke-width="0.5"/>
+          <line x1="35" y1="0" x2="35" y2="70" stroke="white" stroke-opacity="0.035" stroke-width="0.5"/>
+          <line x1="0" y1="0" x2="70" y2="70" stroke="white" stroke-opacity="0.035" stroke-width="0.5"/>
+          <line x1="70" y1="0" x2="0" y2="70" stroke="white" stroke-opacity="0.035" stroke-width="0.5"/>
+        </pattern>
+      </defs>
+      <rect width="1280" height="720" fill="url(#lineGeo)"/>
+    </svg>
     <div class="glow-tr"></div>
 
     <div class="slide-topbar">
@@ -665,7 +696,7 @@ body {
       <div class="s1-left">
         <div class="pill">2026.04.01  San Jose</div>
         <p class="s1-meeting">Synergy / FUJI — Partnership Meeting</p>
-        <h1 class="s1-title">Synergy<br>FUJI</h1>
+        <h1 class="s1-title">Synergy &amp;<br>FUJI</h1>
         <p class="s1-tagline">
           US Market Partnership<br>
           Juye Kim · Daisuke Nogiwa<br>
@@ -674,37 +705,63 @@ body {
       </div>
 
       <div class="s1-right">
-        <!-- 한미일 삼각형 SVG: eFlow(파랑/상단), Synergy(시안/좌하단), FUJI(그린/우하단) -->
-        <svg width="500" height="420" viewBox="0 0 500 420" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Glow backgrounds -->
-          <circle cx="250" cy="72" r="72" fill="rgba(59,130,246,0.08)"/>
-          <circle cx="82" cy="352" r="62" fill="rgba(6,182,212,0.08)"/>
-          <circle cx="418" cy="352" r="62" fill="rgba(16,185,129,0.08)"/>
+        <!-- 한미일 삼각형 SVG — redesigned bolder/larger -->
+        <svg width="580" height="520" viewBox="0 0 580 520" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;">
+          <defs>
+            <linearGradient id="sfEdge1" gradientUnits="userSpaceOnUse" x1="290" y1="75" x2="90" y2="442">
+              <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.75"/>
+              <stop offset="100%" stop-color="#06B6D4" stop-opacity="0.75"/>
+            </linearGradient>
+            <linearGradient id="sfEdge2" gradientUnits="userSpaceOnUse" x1="290" y1="75" x2="490" y2="442">
+              <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.75"/>
+              <stop offset="100%" stop-color="#10B981" stop-opacity="0.75"/>
+            </linearGradient>
+            <linearGradient id="sfEdge3" gradientUnits="userSpaceOnUse" x1="90" y1="442" x2="490" y2="442">
+              <stop offset="0%" stop-color="#06B6D4" stop-opacity="0.75"/>
+              <stop offset="100%" stop-color="#10B981" stop-opacity="0.75"/>
+            </linearGradient>
+            <radialGradient id="sfTriFill" cx="50%" cy="58%" r="52%">
+              <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.07"/>
+              <stop offset="100%" stop-color="#000" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
 
-          <!-- Connection lines (dashed) -->
-          <line x1="250" y1="72" x2="82" y2="352" stroke="rgba(255,255,255,0.13)" stroke-width="1.5" stroke-dasharray="6,4"/>
-          <line x1="250" y1="72" x2="418" y2="352" stroke="rgba(255,255,255,0.13)" stroke-width="1.5" stroke-dasharray="6,4"/>
-          <line x1="82" y1="352" x2="418" y2="352" stroke="rgba(255,255,255,0.13)" stroke-width="1.5" stroke-dasharray="6,4"/>
+          <!-- Triangle area fill -->
+          <polygon points="290,75 90,442 490,442" fill="url(#sfTriFill)"/>
 
-          <!-- Center hub -->
-          <circle cx="250" cy="215" r="72" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.09)" stroke-width="1"/>
-          <text x="250" y="206" fill="#F0F6FC" font-size="11.5" font-weight="700" text-anchor="middle" font-family="Inter">North American</text>
-          <text x="250" y="224" fill="#F0F6FC" font-size="11.5" font-weight="700" text-anchor="middle" font-family="Inter">Robotics Market</text>
+          <!-- Soft glow halo behind each node -->
+          <circle cx="290" cy="75" r="95" fill="rgba(59,130,246,0.07)"/>
+          <circle cx="90" cy="442" r="85" fill="rgba(6,182,212,0.07)"/>
+          <circle cx="490" cy="442" r="85" fill="rgba(16,185,129,0.07)"/>
 
-          <!-- eFlow badge (top center, 파랑 = 한국) -->
-          <circle cx="250" cy="72" r="48" fill="#3B82F6" fill-opacity="0.14" stroke="#3B82F6" stroke-width="1.5"/>
-          <text x="250" y="65" fill="#3B82F6" font-size="14" font-weight="800" text-anchor="middle" font-family="Inter">eFlow</text>
-          <text x="250" y="83" fill="#8B949E" font-size="10" text-anchor="middle" font-family="Inter">Korea</text>
+          <!-- Triangle edges — start/end at circle edges (r=66), not centers -->
+          <line x1="258" y1="133" x2="122" y2="384" stroke="url(#sfEdge1)" stroke-width="1.8" stroke-dasharray="8,5"/>
+          <line x1="322" y1="133" x2="458" y2="384" stroke="url(#sfEdge2)" stroke-width="1.8" stroke-dasharray="8,5"/>
+          <line x1="156" y1="442" x2="424" y2="442" stroke="url(#sfEdge3)" stroke-width="1.8" stroke-dasharray="8,5"/>
 
-          <!-- Synergy badge (bottom-left, 시안 = 미국) -->
-          <circle cx="82" cy="352" r="48" fill="#06B6D4" fill-opacity="0.14" stroke="#06B6D4" stroke-width="1.5"/>
-          <text x="82" y="345" fill="#06B6D4" font-size="14" font-weight="800" text-anchor="middle" font-family="Inter">Synergy</text>
-          <text x="82" y="363" fill="#8B949E" font-size="10" text-anchor="middle" font-family="Inter">USA</text>
+          <!-- Center hub (floating) -->
+          <circle cx="290" cy="295" r="76" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+          <circle cx="290" cy="295" r="58" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+          <text x="290" y="287" fill="#F0F6FC" font-size="13" font-weight="700" text-anchor="middle" font-family="Inter">North American</text>
+          <text x="290" y="307" fill="#F0F6FC" font-size="13" font-weight="700" text-anchor="middle" font-family="Inter">Robotics Market</text>
 
-          <!-- FUJI badge (bottom-right, 그린 = 일본) -->
-          <circle cx="418" cy="352" r="48" fill="#10B981" fill-opacity="0.14" stroke="#10B981" stroke-width="1.5"/>
-          <text x="418" y="345" fill="#10B981" font-size="14" font-weight="800" text-anchor="middle" font-family="Inter">FUJI</text>
-          <text x="418" y="363" fill="#8B949E" font-size="10" text-anchor="middle" font-family="Inter">Japan</text>
+          <!-- eFlow badge (top) r=66 -->
+          <circle cx="290" cy="75" r="66" fill="rgba(59,130,246,0.16)" stroke="#3B82F6" stroke-width="2"/>
+          <text x="290" y="60" fill="#3B82F6" font-size="17" font-weight="900" text-anchor="middle" font-family="Inter">eFlow</text>
+          <text x="290" y="80" fill="#60A5FA" font-size="11" font-weight="700" text-anchor="middle" font-family="Inter">Korea</text>
+          <text x="290" y="97" fill="#8B949E" font-size="10" text-anchor="middle" font-family="Inter">AFPM 기술 · IP · 양산</text>
+
+          <!-- Synergy badge (bottom-left) r=66 -->
+          <circle cx="90" cy="442" r="66" fill="rgba(6,182,212,0.16)" stroke="#06B6D4" stroke-width="2"/>
+          <text x="90" y="427" fill="#06B6D4" font-size="17" font-weight="900" text-anchor="middle" font-family="Inter">Synergy</text>
+          <text x="90" y="447" fill="#22D3EE" font-size="11" font-weight="700" text-anchor="middle" font-family="Inter">USA</text>
+          <text x="90" y="464" fill="#8B949E" font-size="10" text-anchor="middle" font-family="Inter">거점 · 에너지 인프라</text>
+
+          <!-- FUJI badge (bottom-right) r=66 -->
+          <circle cx="490" cy="442" r="66" fill="rgba(16,185,129,0.16)" stroke="#10B981" stroke-width="2"/>
+          <text x="490" y="427" fill="#10B981" font-size="17" font-weight="900" text-anchor="middle" font-family="Inter">FUJI</text>
+          <text x="490" y="447" fill="#34D399" font-size="11" font-weight="700" text-anchor="middle" font-family="Inter">Japan</text>
+          <text x="490" y="464" fill="#8B949E" font-size="10" text-anchor="middle" font-family="Inter">AMR · 로보틱스 SI</text>
         </svg>
         <p class="s1-chart-caption">한국 · 미국 · 일본 3자 GTM 파트너십</p>
       </div>
@@ -731,16 +788,44 @@ body {
 
       <div class="s2-cards">
         <div class="card">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" style="margin-bottom:14px;">
+            <rect width="36" height="36" rx="10" fill="rgba(59,130,246,0.12)"/>
+            <circle cx="18" cy="18" r="13" fill="none" stroke="#3B82F6" stroke-width="2"/>
+            <circle cx="18" cy="18" r="7" fill="none" stroke="#60A5FA" stroke-width="1.5"/>
+            <circle cx="18" cy="18" r="2.5" fill="#93C5FD"/>
+            <rect x="16.5" y="3" width="3" height="4" rx="1.5" fill="#3B82F6"/>
+            <rect x="16.5" y="29" width="3" height="4" rx="1.5" fill="#3B82F6"/>
+            <rect x="3" y="16.5" width="4" height="3" rx="1.5" fill="#3B82F6"/>
+            <rect x="29" y="16.5" width="4" height="3" rx="1.5" fill="#3B82F6"/>
+          </svg>
           <p class="card-label" style="color:var(--accent-blue);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:2px;margin-bottom:10px;">eFlow · Korea</p>
           <p class="card-title" style="font-size:20px;font-weight:700;color:var(--text-primary);line-height:1.3;margin-bottom:12px;">AFPM 기술<br>플랫폼</p>
           <p class="card-body" style="font-size:13px;color:var(--text-secondary);line-height:1.7;">유럽 25개 B2B 실공급 · 84건 IP 보유 · 98% 재주문률 — 전 세계 5개사 미만만 양산 가능한 소형 AFPM 모터</p>
         </div>
         <div class="card">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" style="margin-bottom:14px;">
+            <rect width="36" height="36" rx="10" fill="rgba(6,182,212,0.12)"/>
+            <circle cx="18" cy="9" r="6" fill="none" stroke="#06B6D4" stroke-width="1.8"/>
+            <circle cx="10" cy="27" r="5" fill="none" stroke="#22D3EE" stroke-width="1.5"/>
+            <circle cx="26" cy="27" r="5" fill="none" stroke="#22D3EE" stroke-width="1.5"/>
+            <line x1="18" y1="9" x2="10" y2="27" stroke="#06B6D4" stroke-opacity="0.7" stroke-width="1.2" stroke-dasharray="2.5,2"/>
+            <line x1="18" y1="9" x2="26" y2="27" stroke="#06B6D4" stroke-opacity="0.7" stroke-width="1.2" stroke-dasharray="2.5,2"/>
+            <line x1="10" y1="27" x2="26" y2="27" stroke="#06B6D4" stroke-opacity="0.7" stroke-width="1.2" stroke-dasharray="2.5,2"/>
+          </svg>
           <p class="card-label" style="color:var(--accent-cyan);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:2px;margin-bottom:10px;">Synergy · USA</p>
           <p class="card-title" style="font-size:20px;font-weight:700;color:var(--text-primary);line-height:1.3;margin-bottom:12px;">북미 모빌리티<br>에너지 인프라</p>
           <p class="card-body" style="font-size:13px;color:var(--text-secondary);line-height:1.7;">미국 현지 거점 · 유통 네트워크 · 에너지 인프라 운영 — eFlow가 단독으로 가질 수 없는 미국 시장 접근성</p>
         </div>
         <div class="card">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" style="margin-bottom:14px;">
+            <rect width="36" height="36" rx="10" fill="rgba(16,185,129,0.12)"/>
+            <rect x="10" y="5" width="16" height="12" rx="3" fill="none" stroke="#10B981" stroke-width="1.8"/>
+            <circle cx="15" cy="10" r="1.5" fill="#6EE7B7"/>
+            <circle cx="21" cy="10" r="1.5" fill="#6EE7B7"/>
+            <rect x="8" y="18" width="20" height="12" rx="3" fill="none" stroke="#34D399" stroke-width="1.8"/>
+            <circle cx="12" cy="33" r="3" fill="none" stroke="#34D399" stroke-width="1.5"/>
+            <circle cx="24" cy="33" r="3" fill="none" stroke="#34D399" stroke-width="1.5"/>
+          </svg>
           <p class="card-label" style="color:var(--accent-green);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:2px;margin-bottom:10px;">FUJI · Japan</p>
           <p class="card-title" style="font-size:20px;font-weight:700;color:var(--text-primary);line-height:1.3;margin-bottom:12px;">물류 자동화<br>AMR · 산업 SI</p>
           <p class="card-body" style="font-size:13px;color:var(--text-secondary);line-height:1.7;">AMR 시스템 통합 · 미국 물류 배포 경험 · 산업 자동화 — eFlow 모터 탑재 로봇 플랫폼 구현의 최적 파트너</p>
@@ -845,28 +930,51 @@ body {
 
         <div class="s4-cards">
           <div class="s4-card">
+            <svg width="34" height="34" viewBox="0 0 36 36" fill="none" style="margin-bottom:10px;">
+              <rect width="36" height="36" rx="10" fill="rgba(59,130,246,0.12)"/>
+              <rect x="10" y="10" width="16" height="16" rx="3" fill="none" stroke="#3B82F6" stroke-width="1.8"/>
+              <circle cx="18" cy="18" r="4" fill="rgba(59,130,246,0.4)"/>
+              <circle cx="18" cy="18" r="2" fill="#60A5FA"/>
+              <line x1="10" y1="14" x2="5" y2="14" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="10" y1="22" x2="5" y2="22" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="26" y1="14" x2="31" y2="14" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="26" y1="22" x2="31" y2="22" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
             <p class="s4-card-label">STEP 1</p>
-            <p class="s4-card-value" style="font-size:24px;color:var(--accent-blue);line-height:1.3;margin-top:4px;">기술 공급</p>
+            <p class="s4-card-value" style="font-size:28px;color:var(--accent-blue);line-height:1.3;margin-top:4px;">기술 공급</p>
             <p class="s4-card-sub" style="line-height:1.8;margin-top:8px;">eFlow AFPM 모터 공급<br>미국 시장 인증 공동 추진<br>Synergy 인프라 적용</p>
           </div>
           <div class="s4-card" style="border-color:rgba(6,182,212,0.5);background:rgba(6,182,212,0.05);">
+            <svg width="34" height="34" viewBox="0 0 36 36" fill="none" style="margin-bottom:10px;">
+              <rect width="36" height="36" rx="10" fill="rgba(6,182,212,0.12)"/>
+              <circle cx="13" cy="18" r="7" fill="none" stroke="#06B6D4" stroke-width="1.8"/>
+              <circle cx="23" cy="18" r="7" fill="none" stroke="#22D3EE" stroke-width="1.8"/>
+              <path d="M18,11.5 Q20,18 18,24.5 Q16,18 18,11.5Z" fill="rgba(6,182,212,0.25)"/>
+            </svg>
             <p class="s4-card-label" style="color:var(--accent-cyan);">STEP 2 — 핵심</p>
-            <p class="s4-card-value" style="font-size:24px;color:var(--accent-cyan);line-height:1.3;margin-top:4px;">공동 GTM</p>
+            <p class="s4-card-value" style="font-size:28px;color:var(--accent-cyan);line-height:1.3;margin-top:4px;">공동 GTM</p>
             <p class="s4-card-sub" style="line-height:1.8;margin-top:8px;">Joint Go-to-Market<br>공동 브랜딩 · 공동 세일즈<br>북미 파트너사 공동 접근</p>
           </div>
           <div class="s4-card">
+            <svg width="34" height="34" viewBox="0 0 36 36" fill="none" style="margin-bottom:10px;">
+              <rect width="36" height="36" rx="10" fill="rgba(16,185,129,0.12)"/>
+              <circle cx="18" cy="18" r="12" fill="none" stroke="#10B981" stroke-width="1.8"/>
+              <line x1="18" y1="6" x2="18" y2="30" stroke="#10B981" stroke-width="1" stroke-opacity="0.6"/>
+              <path d="M6,18 Q18,12 30,18" stroke="#10B981" stroke-width="1" stroke-opacity="0.7" fill="none"/>
+              <path d="M6,18 Q18,24 30,18" stroke="#10B981" stroke-width="1" stroke-opacity="0.7" fill="none"/>
+            </svg>
             <p class="s4-card-label">STEP 3</p>
-            <p class="s4-card-value" style="font-size:24px;color:var(--accent-green);line-height:1.3;margin-top:4px;">시장 확장</p>
+            <p class="s4-card-value" style="font-size:28px;color:var(--accent-green);line-height:1.3;margin-top:4px;">시장 확장</p>
             <p class="s4-card-sub" style="line-height:1.8;margin-top:8px;">북미 OEM · 물류 고객사<br>FUJI 로보틱스 통합<br>한-미-일 글로벌 SOP</p>
           </div>
         </div>
 
-        <!-- 2028 미국 현지공장 -->
+        <!-- 2028 미국 현지공장 — taller, bigger text -->
         <div class="flow-chart" style="justify-content:center;">
-          <div class="fc-node" style="flex:none;max-width:580px;text-align:center;padding:14px 32px;">
-            <span class="fn-year" style="color:var(--gold);font-size:12px;">2028 목표</span>
-            <p class="fn-title" style="font-size:14px;margin-top:4px;">미국 현지공장 설립 검토</p>
-            <p class="fn-sub" style="font-size:12px;margin-top:6px;">한-미-일 3자 파트너십 기반 미국 생산거점 구축</p>
+          <div class="fc-node" style="flex:none;max-width:640px;text-align:center;">
+            <span class="fn-year" style="color:var(--gold);font-size:15px;font-weight:800;">2028 목표</span>
+            <p class="fn-title" style="font-size:22px;font-weight:800;color:var(--text-primary);margin-top:8px;line-height:1.3;">미국 현지공장 설립 검토</p>
+            <p class="fn-sub" style="font-size:14px;margin-top:10px;line-height:1.6;">한-미-일 3자 파트너십 기반 미국 생산거점 구축</p>
           </div>
         </div>
       </div>
@@ -890,38 +998,64 @@ body {
         <p class="sec-label">한미일 삼각 파트너십 프레임</p>
       </div>
 
-      <!-- 삼각형 SVG -->
+      <!-- 삼각형 SVG — fixed clipping, slide-1 matching style -->
       <div style="display:flex;justify-content:center;flex:1;align-items:center;">
-        <svg width="900" height="300" viewBox="0 0 900 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Glow backgrounds -->
-          <circle cx="450" cy="38" r="68" fill="rgba(59,130,246,0.07)"/>
-          <circle cx="82" cy="270" r="60" fill="rgba(6,182,212,0.07)"/>
-          <circle cx="818" cy="270" r="60" fill="rgba(16,185,129,0.07)"/>
+        <svg width="900" height="390" viewBox="0 0 900 390" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;">
+          <defs>
+            <linearGradient id="s5Edge1" gradientUnits="userSpaceOnUse" x1="450" y1="58" x2="90" y2="328">
+              <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.75"/>
+              <stop offset="100%" stop-color="#06B6D4" stop-opacity="0.75"/>
+            </linearGradient>
+            <linearGradient id="s5Edge2" gradientUnits="userSpaceOnUse" x1="450" y1="58" x2="810" y2="328">
+              <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.75"/>
+              <stop offset="100%" stop-color="#10B981" stop-opacity="0.75"/>
+            </linearGradient>
+            <linearGradient id="s5Edge3" gradientUnits="userSpaceOnUse" x1="90" y1="328" x2="810" y2="328">
+              <stop offset="0%" stop-color="#06B6D4" stop-opacity="0.75"/>
+              <stop offset="100%" stop-color="#10B981" stop-opacity="0.75"/>
+            </linearGradient>
+            <radialGradient id="s5TriFill" cx="50%" cy="58%" r="50%">
+              <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.06"/>
+              <stop offset="100%" stop-color="#000" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
 
-          <!-- Connection lines -->
-          <line x1="450" y1="38" x2="82" y2="270" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" stroke-dasharray="8,5"/>
-          <line x1="450" y1="38" x2="818" y2="270" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" stroke-dasharray="8,5"/>
-          <line x1="82" y1="270" x2="818" y2="270" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" stroke-dasharray="8,5"/>
+          <!-- Triangle fill -->
+          <polygon points="450,58 90,328 810,328" fill="url(#s5TriFill)"/>
+
+          <!-- Glow halos -->
+          <circle cx="450" cy="58" r="82" fill="rgba(59,130,246,0.07)"/>
+          <circle cx="90" cy="328" r="72" fill="rgba(6,182,212,0.07)"/>
+          <circle cx="810" cy="328" r="72" fill="rgba(16,185,129,0.07)"/>
+
+          <!-- Edges — start/end at circle edges (r=58), not centers -->
+          <line x1="404" y1="93" x2="136" y2="293" stroke="url(#s5Edge1)" stroke-width="1.8" stroke-dasharray="8,5"/>
+          <line x1="496" y1="93" x2="764" y2="293" stroke="url(#s5Edge2)" stroke-width="1.8" stroke-dasharray="8,5"/>
+          <line x1="148" y1="328" x2="752" y2="328" stroke="url(#s5Edge3)" stroke-width="1.8" stroke-dasharray="8,5"/>
 
           <!-- Center hub -->
-          <circle cx="450" cy="185" r="58" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.09)" stroke-width="1"/>
-          <text x="450" y="178" fill="#F0F6FC" font-size="11" font-weight="700" text-anchor="middle" font-family="Inter">North American</text>
-          <text x="450" y="195" fill="#8B949E" font-size="10" text-anchor="middle" font-family="Inter">Robotics Market</text>
+          <circle cx="450" cy="220" r="68" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.11)" stroke-width="1.5"/>
+          <circle cx="450" cy="220" r="52" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+          <text x="450" y="212" fill="#F0F6FC" font-size="11" font-weight="700" text-anchor="middle" font-family="Inter">North American</text>
+          <text x="450" y="230" fill="#8B949E" font-size="10" text-anchor="middle" font-family="Inter">Robotics Market</text>
 
-          <!-- eFlow (top center, 파랑) -->
-          <circle cx="450" cy="38" r="50" fill="#3B82F6" fill-opacity="0.13" stroke="#3B82F6" stroke-width="1.5"/>
-          <text x="450" y="31" fill="#3B82F6" font-size="13" font-weight="800" text-anchor="middle" font-family="Inter">eFlow</text>
-          <text x="450" y="48" fill="#8B949E" font-size="9.5" text-anchor="middle" font-family="Inter">AFPM 기술 · IP · 양산</text>
+          <!-- eFlow (top) r=58 -->
+          <circle cx="450" cy="58" r="58" fill="rgba(59,130,246,0.16)" stroke="#3B82F6" stroke-width="2"/>
+          <text x="450" y="44" fill="#3B82F6" font-size="15" font-weight="900" text-anchor="middle" font-family="Inter">eFlow</text>
+          <text x="450" y="62" fill="#60A5FA" font-size="10" font-weight="700" text-anchor="middle" font-family="Inter">Korea</text>
+          <text x="450" y="78" fill="#8B949E" font-size="9" text-anchor="middle" font-family="Inter">AFPM 기술 · IP · 양산</text>
 
-          <!-- Synergy (bottom-left, 시안) -->
-          <circle cx="82" cy="270" r="50" fill="#06B6D4" fill-opacity="0.13" stroke="#06B6D4" stroke-width="1.5"/>
-          <text x="82" y="263" fill="#06B6D4" font-size="13" font-weight="800" text-anchor="middle" font-family="Inter">Synergy</text>
-          <text x="82" y="280" fill="#8B949E" font-size="9.5" text-anchor="middle" font-family="Inter">미국 거점 · 에너지 인프라</text>
+          <!-- Synergy (bottom-left) r=58 -->
+          <circle cx="90" cy="328" r="58" fill="rgba(6,182,212,0.16)" stroke="#06B6D4" stroke-width="2"/>
+          <text x="90" y="314" fill="#06B6D4" font-size="15" font-weight="900" text-anchor="middle" font-family="Inter">Synergy</text>
+          <text x="90" y="332" fill="#22D3EE" font-size="10" font-weight="700" text-anchor="middle" font-family="Inter">USA</text>
+          <text x="90" y="348" fill="#8B949E" font-size="9" text-anchor="middle" font-family="Inter">거점 · 에너지 인프라</text>
 
-          <!-- FUJI (bottom-right, 그린) -->
-          <circle cx="818" cy="270" r="50" fill="#10B981" fill-opacity="0.13" stroke="#10B981" stroke-width="1.5"/>
-          <text x="818" y="263" fill="#10B981" font-size="13" font-weight="800" text-anchor="middle" font-family="Inter">FUJI</text>
-          <text x="818" y="280" fill="#8B949E" font-size="9.5" text-anchor="middle" font-family="Inter">로보틱스 SI · AMR</text>
+          <!-- FUJI (bottom-right) r=58 -->
+          <circle cx="810" cy="328" r="58" fill="rgba(16,185,129,0.16)" stroke="#10B981" stroke-width="2"/>
+          <text x="810" y="314" fill="#10B981" font-size="15" font-weight="900" text-anchor="middle" font-family="Inter">FUJI</text>
+          <text x="810" y="332" fill="#34D399" font-size="10" font-weight="700" text-anchor="middle" font-family="Inter">Japan</text>
+          <text x="810" y="348" fill="#8B949E" font-size="9" text-anchor="middle" font-family="Inter">AMR · 로보틱스 SI</text>
         </svg>
       </div>
 

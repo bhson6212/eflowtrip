@@ -681,61 +681,100 @@ body {
       </div>
 
       <div class="s1-right">
-        <!-- Tesla Semi 추상화 SVG: 가로 트럭 실루엣, 모터 3개 위치 표시 -->
-        <svg width="640" height="360" viewBox="0 0 640 360" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Background glow at motor positions -->
-          <circle cx="360" cy="300" r="60" fill="rgba(59,130,246,0.06)"/>
-          <circle cx="450" cy="300" r="55" fill="rgba(59,130,246,0.05)"/>
-          <circle cx="540" cy="300" r="55" fill="rgba(59,130,246,0.05)"/>
+        <!-- Tesla Semi SVG — enlarged truck, AFPM motor cross-sections highlighted -->
+        <svg width="760" height="430" viewBox="0 0 760 430" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Motor glow backgrounds -->
+          <circle cx="385" cy="332" r="78" fill="rgba(59,130,246,0.08)"/>
+          <circle cx="490" cy="332" r="70" fill="rgba(59,130,246,0.06)"/>
+          <circle cx="595" cy="332" r="70" fill="rgba(59,130,246,0.05)"/>
 
+          <!-- Ground shadow -->
+          <ellipse cx="400" cy="376" rx="330" ry="8" fill="rgba(0,0,0,0.3)"/>
           <!-- Ground line -->
-          <line x1="40" y1="308" x2="615" y2="308" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+          <line x1="30" y1="372" x2="730" y2="372" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
 
           <!-- Trailer body -->
-          <rect x="210" y="155" width="400" height="145" rx="6" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.14)" stroke-width="1.5"/>
-          <!-- Trailer detail lines -->
-          <line x1="280" y1="155" x2="280" y2="300" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-          <line x1="370" y1="155" x2="370" y2="300" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-          <line x1="460" y1="155" x2="460" y2="300" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-          <line x1="550" y1="155" x2="550" y2="300" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+          <rect x="196" y="108" width="528" height="210" rx="6"
+                fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.14)" stroke-width="1.5"/>
+          <!-- Trailer vertical ribs -->
+          <line x1="290" y1="108" x2="290" y2="318" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+          <line x1="390" y1="108" x2="390" y2="318" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+          <line x1="490" y1="108" x2="490" y2="318" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+          <line x1="590" y1="108" x2="590" y2="318" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+          <line x1="670" y1="108" x2="670" y2="318" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+          <!-- Trailer top highlight strip -->
+          <rect x="196" y="108" width="528" height="6" rx="3"
+                fill="rgba(255,255,255,0.07)"/>
 
-          <!-- Cab body (Tesla Semi: cab-over, rounded front) -->
-          <path d="M58,175 Q60,145 95,138 L210,138 L210,300 L58,300 Z"
-                fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
-          <!-- Cab roof curve -->
-          <path d="M58,175 Q62,148 95,142 L210,142"
-                stroke="rgba(255,255,255,0.2)" stroke-width="1" fill="none"/>
+          <!-- Cab body (Tesla Semi cab-over, swept-back A-pillar) -->
+          <path d="M46,188 Q48,148 88,136 L196,136 L196,318 L46,318 Z"
+                fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.20)" stroke-width="1.5"/>
+          <!-- Cab roof curve highlight -->
+          <path d="M46,188 Q52,150 88,140 L196,140"
+                stroke="rgba(255,255,255,0.25)" stroke-width="1.2" fill="none"/>
 
           <!-- Windshield (blue tint) -->
-          <path d="M66,182 L66,258 L204,258 L204,148 L100,145 Z"
-                fill="rgba(59,130,246,0.07)" stroke="rgba(59,130,246,0.18)" stroke-width="1"/>
+          <path d="M58,198 L58,278 L188,278 L188,148 L94,145 Z"
+                fill="rgba(59,130,246,0.09)" stroke="rgba(59,130,246,0.22)" stroke-width="1.2"/>
+          <!-- Windshield glare -->
+          <path d="M68,200 L68,240 L120,200 Z"
+                fill="rgba(255,255,255,0.03)"/>
 
           <!-- Headlights -->
-          <rect x="59" y="205" width="7" height="22" rx="2" fill="#3B82F6" fill-opacity="0.7"/>
-          <rect x="59" y="245" width="7" height="14" rx="2" fill="#3B82F6" fill-opacity="0.4"/>
+          <rect x="47" y="228" width="10" height="30" rx="2" fill="#3B82F6" fill-opacity="0.85"/>
+          <rect x="47" y="272" width="10" height="20" rx="2" fill="#3B82F6" fill-opacity="0.4"/>
 
-          <!-- Front wheel (no motor) -->
-          <circle cx="128" cy="308" r="26" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
-          <circle cx="128" cy="308" r="12" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+          <!-- Front wheel — passive (no motor) -->
+          <circle cx="122" cy="332" r="42" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.16)" stroke-width="1.5"/>
+          <!-- Tire tread dashes -->
+          <circle cx="122" cy="332" r="35" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="4" stroke-dasharray="10 8"/>
+          <!-- Hubcap -->
+          <circle cx="122" cy="332" r="14" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
 
-          <!-- ── MOTOR POSITIONS (accent-blue circles) ── -->
-          <!-- Motor 1 -->
-          <circle cx="360" cy="308" r="30" fill="rgba(59,130,246,0.15)" stroke="#3B82F6" stroke-width="2"/>
-          <circle cx="360" cy="308" r="15" fill="rgba(59,130,246,0.28)" stroke="#3B82F6" stroke-width="1.5"/>
-          <text x="360" y="312" fill="#3B82F6" font-size="8.5" font-weight="800" text-anchor="middle" font-family="Inter">M1</text>
+          <!-- ══ MOTOR 1 — eFlow AFPM cross-section (cx=385) ══ -->
+          <!-- Tire outer rim -->
+          <circle cx="385" cy="332" r="42" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.16)" stroke-width="1.5"/>
+          <!-- Tire tread -->
+          <circle cx="385" cy="332" r="35" fill="none" stroke="rgba(59,130,246,0.12)" stroke-width="4" stroke-dasharray="10 8"/>
+          <!-- Stator housing ring -->
+          <circle cx="385" cy="332" r="29" fill="rgba(59,130,246,0.10)" stroke="#3B82F6" stroke-width="2.5"/>
+          <!-- Winding ring (dashed = coil cross-section) -->
+          <circle cx="385" cy="332" r="19" fill="rgba(59,130,246,0.18)" stroke="#3B82F6" stroke-width="1.8" stroke-dasharray="5 3"/>
+          <!-- Rotor hub -->
+          <circle cx="385" cy="332" r="8" fill="rgba(59,130,246,0.65)" stroke="#3B82F6" stroke-width="1.5"/>
+          <!-- Spokes: hub-edge to stator-inner (visible in gap) -->
+          <line x1="385" y1="299" x2="385" y2="324" stroke="#3B82F6" stroke-width="2" opacity="0.75"/>
+          <line x1="385" y1="340" x2="385" y2="365" stroke="#3B82F6" stroke-width="2" opacity="0.75"/>
+          <line x1="352" y1="332" x2="377" y2="332" stroke="#3B82F6" stroke-width="2" opacity="0.75"/>
+          <line x1="393" y1="332" x2="418" y2="332" stroke="#3B82F6" stroke-width="2" opacity="0.75"/>
+          <text x="385" y="336" fill="white" font-size="7.5" font-weight="900" text-anchor="middle" font-family="Inter" letter-spacing="0.5">M1</text>
 
-          <!-- Motor 2 -->
-          <circle cx="450" cy="308" r="30" fill="rgba(59,130,246,0.15)" stroke="#3B82F6" stroke-width="2"/>
-          <circle cx="450" cy="308" r="15" fill="rgba(59,130,246,0.28)" stroke="#3B82F6" stroke-width="1.5"/>
-          <text x="450" y="312" fill="#3B82F6" font-size="8.5" font-weight="800" text-anchor="middle" font-family="Inter">M2</text>
+          <!-- ══ MOTOR 2 — eFlow AFPM cross-section (cx=490) ══ -->
+          <circle cx="490" cy="332" r="42" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.16)" stroke-width="1.5"/>
+          <circle cx="490" cy="332" r="35" fill="none" stroke="rgba(59,130,246,0.12)" stroke-width="4" stroke-dasharray="10 8"/>
+          <circle cx="490" cy="332" r="29" fill="rgba(59,130,246,0.10)" stroke="#3B82F6" stroke-width="2.5"/>
+          <circle cx="490" cy="332" r="19" fill="rgba(59,130,246,0.18)" stroke="#3B82F6" stroke-width="1.8" stroke-dasharray="5 3"/>
+          <circle cx="490" cy="332" r="8" fill="rgba(59,130,246,0.65)" stroke="#3B82F6" stroke-width="1.5"/>
+          <line x1="490" y1="299" x2="490" y2="324" stroke="#3B82F6" stroke-width="2" opacity="0.75"/>
+          <line x1="490" y1="340" x2="490" y2="365" stroke="#3B82F6" stroke-width="2" opacity="0.75"/>
+          <line x1="457" y1="332" x2="482" y2="332" stroke="#3B82F6" stroke-width="2" opacity="0.75"/>
+          <line x1="498" y1="332" x2="523" y2="332" stroke="#3B82F6" stroke-width="2" opacity="0.75"/>
+          <text x="490" y="336" fill="white" font-size="7.5" font-weight="900" text-anchor="middle" font-family="Inter" letter-spacing="0.5">M2</text>
 
-          <!-- Motor 3 -->
-          <circle cx="540" cy="308" r="30" fill="rgba(59,130,246,0.15)" stroke="#3B82F6" stroke-width="2"/>
-          <circle cx="540" cy="308" r="15" fill="rgba(59,130,246,0.28)" stroke="#3B82F6" stroke-width="1.5"/>
-          <text x="540" y="312" fill="#3B82F6" font-size="8.5" font-weight="800" text-anchor="middle" font-family="Inter">M3</text>
+          <!-- ══ MOTOR 3 — eFlow AFPM cross-section (cx=595) ══ -->
+          <circle cx="595" cy="332" r="42" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.16)" stroke-width="1.5"/>
+          <circle cx="595" cy="332" r="35" fill="none" stroke="rgba(59,130,246,0.12)" stroke-width="4" stroke-dasharray="10 8"/>
+          <circle cx="595" cy="332" r="29" fill="rgba(59,130,246,0.10)" stroke="#3B82F6" stroke-width="2.5"/>
+          <circle cx="595" cy="332" r="19" fill="rgba(59,130,246,0.18)" stroke="#3B82F6" stroke-width="1.8" stroke-dasharray="5 3"/>
+          <circle cx="595" cy="332" r="8" fill="rgba(59,130,246,0.65)" stroke="#3B82F6" stroke-width="1.5"/>
+          <line x1="595" y1="299" x2="595" y2="324" stroke="#3B82F6" stroke-width="2" opacity="0.75"/>
+          <line x1="595" y1="340" x2="595" y2="365" stroke="#3B82F6" stroke-width="2" opacity="0.75"/>
+          <line x1="562" y1="332" x2="587" y2="332" stroke="#3B82F6" stroke-width="2" opacity="0.75"/>
+          <line x1="603" y1="332" x2="628" y2="332" stroke="#3B82F6" stroke-width="2" opacity="0.75"/>
+          <text x="595" y="336" fill="white" font-size="7.5" font-weight="900" text-anchor="middle" font-family="Inter" letter-spacing="0.5">M3</text>
 
-          <!-- eFlow AFPM label -->
-          <text x="450" y="354" fill="#8B949E" font-size="12" text-anchor="middle" font-family="Inter">eFlow AFPM × 3 — 25 kg each</text>
+          <!-- eFlow AFPM label — clear gap below wheels -->
+          <text x="490" y="418" fill="#8B949E" font-size="13" text-anchor="middle" font-family="Inter" letter-spacing="0.3">eFlow AFPM × 3 — 25 kg each</text>
         </svg>
       </div>
     </div>
@@ -755,25 +794,25 @@ body {
 
     <div class="slide-body">
       <div style="margin-bottom:20px;">
-        <p class="sec-label">Capex의 언어로</p>
-        <h2 style="font-size:34px;font-weight:800;color:var(--text-primary);letter-spacing:-0.5px;">Richard의 유일한 관심사</h2>
+        <p class="sec-label">Why Richard Is Here</p>
+        <h2 style="font-size:34px;font-weight:800;color:var(--text-primary);letter-spacing:-0.5px;">단 하나의 질문: 얼마나 싸게 만들 수 있나?</h2>
       </div>
 
       <div style="display:flex;gap:24px;height:calc(100% - 86px);">
-        <!-- 좌측: Tesla Capex 관심사 카드 3개 -->
+        <!-- 좌측: 원가 드라이버 카드 3개 -->
         <div style="width:46%;display:flex;flex-direction:column;gap:14px;">
           <div class="card" style="flex:1;padding:20px 24px;">
-            <p style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent-blue);margin-bottom:8px;">Tesla Capex 관심사 01</p>
+            <p style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent-blue);margin-bottom:8px;">COST DRIVER 01</p>
             <p style="font-size:17px;font-weight:700;color:var(--text-primary);line-height:1.3;margin-bottom:8px;">대량생산 시 부품 단가 하락</p>
             <p style="font-size:12.5px;color:var(--text-secondary);line-height:1.65;">Giga Factory 스케일에서 공급사에 단가 압박 — 스케일 효과가 입증된 파트너만 잔류</p>
           </div>
           <div class="card" style="flex:1;padding:20px 24px;">
-            <p style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent-cyan);margin-bottom:8px;">Tesla Capex 관심사 02</p>
+            <p style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent-cyan);margin-bottom:8px;">COST DRIVER 02</p>
             <p style="font-size:17px;font-weight:700;color:var(--text-primary);line-height:1.3;margin-bottom:8px;">제조설비 투자비 절감</p>
             <p style="font-size:12.5px;color:var(--text-secondary);line-height:1.65;">공급사의 CapEx 공유 또는 전용 라인 구축 비용 최소화 — 자동화 친화적 설계 필수</p>
           </div>
           <div class="card" style="flex:1;padding:20px 24px;">
-            <p style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent-green);margin-bottom:8px;">Tesla Capex 관심사 03</p>
+            <p style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent-green);margin-bottom:8px;">COST DRIVER 03</p>
             <p style="font-size:17px;font-weight:700;color:var(--text-primary);line-height:1.3;margin-bottom:8px;">공급망 안정성</p>
             <p style="font-size:12.5px;color:var(--text-secondary);line-height:1.65;">단일 공급사 리스크 회피 · 납기 안정성 · 품질 재현성 — 98% 재주문률이 신뢰도의 증거</p>
           </div>
@@ -811,7 +850,7 @@ body {
     </div>
 
     <div class="slide-body">
-      <div class="s2-title-block">
+      <div class="s2-title-block" style="margin-bottom:28px;">
         <p class="sec-label">3가지 원가절감 포인트</p>
         <h2 style="font-size:34px;font-weight:800;color:var(--text-primary);letter-spacing:-0.5px;">Giga Factory 스케일의 절감</h2>
       </div>
@@ -819,28 +858,40 @@ body {
       <div class="s2-cards">
         <!-- 카드 1: CapEx 혁신 -->
         <div class="card" style="padding:24px 26px;">
+          <!-- Icon: automated winding (motor cross-section) -->
+          <div style="margin-bottom:14px;">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="20" fill="rgba(59,130,246,0.15)"/><circle cx="20" cy="20" r="13" fill="none" stroke="#3B82F6" stroke-width="2"/><circle cx="20" cy="20" r="8" fill="none" stroke="#3B82F6" stroke-width="1.5" stroke-dasharray="4 3"/><circle cx="20" cy="20" r="3.5" fill="#3B82F6"/><line x1="20" y1="7" x2="20" y2="12" stroke="#3B82F6" stroke-width="1.8"/><line x1="20" y1="28" x2="20" y2="33" stroke="#3B82F6" stroke-width="1.8"/><line x1="7" y1="20" x2="12" y2="20" stroke="#3B82F6" stroke-width="1.8"/><line x1="28" y1="20" x2="33" y2="20" stroke="#3B82F6" stroke-width="1.8"/></svg>
+          </div>
           <div style="display:inline-flex;align-items:center;background:rgba(59,130,246,0.12);border:1px solid rgba(59,130,246,0.35);border-radius:20px;padding:4px 12px;margin-bottom:14px;">
             <span style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent-blue);">CapEx 혁신</span>
           </div>
-          <p class="card-title" style="font-size:18px;font-weight:700;color:var(--text-primary);line-height:1.3;margin-bottom:12px;">2D 평면권선<br>자동화 설계</p>
+          <p class="card-title" style="font-size:22px;font-weight:700;color:var(--text-primary);line-height:1.3;margin-bottom:12px;">2D 평면권선<br>자동화 설계</p>
           <p class="card-body" style="font-size:12.5px;color:var(--text-secondary);line-height:1.7;">기존 3D 권선 복잡공정 → eFlow 2D 평면권선 자동화 설계<br>Giga Factory 조립라인 공간 축소 · 로봇 자동화 극대화</p>
         </div>
 
         <!-- 카드 2: BOM 혁신 -->
         <div class="card" style="padding:24px 26px;">
+          <!-- Icon: double rotor / stacked layers -->
+          <div style="margin-bottom:14px;">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="20" fill="rgba(6,182,212,0.15)"/><rect x="9" y="14" width="22" height="5" rx="2.5" fill="none" stroke="#06B6D4" stroke-width="2"/><rect x="9" y="21" width="22" height="5" rx="2.5" fill="none" stroke="#06B6D4" stroke-width="2"/><rect x="13" y="10" width="14" height="3" rx="1.5" fill="rgba(6,182,212,0.4)" stroke="#06B6D4" stroke-width="1.2"/><rect x="13" y="27" width="14" height="3" rx="1.5" fill="rgba(6,182,212,0.4)" stroke="#06B6D4" stroke-width="1.2"/></svg>
+          </div>
           <div style="display:inline-flex;align-items:center;background:rgba(6,182,212,0.12);border:1px solid rgba(6,182,212,0.35);border-radius:20px;padding:4px 12px;margin-bottom:14px;">
             <span style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent-cyan);">BOM 혁신</span>
           </div>
-          <p class="card-title" style="font-size:18px;font-weight:700;color:var(--text-primary);line-height:1.3;margin-bottom:12px;">더블로터<br>싱글스테이터</p>
+          <p class="card-title" style="font-size:22px;font-weight:700;color:var(--text-primary);line-height:1.3;margin-bottom:12px;">더블로터<br>싱글스테이터</p>
           <p class="card-body" style="font-size:12.5px;color:var(--text-secondary);line-height:1.7;">더블 로터 + 싱글 스테이터 구조로 부품수 최소화<br>조립 단계 감소 · 보증수리 리스크 하락</p>
         </div>
 
         <!-- 카드 3: 페이로드 경제학 -->
         <div class="card" style="padding:24px 26px;">
+          <!-- Icon: weight / payload -->
+          <div style="margin-bottom:14px;">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="20" fill="rgba(16,185,129,0.15)"/><rect x="12" y="22" width="16" height="9" rx="2" fill="none" stroke="#10B981" stroke-width="2"/><path d="M15 22 C15 17 25 17 25 22" stroke="#10B981" stroke-width="2" fill="none"/><circle cx="20" cy="17" r="2.5" fill="#10B981"/><line x1="10" y1="31" x2="30" y2="31" stroke="#10B981" stroke-width="2" stroke-linecap="round"/><text x="20" y="29" fill="#10B981" font-size="7" font-weight="800" text-anchor="middle" font-family="Inter">↓13kg</text></svg>
+          </div>
           <div style="display:inline-flex;align-items:center;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.35);border-radius:20px;padding:4px 12px;margin-bottom:14px;">
             <span style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent-green);">페이로드 경제학</span>
           </div>
-          <p class="card-title" style="font-size:18px;font-weight:700;color:var(--text-primary);line-height:1.3;margin-bottom:12px;">25 kg<br>vs 업계 38 kg</p>
+          <p class="card-title" style="font-size:22px;font-weight:700;color:var(--text-primary);line-height:1.3;margin-bottom:12px;">25 kg<br>vs 업계 38 kg</p>
           <p class="card-body" style="font-size:12.5px;color:var(--text-secondary);line-height:1.7;">Semi 3기 장착 시 즉각 39 kg 절감<br>배터리셀 감축(원가↓) 또는 적재량 증가(수익↑) 선택 가능</p>
         </div>
       </div>
@@ -951,35 +1002,41 @@ body {
           <h2 style="font-size:34px;font-weight:800;color:var(--text-primary);letter-spacing:-0.5px;">파트너십 모델 제안</h2>
         </div>
 
-        <div class="s4-cards">
+        <div class="s4-cards" style="flex:0.75;">
           <!-- 단계 1 -->
-          <div class="s4-card">
+          <div class="s4-card" style="padding:18px 24px;">
+            <!-- Icon: Capex investment -->
+            <div style="margin-bottom:10px;"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="17" fill="rgba(59,130,246,0.15)"/><rect x="10" y="19" width="14" height="8" rx="1.5" fill="none" stroke="#3B82F6" stroke-width="1.8"/><path d="M14 19 L14 16 Q14 13 17 13 Q20 13 20 16 L20 19" stroke="#3B82F6" stroke-width="1.8" fill="none"/><line x1="17" y1="22" x2="17" y2="24" stroke="#3B82F6" stroke-width="1.5"/></svg></div>
             <p class="s4-card-label">STEP 1</p>
-            <p class="s4-card-value" style="font-size:22px;color:var(--accent-blue);line-height:1.3;margin-top:4px;">Tesla<br>Capex 투자</p>
+            <p class="s4-card-value" style="font-size:26px;color:var(--accent-blue);line-height:1.3;margin-top:4px;">Tesla<br>Capex 투자</p>
             <p class="s4-card-sub" style="line-height:1.8;margin-top:8px;">생산 스케일링 지원<br>설비 자본 투자<br>전용 생산라인 협의</p>
           </div>
 
           <!-- 단계 2 (강조) -->
-          <div class="s4-card" style="border-color:rgba(6,182,212,0.5);background:rgba(6,182,212,0.05);">
+          <div class="s4-card" style="border-color:rgba(6,182,212,0.5);background:rgba(6,182,212,0.05);padding:18px 24px;">
+            <!-- Icon: motor supply -->
+            <div style="margin-bottom:10px;"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="17" fill="rgba(6,182,212,0.15)"/><circle cx="17" cy="17" r="9" fill="none" stroke="#06B6D4" stroke-width="2"/><circle cx="17" cy="17" r="5" fill="none" stroke="#06B6D4" stroke-width="1.5" stroke-dasharray="4 3"/><circle cx="17" cy="17" r="2" fill="#06B6D4"/><line x1="17" y1="8" x2="17" y2="12" stroke="#06B6D4" stroke-width="1.8"/><line x1="17" y1="22" x2="17" y2="26" stroke="#06B6D4" stroke-width="1.8"/><line x1="8" y1="17" x2="12" y2="17" stroke="#06B6D4" stroke-width="1.8"/><line x1="22" y1="17" x2="26" y2="17" stroke="#06B6D4" stroke-width="1.8"/></svg></div>
             <p class="s4-card-label" style="color:var(--accent-cyan);">STEP 2 — 핵심</p>
-            <p class="s4-card-value" style="font-size:22px;color:var(--accent-cyan);line-height:1.3;margin-top:4px;">eFlow<br>공급</p>
+            <p class="s4-card-value" style="font-size:26px;color:var(--accent-cyan);line-height:1.3;margin-top:4px;">eFlow<br>공급</p>
             <p class="s4-card-sub" style="line-height:1.8;margin-top:8px;">우선 가격 보장<br>용량 예약권 부여<br>전용 생산라인 구축</p>
           </div>
 
           <!-- 단계 3 -->
-          <div class="s4-card">
+          <div class="s4-card" style="padding:18px 24px;">
+            <!-- Icon: revenue / trending up -->
+            <div style="margin-bottom:10px;"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="17" fill="rgba(16,185,129,0.15)"/><polyline points="8,24 14,18 18,21 26,11" stroke="#10B981" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" fill="none"/><polyline points="21,11 26,11 26,16" stroke="#10B981" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" fill="none"/></svg></div>
             <p class="s4-card-label">STEP 3</p>
-            <p class="s4-card-value" style="font-size:22px;color:var(--accent-green);line-height:1.3;margin-top:4px;">수익<br>구조</p>
+            <p class="s4-card-value" style="font-size:26px;color:var(--accent-green);line-height:1.3;margin-top:4px;">수익<br>구조</p>
             <p class="s4-card-sub" style="line-height:1.8;margin-top:8px;">대량 구매 시 단가 하락<br>보증비용 절감<br>적재량 증가로 수익↑</p>
           </div>
         </div>
 
-        <!-- 하단 유럽 레퍼런스 노트 -->
-        <div class="flow-chart" style="justify-content:center;">
-          <div class="fc-node" style="flex:none;max-width:620px;text-align:center;padding:14px 32px;">
-            <span class="fn-year" style="color:var(--gold);font-size:12px;">검증된 모델</span>
-            <p class="fn-title" style="font-size:14px;margin-top:4px;">유럽 전략 파트너사와 동일한 모델 적용 실적 보유</p>
-            <p class="fn-sub" style="font-size:12px;margin-top:6px;">유럽 25개 B2B · 98% 재주문률 · CES 2026 혁신상 — 기술 신뢰성 이미 글로벌 검증 완료</p>
+        <!-- 하단 유럽 레퍼런스 노트 — taller with larger text -->
+        <div class="flow-chart" style="justify-content:center;flex:1.25;padding:20px 32px;">
+          <div class="fc-node" style="flex:none;max-width:680px;text-align:center;padding:20px 36px;">
+            <span class="fn-year" style="color:var(--gold);font-size:14px;letter-spacing:1.5px;">검증된 모델</span>
+            <p class="fn-title" style="font-size:17px;font-weight:700;margin-top:8px;line-height:1.5;">유럽 전략 파트너사와 동일한 모델 적용 실적 보유</p>
+            <p class="fn-sub" style="font-size:14px;margin-top:10px;line-height:1.7;">유럽 25개 B2B · 98% 재주문률 · CES 2026 혁신상<br>기술 신뢰성 이미 글로벌 검증 완료</p>
           </div>
         </div>
       </div>
@@ -1004,8 +1061,8 @@ body {
     <div class="slide-body" style="display:flex;align-items:center;justify-content:center;">
       <div class="s6-content">
         <p class="sec-label" style="margin-bottom:14px;">Next Steps</p>
-        <h1 class="s6-title">60일, 당신의 테스트 벤치에서</h1>
-        <p class="s6-sub">공급사 승인 요청이 아닙니다. 기술 평가 슬롯을 요청합니다.</p>
+        <h1 class="s6-title">60 Days · Your Test Bench · Our Motor</h1>
+        <p class="s6-sub">공급사 승인 요청이 아닙니다 — 기술 평가 슬롯을 요청합니다.</p>
 
         <div class="cta-box">
           <p class="cta-label">다음 단계</p>
