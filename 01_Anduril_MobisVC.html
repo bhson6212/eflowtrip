@@ -206,7 +206,7 @@ body {
 }
 
 /* ─────────────────────────────────
-   SLIDE 2 — WHY ANDURIL
+   SLIDE 2 — WHY ANDURIL (original classes kept)
 ───────────────────────────────── */
 .s2-platforms {
   display: grid;
@@ -406,9 +406,8 @@ body {
 }
 .mt-header {
   padding: 10px 20px; border-bottom: 1px solid var(--border);
-  font-size: 11px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 2px;
-  color: var(--accent-cyan);
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2px; color: var(--accent-cyan);
 }
 .mt-row {
   display: grid; grid-template-columns: 110px 1fr;
@@ -469,6 +468,108 @@ body {
   font-size: 11px; font-weight: 700; flex-shrink: 0;
 }
 .s6-footer { font-size: 12px; color: var(--text-secondary); text-align: center; }
+
+/* ─────────────────────────────────
+   SLIDE 2 v2 — 드론/방산 인포그래픽 (new classes)
+───────────────────────────────── */
+.s2-body {
+  display: flex; flex-direction: column; gap: 11px; height: 100%;
+}
+.s2-hdr { flex-shrink: 0; }
+.s2-hdr h2 {
+  font-size: 26px; font-weight: 800; color: var(--text-primary);
+  letter-spacing: -0.5px; line-height: 1.2; margin-top: 3px;
+}
+.s2-main {
+  display: flex; gap: 18px; flex: 1; min-height: 0;
+}
+
+/* Platform panel */
+.plat-panel {
+  flex: 1; border-radius: 12px; padding: 14px 16px;
+  display: flex; flex-direction: column; gap: 9px;
+  overflow: hidden;
+}
+.plat-panel.ghost {
+  background: rgba(59,130,246,0.04);
+  border: 1px solid rgba(59,130,246,0.25);
+}
+.plat-panel.fury {
+  background: rgba(245,158,11,0.04);
+  border: 1px solid rgba(245,158,11,0.25);
+}
+
+.plat-header {
+  display: flex; align-items: center; gap: 10px; flex-shrink: 0;
+}
+.plat-badge {
+  font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.5px;
+  padding: 3px 10px; border-radius: 4px;
+}
+.plat-badge.ghost { background: rgba(59,130,246,0.15); color: var(--accent-blue); }
+.plat-badge.fury  { background: rgba(245,158,11,0.15);  color: var(--gold); }
+.plat-name { font-size: 18px; font-weight: 800; color: var(--text-primary); }
+.plat-req {
+  font-size: 11.5px; color: var(--text-secondary);
+  background: var(--bg-card2); border-radius: 7px;
+  padding: 8px 12px; line-height: 1.6; flex-shrink: 0;
+}
+.plat-req strong { color: var(--text-primary); }
+
+.plat-vis {
+  flex: 1; min-height: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* Before / After inside vis */
+.vis-split {
+  display: flex; gap: 10px; width: 100%; height: 100%;
+  align-items: center; justify-content: center;
+}
+.vis-col {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; gap: 6px;
+}
+.vis-tag {
+  font-size: 9.5px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px;
+}
+.vis-tag.bad  { color: var(--red); }
+.vis-tag.good { color: var(--accent-green); }
+
+.vis-divider {
+  width: 1px; background: var(--border); align-self: stretch; flex-shrink: 0;
+}
+
+/* Plat solution box */
+.plat-sol {
+  border-radius: 8px; padding: 9px 12px; flex-shrink: 0;
+}
+.plat-sol.ghost { background: rgba(16,185,129,0.07); border: 1px solid rgba(16,185,129,0.2); }
+.plat-sol.fury  { background: rgba(245,158,11,0.06);  border: 1px solid rgba(245,158,11,0.2); }
+
+.sol-title {
+  font-size: 10.5px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;
+}
+.sol-title.ghost { color: var(--accent-green); }
+.sol-title.fury  { color: var(--gold); }
+.sol-text { font-size: 11px; color: var(--text-secondary); line-height: 1.6; }
+.sol-text strong { color: var(--text-primary); }
+
+/* Bottom proof strip */
+.proof-strip {
+  display: flex; gap: 10px; flex-shrink: 0;
+}
+.proof-item {
+  flex: 1; background: var(--bg-card);
+  border: 1px solid var(--border); border-radius: 8px;
+  padding: 9px 12px; display: flex; align-items: center; gap: 10px;
+}
+.proof-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.proof-text { font-size: 11.5px; color: var(--text-secondary); line-height: 1.5; }
+.proof-text strong { color: var(--text-primary); }
 </style>
 </head>
 <body>
@@ -480,12 +581,10 @@ body {
   ════════════════════════════ -->
   <section class="slide active" id="s1">
     <div class="glow-tr"></div>
-
     <div class="slide-topbar">
       <span><img src="images/Logo_EFLOW_white.svg" style="height:20px; width:auto;"></span>
-      <span class="slide-num">01 / 06</span>
+      <span class="slide-num">01 / 03</span>
     </div>
-
     <div class="slide-body">
       <div class="s1-body">
         <div class="s1-left">
@@ -501,9 +600,7 @@ body {
             eFlow AFPM이 해결합니다.
           </p>
         </div>
-
         <div class="s1-right">
-          <!-- AFPM Motor top-view + profile comparison SVG -->
           <svg width="620" height="390" viewBox="0 0 620 390" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <radialGradient id="motorGlow" cx="50%" cy="50%" r="50%">
@@ -511,24 +608,14 @@ body {
                 <stop offset="100%" stop-color="#3B82F6" stop-opacity="0"/>
               </radialGradient>
             </defs>
-
-            <!-- Background glow -->
             <circle cx="285" cy="195" r="190" fill="url(#motorGlow)"/>
-
-            <!-- Outer housing dashed guide -->
             <circle cx="285" cy="195" r="162" stroke="#3B82F6" stroke-width="1" fill="none" stroke-dasharray="4 3" opacity="0.3"/>
-            <!-- Outer housing -->
             <circle cx="285" cy="195" r="154" stroke="#3B82F6" stroke-width="2.5" fill="rgba(59,130,246,0.04)"/>
-            <!-- Stator zone -->
             <circle cx="285" cy="195" r="104" stroke="#06B6D4" stroke-width="1.5" fill="rgba(6,182,212,0.05)"/>
-            <!-- Inner rotor -->
             <circle cx="285" cy="195" r="68"  stroke="#10B981" stroke-width="2"   fill="rgba(16,185,129,0.07)"/>
             <circle cx="285" cy="195" r="46"  stroke="#10B981" stroke-width="1"   fill="rgba(16,185,129,0.04)" opacity="0.5"/>
-            <!-- Center hub -->
             <circle cx="285" cy="195" r="20"  fill="rgba(6,182,212,0.35)" stroke="#06B6D4" stroke-width="2.5"/>
             <circle cx="285" cy="195" r="7"   fill="#06B6D4"/>
-
-            <!-- 16 radial winding spokes (from r=70 to r=100) -->
             <g stroke="#06B6D4" stroke-width="1.8" opacity="0.55">
               <line x1="385" y1="195" x2="355" y2="195"/>
               <line x1="377" y1="219.7" x2="350.4" y2="208.9"/>
@@ -547,29 +634,18 @@ body {
               <line x1="355.7" y1="149.7" x2="334.9" y2="171.9"/>
               <line x1="377"   y1="170.3" x2="350.4" y2="181.1"/>
             </g>
-
-            <!-- Data labels -->
-            <!-- 150kW — top right -->
             <text x="470" y="78"  fill="#3B82F6" font-size="26" font-weight="900" font-family="Inter">150 kW</text>
             <text x="470" y="97"  fill="#8B949E" font-size="11" font-family="Inter">Peak Output</text>
             <line x1="468" y1="103" x2="436" y2="136" stroke="#3B82F6" stroke-width="1" opacity="0.25" stroke-dasharray="3 3"/>
-
-            <!-- 330mm — right middle -->
             <text x="470" y="198" fill="#06B6D4" font-size="24" font-weight="900" font-family="Inter">330 mm</text>
             <text x="470" y="216" fill="#8B949E" font-size="11" font-family="Inter">Outer Diameter</text>
             <line x1="468" y1="195" x2="441" y2="195" stroke="#06B6D4" stroke-width="1" opacity="0.25" stroke-dasharray="3 3"/>
-
-            <!-- 25kg — bottom right -->
             <text x="470" y="316" fill="#10B981" font-size="24" font-weight="900" font-family="Inter">25 kg</text>
             <text x="470" y="334" fill="#8B949E" font-size="11" font-family="Inter">40% lighter vs radial</text>
             <line x1="468" y1="318" x2="436" y2="268" stroke="#10B981" stroke-width="1" opacity="0.25" stroke-dasharray="3 3"/>
-
-            <!-- 12,700rpm — top left -->
             <text x="10"  y="78"  fill="#F59E0B" font-size="22" font-weight="900" font-family="Inter">12,700</text>
             <text x="10"  y="97"  fill="#8B949E" font-size="11" font-family="Inter">rpm · Verified</text>
             <line x1="108" y1="103" x2="138" y2="136" stroke="#F59E0B" stroke-width="1" opacity="0.25" stroke-dasharray="3 3"/>
-
-            <!-- Profile comparison — bottom left -->
             <text x="24"  y="302" fill="#8B949E" font-size="10" font-family="Inter" text-anchor="middle">Radial</text>
             <rect x="10"  y="308" width="28" height="70" rx="3" fill="none" stroke="#EF4444" stroke-width="1.5" opacity="0.55"/>
             <text x="78"  y="302" fill="#8B949E" font-size="10" font-family="Inter" text-anchor="middle">AFPM</text>
@@ -581,267 +657,274 @@ body {
         </div>
       </div>
     </div>
-
-    <div class="progress-bar" style="width:16.67%"></div>
-  </section>
-
-
-  <!-- ═══════════════════════════
-       SLIDE 2 — WHY ANDURIL
-  ════════════════════════════ -->
-  <section class="slide" id="s2">
-    <div class="slide-topbar">
-      <span><img src="images/Logo_EFLOW_white.svg" style="height:20px; width:auto;"></span>
-      <span class="slide-num">02 / 06</span>
-    </div>
-
-    <div class="slide-body">
-      <p class="sec-label">Why Anduril</p>
-      <h2 style="font-size:32px;font-weight:800;color:var(--text-primary);letter-spacing:-0.5px;">플랫폼이 요구하는 것 — eFlow가 답합니다</h2>
-
-      <div class="s2-platforms">
-
-        <!-- Ghost-X -->
-        <div class="platform-card">
-          <div class="platform-header">
-            <span class="platform-badge">시나리오 A</span>
-            <span class="platform-name">Ghost-X &nbsp;정찰 드론</span>
-          </div>
-          <div class="platform-body">
-            <div class="platform-req">
-              요구 조건: 탑재량 <strong style="color:var(--text-primary)">25 kg</strong> &nbsp;/&nbsp;
-              비행시간 <strong style="color:var(--text-primary)">80분+</strong> &nbsp;/&nbsp;
-              텐덤 로터 기체 내장
-            </div>
-            <div class="compare-row">
-              <div class="cmp-block bad">
-                <p class="cmp-label bad">Radial 문제</p>
-                <p class="cmp-text">원통형 구조로 기체 두께 증가, 텐덤 로터 외부 돌출 불가피 → RCS·음향 신호 상승</p>
-              </div>
-              <div class="cmp-block good">
-                <p class="cmp-label good">eFlow 해법</p>
-                <p class="cmp-text">팬케이크 구조로 두 로터 완전 내장, RCS·음향 동시 감소, 페이로드 또는 배터리 확대 선택</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Fury -->
-        <div class="platform-card">
-          <div class="platform-header">
-            <span class="platform-badge" style="background:rgba(245,158,11,0.15);color:var(--gold);">시나리오 B</span>
-            <span class="platform-name">Fury &nbsp;고속 자율 전투기</span>
-          </div>
-          <div class="platform-body">
-            <div class="platform-req">
-              요구 조건: 아음속 <strong style="color:var(--text-primary)">마하 0.95</strong> &nbsp;/&nbsp;
-              고RPM 연속 출력 유지 &nbsp;/&nbsp;
-              전장 환경 내구성
-            </div>
-            <div class="compare-row">
-              <div class="cmp-block bad">
-                <p class="cmp-label bad">Radial 문제</p>
-                <p class="cmp-text">고RPM 연속 구동 시 발열로 열 스로틀링 발생 → 전술 임무 중 추력 강제 저하, 임무 실패 리스크</p>
-              </div>
-              <div class="cmp-block good">
-                <p class="cmp-label good">eFlow 해법</p>
-                <p class="cmp-text">완전 밀폐형 오일 냉각, 12,700 rpm 연속 출력 검증 완료, 모래·수분·충격 환경에서도 냉각 성능 유지</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
     <div class="progress-bar" style="width:33.33%"></div>
   </section>
 
 
   <!-- ═══════════════════════════
-       SLIDE 3 — iDS AX SPEC
+       SLIDE 2 — 드론/방산 플랫폼 적용 시나리오 인포그래픽
   ════════════════════════════ -->
-  <section class="slide" id="s3">
-    <div class="slide-topbar">
-      <span><img src="images/Logo_EFLOW_white.svg" style="height:20px; width:auto;"></span>
-      <span class="slide-num">03 / 06</span>
-    </div>
-
-    <div class="slide-body">
-      <p class="sec-label">iDS AX — Product Spec</p>
-      <div class="s3-content">
-
-        <div class="s3-left">
-          <h3 style="font-size:26px;font-weight:800;color:var(--text-primary);letter-spacing:-0.3px;margin-bottom:12px;">라디얼 vs. AFPM<br>구조적 비교</h3>
-
-          <div class="spec-table-wrap">
-            <div class="spec-compare-header">
-              <div class="sc-head axis">항목</div>
-              <div class="sc-head radial">Radial Motor</div>
-              <div class="sc-head afpm">eFlow AFPM</div>
-            </div>
-            <div class="spec-compare-row">
-              <div class="sc-cell axis">구조</div>
-              <div class="sc-cell radial">원통형 · 축 방향 길다</div>
-              <div class="sc-cell afpm">팬케이크 · 극히 얇음</div>
-            </div>
-            <div class="spec-compare-row">
-              <div class="sc-cell axis">기체 통합</div>
-              <div class="sc-cell radial">외부 돌출 불가피</div>
-              <div class="sc-cell afpm">완전 내장 가능</div>
-            </div>
-            <div class="spec-compare-row">
-              <div class="sc-cell axis">냉각</div>
-              <div class="sc-cell radial">공냉 · 열 스로틀링</div>
-              <div class="sc-cell afpm">밀폐 오일냉각 · 방진</div>
-            </div>
-            <div class="spec-compare-row">
-              <div class="sc-cell axis">RCS/음향</div>
-              <div class="sc-cell radial">돌출 → 피탐지율 상승</div>
-              <div class="sc-cell afpm">내장 → 신호 최소화</div>
-            </div>
-            <div class="spec-compare-row">
-              <div class="sc-cell axis">중량</div>
-              <div class="sc-cell radial">기준</div>
-              <div class="sc-cell afpm" style="color:var(--accent-green);font-weight:700;">최대 40% 경량</div>
-            </div>
-          </div>
-
-          <div style="background:var(--bg-card);border-radius:8px;border:1px solid var(--border);padding:12px 16px;font-size:12px;color:var(--text-secondary);line-height:1.6;">
-            유럽 B2B <strong style="color:var(--text-primary)">25개사</strong> 실공급 ·
-            재주문률 <strong style="color:var(--accent-green)">98%</strong> ·
-            <strong style="color:var(--text-primary)">CES 2026 혁신상</strong>
-          </div>
-        </div>
-
-        <div class="s3-right">
-          <div class="metric-box">
-            <div class="metric-val" style="color:var(--accent-blue);font-size:42px;">330</div>
-            <div class="metric-label">mm · Outer Diameter<br>팬케이크 구조, 축 방향 극히 짧음</div>
-          </div>
-          <div class="metric-box">
-            <div class="metric-val" style="color:var(--accent-cyan);font-size:42px;">25</div>
-            <div class="metric-label">kg · Weight<br>라디얼 대비 최대 40% 경량</div>
-          </div>
-          <div class="metric-box">
-            <div class="metric-val" style="color:var(--accent-green);font-size:36px;">150kW</div>
-            <div class="metric-label">Peak Output<br>피크 토크 440 Nm</div>
-          </div>
-          <div class="metric-box">
-            <div class="metric-val" style="color:var(--gold);font-size:30px;">12,700</div>
-            <div class="metric-label">rpm · Verified<br>밀폐 오일냉각 연속 출력 검증 완료</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="progress-bar" style="width:50%"></div>
-  </section>
-
-
-  <!-- ═══════════════════════════
-       SLIDE 4 — DEFENSE APPLICATION
-  ════════════════════════════ -->
-  <section class="slide" id="s4">
+  <section class="slide" id="s2">
     <div class="glow-tl"></div>
+    <div class="glow-tr"></div>
+
     <div class="slide-topbar">
       <span><img src="images/Logo_EFLOW_white.svg" style="height:20px; width:auto;"></span>
-      <span class="slide-num">04 / 06</span>
+      <span class="slide-num">02 / 03</span>
     </div>
 
     <div class="slide-body">
-      <p class="sec-label">Defense Application Scenario</p>
-      <h2 style="font-size:28px;font-weight:800;color:var(--text-primary);letter-spacing:-0.3px;">Anduril × eFlow — 공동 개발 3단계 로드맵</h2>
+      <div class="s2-body">
 
-      <div class="s4-phases">
+        <!-- Header -->
+        <div class="s2-hdr">
+          <p class="sec-label">드론 / 방산 플랫폼 적용 시나리오</p>
+          <h2>기체 안으로 사라지는 모터 — Anduril × eFlow iDS AX</h2>
+        </div>
 
-        <div class="phase-card" style="border-color:rgba(59,130,246,0.35);">
-          <div class="phase-header" style="background:rgba(59,130,246,0.07);">
-            <span class="phase-tag" style="background:rgba(59,130,246,0.18);color:var(--accent-blue);">Phase 1 · NOW</span>
+        <!-- Main: two platform panels -->
+        <div class="s2-main">
+
+          <!-- ── Ghost-X Panel ── -->
+          <div class="plat-panel ghost">
+
+            <div class="plat-header">
+              <span class="plat-badge ghost">시나리오 A</span>
+              <span class="plat-name">Ghost-X &nbsp;정찰 드론</span>
+            </div>
+
+            <div class="plat-req">
+              탑재량 <strong>25 kg</strong> &nbsp;·&nbsp; 비행 <strong>80분+</strong> &nbsp;·&nbsp;
+              텐덤 로터 기체 <strong>완전 내장</strong> &nbsp;·&nbsp; 스텔스 최우선
+            </div>
+
+            <!-- Visualization: cross-section comparison -->
+            <div class="plat-vis">
+              <svg viewBox="0 0 520 215" style="width:100%;height:auto;" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                <!-- ── LEFT: 라디얼 모터 (Bad) ── -->
+                <text x="120" y="17" fill="#EF4444" font-size="13" font-weight="700" text-anchor="middle" font-family="Inter">라디얼 모터  ✗</text>
+
+                <!-- Motor cylinder — protruding ABOVE airframe -->
+                <rect x="70" y="25" width="80" height="80" rx="6"
+                      fill="rgba(239,68,68,0.18)" stroke="#EF4444" stroke-width="2"/>
+                <text x="110" y="57" fill="#EF4444" font-size="13" font-weight="700"
+                      text-anchor="middle" font-family="Inter">MOTOR</text>
+                <text x="110" y="75" fill="#EF4444" font-size="11.5"
+                      text-anchor="middle" font-family="Inter">~300mm 축방향</text>
+
+                <!-- Protrusion indicator (dashed) -->
+                <line x1="158" y1="27" x2="158" y2="102"
+                      stroke="#EF4444" stroke-width="1.2" stroke-dasharray="3,2" opacity="0.55"/>
+                <text x="165" y="70" fill="#EF4444" font-size="11" font-weight="600" font-family="Inter">돌출↑</text>
+
+                <!-- Airframe body -->
+                <rect x="16" y="102" width="208" height="93" rx="8"
+                      fill="rgba(239,68,68,0.04)" stroke="#EF4444" stroke-width="1.2" stroke-opacity="0.35"/>
+                <text x="44" y="148" fill="#8B949E" font-size="10" font-family="Inter" opacity="0.7">기체 내부</text>
+
+                <!-- RCS badge at airframe bottom -->
+                <rect x="28" y="174" width="184" height="18" rx="4"
+                      fill="rgba(239,68,68,0.12)" stroke="rgba(239,68,68,0.3)" stroke-width="0.8"/>
+                <text x="120" y="186" fill="#EF4444" font-size="12" font-weight="600"
+                      text-anchor="middle" font-family="Inter">RCS · 음향 신호 ↑↑</text>
+
+                <!-- CENTER: Divider -->
+                <line x1="257" y1="8" x2="257" y2="210"
+                      stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+
+                <!-- ── RIGHT: iDS AX AFPM (Good) ── -->
+                <text x="392" y="17" fill="#10B981" font-size="13" font-weight="700"
+                      text-anchor="middle" font-family="Inter">iDS AX AFPM  ✓</text>
+
+                <!-- Airframe body — full height, no protrusion -->
+                <rect x="278" y="25" width="228" height="184" rx="8"
+                      fill="rgba(16,185,129,0.04)" stroke="#10B981" stroke-width="1.5" stroke-opacity="0.45"/>
+
+                <!-- Payload space (top) -->
+                <rect x="286" y="31" width="212" height="55" rx="5"
+                      fill="rgba(16,185,129,0.09)" stroke="rgba(16,185,129,0.35)" stroke-width="0.8" stroke-dasharray="4,2"/>
+                <text x="392" y="63" fill="#10B981" font-size="12" font-weight="700"
+                      text-anchor="middle" font-family="Inter">페이로드 공간  ↑</text>
+
+                <!-- Pancake motor (flat, inside) -->
+                <rect x="286" y="91" width="212" height="33" rx="6"
+                      fill="rgba(6,182,212,0.24)" stroke="#06B6D4" stroke-width="2"/>
+                <text x="392" y="112" fill="#06B6D4" font-size="12" font-weight="700"
+                      text-anchor="middle" font-family="Inter">iDS AX  ~65mm 축방향</text>
+
+                <!-- Battery space (bottom) -->
+                <rect x="286" y="129" width="212" height="60" rx="5"
+                      fill="rgba(16,185,129,0.07)" stroke="rgba(16,185,129,0.28)" stroke-width="0.8" stroke-dasharray="4,2"/>
+                <text x="392" y="163" fill="#10B981" font-size="12" font-weight="700"
+                      text-anchor="middle" font-family="Inter">배터리 공간  ↑</text>
+
+                <!-- RCS badge at airframe bottom -->
+                <rect x="286" y="191" width="212" height="17" rx="4"
+                      fill="rgba(16,185,129,0.12)" stroke="rgba(16,185,129,0.3)" stroke-width="0.8"/>
+                <text x="392" y="203" fill="#10B981" font-size="11.5" font-weight="600"
+                      text-anchor="middle" font-family="Inter">RCS · 음향 최소화 ✓</text>
+
+              </svg>
+            </div>
+
+            <div class="plat-sol ghost">
+              <div class="sol-title ghost">eFlow 해법</div>
+              <div class="sol-text">
+                팬케이크 구조로 텐덤 로터 <strong>완전 내장</strong> — 기체 두께 유지 &amp; 스텔스 확보.<br>
+                절감된 부피로 <strong>페이로드 +또는 배터리 확대</strong> 선택 가능.
+              </div>
+            </div>
+
+          </div><!-- /ghost panel -->
+
+          <!-- ── Fury Panel ── -->
+          <div class="plat-panel fury">
+
+            <div class="plat-header">
+              <span class="plat-badge fury">시나리오 B</span>
+              <span class="plat-name">Fury &nbsp;고속 자율 전투기</span>
+            </div>
+
+            <div class="plat-req">
+              아음속 <strong>마하 0.95</strong> &nbsp;·&nbsp; <strong>고RPM 연속 출력</strong> 유지 &nbsp;·&nbsp;
+              모래·수분·충격 <strong>전장 내구성</strong>
+            </div>
+
+            <!-- Visualization: thermal management -->
+            <div class="plat-vis">
+              <svg viewBox="0 0 540 210" style="width:100%;height:auto;" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                <!-- ── LEFT: 라디얼 — 열 스로틀링 ── -->
+                <text x="127" y="16" fill="#EF4444" font-size="13" font-weight="700"
+                      text-anchor="middle" font-family="Inter">라디얼 — 열 스로틀링</text>
+
+                <!-- Motor body (tall cylinder) -->
+                <rect x="16" y="24" width="80" height="130" rx="6"
+                      fill="rgba(239,68,68,0.1)" stroke="#EF4444" stroke-width="1.5"/>
+
+                <!-- Heat buildup lines (increasing intensity) -->
+                <line x1="22" y1="48"  x2="90" y2="48"  stroke="#EF4444" stroke-width="1.5" stroke-opacity="0.35"/>
+                <line x1="22" y1="66"  x2="90" y2="66"  stroke="#EF4444" stroke-width="2"   stroke-opacity="0.5"/>
+                <line x1="22" y1="84"  x2="90" y2="84"  stroke="#EF4444" stroke-width="2.5" stroke-opacity="0.65"/>
+                <line x1="22" y1="102" x2="90" y2="102" stroke="#EF4444" stroke-width="3"   stroke-opacity="0.8"/>
+                <line x1="22" y1="120" x2="90" y2="120" stroke="#EF4444" stroke-width="3.5" stroke-opacity="1"/>
+
+                <!-- Heat escaping arrows -->
+                <text x="103" y="72"  fill="#EF4444" font-size="20" font-family="Inter">→</text>
+                <text x="103" y="100" fill="#EF4444" font-size="20" font-family="Inter">→</text>
+                <text x="104" y="57"  fill="#EF4444" font-size="11" font-weight="600" font-family="Inter">열↑</text>
+
+                <!-- Performance bar chart -->
+                <rect x="132" y="24" width="88" height="130" rx="4"
+                      fill="#1C2333" stroke="rgba(239,68,68,0.2)" stroke-width="1"/>
+                <text x="176" y="40" fill="#8B949E" font-size="12" text-anchor="middle" font-family="Inter">출력</text>
+
+                <!-- Bar: background (full capacity) -->
+                <rect x="154" y="46" width="34" height="94" rx="2"
+                      fill="rgba(239,68,68,0.1)" stroke="rgba(239,68,68,0.15)" stroke-width="0.8"/>
+                <!-- Bar: degraded — only ~38% filled -->
+                <rect x="154" y="104" width="34" height="36" rx="2" fill="rgba(239,68,68,0.6)"/>
+                <text x="176" y="156" fill="#EF4444" font-size="12" font-weight="700"
+                      text-anchor="middle" font-family="Inter">강제↓</text>
+
+                <!-- Throttle badge below chart -->
+                <rect x="16" y="162" width="204" height="19" rx="3"
+                      fill="rgba(239,68,68,0.1)" stroke="rgba(239,68,68,0.3)" stroke-width="0.8"/>
+                <text x="118" y="175" fill="#EF4444" font-size="12" font-weight="600"
+                      text-anchor="middle" font-family="Inter">임무 실패 리스크</text>
+
+                <!-- DIVIDER -->
+                <line x1="264" y1="8" x2="264" y2="202"
+                      stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+
+                <!-- ── RIGHT: iDS AX — 밀폐 오일냉각 ── -->
+                <text x="406" y="16" fill="#10B981" font-size="13" font-weight="700"
+                      text-anchor="middle" font-family="Inter">iDS AX — 밀폐 오일냉각</text>
+
+                <!-- Oil circulation arc above pancake motor -->
+                <path d="M350,101 C340,60 376,30 406,28 C436,30 472,60 462,101"
+                      stroke="#06B6D4" stroke-width="1.5" stroke-dasharray="5,2"
+                      fill="none" stroke-opacity="0.65"/>
+                <polygon points="458,97 463,102 468,96" fill="#06B6D4" fill-opacity="0.7"/>
+                <text x="406" y="22" fill="#06B6D4" font-size="12" font-weight="600"
+                      text-anchor="middle" font-family="Inter">오일 순환 냉각</text>
+
+                <!-- Pancake motor: top ellipse -->
+                <ellipse cx="406" cy="84" rx="56" ry="11"
+                         fill="rgba(6,182,212,0.16)" stroke="#06B6D4" stroke-width="1.8"/>
+                <!-- Side wall -->
+                <rect x="350" y="84" width="112" height="38"
+                      fill="rgba(6,182,212,0.09)" stroke="#06B6D4" stroke-width="1.4"/>
+                <!-- Bottom ellipse -->
+                <ellipse cx="406" cy="122" rx="56" ry="11"
+                         fill="rgba(6,182,212,0.16)" stroke="#06B6D4" stroke-width="1.8"/>
+
+                <!-- "완전 밀폐" badge inside motor -->
+                <rect x="364" y="91" width="84" height="24" rx="4"
+                      fill="rgba(6,182,212,0.18)"/>
+                <text x="406" y="107" fill="#06B6D4" font-size="13" font-weight="700"
+                      text-anchor="middle" font-family="Inter">완전 밀폐</text>
+
+                <!-- Environment proof -->
+                <text x="406" y="148" fill="#8B949E" font-size="12" font-weight="500"
+                      text-anchor="middle" font-family="Inter">모래 ✓  수분 ✓  충격 ✓</text>
+
+                <!-- Output result badge -->
+                <rect x="278" y="162" width="254" height="22" rx="4"
+                      fill="rgba(16,185,129,0.1)" stroke="rgba(16,185,129,0.3)" stroke-width="0.8"/>
+                <text x="405" y="177" fill="#10B981" font-size="12.5" font-weight="700"
+                      text-anchor="middle" font-family="Inter">12,700 rpm  연속 출력 검증 완료</text>
+
+              </svg>
+            </div>
+
+            <div class="plat-sol fury">
+              <div class="sol-title fury">eFlow 해법</div>
+              <div class="sol-text">
+                완전 밀폐형 오일냉각 — 전장 환경(모래·수분·충격) 내성 &amp; 열 스로틀링 제로.<br>
+                <strong>12,700 rpm 연속 출력 검증</strong> 완료 — 전술 임무 중 추력 저하 없음.
+              </div>
+            </div>
+
+          </div><!-- /fury panel -->
+
+        </div><!-- /s2-main -->
+
+        <!-- Bottom proof strip -->
+        <div class="proof-strip">
+          <div class="proof-item">
+            <div class="proof-dot" style="background:var(--accent-blue);"></div>
+            <div class="proof-text">기체 내장 가능 &nbsp;·&nbsp; <strong>330mm OD / ~65mm 축방향</strong> 팬케이크 구조</div>
           </div>
-          <div class="phase-body">
-            <div class="phase-platform">Ghost-X 정찰 드론</div>
-            <div class="phase-req">
-              탑재량 25 kg · 비행 80분+<br>
-              텐덤 로터 기체 내장 요구<br>
-              스텔스 최우선
-            </div>
-            <div class="phase-solution">
-              iDS AX 내장 통합 설계<br>
-              RCS·음향 신호 동시 감소<br>
-              페이로드 증가 또는 배터리 확대
-            </div>
+          <div class="proof-item">
+            <div class="proof-dot" style="background:var(--accent-cyan);"></div>
+            <div class="proof-text">스텔스 설계 &nbsp;·&nbsp; <strong>RCS·음향 신호 동시 최소화</strong></div>
+          </div>
+          <div class="proof-item">
+            <div class="proof-dot" style="background:var(--gold);"></div>
+            <div class="proof-text">전장 내구 &nbsp;·&nbsp; <strong>12,700 rpm 밀폐 오일냉각 연속 출력 검증</strong></div>
+          </div>
+          <div class="proof-item">
+            <div class="proof-dot" style="background:var(--accent-green);"></div>
+            <div class="proof-text">경량화 &nbsp;·&nbsp; <strong>25 kg · 라디얼 대비 최대 40% 경량</strong> &nbsp;·&nbsp; 유럽 B2B 20,000대 수주</div>
           </div>
         </div>
 
-        <div class="phase-card" style="border-color:rgba(245,158,11,0.35);">
-          <div class="phase-header" style="background:rgba(245,158,11,0.07);">
-            <span class="phase-tag" style="background:rgba(245,158,11,0.18);color:var(--gold);">Phase 2 · 2027</span>
-          </div>
-          <div class="phase-body">
-            <div class="phase-platform">Fury 고속 전투기</div>
-            <div class="phase-req">
-              마하 0.95 아음속 비행<br>
-              고RPM 연속 출력 유지<br>
-              전장 환경 내구성
-            </div>
-            <div class="phase-solution" style="color:var(--gold);">
-              밀폐 오일냉각 시스템 공동 최적화<br>
-              12,700 rpm 연속 출력 검증<br>
-              모래·수분·충격 내성 보장
-            </div>
-          </div>
-        </div>
-
-        <div class="phase-card" style="border-color:rgba(16,185,129,0.35);">
-          <div class="phase-header" style="background:rgba(16,185,129,0.07);">
-            <span class="phase-tag" style="background:rgba(16,185,129,0.18);color:var(--accent-green);">Phase 3 · 2028+</span>
-          </div>
-          <div class="phase-body">
-            <div class="phase-platform">방산 플랫폼 표준화</div>
-            <div class="phase-req">
-              Anduril 전 드론 라인업<br>
-              미군 / NATO 공급망 편입<br>
-              양산 체계 구축
-            </div>
-            <div class="phase-solution" style="color:var(--accent-green);">
-              루마니아 유럽 생산거점 연계<br>
-              미국 공장 공동 설립 검토 (Series B)<br>
-              방산 전용 인증 취득 로드맵
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="s4-bottom">
-        <div class="s4-bottom-item">
-          <div class="s4-bottom-dot" style="background:var(--accent-blue);"></div>
-          <span>독일 드론 <strong style="color:var(--text-primary)">20,000 유닛</strong> 확정 수주 — 2026.09 양산 개시</span>
-        </div>
-        <div class="s4-bottom-item">
-          <div class="s4-bottom-dot" style="background:var(--accent-cyan);"></div>
-          <span>유럽 B2B <strong style="color:var(--text-primary)">25개사</strong> 실공급 · 재주문률 <strong style="color:var(--text-primary)">98%</strong></span>
-        </div>
-        <div class="s4-bottom-item">
-          <div class="s4-bottom-dot" style="background:var(--gold);"></div>
-          <span><strong style="color:var(--text-primary)">CES 2026 혁신상</strong> · 누적 투자 78억 원 · YASA 동일 기술 계보</span>
-        </div>
-      </div>
-    </div>
+      </div><!-- /s2-body -->
+    </div><!-- /slide-body -->
 
     <div class="progress-bar" style="width:66.67%"></div>
   </section>
 
 
   <!-- ═══════════════════════════
-       SLIDE 5 — SERIES A BRIEF
+       SLIDE 3 — SERIES A BRIEF (기존 s5)
   ════════════════════════════ -->
-  <section class="slide" id="s5">
+  <section class="slide" id="s3">
     <div class="slide-topbar">
       <span><img src="images/Logo_EFLOW_white.svg" style="height:20px; width:auto;"></span>
-      <span class="slide-num">05 / 06</span>
+      <span class="slide-num">03 / 03</span>
     </div>
 
     <div class="slide-body">
@@ -921,72 +1004,6 @@ body {
       </div>
     </div>
 
-    <div class="progress-bar" style="width:83.33%"></div>
-  </section>
-
-
-  <!-- ═══════════════════════════
-       SLIDE 6 — CLOSING / NEXT STEPS
-  ════════════════════════════ -->
-  <section class="slide" id="s6">
-    <div class="glow-tr"></div>
-    <div class="slide-topbar">
-      <span><img src="images/Logo_EFLOW_white.svg" style="height:20px; width:auto;"></span>
-      <span class="slide-num">06 / 06</span>
-    </div>
-
-    <div class="slide-body" style="display:flex;align-items:center;justify-content:center;">
-      <div class="s6-body">
-        <p class="sec-label" style="text-align:center;margin-bottom:10px;">이 자리에서 합의할 것</p>
-        <h1 class="s6-title">두 파트너십, 하나의 기술.</h1>
-        <p class="s6-sub">Anduril과는 방산 드론 공동 개발을 · Mobis VC와는 Series A 투자 협의를 시작합니다</p>
-
-        <div class="s6-columns">
-          <div class="s6-col" style="border-color:rgba(59,130,246,0.4);">
-            <p class="s6-col-label" style="color:var(--accent-blue);">Anduril Industries</p>
-            <p class="s6-col-title">방산 드론 공동 개발<br>파트너십 제안</p>
-            <p class="s6-col-desc">Ghost-X 정찰 드론 iDS AX 통합 테스트를 시작으로, Fury 플랫폼까지 단계적 공동 개발 로드맵을 함께 설계합니다.</p>
-            <div class="s6-steps">
-              <div class="s6-step">
-                <div class="step-num" style="background:rgba(59,130,246,0.2);color:var(--accent-blue);">1</div>
-                <span>기술 NDA 체결 — 이 자리에서 합의</span>
-              </div>
-              <div class="s6-step">
-                <div class="step-num" style="background:rgba(59,130,246,0.2);color:var(--accent-blue);">2</div>
-                <span>CTO Frank Heller 기술 심층 브리핑 일정</span>
-              </div>
-              <div class="s6-step">
-                <div class="step-num" style="background:rgba(59,130,246,0.2);color:var(--accent-blue);">3</div>
-                <span>Ghost-X 적용 프로토타입 공동 RFP</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="s6-col" style="border-color:rgba(16,185,129,0.4);">
-            <p class="s6-col-label" style="color:var(--accent-green);">현대모비스 VC (Mobis VC)</p>
-            <p class="s6-col-title">Series A Lead 투자<br>우선 협의 제안</p>
-            <p class="s6-col-desc">EFLOW는 신디케이트를 선택적으로 구성합니다. Mobis VC의 전략적 가치를 인정해 Lead 포지션을 우선 논의합니다.</p>
-            <div class="s6-steps">
-              <div class="s6-step">
-                <div class="step-num" style="background:rgba(16,185,129,0.2);color:var(--accent-green);">1</div>
-                <span>기술 실사 전 NDA 체결 — 이 자리 합의</span>
-              </div>
-              <div class="s6-step">
-                <div class="step-num" style="background:rgba(16,185,129,0.2);color:var(--accent-green);">2</div>
-                <span>CTO 기술 브리핑 일정 조율 (Frank Heller)</span>
-              </div>
-              <div class="s6-step">
-                <div class="step-num" style="background:rgba(16,185,129,0.2);color:var(--accent-green);">3</div>
-                <span>공식 Series A IR Deck 별도 제공</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <p class="s6-footer">EFLOW Co., Ltd. | CEO 윤수한 · eflow1227@gmail.com | 2026.04.01 San Jose</p>
-      </div>
-    </div>
-
     <div class="progress-bar" style="width:100%"></div>
   </section>
 
@@ -997,9 +1014,6 @@ body {
   <div class="dot active" onclick="goTo(0)"></div>
   <div class="dot"        onclick="goTo(1)"></div>
   <div class="dot"        onclick="goTo(2)"></div>
-  <div class="dot"        onclick="goTo(3)"></div>
-  <div class="dot"        onclick="goTo(4)"></div>
-  <div class="dot"        onclick="goTo(5)"></div>
 </div>
 
 

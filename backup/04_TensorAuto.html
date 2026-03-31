@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EFLOW · Tensor Auto | Autonomous-Friendly Motor</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg-dark:   #0D1117;
+  --bg-card:   #161B22;
+  --bg-card2:  #1C2333;
+  --accent-blue:  #3B82F6;
+  --accent-cyan:  #06B6D4;
+  --accent-green: #10B981;
+  --text-primary: #F0F6FC;
+  --text-secondary: #8B949E;
+  --border: rgba(255,255,255,0.08);
+  --gold: #F59E0B;
+}
+
+html {
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #080C14;
+  margin: 0;
+  overflow: hidden;
+}
+
+/* ── Slideshow container ── */
+.slideshow {
+  position: relative;
+  width: 1280px;
+  height: 720px;
+  transform-origin: center center;
+  flex-shrink: 0;
+}
+
+/* ── Individual slide ── */
+.slide {
+  position: absolute;
+  inset: 0;
+  width: 1280px;
+  height: 720px;
+  background: var(--bg-dark);
+  display: none;
+  overflow: hidden;
+}
+.slide.active { display: block; }
+
+/* ── Common: top bar ── */
+.slide-topbar {
+  position: absolute;
+  top: 28px;
+  left: 52px;
+  right: 52px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+.slide-logo {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--text-secondary);
+}
+.slide-num {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  letter-spacing: 1px;
+}
+
+/* ── Common: bottom progress ── */
+.progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: var(--accent-blue);
+  transition: width 0.4s ease;
+}
+
+/* ── Glow ── */
+.glow-tr {
+  position: absolute;
+  top: -120px;
+  right: -120px;
+  width: 560px;
+  height: 560px;
+  background: radial-gradient(circle, rgba(59,130,246,0.07) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+.glow-bl {
+  position: absolute;
+  bottom: -120px;
+  left: -80px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(6,182,212,0.05) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Slide content wrapper ── */
+.slide-body {
+  position: absolute;
+  top: 80px;
+  left: 52px;
+  right: 52px;
+  bottom: 32px;
+  z-index: 1;
+}
+
+/* ── pill badge ── */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--accent-blue);
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent-blue);
+  letter-spacing: 0.5px;
+}
+
+/* ── Section label (H3 style) ── */
+.sec-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--accent-cyan);
+  margin-bottom: 8px;
+}
+
+/* ── Card base ── */
+.card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 28px;
+}
+
+/* ─────────────────────────────────
+   SLIDE 1 — COVER
+───────────────────────────────── */
+#s1 .slide-body {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.s1-left {
+  width: 42%;
+  padding-right: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+}
+
+.s1-badge-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+
+.s1-title {
+  font-size: 52px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -1px;
+  line-height: 1.1;
+  margin-bottom: 14px;
+}
+
+.s1-subtitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  margin-bottom: 28px;
+  letter-spacing: -0.2px;
+}
+
+.s1-tagline {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border-top: 1px solid var(--border);
+  padding-top: 18px;
+  line-height: 1.9;
+}
+
+.s1-right {
+  width: 58%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+/* ─────────────────────────────────
+   SLIDE 2 — 핵심 과제
+───────────────────────────────── */
+#s2 .s2ta-title-block {
+  margin-bottom: 20px;
+}
+
+#s2 h2 {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  line-height: 1.15;
+}
+
+.s2ta-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.s2ta-card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 24px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.s2ta-badge {
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.s2ta-badge-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: block;
+  margin-top: 2px;
+}
+
+.s2ta-card-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.25;
+  margin-top: 4px;
+}
+
+.s2ta-card-body {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+.s2ta-card-body li {
+  list-style: none;
+  padding-left: 12px;
+  position: relative;
+}
+.s2ta-card-body li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  opacity: 0.5;
+}
+
+/* ─────────────────────────────────
+   SLIDE 3 — 제어 친화성 비교
+───────────────────────────────── */
+.s3ta-content {
+  display: flex;
+  gap: 44px;
+  height: calc(100% - 50px);
+}
+
+.s3ta-left {
+  width: 38%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.s3ta-left h2 {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  line-height: 1.25;
+  margin-bottom: 16px;
+}
+
+.s3ta-left p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: 20px;
+}
+
+.s3ta-quote {
+  background: var(--bg-card);
+  border-left: 3px solid var(--accent-cyan);
+  border-radius: 0 8px 8px 0;
+  padding: 16px 20px;
+  font-size: 13px;
+  font-style: italic;
+  color: var(--text-primary);
+  line-height: 1.7;
+}
+
+.s3ta-right {
+  width: 62%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.s3ta-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.s3ta-table th {
+  padding: 12px 14px;
+  text-align: left;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-card2);
+}
+
+.s3ta-table td {
+  padding: 13px 14px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.5;
+  vertical-align: middle;
+}
+
+.s3ta-table tr:last-child td { border-bottom: none; }
+
+.s3ta-table td:first-child {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.s3ta-table td.highlight {
+  color: var(--accent-cyan);
+  font-weight: 700;
+}
+
+.s3ta-table td.neg {
+  color: #F87171;
+}
+
+.s3ta-table tr:nth-child(odd) td {
+  background: rgba(255,255,255,0.015);
+}
+
+/* ─────────────────────────────────
+   SLIDE 4 — SMC 스테이터
+───────────────────────────────── */
+.s4ta-content {
+  display: flex;
+  gap: 40px;
+  height: calc(100% - 52px);
+}
+
+.s4ta-left {
+  width: 44%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.s4ta-left h2 {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  line-height: 1.3;
+  margin-bottom: 22px;
+}
+
+.s4ta-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.s4ta-tl-group {
+  margin-bottom: 16px;
+}
+
+.s4ta-tl-group:last-child { margin-bottom: 0; }
+
+.s4ta-tl-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.s4ta-tl-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.s4ta-tl-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.s4ta-tl-items {
+  padding-left: 20px;
+  border-left: 2px solid var(--border);
+  margin-left: 4px;
+}
+
+.s4ta-tl-item {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  padding: 1px 0 1px 12px;
+  position: relative;
+}
+
+.s4ta-tl-item::before {
+  content: '·';
+  position: absolute;
+  left: 0;
+  color: var(--text-secondary);
+  opacity: 0.5;
+}
+
+.s4ta-right {
+  width: 56%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ─────────────────────────────────
+   SLIDE 5 — Co-Validation
+───────────────────────────────── */
+.s5ta-content {
+  display: flex;
+  gap: 44px;
+  height: calc(100% - 52px);
+}
+
+.s5ta-left {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.s5ta-left h2 {
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  line-height: 1.3;
+  margin-bottom: 10px;
+}
+
+.s5ta-left p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: 20px;
+}
+
+.s5ta-callout {
+  background: var(--bg-card);
+  border-left: 3px solid var(--accent-cyan);
+  border-radius: 0 8px 8px 0;
+  padding: 14px 18px;
+  font-size: 13px;
+  color: var(--text-primary);
+  line-height: 1.7;
+}
+
+.s5ta-right {
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+
+.s5ta-flow {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.s5ta-flow-title {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  margin-bottom: 14px;
+}
+
+.s5ta-flow-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px dashed rgba(255,255,255,0.06);
+}
+.s5ta-flow-step:last-child { border-bottom: none; }
+
+.s5ta-step-num {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--bg-card2);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.s5ta-step-text {
+  font-size: 13px;
+  color: var(--text-primary);
+  line-height: 1.55;
+}
+
+.s5ta-step-sub {
+  font-size: 11.5px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.s5ta-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.s5ta-metric {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  text-align: center;
+}
+
+.s5ta-metric-val {
+  font-size: 26px;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.s5ta-metric-label {
+  font-size: 11px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* ─────────────────────────────────
+   SLIDE 6 — CTA
+───────────────────────────────── */
+.s6-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  gap: 0;
+}
+
+.s6-title {
+  font-size: 38px;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+  margin-bottom: 12px;
+  max-width: 760px;
+}
+
+.s6-sub {
+  font-size: 24px;
+  color: var(--accent-cyan);
+  font-weight: 600;
+  margin-bottom: 32px;
+  letter-spacing: -0.2px;
+}
+
+.cta-box {
+  background: var(--bg-card);
+  border: 1px solid rgba(59,130,246,0.5);
+  border-radius: 12px;
+  padding: 28px 48px;
+  margin-bottom: 28px;
+  width: 860px;
+}
+
+.cta-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--accent-cyan);
+  margin-bottom: 18px;
+}
+
+.cta-steps {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.cta-pill {
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  background: var(--bg-card2);
+}
+
+.s6-footer {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* ── Dot nav ── */
+.dots-nav {
+  position: fixed;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 100;
+  align-items: center;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background: var(--accent-blue);
+  width: 24px;
+  border-radius: 8px;
+}
+</style>
+</head>
+<body>
+
+<div class="slideshow" id="slideshow">
+
+  <!-- ═══════════════════════════
+       SLIDE 1 — COVER
+  ════════════════════════════ -->
+  <section class="slide active" id="s1">
+    <div class="glow-tr"></div>
+
+    <div class="slide-topbar">
+      <span class="slide-logo"><img src="images/Logo_EFLOW_white.svg" alt="EFLOW" style="height:28px; width:auto;"></span>
+      <span class="slide-num">01 / 06</span>
+    </div>
+
+    <div class="slide-body">
+      <div class="s1-left">
+        <div class="s1-badge-row">
+          <div class="pill">2026.04.01  San Jose</div>
+          <div class="pill" style="border-color:var(--accent-cyan);color:var(--accent-cyan);">Jewel Li · 2:30 PM</div>
+        </div>
+        <h1 class="s1-title">Tensor<br>Auto</h1>
+        <p class="s1-subtitle">Autonomous-Friendly Motor</p>
+        <p class="s1-tagline">
+          Zero Cogging<br>
+          Zero Derating<br>
+          Zero Sensor Interference
+        </p>
+      </div>
+
+      <div class="s1-right">
+        <!-- Autonomous vehicle / motor abstraction SVG -->
+        <svg width="620" height="520" viewBox="0 0 620 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="motorGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#06B6D4" stop-opacity="0.18"/>
+              <stop offset="100%" stop-color="#06B6D4" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.5"/>
+              <stop offset="100%" stop-color="#3B82F6" stop-opacity="0.1"/>
+            </radialGradient>
+          </defs>
+
+          <!-- Road grid background (opacity 0.06) -->
+          <!-- Horizontal lines -->
+          <line x1="0"   y1="65"  x2="620" y2="65"  stroke="white" stroke-opacity="0.06" stroke-width="1"/>
+          <line x1="0"   y1="130" x2="620" y2="130" stroke="white" stroke-opacity="0.06" stroke-width="1"/>
+          <line x1="0"   y1="195" x2="620" y2="195" stroke="white" stroke-opacity="0.06" stroke-width="1"/>
+          <line x1="0"   y1="260" x2="620" y2="260" stroke="white" stroke-opacity="0.06" stroke-width="1"/>
+          <line x1="0"   y1="325" x2="620" y2="325" stroke="white" stroke-opacity="0.06" stroke-width="1"/>
+          <line x1="0"   y1="390" x2="620" y2="390" stroke="white" stroke-opacity="0.06" stroke-width="1"/>
+          <line x1="0"   y1="455" x2="620" y2="455" stroke="white" stroke-opacity="0.06" stroke-width="1"/>
+          <!-- Vertical lines -->
+          <line x1="62"  y1="0" x2="62"  y2="520" stroke="white" stroke-opacity="0.06" stroke-width="1"/>
+          <line x1="124" y1="0" x2="124" y2="520" stroke="white" stroke-opacity="0.06" stroke-width="1"/>
+          <line x1="186" y1="0" x2="186" y2="520" stroke="white" stroke-opacity="0.06" stroke-width="1"/>
+          <line x1="248" y1="0" x2="248" y2="520" stroke="white" stroke-opacity="0.06" stroke-width="1"/>
+          <line x1="310" y1="0" x2="310" y2="520" stroke="white" stroke-opacity="0.06" stroke-width="1"/>
+          <line x1="372" y1="0" x2="372" y2="520" stroke="white" stroke-opacity="0.06" stroke-width="1"/>
+          <line x1="434" y1="0" x2="434" y2="520" stroke="white" stroke-opacity="0.06" stroke-width="1"/>
+          <line x1="496" y1="0" x2="496" y2="520" stroke="white" stroke-opacity="0.06" stroke-width="1"/>
+          <line x1="558" y1="0" x2="558" y2="520" stroke="white" stroke-opacity="0.06" stroke-width="1"/>
+
+          <!-- Motor glow -->
+          <circle cx="310" cy="260" r="170" fill="url(#motorGlow)"/>
+
+          <!-- Signal lines: motor → sensors (thin, dashed) -->
+          <!-- To sensor top (310, 52) -->
+          <line x1="310" y1="155" x2="310" y2="66" stroke="#06B6D4" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="4 4"/>
+          <!-- To sensor top-right (490, 108) -->
+          <line x1="388" y1="185" x2="476" y2="118" stroke="#06B6D4" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="4 4"/>
+          <!-- To sensor right (550, 290) -->
+          <line x1="425" y1="268" x2="536" y2="282" stroke="#06B6D4" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="4 4"/>
+          <!-- To sensor bottom-left (130, 400) -->
+          <line x1="230" y1="338" x2="148" y2="392" stroke="#06B6D4" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="4 4"/>
+          <!-- To sensor top-left (132, 148) -->
+          <line x1="228" y1="185" x2="150" y2="157" stroke="#06B6D4" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="4 4"/>
+
+          <!-- ── MOTOR CROSS-SECTION ── -->
+          <!-- Outer housing ring -->
+          <circle cx="310" cy="260" r="118" stroke="#3B82F6" stroke-opacity="0.25" stroke-width="2" fill="rgba(22,27,34,0.85)"/>
+          <!-- Stator ring outer -->
+          <circle cx="310" cy="260" r="100" stroke="#06B6D4" stroke-opacity="0.4" stroke-width="1" fill="none"/>
+
+          <!-- Stator teeth (12 slots) -->
+          <!-- Teeth at 0°, 30°, 60°... 330° — from r=82 to r=100 -->
+          <!-- 0° → (310+82,260)=(392,260) to (310+100,260)=(410,260) -->
+          <line x1="388" y1="260" x2="410" y2="260" stroke="#06B6D4" stroke-opacity="0.6" stroke-width="4" stroke-linecap="round"/>
+          <!-- 30° cos=0.866 sin=0.5 -->
+          <line x1="381" y1="219" x2="397" y2="210" stroke="#06B6D4" stroke-opacity="0.6" stroke-width="4" stroke-linecap="round"/>
+          <!-- 60° cos=0.5 sin=0.866 -->
+          <line x1="351" y1="189" x2="360" y2="173" stroke="#06B6D4" stroke-opacity="0.6" stroke-width="4" stroke-linecap="round"/>
+          <!-- 90° -->
+          <line x1="310" y1="178" x2="310" y2="160" stroke="#06B6D4" stroke-opacity="0.6" stroke-width="4" stroke-linecap="round"/>
+          <!-- 120° -->
+          <line x1="269" y1="189" x2="260" y2="173" stroke="#06B6D4" stroke-opacity="0.6" stroke-width="4" stroke-linecap="round"/>
+          <!-- 150° -->
+          <line x1="239" y1="219" x2="223" y2="210" stroke="#06B6D4" stroke-opacity="0.6" stroke-width="4" stroke-linecap="round"/>
+          <!-- 180° -->
+          <line x1="228" y1="260" x2="210" y2="260" stroke="#06B6D4" stroke-opacity="0.6" stroke-width="4" stroke-linecap="round"/>
+          <!-- 210° -->
+          <line x1="239" y1="301" x2="223" y2="310" stroke="#06B6D4" stroke-opacity="0.6" stroke-width="4" stroke-linecap="round"/>
+          <!-- 240° -->
+          <line x1="269" y1="331" x2="260" y2="347" stroke="#06B6D4" stroke-opacity="0.6" stroke-width="4" stroke-linecap="round"/>
+          <!-- 270° -->
+          <line x1="310" y1="342" x2="310" y2="360" stroke="#06B6D4" stroke-opacity="0.6" stroke-width="4" stroke-linecap="round"/>
+          <!-- 300° -->
+          <line x1="351" y1="331" x2="360" y2="347" stroke="#06B6D4" stroke-opacity="0.6" stroke-width="4" stroke-linecap="round"/>
+          <!-- 330° -->
+          <line x1="381" y1="301" x2="397" y2="310" stroke="#06B6D4" stroke-opacity="0.6" stroke-width="4" stroke-linecap="round"/>
+
+          <!-- Air gap ring -->
+          <circle cx="310" cy="260" r="82" stroke="rgba(255,255,255,0.06)" stroke-width="1" fill="none"/>
+
+          <!-- Rotor ring -->
+          <circle cx="310" cy="260" r="70" fill="rgba(28,35,51,0.95)" stroke="#3B82F6" stroke-opacity="0.5" stroke-width="1.5"/>
+
+          <!-- Rotor pole magnets (8 poles) -->
+          <path d="M310,190 A70,70 0 0,1 359,225 L340,248 A48,48 0 0,0 310,212 Z" fill="#3B82F6" fill-opacity="0.18"/>
+          <path d="M359,225 A70,70 0 0,1 380,295 L356,282 A48,48 0 0,0 338,248 Z" fill="#06B6D4" fill-opacity="0.18"/>
+          <path d="M380,295 A70,70 0 0,1 330,335 L320,310 A48,48 0 0,0 356,282 Z" fill="#3B82F6" fill-opacity="0.18"/>
+          <path d="M330,335 A70,70 0 0,1 260,325 L275,304 A48,48 0 0,0 320,310 Z" fill="#06B6D4" fill-opacity="0.18"/>
+          <path d="M260,325 A70,70 0 0,1 240,260 L264,260 A48,48 0 0,0 275,304 Z" fill="#3B82F6" fill-opacity="0.18"/>
+          <path d="M240,260 A70,70 0 0,1 261,195 L280,215 A48,48 0 0,0 264,260 Z" fill="#06B6D4" fill-opacity="0.18"/>
+          <path d="M261,195 A70,70 0 0,1 310,190 L310,212 A48,48 0 0,0 280,215 Z" fill="#3B82F6" fill-opacity="0.18"/>
+
+          <!-- Inner shaft -->
+          <circle cx="310" cy="260" r="28" fill="url(#coreGlow)" stroke="#3B82F6" stroke-opacity="0.7" stroke-width="1.5"/>
+          <circle cx="310" cy="260" r="12" fill="#3B82F6" fill-opacity="0.4"/>
+          <!-- Shaft cross marker -->
+          <line x1="310" y1="250" x2="310" y2="270" stroke="#3B82F6" stroke-opacity="0.8" stroke-width="2" stroke-linecap="round"/>
+          <line x1="300" y1="260" x2="320" y2="260" stroke="#3B82F6" stroke-opacity="0.8" stroke-width="2" stroke-linecap="round"/>
+
+          <!-- ── SENSOR ICONS ── -->
+          <!-- Sensor 1: Top center (310, ~52) — LiDAR -->
+          <rect x="292" y="34" width="36" height="28" rx="5" fill="var(--bg-card2)" stroke="#06B6D4" stroke-opacity="0.7" stroke-width="1.5"/>
+          <line x1="310" y1="34" x2="296" y2="20" stroke="#06B6D4" stroke-opacity="0.5" stroke-width="1"/>
+          <line x1="310" y1="34" x2="310" y2="18" stroke="#06B6D4" stroke-opacity="0.5" stroke-width="1"/>
+          <line x1="310" y1="34" x2="324" y2="20" stroke="#06B6D4" stroke-opacity="0.5" stroke-width="1"/>
+          <text x="310" y="53" fill="#06B6D4" font-size="9" font-weight="700" text-anchor="middle" font-family="Inter">LiDAR</text>
+
+          <!-- Sensor 2: Top-right (488, ~104) — Radar -->
+          <rect x="470" y="86" width="36" height="28" rx="5" fill="var(--bg-card2)" stroke="#3B82F6" stroke-opacity="0.7" stroke-width="1.5"/>
+          <line x1="488" y1="86" x2="474" y2="72" stroke="#3B82F6" stroke-opacity="0.5" stroke-width="1"/>
+          <line x1="488" y1="86" x2="488" y2="70" stroke="#3B82F6" stroke-opacity="0.5" stroke-width="1"/>
+          <line x1="488" y1="86" x2="502" y2="72" stroke="#3B82F6" stroke-opacity="0.5" stroke-width="1"/>
+          <text x="488" y="105" fill="#3B82F6" font-size="9" font-weight="700" text-anchor="middle" font-family="Inter">Radar</text>
+
+          <!-- Sensor 3: Right (548, ~278) — LiDAR -->
+          <rect x="530" y="260" width="36" height="28" rx="5" fill="var(--bg-card2)" stroke="#06B6D4" stroke-opacity="0.7" stroke-width="1.5"/>
+          <line x1="566" y1="274" x2="580" y2="260" stroke="#06B6D4" stroke-opacity="0.5" stroke-width="1"/>
+          <line x1="566" y1="274" x2="582" y2="274" stroke="#06B6D4" stroke-opacity="0.5" stroke-width="1"/>
+          <line x1="566" y1="274" x2="580" y2="288" stroke="#06B6D4" stroke-opacity="0.5" stroke-width="1"/>
+          <text x="548" y="302" fill="#06B6D4" font-size="9" font-weight="700" text-anchor="middle" font-family="Inter">LiDAR</text>
+
+          <!-- Sensor 4: Bottom-left (138, ~386) — Radar -->
+          <rect x="120" y="368" width="36" height="28" rx="5" fill="var(--bg-card2)" stroke="#3B82F6" stroke-opacity="0.7" stroke-width="1.5"/>
+          <line x1="138" y1="396" x2="124" y2="410" stroke="#3B82F6" stroke-opacity="0.5" stroke-width="1"/>
+          <line x1="138" y1="396" x2="138" y2="412" stroke="#3B82F6" stroke-opacity="0.5" stroke-width="1"/>
+          <line x1="138" y1="396" x2="152" y2="410" stroke="#3B82F6" stroke-opacity="0.5" stroke-width="1"/>
+          <text x="138" y="415" fill="#3B82F6" font-size="9" font-weight="700" text-anchor="middle" font-family="Inter">Radar</text>
+
+          <!-- Sensor 5: Top-left (142, ~140) — LiDAR -->
+          <rect x="124" y="122" width="36" height="28" rx="5" fill="var(--bg-card2)" stroke="#10B981" stroke-opacity="0.7" stroke-width="1.5"/>
+          <line x1="142" y1="122" x2="128" y2="108" stroke="#10B981" stroke-opacity="0.5" stroke-width="1"/>
+          <line x1="142" y1="122" x2="142" y2="106" stroke="#10B981" stroke-opacity="0.5" stroke-width="1"/>
+          <line x1="142" y1="122" x2="156" y2="108" stroke="#10B981" stroke-opacity="0.5" stroke-width="1"/>
+          <text x="142" y="141" fill="#10B981" font-size="9" font-weight="700" text-anchor="middle" font-family="Inter">LiDAR</text>
+
+          <!-- "iDS AX" label on motor -->
+          <text x="310" y="255" fill="#06B6D4" font-size="11" font-weight="700" text-anchor="middle" font-family="Inter">iDS AX</text>
+          <text x="310" y="270" fill="#8B949E" font-size="9" text-anchor="middle" font-family="Inter">AFPM</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="progress-bar" style="width:16.67%"></div>
+  </section>
+
+
+  <!-- ═══════════════════════════
+       SLIDE 2 — 핵심 과제
+  ════════════════════════════ -->
+  <section class="slide" id="s2">
+    <div class="slide-topbar">
+      <span class="slide-logo"><img src="images/Logo_EFLOW_white.svg" alt="EFLOW" style="height:28px; width:auto;"></span>
+      <span class="slide-num">02 / 06</span>
+    </div>
+
+    <div class="slide-body">
+      <div class="s2ta-title-block">
+        <p class="sec-label">자율주행의 핵심 과제</p>
+        <h2>알고리즘이 믿을 수 있는 액추에이터</h2>
+      </div>
+
+      <div class="s2ta-cards">
+        <!-- Card 1: Zero Cogging -->
+        <div class="s2ta-card">
+          <div>
+            <span class="s2ta-badge" style="color:var(--accent-blue);">①</span>
+            <span class="s2ta-badge-label" style="color:var(--text-secondary);">Problem 1</span>
+          </div>
+          <p class="s2ta-card-title">Zero Cogging</p>
+          <ul class="s2ta-card-body">
+            <li>토크 리플·코깅 → AI 제어 예측 모델 정확도 향상</li>
+            <li>AI 궤적과 물리적 움직임 오차 최소화</li>
+            <li>SMC 스테이터 + FOC 벡터 제어 적용</li>
+          </ul>
+        </div>
+
+        <!-- Card 2: Zero Derating -->
+        <div class="s2ta-card">
+          <div>
+            <span class="s2ta-badge" style="color:var(--accent-cyan);">②</span>
+          </div>
+          <p class="s2ta-card-title">Zero Derating</p>
+          <ul class="s2ta-card-body">
+            <li>밀폐형 오일냉각 → 열 스로틀링 방지</li>
+            <li>고속/고부하 연속 주행 출력 유지</li>
+            <li>알고리즘 예측 모델 안정성 확보</li>
+          </ul>
+        </div>
+
+        <!-- Card 3: Zero Interference -->
+        <div class="s2ta-card">
+          <div>
+            <span class="s2ta-badge" style="color:var(--accent-green);">③</span>
+          </div>
+          <p class="s2ta-card-title">Zero Interference</p>
+          <ul class="s2ta-card-body">
+            <li>저진동·저소음 설계</li>
+            <li>라이다 5개·레이더 센서 간섭 원천 차단</li>
+            <li>Level 4 인식 정확도 유지</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="progress-bar" style="width:33.33%"></div>
+  </section>
+
+
+  <!-- ═══════════════════════════
+       SLIDE 3 — 제어 친화성 비교
+  ════════════════════════════ -->
+  <section class="slide" id="s3">
+    <div class="slide-topbar">
+      <span class="slide-logo"><img src="images/Logo_EFLOW_white.svg" alt="EFLOW" style="height:28px; width:auto;"></span>
+      <span class="slide-num">03 / 06</span>
+    </div>
+
+    <div class="slide-body">
+      <p class="sec-label" style="margin-bottom:12px;">한눈에 보기</p>
+
+      <div class="s3ta-content">
+        <div class="s3ta-left">
+          <h2>iDS AX vs<br>일반 모터</h2>
+          <p>Level 4 자율주행은 수 밀리초 단위로 제어 명령을 모터에 전달한다. 명령이 오차 없이 물리적 거동으로 구현되어야 AI가 작동한다.</p>
+          <div class="s3ta-quote">
+            "For a Level 4 platform, the motor needs to be invisible to the control system — it does exactly what it's told, every time."
+          </div>
+        </div>
+
+        <div class="s3ta-right">
+          <table class="s3ta-table">
+            <thead>
+              <tr>
+                <th>특성</th>
+                <th>일반 모터</th>
+                <th>eFlow iDS AX</th>
+                <th>자율주행 영향</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>코깅 토크</td>
+                <td class="neg">발생</td>
+                <td class="highlight">최소화 (SMC 스테이터)</td>
+                <td>저속 정밀 제어 오차 감소</td>
+              </tr>
+              <tr>
+                <td>토크 리플</td>
+                <td class="neg">불연속적</td>
+                <td class="highlight">연속적·선형적 응답</td>
+                <td>AI 궤적 추적 정확도 향상</td>
+              </tr>
+              <tr>
+                <td>열 스로틀링</td>
+                <td class="neg">발생</td>
+                <td class="highlight">없음 (밀폐 오일 냉각)</td>
+                <td>예측 모델 안정성 확보</td>
+              </tr>
+              <tr>
+                <td>진동·소음</td>
+                <td class="neg">발생</td>
+                <td class="highlight">최소화 (AFPM 구조)</td>
+                <td>센서 간섭 차단</td>
+              </tr>
+              <tr>
+                <td>연속 구동 온도</td>
+                <td>120°C</td>
+                <td class="highlight">150°C</td>
+                <td>극한 주행 조건 대응</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="progress-bar" style="width:50%"></div>
+  </section>
+
+
+  <!-- ═══════════════════════════
+       SLIDE 4 — SMC 스테이터
+  ════════════════════════════ -->
+  <section class="slide" id="s4">
+    <div class="slide-topbar">
+      <span class="slide-logo"><img src="images/Logo_EFLOW_white.svg" alt="EFLOW" style="height:28px; width:auto;"></span>
+      <span class="slide-num">04 / 06</span>
+    </div>
+
+    <div class="slide-body">
+      <p class="sec-label" style="margin-bottom:10px;">기술 상세 — SMC 스테이터</p>
+
+      <div class="s4ta-content">
+        <div class="s4ta-left">
+          <h2>모터가 투명해진다<br>— Invisible Actuation</h2>
+
+          <div class="s4ta-timeline">
+            <!-- 기존 모터 -->
+            <div class="s4ta-tl-group">
+              <div class="s4ta-tl-header">
+                <div class="s4ta-tl-dot" style="background:#F87171;"></div>
+                <span class="s4ta-tl-label" style="color:#F87171;">기존 모터</span>
+              </div>
+              <div class="s4ta-tl-items" style="border-color:rgba(248,113,113,0.25);">
+                <p class="s4ta-tl-item">자석 수 비례 12~24등분 센싱</p>
+                <p class="s4ta-tl-item">불연속적 토크 출력</p>
+                <p class="s4ta-tl-item">코깅으로 인한 저속 제어 오차</p>
+              </div>
+            </div>
+
+            <!-- iDS AX -->
+            <div class="s4ta-tl-group">
+              <div class="s4ta-tl-header">
+                <div class="s4ta-tl-dot" style="background:var(--accent-cyan);"></div>
+                <span class="s4ta-tl-label" style="color:var(--accent-cyan);">iDS AX</span>
+              </div>
+              <div class="s4ta-tl-items" style="border-color:rgba(6,182,212,0.25);">
+                <p class="s4ta-tl-item">SMC 코어 → 3D 자속 경로 최적화</p>
+                <p class="s4ta-tl-item">와류손실 최소화</p>
+                <p class="s4ta-tl-item">연속적·선형적 토크 응답</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="s4ta-right">
+          <!-- Torque ripple comparison graph SVG -->
+          <svg width="660" height="490" viewBox="0 0 660 490" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="rippleAreaRed" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#F87171" stop-opacity="0.12"/>
+                <stop offset="100%" stop-color="#F87171" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="smoothAreaCyan" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#06B6D4" stop-opacity="0.15"/>
+                <stop offset="100%" stop-color="#06B6D4" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+
+            <!-- Chart area: x 70..620, y 40..400, w=550, h=360 -->
+            <!-- Grid lines -->
+            <line x1="70"  y1="40"  x2="70"  y2="410" stroke="white" stroke-opacity="0.06" stroke-width="1"/>
+            <line x1="70"  y1="400" x2="630" y2="400" stroke="white" stroke-opacity="0.06" stroke-width="1"/>
+            <line x1="70"  y1="310" x2="630" y2="310" stroke="white" stroke-opacity="0.06" stroke-width="1"/>
+            <line x1="70"  y1="220" x2="630" y2="220" stroke="white" stroke-opacity="0.06" stroke-width="1"/>
+            <line x1="70"  y1="130" x2="630" y2="130" stroke="white" stroke-opacity="0.06" stroke-width="1"/>
+            <line x1="70"  y1="40"  x2="630" y2="40"  stroke="white" stroke-opacity="0.06" stroke-width="1"/>
+
+            <!-- Vertical grid lines at 30° intervals (550px / 360° * 30 = ~46px) -->
+            <line x1="162" y1="40" x2="162" y2="400" stroke="white" stroke-opacity="0.04" stroke-width="1"/>
+            <line x1="254" y1="40" x2="254" y2="400" stroke="white" stroke-opacity="0.04" stroke-width="1"/>
+            <line x1="346" y1="40" x2="346" y2="400" stroke="white" stroke-opacity="0.04" stroke-width="1"/>
+            <line x1="438" y1="40" x2="438" y2="400" stroke="white" stroke-opacity="0.04" stroke-width="1"/>
+            <line x1="530" y1="40" x2="530" y2="400" stroke="white" stroke-opacity="0.04" stroke-width="1"/>
+
+            <!-- Y axis label -->
+            <text x="30" y="225" fill="#8B949E" font-size="11" text-anchor="middle" transform="rotate(-90,30,225)" font-family="Inter">토크 (Nm)</text>
+            <!-- X axis label -->
+            <text x="350" y="440" fill="#8B949E" font-size="11" text-anchor="middle" font-family="Inter">회전각 (°)</text>
+
+            <!-- Y axis ticks -->
+            <text x="62" y="404" fill="#8B949E" font-size="10" text-anchor="end" font-family="Inter">0</text>
+            <text x="62" y="314" fill="#8B949E" font-size="10" text-anchor="end" font-family="Inter">25</text>
+            <text x="62" y="224" fill="#8B949E" font-size="10" text-anchor="end" font-family="Inter">50</text>
+            <text x="62" y="134" fill="#8B949E" font-size="10" text-anchor="end" font-family="Inter">75</text>
+            <text x="62" y="44"  fill="#8B949E" font-size="10" text-anchor="end" font-family="Inter">100</text>
+
+            <!-- X axis ticks -->
+            <text x="70"  y="420" fill="#8B949E" font-size="10" text-anchor="middle" font-family="Inter">0°</text>
+            <text x="162" y="420" fill="#8B949E" font-size="10" text-anchor="middle" font-family="Inter">60°</text>
+            <text x="254" y="420" fill="#8B949E" font-size="10" text-anchor="middle" font-family="Inter">120°</text>
+            <text x="346" y="420" fill="#8B949E" font-size="10" text-anchor="middle" font-family="Inter">180°</text>
+            <text x="438" y="420" fill="#8B949E" font-size="10" text-anchor="middle" font-family="Inter">240°</text>
+            <text x="530" y="420" fill="#8B949E" font-size="10" text-anchor="middle" font-family="Inter">300°</text>
+            <text x="620" y="420" fill="#8B949E" font-size="10" text-anchor="middle" font-family="Inter">360°</text>
+
+            <!-- ── Conventional motor: ripple (red, wavy) ── -->
+            <!-- Average torque at y=200 (≈55Nm), ripple ±40px -->
+            <path d="M70,200
+              C85,160 95,240 115,200
+              C130,165 145,240 162,200
+              C177,160 192,240 208,200
+              C223,162 237,242 254,200
+              C269,160 283,242 300,200
+              C315,162 330,240 346,200
+              C360,160 374,242 392,200
+              C406,162 420,240 438,200
+              C453,160 467,242 484,200
+              C498,162 512,240 530,200
+              C544,160 558,242 575,200
+              C590,162 605,240 620,200"
+              stroke="#F87171" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+            <!-- Ripple area fill -->
+            <path d="M70,200
+              C85,160 95,240 115,200
+              C130,165 145,240 162,200
+              C177,160 192,240 208,200
+              C223,162 237,242 254,200
+              C269,160 283,242 300,200
+              C315,162 330,240 346,200
+              C360,160 374,242 392,200
+              C406,162 420,240 438,200
+              C453,160 467,242 484,200
+              C498,162 512,240 530,200
+              C544,160 558,242 575,200
+              C590,162 605,240 620,200
+              L620,400 L70,400 Z"
+              fill="url(#rippleAreaRed)"/>
+
+            <!-- ── iDS AX: smooth flat line (cyan) ── -->
+            <!-- Average torque same at y=200, near-flat with tiny ripple ±6px -->
+            <path d="M70,200 C160,197 250,203 350,200 C450,197 540,203 620,200"
+              stroke="#06B6D4" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+            <!-- Smooth area fill -->
+            <path d="M70,200 C160,197 250,203 350,200 C450,197 540,203 620,200 L620,400 L70,400 Z"
+              fill="url(#smoothAreaCyan)"/>
+
+            <!-- Legend -->
+            <rect x="80" y="52" width="14" height="3" rx="1.5" fill="#F87171"/>
+            <text x="100" y="58" fill="#F87171" font-size="12" font-weight="600" font-family="Inter">기존 모터 (Cogging Ripple ±18%)</text>
+
+            <rect x="80" y="74" width="14" height="3" rx="1.5" fill="#06B6D4"/>
+            <text x="100" y="80" fill="#06B6D4" font-size="12" font-weight="600" font-family="Inter">iDS AX (SMC — Ripple &lt;2%)</text>
+
+            <!-- Ripple annotation arrow -->
+            <line x1="115" y1="162" x2="115" y2="238" stroke="#F87171" stroke-opacity="0.6" stroke-width="1" stroke-dasharray="3 3"/>
+            <text x="120" y="198" fill="#F87171" font-size="10" font-family="Inter" opacity="0.8">±40Nm</text>
+
+            <!-- Smooth annotation -->
+            <line x1="350" y1="194" x2="350" y2="206" stroke="#06B6D4" stroke-opacity="0.6" stroke-width="1" stroke-dasharray="3 3"/>
+            <text x="356" y="197" fill="#06B6D4" font-size="10" font-family="Inter" opacity="0.8">±2Nm</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="progress-bar" style="width:66.67%"></div>
+  </section>
+
+
+  <!-- ═══════════════════════════
+       SLIDE 5 — Co-Validation
+  ════════════════════════════ -->
+  <section class="slide" id="s5">
+    <div class="slide-topbar">
+      <span class="slide-logo"><img src="images/Logo_EFLOW_white.svg" alt="EFLOW" style="height:28px; width:auto;"></span>
+      <span class="slide-num">05 / 06</span>
+    </div>
+
+    <div class="slide-body">
+      <p class="sec-label" style="margin-bottom:10px;">Co-Validation 프로그램</p>
+
+      <div class="s5ta-content">
+        <div class="s5ta-left">
+          <h2>데이터로 증명하는<br>제어 친화성</h2>
+          <p>모터가 얼마나 정직하게 제어 명령을 따르는가를 Tensor Auto 플랫폼에서 직접 검증합니다.</p>
+          <div class="s5ta-callout">
+            라스트마일 플랫폼에서 Level 4 RoboTaxi까지 — 동일한 iDS AX 드라이브트레인으로 확장 가능
+          </div>
+          <div style="margin-top:16px;">
+            <div class="s5ta-metrics">
+              <div class="s5ta-metric">
+                <div class="s5ta-metric-val" style="color:var(--accent-blue);">150°C</div>
+                <div class="s5ta-metric-label">연속 구동<br>온도</div>
+              </div>
+              <div class="s5ta-metric">
+                <div class="s5ta-metric-val" style="color:var(--accent-cyan);">&lt;2%</div>
+                <div class="s5ta-metric-label">토크 리플<br>허용치</div>
+              </div>
+              <div class="s5ta-metric">
+                <div class="s5ta-metric-val" style="color:var(--accent-green);">L4</div>
+                <div class="s5ta-metric-label">타겟<br>레벨</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="s5ta-right">
+          <div class="s5ta-flow">
+            <p class="s5ta-flow-title">프로그램 구조</p>
+
+            <div class="s5ta-flow-step">
+              <div class="s5ta-step-num">1</div>
+              <div>
+                <p class="s5ta-step-text">드라이브트레인 아키텍처 공유</p>
+                <p class="s5ta-step-sub">Tensor Auto 현재 플랫폼 스펙 및 요구 사항 정의</p>
+              </div>
+            </div>
+
+            <div class="s5ta-flow-step">
+              <div class="s5ta-step-num">2</div>
+              <div>
+                <p class="s5ta-step-text">eFlow 모터 → Tensor Auto 테스트 플랫폼 탑재</p>
+                <p class="s5ta-step-sub">iDS AX 실제 탑재 후 제어 응답 데이터 수집</p>
+              </div>
+            </div>
+
+            <div class="s5ta-flow-step">
+              <div class="s5ta-step-num">3</div>
+              <div>
+                <p class="s5ta-step-text">Tensor 팀 피드백 → eFlow 이터레이션 반영</p>
+                <p class="s5ta-step-sub">AI 제어 모델 정합성 공동 최적화</p>
+              </div>
+            </div>
+
+            <div class="s5ta-flow-step">
+              <div class="s5ta-step-num">4</div>
+              <div>
+                <p class="s5ta-step-text">드라이브트레인 아키텍처 공동 검증</p>
+                <p class="s5ta-step-sub">상호 구속 없음 · 데이터 기반 판단 · Level 4 양산 연계</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="progress-bar" style="width:83.33%"></div>
+  </section>
+
+
+  <!-- ═══════════════════════════
+       SLIDE 6 — NEXT STEPS
+  ════════════════════════════ -->
+  <section class="slide" id="s6">
+    <div class="glow-tr"></div>
+    <div class="glow-bl"></div>
+
+    <div class="slide-topbar">
+      <span class="slide-logo"><img src="images/Logo_EFLOW_white.svg" alt="EFLOW" style="height:28px; width:auto;"></span>
+      <span class="slide-num">06 / 06</span>
+    </div>
+
+    <div class="slide-body" style="display:flex;align-items:center;justify-content:center;">
+      <div class="s6-content">
+        <h1 class="s6-title">모터가 보이지 않을 때</h1>
+        <p class="s6-sub">알고리즘은 비로소 완전해집니다</p>
+
+        <div class="cta-box">
+          <p class="cta-label">다음 단계</p>
+          <div class="cta-steps">
+            <div class="cta-pill">현재 드라이브트레인 아키텍처 공유</div>
+            <div class="cta-pill">Co-validation 프로그램 일정 합의</div>
+            <div class="cta-pill">CTO Frank Heller 기술 브리핑</div>
+          </div>
+        </div>
+
+        <p class="s6-footer">EFLOW Co., Ltd. | eflow.youme@gmail.com | 2026.04.01 San Jose</p>
+      </div>
+    </div>
+
+    <div class="progress-bar" style="width:100%"></div>
+  </section>
+
+</div><!-- /slideshow -->
+
+
+<!-- Dot navigation -->
+<div class="dots-nav" id="dotsNav">
+  <div class="dot active"  onclick="goTo(0)"></div>
+  <div class="dot"         onclick="goTo(1)"></div>
+  <div class="dot"         onclick="goTo(2)"></div>
+  <div class="dot"         onclick="goTo(3)"></div>
+  <div class="dot"         onclick="goTo(4)"></div>
+  <div class="dot"         onclick="goTo(5)"></div>
+</div>
+
+
+<script>
+  let cur = 0;
+  const slides = document.querySelectorAll('.slide');
+  const dots   = document.querySelectorAll('.dot');
+
+  function goTo(n) {
+    slides[cur].classList.remove('active');
+    dots[cur].classList.remove('active');
+    cur = Math.max(0, Math.min(n, slides.length - 1));
+    slides[cur].classList.add('active');
+    dots[cur].classList.add('active');
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown')  goTo(cur + 1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')    goTo(cur - 1);
+  });
+
+  // Touch/swipe support
+  let touchX = 0;
+  document.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; });
+  document.addEventListener('touchend',   e => {
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 50) goTo(dx < 0 ? cur + 1 : cur - 1);
+  });
+
+  // Auto-scale to viewport
+  function scaleSlideshow() {
+    const slideshow = document.querySelector('.slideshow');
+    const scaleX = window.innerWidth / 1280;
+    const scaleY = window.innerHeight / 720;
+    const scale = Math.min(scaleX, scaleY) * 0.95;
+    slideshow.style.transform = `scale(${scale})`;
+  }
+
+  window.addEventListener('resize', scaleSlideshow);
+  window.addEventListener('load', scaleSlideshow);
+</script>
+</body>
+</html>

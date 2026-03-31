@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EFLOW · Synergy FUJI | US Market Partnership</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg-dark:   #0D1117;
+  --bg-card:   #161B22;
+  --bg-card2:  #1C2333;
+  --accent-blue:  #3B82F6;
+  --accent-cyan:  #06B6D4;
+  --accent-green: #10B981;
+  --text-primary: #F0F6FC;
+  --text-secondary: #8B949E;
+  --border: rgba(255,255,255,0.08);
+  --gold: #F59E0B;
+}
+
+html {
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #080C14;
+  margin: 0;
+  overflow: hidden;
+}
+
+/* ── Slideshow container ── */
+.slideshow {
+  position: relative;
+  width: 1280px;
+  height: 720px;
+  transform-origin: center center;
+  flex-shrink: 0;
+}
+
+/* ── Individual slide ── */
+.slide {
+  position: absolute;
+  inset: 0;
+  width: 1280px;
+  height: 720px;
+  background: var(--bg-dark);
+  display: none;
+  overflow: hidden;
+}
+.slide.active { display: block; }
+
+/* ── Common: top bar ── */
+.slide-topbar {
+  position: absolute;
+  top: 28px;
+  left: 52px;
+  right: 52px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+.slide-logo {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--text-secondary);
+}
+.slide-num {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  letter-spacing: 1px;
+}
+
+/* ── Common: bottom progress ── */
+.progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: var(--accent-blue);
+  transition: width 0.4s ease;
+}
+
+/* ── Glow ── */
+.glow-tr {
+  position: absolute;
+  top: -120px;
+  right: -120px;
+  width: 560px;
+  height: 560px;
+  background: radial-gradient(circle, rgba(59,130,246,0.07) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+.glow-bl {
+  position: absolute;
+  bottom: -120px;
+  left: -80px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(6,182,212,0.05) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Slide content wrapper ── */
+.slide-body {
+  position: absolute;
+  top: 80px;
+  left: 52px;
+  right: 52px;
+  bottom: 32px;
+  z-index: 1;
+}
+
+/* ── pill badge ── */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--accent-blue);
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent-blue);
+  letter-spacing: 0.5px;
+}
+
+/* ── Section label (H3 style) ── */
+.sec-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--accent-cyan);
+  margin-bottom: 8px;
+}
+
+/* ── Card base ── */
+.card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 28px;
+}
+
+/* ─────────────────────────────────
+   SLIDE 1 — COVER
+───────────────────────────────── */
+#s1 .slide-body {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.s1-left {
+  width: 40%;
+  padding-right: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+}
+
+.s1-meeting {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 18px;
+  margin-bottom: 14px;
+}
+
+.s1-title {
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  line-height: 1.12;
+  margin-bottom: 20px;
+}
+
+.s1-tagline {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+.s1-right {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.s1-chart-caption {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 10px;
+  letter-spacing: 0.2px;
+}
+
+/* ─────────────────────────────────
+   SLIDE 2 — MARKET TIMING
+───────────────────────────────── */
+#s2 .s2-title-block {
+  margin-bottom: 24px;
+}
+
+#s2 h2 {
+  font-size: 38px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  line-height: 1.15;
+}
+
+.s2-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.s2-cards .card .card-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.s2-cards .card .card-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+
+.s2-cards .card .card-body {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* ─────────────────────────────────
+   SLIDE 3 — 3 PROOF POINTS
+───────────────────────────────── */
+.s3-content {
+  display: flex;
+  gap: 40px;
+  height: calc(100% - 50px);
+}
+
+.s3-left {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.s3-left h2 {
+  font-size: 34px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+  margin-bottom: 30px;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.tl-item {
+  display: flex;
+  gap: 18px;
+  padding-bottom: 24px;
+  position: relative;
+}
+
+.tl-item:last-child { padding-bottom: 0; }
+
+.tl-dot-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.tl-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.tl-line {
+  flex: 1;
+  width: 2px;
+  background: var(--border);
+  margin-top: 4px;
+}
+
+.tl-item:last-child .tl-line { display: none; }
+
+.tl-text .tl-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  padding-top: 1px;
+}
+
+.tl-text .tl-sub {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.s3-right {
+  width: 55%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  align-content: center;
+}
+
+.metric-box {
+  background: var(--bg-card);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.metric-val {
+  font-size: 52px;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.metric-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* ─────────────────────────────────
+   SLIDE 4 — SERIES A
+───────────────────────────────── */
+.s4-content {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  height: calc(100% - 52px);
+}
+
+.s4-top {
+  margin-bottom: 4px;
+}
+
+.s4-top h2 {
+  font-size: 34px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+}
+
+.s4-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  flex: 1;
+}
+
+.s4-card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.s4-card-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+}
+
+.s4-card-value {
+  font-size: 38px;
+  font-weight: 900;
+  color: var(--accent-blue);
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+.s4-card-sub {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.flow-chart {
+  display: flex;
+  align-items: center;
+  background: var(--bg-card);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  padding: 14px 20px;
+  gap: 0;
+}
+
+.fc-node {
+  flex: 1;
+  background: var(--bg-card2);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  padding: 10px 14px;
+  text-align: center;
+}
+
+.fc-node .fn-year {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent-blue);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.fc-node .fn-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.fc-node .fn-sub {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: 3px;
+}
+
+.fc-node.ipo {
+  border-color: rgba(245,158,11,0.4);
+}
+
+.fc-node.ipo .fn-year { color: var(--gold); }
+
+.fc-arrow {
+  color: var(--accent-blue);
+  font-size: 18px;
+  padding: 0 10px;
+  flex-shrink: 0;
+}
+
+/* ─────────────────────────────────
+   SLIDE 5 — REVENUE
+───────────────────────────────── */
+.s5-content {
+  display: flex;
+  gap: 40px;
+  height: calc(100% - 52px);
+}
+
+.s5-left {
+  width: 38%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.s5-left h2 {
+  font-size: 34px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  margin-bottom: 6px;
+}
+
+.s5-sub {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+.rev-stack { display: flex; flex-direction: column; }
+
+.rev-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px dashed rgba(255,255,255,0.07);
+}
+
+.rev-item:last-child { border-bottom: none; }
+
+.rev-year {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  width: 36px;
+  flex-shrink: 0;
+}
+
+.rev-val {
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 1;
+  width: 88px;
+  flex-shrink: 0;
+}
+
+.rev-desc {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.s5-right {
+  width: 62%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ─────────────────────────────────
+   SLIDE 6 — CTA
+───────────────────────────────── */
+.s6-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  gap: 0;
+}
+
+.s6-title {
+  font-size: 42px;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+  margin-bottom: 12px;
+  max-width: 760px;
+}
+
+.s6-sub {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+}
+
+.cta-box {
+  background: var(--bg-card);
+  border: 1px solid rgba(59,130,246,0.5);
+  border-radius: 12px;
+  padding: 28px 48px;
+  margin-bottom: 28px;
+  width: 860px;
+}
+
+.cta-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--accent-cyan);
+  margin-bottom: 18px;
+}
+
+.cta-options {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.cta-pill {
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  background: var(--bg-card2);
+}
+
+.s6-footer {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* ── Dot nav ── */
+.dots-nav {
+  position: fixed;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 100;
+  align-items: center;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background: var(--accent-blue);
+  width: 24px;
+  border-radius: 8px;
+}
+</style>
+</head>
+<body>
+
+<div class="slideshow" id="slideshow">
+
+  <!-- ═══════════════════════════
+       SLIDE 1 — COVER
+  ════════════════════════════ -->
+  <section class="slide active" id="s1">
+    <div class="glow-tr"></div>
+
+    <div class="slide-topbar">
+      <span class="slide-logo"><img src="images/Logo_EFLOW_white.svg" alt="EFLOW" style="height:20px; width:auto;"></span>
+      <span class="slide-num">01 / 06</span>
+    </div>
+
+    <div class="slide-body">
+      <div class="s1-left">
+        <div class="pill">2026.04.01  San Jose</div>
+        <p class="s1-meeting">Synergy / FUJI — Partnership Meeting</p>
+        <h1 class="s1-title">Synergy<br>FUJI</h1>
+        <p class="s1-tagline">
+          US Market Partnership<br>
+          Juye Kim · Daisuke Nogiwa<br>
+          3:30 PM · San Jose
+        </p>
+      </div>
+
+      <div class="s1-right">
+        <!-- 한미일 삼각형 SVG: eFlow(파랑/상단), Synergy(시안/좌하단), FUJI(그린/우하단) -->
+        <svg width="500" height="420" viewBox="0 0 500 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Glow backgrounds -->
+          <circle cx="250" cy="72" r="72" fill="rgba(59,130,246,0.08)"/>
+          <circle cx="82" cy="352" r="62" fill="rgba(6,182,212,0.08)"/>
+          <circle cx="418" cy="352" r="62" fill="rgba(16,185,129,0.08)"/>
+
+          <!-- Connection lines (dashed) -->
+          <line x1="250" y1="72" x2="82" y2="352" stroke="rgba(255,255,255,0.13)" stroke-width="1.5" stroke-dasharray="6,4"/>
+          <line x1="250" y1="72" x2="418" y2="352" stroke="rgba(255,255,255,0.13)" stroke-width="1.5" stroke-dasharray="6,4"/>
+          <line x1="82" y1="352" x2="418" y2="352" stroke="rgba(255,255,255,0.13)" stroke-width="1.5" stroke-dasharray="6,4"/>
+
+          <!-- Center hub -->
+          <circle cx="250" cy="215" r="72" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.09)" stroke-width="1"/>
+          <text x="250" y="206" fill="#F0F6FC" font-size="11.5" font-weight="700" text-anchor="middle" font-family="Inter">North American</text>
+          <text x="250" y="224" fill="#F0F6FC" font-size="11.5" font-weight="700" text-anchor="middle" font-family="Inter">Robotics Market</text>
+
+          <!-- eFlow badge (top center, 파랑 = 한국) -->
+          <circle cx="250" cy="72" r="48" fill="#3B82F6" fill-opacity="0.14" stroke="#3B82F6" stroke-width="1.5"/>
+          <text x="250" y="65" fill="#3B82F6" font-size="14" font-weight="800" text-anchor="middle" font-family="Inter">eFlow</text>
+          <text x="250" y="83" fill="#8B949E" font-size="10" text-anchor="middle" font-family="Inter">Korea</text>
+
+          <!-- Synergy badge (bottom-left, 시안 = 미국) -->
+          <circle cx="82" cy="352" r="48" fill="#06B6D4" fill-opacity="0.14" stroke="#06B6D4" stroke-width="1.5"/>
+          <text x="82" y="345" fill="#06B6D4" font-size="14" font-weight="800" text-anchor="middle" font-family="Inter">Synergy</text>
+          <text x="82" y="363" fill="#8B949E" font-size="10" text-anchor="middle" font-family="Inter">USA</text>
+
+          <!-- FUJI badge (bottom-right, 그린 = 일본) -->
+          <circle cx="418" cy="352" r="48" fill="#10B981" fill-opacity="0.14" stroke="#10B981" stroke-width="1.5"/>
+          <text x="418" y="345" fill="#10B981" font-size="14" font-weight="800" text-anchor="middle" font-family="Inter">FUJI</text>
+          <text x="418" y="363" fill="#8B949E" font-size="10" text-anchor="middle" font-family="Inter">Japan</text>
+        </svg>
+        <p class="s1-chart-caption">한국 · 미국 · 일본 3자 GTM 파트너십</p>
+      </div>
+    </div>
+
+    <div class="progress-bar" style="width:16.67%"></div>
+  </section>
+
+
+  <!-- ═══════════════════════════
+       SLIDE 2 — PARTNERSHIP STRUCTURE
+  ════════════════════════════ -->
+  <section class="slide" id="s2">
+    <div class="slide-topbar">
+      <span class="slide-logo"><img src="images/Logo_EFLOW_white.svg" alt="EFLOW" style="height:20px; width:auto;"></span>
+      <span class="slide-num">02 / 06</span>
+    </div>
+
+    <div class="slide-body">
+      <div class="s2-title-block">
+        <p class="sec-label">파트너십 구조</p>
+        <h2>각자의 강점이 정확히 맞물리는 구조</h2>
+      </div>
+
+      <div class="s2-cards">
+        <div class="card">
+          <p class="card-label" style="color:var(--accent-blue);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:2px;margin-bottom:10px;">eFlow · Korea</p>
+          <p class="card-title" style="font-size:20px;font-weight:700;color:var(--text-primary);line-height:1.3;margin-bottom:12px;">AFPM 기술<br>플랫폼</p>
+          <p class="card-body" style="font-size:13px;color:var(--text-secondary);line-height:1.7;">유럽 25개 B2B 실공급 · 84건 IP 보유 · 98% 재주문률 — 전 세계 5개사 미만만 양산 가능한 소형 AFPM 모터</p>
+        </div>
+        <div class="card">
+          <p class="card-label" style="color:var(--accent-cyan);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:2px;margin-bottom:10px;">Synergy · USA</p>
+          <p class="card-title" style="font-size:20px;font-weight:700;color:var(--text-primary);line-height:1.3;margin-bottom:12px;">북미 모빌리티<br>에너지 인프라</p>
+          <p class="card-body" style="font-size:13px;color:var(--text-secondary);line-height:1.7;">미국 현지 거점 · 유통 네트워크 · 에너지 인프라 운영 — eFlow가 단독으로 가질 수 없는 미국 시장 접근성</p>
+        </div>
+        <div class="card">
+          <p class="card-label" style="color:var(--accent-green);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:2px;margin-bottom:10px;">FUJI · Japan</p>
+          <p class="card-title" style="font-size:20px;font-weight:700;color:var(--text-primary);line-height:1.3;margin-bottom:12px;">물류 자동화<br>AMR · 산업 SI</p>
+          <p class="card-body" style="font-size:13px;color:var(--text-secondary);line-height:1.7;">AMR 시스템 통합 · 미국 물류 배포 경험 · 산업 자동화 — eFlow 모터 탑재 로봇 플랫폼 구현의 최적 파트너</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="progress-bar" style="width:33.33%"></div>
+  </section>
+
+
+  <!-- ═══════════════════════════
+       SLIDE 3 — eFlow × FUJI ROBOTICS
+  ════════════════════════════ -->
+  <section class="slide" id="s3">
+    <div class="slide-topbar">
+      <span class="slide-logo"><img src="images/Logo_EFLOW_white.svg" alt="EFLOW" style="height:20px; width:auto;"></span>
+      <span class="slide-num">03 / 06</span>
+    </div>
+
+    <div class="slide-body">
+      <p class="sec-label" style="margin-bottom:12px;">eFlow × FUJI 로보틱스 접점</p>
+
+      <div class="s3-content">
+        <div class="s3-left">
+          <h2>FUJI AMR<br>핵심 과제</h2>
+
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="tl-dot-wrap">
+                <div class="tl-dot" style="background:var(--accent-blue);"></div>
+                <div class="tl-line"></div>
+              </div>
+              <div class="tl-text">
+                <p class="tl-title">초박형 폼팩터</p>
+                <p class="tl-sub">기존 대비 두께 60% 감소 요구<br>120mm → 50mm 이하 목표</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot-wrap">
+                <div class="tl-dot" style="background:var(--accent-cyan);"></div>
+                <div class="tl-line"></div>
+              </div>
+              <div class="tl-text">
+                <p class="tl-title">고토크 밀도</p>
+                <p class="tl-sub">토크 밀도 2배 향상 필요<br>8 kW/kg → 16 kW/kg 목표</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot-wrap">
+                <div class="tl-dot" style="background:var(--accent-green);"></div>
+              </div>
+              <div class="tl-text">
+                <p class="tl-title">경량화</p>
+                <p class="tl-sub">AMR 전체 중량 절감을 위한<br>모터 경량화 요구</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="s3-right">
+          <div class="metric-box">
+            <div class="metric-val" style="color:var(--accent-blue);">60%</div>
+            <div class="metric-label">두께 감소<br>120mm → 50mm</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val" style="color:var(--accent-cyan);">2×</div>
+            <div class="metric-label">토크 밀도 향상<br>8 → 16 kW/kg</div>
+          </div>
+          <div class="metric-box" style="background:var(--bg-card2);">
+            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent-green);margin-bottom:10px;">eFlow 솔루션</div>
+            <div style="font-size:13px;color:var(--text-primary);font-weight:600;line-height:1.65;">팬케이크 구조<br>밀폐 오일 냉각<br>초박형 고토크 AFPM 최적화</div>
+          </div>
+          <div class="metric-box" style="display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(255,255,255,0.03);border:1px dashed rgba(255,255,255,0.15);">
+            <div style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-secondary);margin-bottom:10px;">FUJI AMR CONCEPT</div>
+            <div style="font-size:36px;font-weight:900;color:var(--gold);">98%</div>
+            <div style="font-size:11px;color:var(--text-secondary);margin-top:6px;">eFlow 재주문률</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="progress-bar" style="width:50%"></div>
+  </section>
+
+
+  <!-- ═══════════════════════════
+       SLIDE 4 — eFlow × Synergy US Market Entry
+  ════════════════════════════ -->
+  <section class="slide" id="s4">
+    <div class="slide-topbar">
+      <span class="slide-logo"><img src="images/Logo_EFLOW_white.svg" alt="EFLOW" style="height:20px; width:auto;"></span>
+      <span class="slide-num">04 / 06</span>
+    </div>
+
+    <div class="slide-body">
+      <div class="s4-content">
+        <div class="s4-top">
+          <p class="sec-label">eFlow × Synergy 미국시장 진입</p>
+          <h2 style="font-size:34px;font-weight:800;color:var(--text-primary);letter-spacing:-0.5px;">3단계 GTM 플로우</h2>
+        </div>
+
+        <div class="s4-cards">
+          <div class="s4-card">
+            <p class="s4-card-label">STEP 1</p>
+            <p class="s4-card-value" style="font-size:24px;color:var(--accent-blue);line-height:1.3;margin-top:4px;">기술 공급</p>
+            <p class="s4-card-sub" style="line-height:1.8;margin-top:8px;">eFlow AFPM 모터 공급<br>미국 시장 인증 공동 추진<br>Synergy 인프라 적용</p>
+          </div>
+          <div class="s4-card" style="border-color:rgba(6,182,212,0.5);background:rgba(6,182,212,0.05);">
+            <p class="s4-card-label" style="color:var(--accent-cyan);">STEP 2 — 핵심</p>
+            <p class="s4-card-value" style="font-size:24px;color:var(--accent-cyan);line-height:1.3;margin-top:4px;">공동 GTM</p>
+            <p class="s4-card-sub" style="line-height:1.8;margin-top:8px;">Joint Go-to-Market<br>공동 브랜딩 · 공동 세일즈<br>북미 파트너사 공동 접근</p>
+          </div>
+          <div class="s4-card">
+            <p class="s4-card-label">STEP 3</p>
+            <p class="s4-card-value" style="font-size:24px;color:var(--accent-green);line-height:1.3;margin-top:4px;">시장 확장</p>
+            <p class="s4-card-sub" style="line-height:1.8;margin-top:8px;">북미 OEM · 물류 고객사<br>FUJI 로보틱스 통합<br>한-미-일 글로벌 SOP</p>
+          </div>
+        </div>
+
+        <!-- 2028 미국 현지공장 -->
+        <div class="flow-chart" style="justify-content:center;">
+          <div class="fc-node" style="flex:none;max-width:580px;text-align:center;padding:14px 32px;">
+            <span class="fn-year" style="color:var(--gold);font-size:12px;">2028 목표</span>
+            <p class="fn-title" style="font-size:14px;margin-top:4px;">미국 현지공장 설립 검토</p>
+            <p class="fn-sub" style="font-size:12px;margin-top:6px;">한-미-일 3자 파트너십 기반 미국 생산거점 구축</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="progress-bar" style="width:66.67%"></div>
+  </section>
+
+
+  <!-- ═══════════════════════════
+       SLIDE 5 — 한미일 삼각 파트너십 프레임
+  ════════════════════════════ -->
+  <section class="slide" id="s5">
+    <div class="slide-topbar">
+      <span class="slide-logo"><img src="images/Logo_EFLOW_white.svg" alt="EFLOW" style="height:20px; width:auto;"></span>
+      <span class="slide-num">05 / 06</span>
+    </div>
+
+    <div class="slide-body" style="display:flex;flex-direction:column;gap:14px;">
+      <div>
+        <p class="sec-label">한미일 삼각 파트너십 프레임</p>
+      </div>
+
+      <!-- 삼각형 SVG -->
+      <div style="display:flex;justify-content:center;flex:1;align-items:center;">
+        <svg width="900" height="300" viewBox="0 0 900 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Glow backgrounds -->
+          <circle cx="450" cy="38" r="68" fill="rgba(59,130,246,0.07)"/>
+          <circle cx="82" cy="270" r="60" fill="rgba(6,182,212,0.07)"/>
+          <circle cx="818" cy="270" r="60" fill="rgba(16,185,129,0.07)"/>
+
+          <!-- Connection lines -->
+          <line x1="450" y1="38" x2="82" y2="270" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" stroke-dasharray="8,5"/>
+          <line x1="450" y1="38" x2="818" y2="270" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" stroke-dasharray="8,5"/>
+          <line x1="82" y1="270" x2="818" y2="270" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" stroke-dasharray="8,5"/>
+
+          <!-- Center hub -->
+          <circle cx="450" cy="185" r="58" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.09)" stroke-width="1"/>
+          <text x="450" y="178" fill="#F0F6FC" font-size="11" font-weight="700" text-anchor="middle" font-family="Inter">North American</text>
+          <text x="450" y="195" fill="#8B949E" font-size="10" text-anchor="middle" font-family="Inter">Robotics Market</text>
+
+          <!-- eFlow (top center, 파랑) -->
+          <circle cx="450" cy="38" r="50" fill="#3B82F6" fill-opacity="0.13" stroke="#3B82F6" stroke-width="1.5"/>
+          <text x="450" y="31" fill="#3B82F6" font-size="13" font-weight="800" text-anchor="middle" font-family="Inter">eFlow</text>
+          <text x="450" y="48" fill="#8B949E" font-size="9.5" text-anchor="middle" font-family="Inter">AFPM 기술 · IP · 양산</text>
+
+          <!-- Synergy (bottom-left, 시안) -->
+          <circle cx="82" cy="270" r="50" fill="#06B6D4" fill-opacity="0.13" stroke="#06B6D4" stroke-width="1.5"/>
+          <text x="82" y="263" fill="#06B6D4" font-size="13" font-weight="800" text-anchor="middle" font-family="Inter">Synergy</text>
+          <text x="82" y="280" fill="#8B949E" font-size="9.5" text-anchor="middle" font-family="Inter">미국 거점 · 에너지 인프라</text>
+
+          <!-- FUJI (bottom-right, 그린) -->
+          <circle cx="818" cy="270" r="50" fill="#10B981" fill-opacity="0.13" stroke="#10B981" stroke-width="1.5"/>
+          <text x="818" y="263" fill="#10B981" font-size="13" font-weight="800" text-anchor="middle" font-family="Inter">FUJI</text>
+          <text x="818" y="280" fill="#8B949E" font-size="9.5" text-anchor="middle" font-family="Inter">로보틱스 SI · AMR</text>
+        </svg>
+      </div>
+
+      <!-- 3개 수치 -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+        <div class="metric-box" style="text-align:center;padding:16px 20px;">
+          <div class="metric-val" style="color:var(--accent-blue);font-size:36px;">$18B</div>
+          <div class="metric-label">2030 로봇 액추에이터 시장</div>
+        </div>
+        <div class="metric-box" style="text-align:center;padding:16px 20px;">
+          <div class="metric-val" style="color:var(--accent-cyan);font-size:36px;">68%</div>
+          <div class="metric-label">CAGR — 휴머노이드 성장</div>
+        </div>
+        <div class="metric-box" style="text-align:center;padding:16px 20px;">
+          <div class="metric-val" style="color:var(--accent-green);font-size:36px;">2028</div>
+          <div class="metric-label">미국 공장 목표 연도</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="progress-bar" style="width:83.33%"></div>
+  </section>
+
+
+  <!-- ═══════════════════════════
+       SLIDE 6 — NEXT STEPS
+  ════════════════════════════ -->
+  <section class="slide" id="s6">
+    <div class="glow-tr"></div>
+    <div class="glow-bl"></div>
+
+    <div class="slide-topbar">
+      <span class="slide-logo"><img src="images/Logo_EFLOW_white.svg" alt="EFLOW" style="height:20px; width:auto;"></span>
+      <span class="slide-num">06 / 06</span>
+    </div>
+
+    <div class="slide-body" style="display:flex;align-items:center;justify-content:center;">
+      <div class="s6-content">
+        <p class="sec-label" style="margin-bottom:14px;">Next Steps</p>
+        <h1 class="s6-title">세 회사가 함께할 때</h1>
+        <p class="s6-sub">북미 로보틱스 시장의 새로운 플레이어</p>
+
+        <!-- 2개 CTA 박스 나란히 -->
+        <div style="display:flex;gap:16px;width:860px;margin-bottom:28px;">
+          <div class="cta-box" style="width:auto;flex:1;margin-bottom:0;padding:24px 32px;">
+            <p class="cta-label" style="color:var(--accent-cyan);">Synergy</p>
+            <div class="cta-options" style="flex-direction:column;gap:10px;align-items:center;">
+              <div class="cta-pill">유통 파트너십 체결</div>
+              <div class="cta-pill">공동 GTM 플랜 수립</div>
+              <div class="cta-pill">OEM 고객사 소개</div>
+            </div>
+          </div>
+          <div class="cta-box" style="width:auto;flex:1;margin-bottom:0;padding:24px 32px;border-color:rgba(16,185,129,0.5);">
+            <p class="cta-label" style="color:var(--accent-green);">FUJI</p>
+            <div class="cta-options" style="flex-direction:column;gap:10px;align-items:center;">
+              <div class="cta-pill">AMR 모터 사양 검토</div>
+              <div class="cta-pill">PoC 일정 협의</div>
+              <div class="cta-pill">공동 프로젝트 착수</div>
+            </div>
+          </div>
+        </div>
+
+        <p class="s6-footer">EFLOW Co., Ltd. | eflow.youme@gmail.com | 2026.04.01 San Jose</p>
+      </div>
+    </div>
+
+    <div class="progress-bar" style="width:100%"></div>
+  </section>
+
+</div><!-- /slideshow -->
+
+
+<!-- Dot navigation -->
+<div class="dots-nav" id="dotsNav">
+  <div class="dot active"  onclick="goTo(0)"></div>
+  <div class="dot"         onclick="goTo(1)"></div>
+  <div class="dot"         onclick="goTo(2)"></div>
+  <div class="dot"         onclick="goTo(3)"></div>
+  <div class="dot"         onclick="goTo(4)"></div>
+  <div class="dot"         onclick="goTo(5)"></div>
+</div>
+
+
+<script>
+  let cur = 0;
+  const slides = document.querySelectorAll('.slide');
+  const dots   = document.querySelectorAll('.dot');
+
+  function goTo(n) {
+    slides[cur].classList.remove('active');
+    dots[cur].classList.remove('active');
+    cur = Math.max(0, Math.min(n, slides.length - 1));
+    slides[cur].classList.add('active');
+    dots[cur].classList.add('active');
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown')  goTo(cur + 1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')    goTo(cur - 1);
+  });
+
+  // Touch/swipe support
+  let touchX = 0;
+  document.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; });
+  document.addEventListener('touchend',   e => {
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 50) goTo(dx < 0 ? cur + 1 : cur - 1);
+  });
+
+  // Auto-scale to viewport
+  function scaleSlideshow() {
+    const slideshow = document.querySelector('.slideshow');
+    const scaleX = window.innerWidth / 1280;
+    const scaleY = window.innerHeight / 720;
+    const scale = Math.min(scaleX, scaleY) * 0.95;
+    slideshow.style.transform = `scale(${scale})`;
+  }
+
+  window.addEventListener('resize', scaleSlideshow);
+  window.addEventListener('load', scaleSlideshow);
+</script>
+</body>
+</html>
