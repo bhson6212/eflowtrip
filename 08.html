@@ -111,6 +111,15 @@ body {
   border-radius: 12px; border: 1px solid var(--border); padding: 28px;
 }
 
+/* SLIDE 1 — geometric background pattern */
+.s1-bg-geo {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.28;
+}
+
 /* SLIDE 1 & 2 — COVER */
 #s1 .slide-body, #s2 .slide-body {
   display: flex; align-items: center; gap: 0;
@@ -190,6 +199,67 @@ body {
        지그재그 관절 + 휴머노이드 실루엣 오버레이
   ══════════════════════════════════ -->
   <section class="slide active" id="s1">
+
+    <!-- Geometric background: circuit traces + joint arcs + dot grid -->
+    <svg class="s1-bg-geo" xmlns="http://www.w3.org/2000/svg" width="1280" height="720">
+      <defs>
+        <pattern id="s1dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+          <circle cx="0" cy="0" r="1.2" fill="rgba(59,130,246,0.55)"/>
+        </pattern>
+        <pattern id="s1grid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+          <path d="M 80 0 L 0 0 L 0 80" fill="none" stroke="rgba(59,130,246,0.07)" stroke-width="0.5"/>
+        </pattern>
+      </defs>
+      <!-- Fine grid -->
+      <rect width="1280" height="720" fill="url(#s1grid)"/>
+      <!-- Dot nodes -->
+      <rect width="1280" height="720" fill="url(#s1dots)" opacity="0.55"/>
+      <!-- Structural diagonal lines suggesting limb segments -->
+      <g stroke="rgba(59,130,246,0.12)" stroke-width="1" fill="none" stroke-linecap="round">
+        <line x1="640" y1="0"   x2="1280" y2="360"/>
+        <line x1="640" y1="0"   x2="900"  y2="720"/>
+        <line x1="1100" y1="0"  x2="640"  y2="720"/>
+        <line x1="520"  y1="200" x2="1280" y2="560"/>
+      </g>
+      <!-- Joint arc overlays suggesting actuator range-of-motion -->
+      <g fill="none" stroke="rgba(59,130,246,0.06)">
+        <circle cx="880" cy="200" r="120"/>
+        <circle cx="880" cy="200" r="85"/>
+        <circle cx="880" cy="200" r="50"/>
+        <circle cx="720" cy="480" r="90"/>
+        <circle cx="720" cy="480" r="60"/>
+        <circle cx="1060" cy="380" r="70"/>
+        <circle cx="1060" cy="380" r="45"/>
+      </g>
+      <!-- Circuit trace paths -->
+      <g stroke="rgba(59,130,246,0.18)" stroke-width="0.8" fill="none" stroke-linecap="square">
+        <path d="M 520 80 H 700 L 760 140 H 1000"/>
+        <path d="M 520 300 H 660 L 720 240 H 960"/>
+        <path d="M 520 500 H 680 L 740 440 H 1060 L 1120 380"/>
+        <path d="M 800 600 H 960 L 1020 540 H 1200"/>
+        <path d="M 760 140 V 300"/>
+        <path d="M 960 240 V 140"/>
+        <path d="M 1060 380 V 540"/>
+      </g>
+      <!-- Junction nodes at trace intersections -->
+      <g fill="rgba(59,130,246,0.45)">
+        <circle cx="700"  cy="80"  r="2.5"/>
+        <circle cx="760"  cy="140" r="2.5"/>
+        <circle cx="1000" cy="140" r="2.5"/>
+        <circle cx="660"  cy="300" r="2.5"/>
+        <circle cx="720"  cy="240" r="2.5"/>
+        <circle cx="960"  cy="240" r="2.5"/>
+        <circle cx="680"  cy="500" r="2.5"/>
+        <circle cx="740"  cy="440" r="2.5"/>
+        <circle cx="1060" cy="440" r="2.5"/>
+        <circle cx="1120" cy="380" r="2.5"/>
+        <circle cx="960"  cy="600" r="2.5"/>
+        <circle cx="1020" cy="540" r="2.5"/>
+        <circle cx="760"  cy="300" r="2.5"/>
+        <circle cx="960"  cy="140" r="2.5"/>
+      </g>
+    </svg>
+
     <div class="glow-tr"></div>
 
     <div class="slide-topbar">
