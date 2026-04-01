@@ -217,13 +217,37 @@ body {
 /* ─────────────────────────────────
    SLIDE 2 — MARKET TIMING
 ───────────────────────────────── */
-#s2 .s2-title-block {
-  margin-bottom: 38px;
-}
-#s2 .s2-cards .card {
-  min-height: 270px;
+#s2 .slide-body {
   display: flex;
   flex-direction: column;
+}
+#s2 .s2-title-block {
+  margin-bottom: 24px;
+  flex-shrink: 0;
+}
+#s2 .s2-cards {
+  flex: 1;
+  align-items: stretch;
+}
+#s2 .s2-cards .card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+.s2-card-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.14;
+  filter: brightness(0.65) saturate(0.75);
+  z-index: 0;
+}
+#s2 .s2-cards .card > *:not(.s2-card-img) {
+  position: relative;
+  z-index: 1;
 }
 
 #s2 h2 {
@@ -789,6 +813,8 @@ body {
 
       <div class="s2-cards">
         <div class="card">
+            <img class="s2-card-img" src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80" alt="">
+            
           <svg width="36" height="36" viewBox="0 0 36 36" fill="none" style="margin-bottom:14px;">
             <rect width="36" height="36" rx="10" fill="rgba(59,130,246,0.12)"/>
             <circle cx="18" cy="18" r="13" fill="none" stroke="#3B82F6" stroke-width="2"/>
@@ -804,6 +830,8 @@ body {
           <p class="card-body" style="font-size:13px;color:var(--text-secondary);line-height:1.7;">25 European B2B clients supplied · 84 IPs held · 98% Reorder Rate — Small AFPM motors mass-producible by fewer than 5 companies globally</p>
         </div>
         <div class="card">
+            <img class="s2-card-img" src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=600&q=80" alt="">
+            
           <svg width="36" height="36" viewBox="0 0 36 36" fill="none" style="margin-bottom:14px;">
             <rect width="36" height="36" rx="10" fill="rgba(6,182,212,0.12)"/>
             <circle cx="18" cy="9" r="6" fill="none" stroke="#06B6D4" stroke-width="1.8"/>
@@ -818,6 +846,8 @@ body {
           <p class="card-body" style="font-size:13px;color:var(--text-secondary);line-height:1.7;">US local presence · distribution network · energy infrastructure — US market access EFLOW cannot achieve alone</p>
         </div>
         <div class="card">
+            <img class="s2-card-img" src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&q=80" alt="">
+            
           <svg width="36" height="36" viewBox="0 0 36 36" fill="none" style="margin-bottom:14px;">
             <rect width="36" height="36" rx="10" fill="rgba(16,185,129,0.12)"/>
             <rect x="10" y="5" width="16" height="12" rx="3" fill="none" stroke="#10B981" stroke-width="1.8"/>
