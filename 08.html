@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,9 +21,7 @@
   --gold: #F59E0B;
 }
 
-html {
-  font-family: 'Inter', sans-serif;
-}
+html { font-family: 'Inter', sans-serif; }
 
 body {
   display: flex;
@@ -35,7 +33,6 @@ body {
   overflow: hidden;
 }
 
-/* ── Slideshow container ── */
 .slideshow {
   position: relative;
   width: 1280px;
@@ -44,7 +41,6 @@ body {
   flex-shrink: 0;
 }
 
-/* ── Individual slide ── */
 .slide {
   position: absolute;
   inset: 0;
@@ -56,7 +52,6 @@ body {
 }
 .slide.active { display: block; }
 
-/* ── Common: top bar ── */
 .slide-topbar {
   position: absolute;
   top: 28px;
@@ -67,598 +62,141 @@ body {
   align-items: center;
   z-index: 10;
 }
-.slide-logo {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 3px;
-  color: var(--text-secondary);
-}
-.slide-num {
-  font-size: 12px;
-  font-weight: 400;
-  color: var(--text-secondary);
-  letter-spacing: 1px;
-}
+.slide-logo { font-size: 12px; font-weight: 700; letter-spacing: 3px; color: var(--text-secondary); }
+.slide-num  { font-size: 12px; font-weight: 400; color: var(--text-secondary); letter-spacing: 1px; }
 
-/* ── Common: bottom progress ── */
 .progress-bar {
   position: absolute;
-  bottom: 0;
-  left: 0;
+  bottom: 0; left: 0;
   height: 2px;
   background: var(--accent-blue);
   transition: width 0.4s ease;
 }
 
-/* ── Glow ── */
 .glow-tr {
-  position: absolute;
-  top: -120px;
-  right: -120px;
-  width: 560px;
-  height: 560px;
+  position: absolute; top: -120px; right: -120px;
+  width: 560px; height: 560px;
   background: radial-gradient(circle, rgba(59,130,246,0.07) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: 0;
+  pointer-events: none; z-index: 0;
 }
 .glow-bl {
-  position: absolute;
-  bottom: -120px;
-  left: -80px;
-  width: 400px;
-  height: 400px;
+  position: absolute; bottom: -120px; left: -80px;
+  width: 400px; height: 400px;
   background: radial-gradient(circle, rgba(6,182,212,0.05) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: 0;
+  pointer-events: none; z-index: 0;
 }
 
-/* ── Slide content wrapper ── */
 .slide-body {
   position: absolute;
-  top: 80px;
-  left: 52px;
-  right: 52px;
-  bottom: 32px;
+  top: 80px; left: 52px; right: 52px; bottom: 32px;
   z-index: 1;
 }
 
-/* ── pill badge ── */
 .pill {
-  display: inline-flex;
-  align-items: center;
-  border: 1px solid var(--accent-blue);
-  border-radius: 20px;
-  padding: 6px 16px;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--accent-blue);
-  letter-spacing: 0.5px;
+  display: inline-flex; align-items: center;
+  border: 1px solid var(--accent-blue); border-radius: 20px;
+  padding: 6px 16px; font-size: 12px; font-weight: 600;
+  color: var(--accent-blue); letter-spacing: 0.5px;
 }
 
-/* ── Section label (H3 style) ── */
 .sec-label {
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: var(--accent-cyan);
-  margin-bottom: 8px;
+  font-size: 12px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 2px;
+  color: var(--accent-cyan); margin-bottom: 8px;
 }
 
-/* ── Card base ── */
 .card {
   background: var(--bg-card);
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  padding: 28px;
+  border-radius: 12px; border: 1px solid var(--border); padding: 28px;
 }
 
-/* ─────────────────────────────────
-   SLIDE 1 — COVER
-───────────────────────────────── */
-#s1 .slide-body {
-  display: flex;
-  align-items: center;
-  gap: 0;
+/* SLIDE 1 & 2 — COVER */
+#s1 .slide-body, #s2 .slide-body {
+  display: flex; align-items: center; gap: 0;
 }
-
 .s1-left {
-  width: 40%;
-  padding-right: 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 0;
+  width: 40%; padding-right: 40px;
+  display: flex; flex-direction: column; justify-content: center; gap: 0;
 }
-
 .s1-meeting {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-top: 18px;
-  margin-bottom: 14px;
+  font-size: 12px; font-weight: 600; color: var(--text-secondary);
+  text-transform: uppercase; letter-spacing: 2px;
+  margin-top: 18px; margin-bottom: 14px;
 }
-
 .s1-title {
-  font-size: 48px;
-  font-weight: 800;
-  color: var(--text-primary);
-  letter-spacing: -0.5px;
-  line-height: 1.12;
-  margin-bottom: 20px;
+  font-size: 48px; font-weight: 800; color: var(--text-primary);
+  letter-spacing: -0.5px; line-height: 1.12; margin-bottom: 20px;
 }
-
 .s1-tagline {
-  font-size: 13px;
-  font-weight: 400;
-  color: var(--text-secondary);
-  line-height: 1.75;
+  font-size: 13px; font-weight: 400;
+  color: var(--text-secondary); line-height: 1.75;
 }
-
 .s1-right {
-  width: 60%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+  width: 60%; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; height: 100%;
 }
 
-.s1-chart-caption {
-  font-size: 13px;
-  color: var(--text-secondary);
-  margin-top: 10px;
-  letter-spacing: 0.2px;
-}
-
-/* ─────────────────────────────────
-   SLIDE 2 — MARKET TIMING
-───────────────────────────────── */
-#s2 .s2-title-block {
-  margin-bottom: 24px;
-}
-
-#s2 h2 {
-  font-size: 38px;
-  font-weight: 800;
-  color: var(--text-primary);
-  letter-spacing: -0.5px;
-  line-height: 1.15;
-}
-
-.s2-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-
-.s2-cards .card .card-label {
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 10px;
-}
-
-.s2-cards .card .card-title {
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--text-primary);
-  line-height: 1.3;
-  margin-bottom: 12px;
-}
-
-.s2-cards .card .card-body {
-  font-size: 13px;
-  font-weight: 400;
-  color: var(--text-secondary);
-  line-height: 1.7;
-}
-
-/* ─────────────────────────────────
-   SLIDE 3 — 3 PROOF POINTS
-───────────────────────────────── */
-.s3-content {
-  display: flex;
-  gap: 40px;
-  height: calc(100% - 50px);
-}
-
-.s3-left {
-  width: 45%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.s3-left h2 {
-  font-size: 34px;
-  font-weight: 800;
-  color: var(--text-primary);
-  letter-spacing: -0.5px;
-  line-height: 1.2;
-  margin-bottom: 30px;
-}
-
-.timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-.tl-item {
-  display: flex;
-  gap: 18px;
-  padding-bottom: 24px;
-  position: relative;
-}
-
-.tl-item:last-child { padding-bottom: 0; }
-
-.tl-dot-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-shrink: 0;
-}
-
-.tl-dot {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.tl-line {
-  flex: 1;
-  width: 2px;
-  background: var(--border);
-  margin-top: 4px;
-}
-
-.tl-item:last-child .tl-line { display: none; }
-
-.tl-text .tl-title {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 4px;
-  padding-top: 1px;
-}
-
-.tl-text .tl-sub {
-  font-size: 12px;
-  color: var(--text-secondary);
-  line-height: 1.6;
-}
-
-.s3-right {
-  width: 55%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-  align-content: center;
-}
-
+/* Shared component styles */
 .metric-box {
-  background: var(--bg-card);
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  padding: 22px 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  background: var(--bg-card); border-radius: 12px; border: 1px solid var(--border);
+  padding: 22px 20px; display: flex; flex-direction: column; justify-content: center;
 }
-
-.metric-val {
-  font-size: 52px;
-  font-weight: 900;
-  line-height: 1;
-  margin-bottom: 8px;
-}
-
-.metric-label {
-  font-size: 12px;
-  color: var(--text-secondary);
-  font-weight: 400;
-  line-height: 1.5;
-}
-
-/* ─────────────────────────────────
-   SLIDE 4 — SERIES A
-───────────────────────────────── */
-.s4-content {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  height: calc(100% - 52px);
-}
-
-.s4-top {
-  margin-bottom: 4px;
-}
-
-.s4-top h2 {
-  font-size: 34px;
-  font-weight: 800;
-  color: var(--text-primary);
-  letter-spacing: -0.5px;
-}
-
-.s4-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  flex: 1;
-}
-
-.s4-card {
-  background: var(--bg-card);
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  padding: 24px 28px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.s4-card-label {
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: var(--text-secondary);
-  margin-bottom: 10px;
-}
-
-.s4-card-value {
-  font-size: 38px;
-  font-weight: 900;
-  color: var(--accent-blue);
-  line-height: 1.1;
-  margin-bottom: 6px;
-}
-
-.s4-card-sub {
-  font-size: 12px;
-  color: var(--text-secondary);
-}
-
+.metric-val { font-size: 52px; font-weight: 900; line-height: 1; margin-bottom: 8px; }
+.metric-label { font-size: 12px; color: var(--text-secondary); font-weight: 400; line-height: 1.5; }
+.timeline { display: flex; flex-direction: column; gap: 0; }
+.tl-item { display: flex; gap: 18px; padding-bottom: 22px; position: relative; }
+.tl-item:last-child { padding-bottom: 0; }
+.tl-dot-wrap { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+.tl-dot { width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0; }
+.tl-line { flex: 1; width: 2px; background: var(--border); margin-top: 4px; }
+.tl-item:last-child .tl-line { display: none; }
+.tl-text .tl-title { font-size: 15px; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; padding-top: 1px; }
+.tl-text .tl-sub { font-size: 12px; color: var(--text-secondary); line-height: 1.6; }
 .flow-chart {
-  display: flex;
-  align-items: center;
-  background: var(--bg-card);
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  padding: 14px 20px;
-  gap: 0;
+  display: flex; align-items: center; background: var(--bg-card);
+  border-radius: 8px; border: 1px solid var(--border); padding: 14px 20px; gap: 0;
 }
-
 .fc-node {
-  flex: 1;
-  background: var(--bg-card2);
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  padding: 10px 14px;
-  text-align: center;
+  flex: 1; background: var(--bg-card2); border-radius: 8px;
+  border: 1px solid var(--border); padding: 10px 14px; text-align: center;
 }
+.fc-node .fn-year { font-size: 11px; font-weight: 700; color: var(--accent-blue); display: block; margin-bottom: 4px; }
+.fc-node .fn-title { font-size: 12px; font-weight: 600; color: var(--text-primary); line-height: 1.3; }
+.fc-arrow { color: var(--accent-blue); font-size: 18px; padding: 0 10px; flex-shrink: 0; }
 
-.fc-node .fn-year {
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--accent-blue);
-  display: block;
-  margin-bottom: 4px;
-}
+/* SLIDE 6 / 5 — CTA */
+.s6-content { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; text-align: center; gap: 0; }
+.s6-title { font-size: 42px; font-weight: 800; color: var(--text-primary); line-height: 1.2; letter-spacing: -0.5px; margin-bottom: 12px; max-width: 760px; }
+.s6-sub { font-size: 16px; color: var(--text-secondary); margin-bottom: 32px; }
+.cta-pill { border: 1px solid var(--border); border-radius: 20px; padding: 10px 22px; font-size: 14px; font-weight: 600; color: var(--text-primary); background: var(--bg-card2); }
+.s6-footer { font-size: 12px; color: var(--text-secondary); }
 
-.fc-node .fn-title {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text-primary);
-  line-height: 1.3;
-}
-
-.fc-node .fn-sub {
-  font-size: 11px;
-  color: var(--text-secondary);
-  margin-top: 3px;
-}
-
-.fc-node.ipo {
-  border-color: rgba(245,158,11,0.4);
-}
-
-.fc-node.ipo .fn-year { color: var(--gold); }
-
-.fc-arrow {
-  color: var(--accent-blue);
-  font-size: 18px;
-  padding: 0 10px;
-  flex-shrink: 0;
-}
-
-/* ─────────────────────────────────
-   SLIDE 5 — REVENUE
-───────────────────────────────── */
-.s5-content {
-  display: flex;
-  gap: 40px;
-  height: calc(100% - 52px);
-}
-
-.s5-left {
-  width: 38%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.s5-left h2 {
-  font-size: 34px;
-  font-weight: 800;
-  color: var(--text-primary);
-  letter-spacing: -0.5px;
-  margin-bottom: 6px;
-}
-
-.s5-sub {
-  font-size: 13px;
-  color: var(--text-secondary);
-  margin-bottom: 24px;
-}
-
-.rev-stack { display: flex; flex-direction: column; }
-
-.rev-item {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 14px 0;
-  border-bottom: 1px dashed rgba(255,255,255,0.07);
-}
-
-.rev-item:last-child { border-bottom: none; }
-
-.rev-year {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text-secondary);
-  width: 36px;
-  flex-shrink: 0;
-}
-
-.rev-val {
-  font-size: 34px;
-  font-weight: 900;
-  line-height: 1;
-  width: 88px;
-  flex-shrink: 0;
-}
-
-.rev-desc {
-  font-size: 12px;
-  color: var(--text-secondary);
-  line-height: 1.6;
-}
-
-.s5-right {
-  width: 62%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* ─────────────────────────────────
-   SLIDE 6 — CTA
-───────────────────────────────── */
-.s6-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  text-align: center;
-  gap: 0;
-}
-
-.s6-title {
-  font-size: 42px;
-  font-weight: 800;
-  color: var(--text-primary);
-  line-height: 1.2;
-  letter-spacing: -0.5px;
-  margin-bottom: 12px;
-  max-width: 760px;
-}
-
-.s6-sub {
-  font-size: 16px;
-  color: var(--text-secondary);
-  margin-bottom: 32px;
-}
-
-.cta-box {
-  background: var(--bg-card);
-  border: 1px solid rgba(59,130,246,0.5);
-  border-radius: 12px;
-  padding: 28px 48px;
-  margin-bottom: 28px;
-  width: 860px;
-}
-
-.cta-label {
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: var(--accent-cyan);
-  margin-bottom: 18px;
-}
-
-.cta-options {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-}
-
-.cta-pill {
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 10px 22px;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text-primary);
-  background: var(--bg-card2);
-}
-
-.s6-footer {
-  font-size: 12px;
-  color: var(--text-secondary);
-}
-
-/* ── Dot nav ── */
+/* Dot nav */
 .dots-nav {
-  position: fixed;
-  bottom: 22px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 8px;
-  z-index: 100;
-  align-items: center;
+  position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 8px; z-index: 100; align-items: center;
 }
-
-.dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.25);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.dot.active {
-  background: var(--accent-blue);
-  width: 24px;
-  border-radius: 8px;
-}
+.dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.25); cursor: pointer; transition: all 0.3s ease; }
+.dot.active { background: var(--accent-blue); width: 24px; border-radius: 8px; }
 </style>
 </head>
 <body>
 
 <div class="slideshow" id="slideshow">
 
-  <!-- ═══════════════════════════
-       SLIDE 1 — COVER
-  ════════════════════════════ -->
+  <!-- ══════════════════════════════════
+       SLIDE 1 — 커버 시안 A
+       지그재그 관절 + 휴머노이드 실루엣 오버레이
+  ══════════════════════════════════ -->
   <section class="slide active" id="s1">
     <div class="glow-tr"></div>
 
     <div class="slide-topbar">
-      <span class="slide-logo"><img src="images/Logo_EFLOW_white.svg" alt="EFLOW" style="height:20px; width:auto;"></span>
-      <span class="slide-num">01 / 06</span>
+      <span class="slide-logo"><img src="images/Logo_EFLOW_white.svg" alt="EFLOW" style="height:20px;width:auto;"></span>
+      <span class="slide-num" style="display:flex;align-items:center;gap:10px;">
+        <span style="background:rgba(59,130,246,0.12);border:1px solid rgba(59,130,246,0.3);border-radius:4px;padding:2px 8px;font-size:10px;font-weight:700;letter-spacing:1px;color:var(--accent-blue);">Draft A</span>
+        01 / 05
+      </span>
     </div>
 
     <div class="slide-body">
@@ -676,439 +214,507 @@ body {
           Humanoid Actuator<br>
           Joe Chen · Capex · 5:30 PM
         </p>
-        <!-- Key stats -->
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:18px;">
           <span style="font-size:11px;font-weight:700;color:var(--accent-blue);background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.3);border-radius:6px;padding:4px 10px;">25 kg</span>
           <span style="font-size:11px;font-weight:700;color:var(--accent-cyan);background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.3);border-radius:6px;padding:4px 10px;">440 Nm</span>
           <span style="font-size:11px;font-weight:700;color:var(--accent-green);background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:6px;padding:4px 10px;">Zero Cogging</span>
           <span style="font-size:11px;font-weight:700;color:var(--gold);background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);border-radius:6px;padding:4px 10px;">Back-drivable</span>
-          <span style="font-size:11px;font-weight:700;color:var(--text-secondary);background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:6px;padding:4px 10px;">Mass Production Ready</span>
+          <span style="font-size:11px;font-weight:700;color:var(--text-secondary);background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:6px;padding:4px 10px;">Mass Production</span>
         </div>
       </div>
 
       <div class="s1-right">
-        <!-- 휴머노이드 로봇 관절 추상화 SVG: 원형 관절 3개 세로 연결, 동심원 모터 단면 -->
+        <!-- 시안 A: 지그재그 AFPM 관절 3개 + 휴머노이드 실루엣 오버레이 -->
         <svg width="400" height="560" viewBox="0 0 400 560" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Glow backgrounds -->
-          <circle cx="200" cy="100" r="80" fill="rgba(59,130,246,0.07)"/>
-          <circle cx="200" cy="280" r="80" fill="rgba(59,130,246,0.06)"/>
-          <circle cx="200" cy="460" r="80" fill="rgba(59,130,246,0.06)"/>
 
-          <!-- Connecting rods between joints -->
-          <rect x="188" y="148" width="24" height="84" rx="6" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
-          <rect x="188" y="328" width="24" height="84" rx="6" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+          <!-- ── Humanoid Robots ghost 실루엣 ── -->
+          <ellipse cx="200" cy="52" rx="24" ry="28" stroke="rgba(59,130,246,0.14)" stroke-width="1.5" fill="rgba(59,130,246,0.03)"/>
+          <rect x="191" y="80" width="18" height="20" rx="3" stroke="rgba(59,130,246,0.1)" stroke-width="1" fill="none"/>
+          <line x1="130" y1="110" x2="270" y2="110" stroke="rgba(59,130,246,0.1)" stroke-width="1.8"/>
+          <path d="M163,108 L155,280 L245,280 L237,108 Z" stroke="rgba(59,130,246,0.08)" stroke-width="1" fill="rgba(59,130,246,0.02)"/>
+          <!-- left arm -->
+          <line x1="130" y1="112" x2="106" y2="208" stroke="rgba(59,130,246,0.1)" stroke-width="1.8"/>
+          <line x1="106" y1="208" x2="98"  y2="305" stroke="rgba(59,130,246,0.1)" stroke-width="1.8"/>
+          <!-- right arm -->
+          <line x1="270" y1="112" x2="294" y2="208" stroke="rgba(59,130,246,0.1)" stroke-width="1.8"/>
+          <line x1="294" y1="208" x2="302" y2="305" stroke="rgba(59,130,246,0.1)" stroke-width="1.8"/>
+          <!-- left leg -->
+          <line x1="178" y1="280" x2="170" y2="392" stroke="rgba(59,130,246,0.1)" stroke-width="1.8"/>
+          <line x1="170" y1="392" x2="166" y2="488" stroke="rgba(59,130,246,0.1)" stroke-width="1.8"/>
+          <!-- right leg -->
+          <line x1="222" y1="280" x2="230" y2="392" stroke="rgba(59,130,246,0.1)" stroke-width="1.8"/>
+          <line x1="230" y1="392" x2="234" y2="488" stroke="rgba(59,130,246,0.1)" stroke-width="1.8"/>
 
-          <!-- ── Joint 1 (top / shoulder) ── -->
-          <!-- Outer ring -->
-          <circle cx="200" cy="100" r="66" fill="rgba(59,130,246,0.08)" stroke="#3B82F6" stroke-width="1.5" stroke-dasharray="4,3"/>
-          <!-- Motor cross-section rings -->
-          <circle cx="200" cy="100" r="50" fill="rgba(59,130,246,0.1)" stroke="#3B82F6" stroke-width="1.5"/>
-          <circle cx="200" cy="100" r="34" fill="rgba(59,130,246,0.15)" stroke="#3B82F6" stroke-width="1.5"/>
-          <circle cx="200" cy="100" r="18" fill="rgba(59,130,246,0.25)" stroke="#3B82F6" stroke-width="2"/>
-          <!-- Center dot -->
-          <circle cx="200" cy="100" r="6" fill="#3B82F6"/>
-          <!-- Cross lines (stator segments) -->
-          <line x1="200" y1="52" x2="200" y2="66" stroke="#3B82F6" stroke-width="2" stroke-opacity="0.5"/>
-          <line x1="200" y1="134" x2="200" y2="148" stroke="#3B82F6" stroke-width="2" stroke-opacity="0.5"/>
-          <line x1="152" y1="100" x2="166" y2="100" stroke="#3B82F6" stroke-width="2" stroke-opacity="0.5"/>
-          <line x1="234" y1="100" x2="248" y2="100" stroke="#3B82F6" stroke-width="2" stroke-opacity="0.5"/>
-          <!-- Label -->
-          <text x="285" y="94" fill="#8B949E" font-size="10" font-family="Inter">Shoulder</text>
-          <text x="285" y="108" fill="#3B82F6" font-size="10" font-weight="700" font-family="Inter">Joint 1</text>
+          <!-- ── 지그재그 관절 연결 리그 ("> " 형태) ── -->
+          <!-- J1(288,115) ↘ J2(112,288): 상단 링크 -->
+          <line x1="288" y1="174" x2="112" y2="232" stroke="rgba(255,255,255,0.08)" stroke-width="20" stroke-linecap="round"/>
+          <line x1="288" y1="174" x2="112" y2="232" stroke="rgba(59,130,246,0.2)" stroke-width="3.5" stroke-linecap="round"/>
+          <!-- J2(112,288) ↗ J3(288,460): 하단 링크 -->
+          <line x1="112" y1="344" x2="288" y2="404" stroke="rgba(255,255,255,0.08)" stroke-width="20" stroke-linecap="round"/>
+          <line x1="112" y1="344" x2="288" y2="404" stroke="rgba(59,130,246,0.2)" stroke-width="3.5" stroke-linecap="round"/>
 
-          <!-- ── Joint 2 (middle / elbow) ── -->
-          <circle cx="200" cy="280" r="66" fill="rgba(59,130,246,0.07)" stroke="#3B82F6" stroke-width="1.5" stroke-dasharray="4,3"/>
-          <circle cx="200" cy="280" r="50" fill="rgba(59,130,246,0.09)" stroke="#3B82F6" stroke-width="1.5"/>
-          <circle cx="200" cy="280" r="34" fill="rgba(59,130,246,0.14)" stroke="#3B82F6" stroke-width="1.5"/>
-          <circle cx="200" cy="280" r="18" fill="rgba(59,130,246,0.24)" stroke="#3B82F6" stroke-width="2"/>
-          <circle cx="200" cy="280" r="6" fill="#3B82F6"/>
-          <line x1="200" y1="232" x2="200" y2="246" stroke="#3B82F6" stroke-width="2" stroke-opacity="0.5"/>
-          <line x1="200" y1="314" x2="200" y2="328" stroke="#3B82F6" stroke-width="2" stroke-opacity="0.5"/>
-          <line x1="152" y1="280" x2="166" y2="280" stroke="#3B82F6" stroke-width="2" stroke-opacity="0.5"/>
-          <line x1="234" y1="280" x2="248" y2="280" stroke="#3B82F6" stroke-width="2" stroke-opacity="0.5"/>
-          <text x="285" y="274" fill="#8B949E" font-size="10" font-family="Inter">Elbow</text>
-          <text x="285" y="288" fill="#3B82F6" font-size="10" font-weight="700" font-family="Inter">Joint 2</text>
+          <!-- ── JOINT 1 — 우측 어깨 (288, 115) ── -->
+          <circle cx="288" cy="115" r="60" fill="rgba(59,130,246,0.05)" stroke="#3B82F6" stroke-width="1.2" stroke-dasharray="4,3"/>
+          <circle cx="288" cy="115" r="46" fill="rgba(59,130,246,0.09)" stroke="#3B82F6" stroke-width="1.5"/>
+          <circle cx="288" cy="115" r="31" fill="rgba(59,130,246,0.14)" stroke="#3B82F6" stroke-width="1.5"/>
+          <circle cx="288" cy="115" r="16" fill="rgba(59,130,246,0.22)" stroke="#3B82F6" stroke-width="2"/>
+          <circle cx="288" cy="115" r="5"  fill="#3B82F6"/>
+          <line x1="288" y1="55"  x2="288" y2="69"  stroke="#3B82F6" stroke-width="2" opacity="0.45"/>
+          <line x1="288" y1="161" x2="288" y2="175" stroke="#3B82F6" stroke-width="2" opacity="0.45"/>
+          <line x1="228" y1="115" x2="242" y2="115" stroke="#3B82F6" stroke-width="2" opacity="0.45"/>
+          <text x="220" y="86"  fill="#8B949E" font-size="10" font-family="Inter">Shoulder</text>
+          <text x="220" y="98"  fill="#3B82F6" font-size="10" font-weight="700" font-family="Inter">AFPM  Joint 1</text>
 
-          <!-- ── Joint 3 (bottom / wrist) ── -->
-          <circle cx="200" cy="460" r="66" fill="rgba(59,130,246,0.07)" stroke="#3B82F6" stroke-width="1.5" stroke-dasharray="4,3"/>
-          <circle cx="200" cy="460" r="50" fill="rgba(59,130,246,0.09)" stroke="#3B82F6" stroke-width="1.5"/>
-          <circle cx="200" cy="460" r="34" fill="rgba(59,130,246,0.14)" stroke="#3B82F6" stroke-width="1.5"/>
-          <circle cx="200" cy="460" r="18" fill="rgba(59,130,246,0.24)" stroke="#3B82F6" stroke-width="2"/>
-          <circle cx="200" cy="460" r="6" fill="#3B82F6"/>
-          <line x1="200" y1="412" x2="200" y2="426" stroke="#3B82F6" stroke-width="2" stroke-opacity="0.5"/>
-          <line x1="152" y1="460" x2="166" y2="460" stroke="#3B82F6" stroke-width="2" stroke-opacity="0.5"/>
-          <line x1="234" y1="460" x2="248" y2="460" stroke="#3B82F6" stroke-width="2" stroke-opacity="0.5"/>
-          <text x="285" y="454" fill="#8B949E" font-size="10" font-family="Inter">Wrist</text>
-          <text x="285" y="468" fill="#3B82F6" font-size="10" font-weight="700" font-family="Inter">Joint 3</text>
+          <!-- ── JOINT 2 — 좌측 팔꿈치 (112, 288) ── -->
+          <circle cx="112" cy="288" r="60" fill="rgba(59,130,246,0.04)" stroke="#3B82F6" stroke-width="1.2" stroke-dasharray="4,3"/>
+          <circle cx="112" cy="288" r="46" fill="rgba(59,130,246,0.08)" stroke="#3B82F6" stroke-width="1.4"/>
+          <circle cx="112" cy="288" r="31" fill="rgba(59,130,246,0.13)" stroke="#3B82F6" stroke-width="1.4"/>
+          <circle cx="112" cy="288" r="16" fill="rgba(59,130,246,0.20)" stroke="#3B82F6" stroke-width="2"/>
+          <circle cx="112" cy="288" r="5"  fill="#3B82F6"/>
+          <line x1="112" y1="228" x2="112" y2="242" stroke="#3B82F6" stroke-width="2" opacity="0.45"/>
+          <line x1="112" y1="334" x2="112" y2="348" stroke="#3B82F6" stroke-width="2" opacity="0.45"/>
+          <line x1="172" y1="288" x2="158" y2="288" stroke="#3B82F6" stroke-width="2" opacity="0.45"/>
+          <text x="10"  y="270" fill="#8B949E" font-size="10" font-family="Inter">Elbow</text>
+          <text x="10"  y="282" fill="#3B82F6" font-size="10" font-weight="700" font-family="Inter">AFPM  Joint 2</text>
 
-          <!-- eFlow AFPM label -->
-          <text x="200" y="545" fill="#8B949E" font-size="11" text-anchor="middle" font-family="Inter">eFlow AFPM Actuator</text>
+          <!-- ── JOINT 3 — 우측 무릎 (288, 460) ── -->
+          <circle cx="288" cy="460" r="60" fill="rgba(59,130,246,0.04)" stroke="#3B82F6" stroke-width="1.2" stroke-dasharray="4,3"/>
+          <circle cx="288" cy="460" r="46" fill="rgba(59,130,246,0.08)" stroke="#3B82F6" stroke-width="1.4"/>
+          <circle cx="288" cy="460" r="31" fill="rgba(59,130,246,0.13)" stroke="#3B82F6" stroke-width="1.4"/>
+          <circle cx="288" cy="460" r="16" fill="rgba(59,130,246,0.20)" stroke="#3B82F6" stroke-width="2"/>
+          <circle cx="288" cy="460" r="5"  fill="#3B82F6"/>
+          <line x1="288" y1="400" x2="288" y2="414" stroke="#3B82F6" stroke-width="2" opacity="0.45"/>
+          <line x1="228" y1="460" x2="242" y2="460" stroke="#3B82F6" stroke-width="2" opacity="0.45"/>
+          <text x="220" y="434" fill="#8B949E" font-size="10" font-family="Inter">Knee</text>
+          <text x="220" y="446" fill="#3B82F6" font-size="10" font-weight="700" font-family="Inter">AFPM  Joint 3</text>
+
+          <!-- 하단 레이블 -->
+          <text x="200" y="545" fill="#8B949E" font-size="11" text-anchor="middle" font-family="Inter">eFlow AFPM Actuator — Zigzag Joint Architecture</text>
         </svg>
       </div>
     </div>
 
-    <div class="progress-bar" style="width:16.67%"></div>
+    <div class="progress-bar" style="width:20%"></div>
   </section>
 
 
-  <!-- ═══════════════════════════
-       SLIDE 2 — JOE CHEN이 먼저 연락한 이유
-  ════════════════════════════ -->
+  <!-- ══════════════════════════════════
+       SLIDE 2 — 커버 시안 B
+       풀 Humanoid Robots + 각 관절 AFPM 디스크 강조
+  ══════════════════════════════════ -->
   <section class="slide" id="s2">
+    <div class="glow-tr"></div>
+
     <div class="slide-topbar">
-      <span class="slide-logo"><img src="images/Logo_EFLOW_white.svg" alt="EFLOW" style="height:20px; width:auto;"></span>
-      <span class="slide-num">02 / 06</span>
+      <span class="slide-logo"><img src="images/Logo_EFLOW_white.svg" alt="EFLOW" style="height:20px;width:auto;"></span>
+      <span class="slide-num" style="display:flex;align-items:center;gap:10px;">
+        <span style="background:rgba(6,182,212,0.12);border:1px solid rgba(6,182,212,0.3);border-radius:4px;padding:2px 8px;font-size:10px;font-weight:700;letter-spacing:1px;color:var(--accent-cyan);">Draft B</span>
+        02 / 05
+      </span>
     </div>
 
     <div class="slide-body">
-      <div style="margin-bottom:18px;">
-        <p class="sec-label">Joe Chen이 먼저 연락한 이유</p>
-        <h2 style="font-size:34px;font-weight:800;color:var(--text-primary);letter-spacing:-0.5px;">인바운드 리드의 의미</h2>
+      <div class="s1-left">
+        <div style="display:flex;gap:10px;align-items:center;">
+          <div class="pill">2026.04.01  San Jose</div>
+          <div style="display:inline-flex;align-items:center;gap:5px;background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.4);border-radius:20px;padding:6px 12px;">
+            <span style="font-size:12px;">⭐</span>
+            <span style="font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--gold);">INBOUND</span>
+          </div>
+        </div>
+        <p class="s1-meeting">Tesla Optimus — Joe Chen · Capex</p>
+        <h1 class="s1-title">Tesla<br>Optimus</h1>
+        <p class="s1-tagline">
+          Humanoid Actuator<br>
+          Joe Chen · Capex · 5:30 PM
+        </p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:18px;">
+          <span style="font-size:11px;font-weight:700;color:var(--accent-blue);background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.3);border-radius:6px;padding:4px 10px;">25 kg</span>
+          <span style="font-size:11px;font-weight:700;color:var(--accent-cyan);background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.3);border-radius:6px;padding:4px 10px;">440 Nm</span>
+          <span style="font-size:11px;font-weight:700;color:var(--accent-green);background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:6px;padding:4px 10px;">Zero Cogging</span>
+          <span style="font-size:11px;font-weight:700;color:var(--gold);background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);border-radius:6px;padding:4px 10px;">Back-drivable</span>
+          <span style="font-size:11px;font-weight:700;color:var(--text-secondary);background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:6px;padding:4px 10px;">Mass Production</span>
+        </div>
       </div>
 
-      <div style="display:flex;gap:24px;height:calc(100% - 82px);">
-        <!-- 좌측: Optimus 핵심 과제 4개 카드 -->
-        <div style="width:46%;display:flex;flex-direction:column;gap:12px;">
-          <div class="card" style="flex:1;padding:16px 22px;">
-            <p style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent-blue);margin-bottom:6px;">과제 01</p>
-            <p style="font-size:15px;font-weight:700;color:var(--text-primary);line-height:1.3;margin-bottom:6px;">관절 액추에이터 토크밀도 극대화</p>
-            <p style="font-size:12px;color:var(--text-secondary);line-height:1.6;">무게 최소화 + 출력 최대화 — 인간 관절 수준의 토크를 최소 부피에</p>
-          </div>
-          <div class="card" style="flex:1;padding:16px 22px;">
-            <p style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent-cyan);margin-bottom:6px;">과제 02</p>
-            <p style="font-size:15px;font-weight:700;color:var(--text-primary);line-height:1.3;margin-bottom:6px;">백드라이버빌리티</p>
-            <p style="font-size:12px;color:var(--text-secondary);line-height:1.6;">외력에 저항 없이 자연스럽게 반응 — 코깅이 없어야 기계적 순응성 실현</p>
-          </div>
-          <div class="card" style="flex:1;padding:16px 22px;">
-            <p style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent-green);margin-bottom:6px;">과제 03</p>
-            <p style="font-size:15px;font-weight:700;color:var(--text-primary);line-height:1.3;margin-bottom:6px;">밀폐 로봇 바디 내 발열 제어</p>
-            <p style="font-size:12px;color:var(--text-secondary);line-height:1.6;">섀시 밀폐 환경에서 연속 구동 — 열 스로틀링 없는 안정적 출력 유지</p>
-          </div>
-          <div class="card" style="flex:1;padding:16px 22px;">
-            <p style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">과제 04</p>
-            <p style="font-size:15px;font-weight:700;color:var(--text-primary);line-height:1.3;margin-bottom:6px;">Tesla 생산 철학</p>
-            <p style="font-size:12px;color:var(--text-secondary);line-height:1.6;">양산 불가능한 것은 관심 없음 — 100만 대 스케일 자동화 가능해야 한다</p>
-          </div>
-        </div>
+      <div class="s1-right">
+        <!-- 시안 B: 풀 Humanoid Robots 윤곽 + 각 관절 AFPM 디스크 강조 -->
+        <svg width="420" height="560" viewBox="0 0 420 560" fill="none" xmlns="http://www.w3.org/2000/svg">
 
-        <!-- 우측: eFlow 답변 수치박스 4개 -->
-        <div style="width:54%;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:14px;">
-          <div class="metric-box">
-            <div style="font-size:30px;font-weight:900;color:var(--accent-blue);line-height:1;margin-bottom:8px;">440Nm<br><span style="font-size:22px;">/ 25 kg</span></div>
-            <div class="metric-label">토크 밀도 — Quasi-direct drive 실현</div>
-          </div>
-          <div class="metric-box">
-            <div style="font-size:28px;font-weight:900;color:var(--accent-cyan);line-height:1.2;margin-bottom:8px;">Zero<br>Cogging</div>
-            <div class="metric-label">SMC 스테이터 — 완벽한 기계적 순응성</div>
-          </div>
-          <div class="metric-box">
-            <div class="metric-val" style="color:var(--accent-green);font-size:40px;">150°C</div>
-            <div class="metric-label">연속구동 검증 — 밀폐 오일 냉각</div>
-          </div>
-          <div class="metric-box" style="background:var(--bg-card2);">
-            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--gold);margin-bottom:10px;">양산 가능</div>
-            <div style="font-size:22px;font-weight:800;color:var(--text-primary);line-height:1.3;margin-bottom:8px;">자동화<br>설계</div>
-            <div class="metric-label">2D 평면권선 · 로봇 조립 대응</div>
-          </div>
-        </div>
+          <!-- ── Robot body structure ── -->
+          <!-- Head -->
+          <ellipse cx="210" cy="50" rx="30" ry="34" fill="rgba(59,130,246,0.07)" stroke="rgba(59,130,246,0.4)" stroke-width="1.5"/>
+          <!-- Visor line -->
+          <line x1="186" y1="46" x2="234" y2="46" stroke="rgba(59,130,246,0.5)" stroke-width="1"/>
+          <!-- Neck -->
+          <rect x="200" y="84" width="20" height="20" rx="3" fill="rgba(59,130,246,0.1)" stroke="rgba(59,130,246,0.35)" stroke-width="1"/>
+          <!-- Torso -->
+          <path d="M160,108 L152,278 L268,278 L260,108 Z" fill="rgba(59,130,246,0.05)" stroke="rgba(59,130,246,0.3)" stroke-width="1.5"/>
+          <!-- Torso ribs -->
+          <line x1="155" y1="155" x2="265" y2="155" stroke="rgba(59,130,246,0.12)" stroke-width="0.8"/>
+          <line x1="154" y1="210" x2="266" y2="210" stroke="rgba(59,130,246,0.12)" stroke-width="0.8"/>
+
+          <!-- LEFT SIDE (faint) -->
+          <!-- Left upper arm -->
+          <line x1="148" y1="115" x2="122" y2="215" stroke="rgba(59,130,246,0.2)" stroke-width="14" stroke-linecap="round"/>
+          <!-- Left forearm -->
+          <line x1="122" y1="215" x2="112" y2="308" stroke="rgba(59,130,246,0.16)" stroke-width="12" stroke-linecap="round"/>
+          <!-- Left thigh -->
+          <line x1="177" y1="278" x2="168" y2="395" stroke="rgba(59,130,246,0.2)" stroke-width="16" stroke-linecap="round"/>
+          <!-- Left shin -->
+          <line x1="168" y1="395" x2="162" y2="498" stroke="rgba(59,130,246,0.16)" stroke-width="13" stroke-linecap="round"/>
+          <!-- Left foot -->
+          <rect x="145" y="492" width="36" height="12" rx="4" fill="rgba(59,130,246,0.15)" stroke="rgba(59,130,246,0.3)" stroke-width="1"/>
+
+          <!-- RIGHT SIDE (prominent — AFPM highlighted) -->
+          <!-- Right upper arm -->
+          <line x1="262" y1="115" x2="288" y2="215" stroke="rgba(59,130,246,0.28)" stroke-width="16" stroke-linecap="round"/>
+          <!-- Right forearm -->
+          <line x1="288" y1="215" x2="298" y2="308" stroke="rgba(59,130,246,0.22)" stroke-width="13" stroke-linecap="round"/>
+          <!-- Right thigh -->
+          <line x1="233" y1="278" x2="242" y2="395" stroke="rgba(59,130,246,0.28)" stroke-width="18" stroke-linecap="round"/>
+          <!-- Right shin -->
+          <line x1="242" y1="395" x2="248" y2="498" stroke="rgba(59,130,246,0.22)" stroke-width="15" stroke-linecap="round"/>
+          <!-- Right foot -->
+          <rect x="232" y="492" width="38" height="12" rx="4" fill="rgba(59,130,246,0.2)" stroke="rgba(59,130,246,0.35)" stroke-width="1"/>
+
+          <!-- ── AFPM DISC JOINTS — RIGHT SIDE (side-view thin discs) ── -->
+          <!-- Right shoulder AFPM disc (cx=262, cy=113) -->
+          <ellipse cx="262" cy="108" rx="24" ry="7"   fill="rgba(6,182,212,0.28)" stroke="#06B6D4" stroke-width="2"/>
+          <rect    x="238" y="108"  width="48" height="11" fill="rgba(6,182,212,0.14)" stroke="#06B6D4" stroke-width="1.2"/>
+          <ellipse cx="262" cy="119" rx="24" ry="7"   fill="rgba(6,182,212,0.22)" stroke="#06B6D4" stroke-width="2"/>
+          <!-- glow -->
+          <ellipse cx="262" cy="113" rx="32" ry="14"  fill="rgba(6,182,212,0.07)"/>
+
+          <!-- Right elbow AFPM disc (cx=288, cy=215) -->
+          <ellipse cx="288" cy="210" rx="20" ry="6"   fill="rgba(6,182,212,0.26)" stroke="#06B6D4" stroke-width="2"/>
+          <rect    x="268" y="210"  width="40" height="10" fill="rgba(6,182,212,0.12)" stroke="#06B6D4" stroke-width="1.2"/>
+          <ellipse cx="288" cy="220" rx="20" ry="6"   fill="rgba(6,182,212,0.20)" stroke="#06B6D4" stroke-width="2"/>
+          <ellipse cx="288" cy="215" rx="28" ry="12"  fill="rgba(6,182,212,0.06)"/>
+
+          <!-- Right knee AFPM disc (cx=242, cy=395) -->
+          <ellipse cx="242" cy="390" rx="22" ry="6.5" fill="rgba(6,182,212,0.26)" stroke="#06B6D4" stroke-width="2"/>
+          <rect    x="220" y="390"  width="44" height="11" fill="rgba(6,182,212,0.12)" stroke="#06B6D4" stroke-width="1.2"/>
+          <ellipse cx="242" cy="401" rx="22" ry="6.5" fill="rgba(6,182,212,0.20)" stroke="#06B6D4" stroke-width="2"/>
+          <ellipse cx="242" cy="395" rx="30" ry="14"  fill="rgba(6,182,212,0.06)"/>
+
+          <!-- ── LEFT SIDE AFPM (lighter indication) ── -->
+          <ellipse cx="148" cy="115" rx="18" ry="5.5" fill="rgba(6,182,212,0.14)" stroke="rgba(6,182,212,0.45)" stroke-width="1.2"/>
+          <rect    x="130" y="115"  width="36" height="8" fill="rgba(6,182,212,0.06)" stroke="rgba(6,182,212,0.3)" stroke-width="0.8"/>
+          <ellipse cx="148" cy="123" rx="18" ry="5.5" fill="rgba(6,182,212,0.11)" stroke="rgba(6,182,212,0.4)" stroke-width="1.2"/>
+
+          <ellipse cx="122" cy="215" rx="16" ry="5"   fill="rgba(6,182,212,0.12)" stroke="rgba(6,182,212,0.38)" stroke-width="1"/>
+          <rect    x="106" y="215"  width="32" height="8" fill="rgba(6,182,212,0.06)" stroke="rgba(6,182,212,0.25)" stroke-width="0.8"/>
+          <ellipse cx="122" cy="223" rx="16" ry="5"   fill="rgba(6,182,212,0.09)" stroke="rgba(6,182,212,0.35)" stroke-width="1"/>
+
+          <ellipse cx="168" cy="395" rx="18" ry="5.5" fill="rgba(6,182,212,0.12)" stroke="rgba(6,182,212,0.38)" stroke-width="1"/>
+          <rect    x="150" y="395"  width="36" height="8" fill="rgba(6,182,212,0.06)" stroke="rgba(6,182,212,0.25)" stroke-width="0.8"/>
+          <ellipse cx="168" cy="403" rx="18" ry="5.5" fill="rgba(6,182,212,0.09)" stroke="rgba(6,182,212,0.35)" stroke-width="1"/>
+
+          <!-- ── Annotation lines ── -->
+          <!-- Right shoulder label -->
+          <line x1="290" y1="113" x2="340" y2="90"  stroke="#06B6D4" stroke-width="0.8" stroke-opacity="0.5" stroke-dasharray="3,2"/>
+          <text x="344" y="84"  fill="#8B949E" font-size="9.5" font-family="Inter">Shoulder Joint</text>
+          <text x="344" y="95"  fill="#06B6D4" font-size="9.5" font-weight="700" font-family="Inter">AFPM Disc</text>
+          <!-- Right elbow label -->
+          <line x1="310" y1="215" x2="345" y2="205" stroke="#06B6D4" stroke-width="0.8" stroke-opacity="0.5" stroke-dasharray="3,2"/>
+          <text x="348" y="200" fill="#8B949E" font-size="9.5" font-family="Inter">Elbow Joint</text>
+          <text x="348" y="211" fill="#06B6D4" font-size="9.5" font-weight="700" font-family="Inter">AFPM Disc</text>
+          <!-- Right knee label -->
+          <line x1="268" y1="395" x2="340" y2="385" stroke="#06B6D4" stroke-width="0.8" stroke-opacity="0.5" stroke-dasharray="3,2"/>
+          <text x="344" y="380" fill="#8B949E" font-size="9.5" font-family="Inter">Knee Joint</text>
+          <text x="344" y="391" fill="#06B6D4" font-size="9.5" font-weight="700" font-family="Inter">AFPM Disc</text>
+
+          <!-- 하단 스펙 노트 -->
+          <text x="210" y="530" fill="#8B949E" font-size="10.5" text-anchor="middle" font-family="Inter">6+ joints × AFPM pancake motor — fully embedded inside joint</text>
+          <text x="210" y="548" fill="#3B82F6" font-size="11" font-weight="700" text-anchor="middle" font-family="Inter">25 kg · 440 Nm · Zero Cogging · Back-drivable</text>
+        </svg>
       </div>
     </div>
 
-    <div class="progress-bar" style="width:33.33%"></div>
+    <div class="progress-bar" style="width:40%"></div>
   </section>
 
 
-  <!-- ═══════════════════════════
-       SLIDE 3 — OPTIMUS 맞춤 포지셔닝
-  ════════════════════════════ -->
+  <!-- ══════════════════════════════════
+       SLIDE 3 — OPTIMUS 액추에이터 기술 요약
+       (구 슬라이드 2 + 3 + 4 통합)
+  ══════════════════════════════════ -->
   <section class="slide" id="s3">
     <div class="slide-topbar">
-      <span class="slide-logo"><img src="images/Logo_EFLOW_white.svg" alt="EFLOW" style="height:20px; width:auto;"></span>
-      <span class="slide-num">03 / 06</span>
+      <span class="slide-logo"><img src="images/Logo_EFLOW_white.svg" alt="EFLOW" style="height:20px;width:auto;"></span>
+      <span class="slide-num">03 / 05</span>
     </div>
 
-    <div class="slide-body">
-      <div class="s2-title-block">
-        <p class="sec-label">Optimus 맞춤 포지셔닝</p>
-        <h2 style="font-size:34px;font-weight:800;color:var(--text-primary);letter-spacing:-0.5px;">강하고 가볍고 정직한 모터</h2>
+    <div class="slide-body" style="display:flex;flex-direction:column;gap:10px;">
+
+      <!-- 헤더 -->
+      <div style="flex-shrink:0;">
+        <p class="sec-label">Optimus Actuator Technology Summary</p>
+        <h2 style="font-size:28px;font-weight:800;color:var(--text-primary);letter-spacing:-0.5px;line-height:1.2;">Strong · Light · Honest — Motor for Optimus Joints</h2>
       </div>
 
-      <div class="s2-cards">
-        <!-- Strong -->
-        <div class="card" style="padding:24px 26px;">
-          <div style="display:inline-flex;align-items:center;background:rgba(59,130,246,0.12);border:1px solid rgba(59,130,246,0.35);border-radius:20px;padding:4px 14px;margin-bottom:14px;">
-            <span style="font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent-blue);">Strong</span>
+      <!-- 메인 콘텐츠 -->
+      <div style="display:flex;gap:18px;flex:1;min-height:0;">
+
+        <!-- 좌측: Optimus Core Challenges 4개 -->
+        <div style="width:42%;display:flex;flex-direction:column;gap:8px;">
+          <div class="card" style="flex:1;padding:12px 18px;">
+            <p style="font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent-blue);margin-bottom:5px;">Challenge 01 — Torque Density</p>
+            <p style="font-size:14px;font-weight:700;color:var(--text-primary);line-height:1.3;margin-bottom:5px;">Maximizing joint actuator torque density</p>
+            <p style="font-size:11.5px;color:var(--text-secondary);line-height:1.6;">440 Nm from 25 kg — Quasi-direct drive realized, eliminating dependency on high-ratio reducers</p>
           </div>
-          <p class="card-title" style="font-size:20px;font-weight:700;color:var(--text-primary);line-height:1.3;margin-bottom:12px;">440 Nm<br>@ 25 kg</p>
-          <p class="card-body" style="font-size:12.5px;color:var(--text-secondary);line-height:1.75;">압도적 토크밀도 — 고비율 감속기 의존도 대폭 감소<br>준직접구동(Quasi-direct drive) 실현<br>관절 스트레스 최소화</p>
+          <div class="card" style="flex:1;padding:12px 18px;">
+            <p style="font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent-cyan);margin-bottom:5px;">Challenge 02 — Back-drivability</p>
+            <p style="font-size:14px;font-weight:700;color:var(--text-primary);line-height:1.3;margin-bottom:5px;">Responds naturally without resistance to external force</p>
+            <p style="font-size:11.5px;color:var(--text-secondary);line-height:1.6;">SMC stator Zero Cogging → absorbs 2-3× body weight impact, perfect mechanical compliance achieved</p>
+          </div>
+          <div class="card" style="flex:1;padding:12px 18px;">
+            <p style="font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent-green);margin-bottom:5px;">Challenge 03 — Thermal Management</p>
+            <p style="font-size:14px;font-weight:700;color:var(--text-primary);line-height:1.3;margin-bottom:5px;">Heat management within sealed robot body</p>
+            <p style="font-size:11.5px;color:var(--text-secondary);line-height:1.6;">Separate stator·rotor oil cooling → 150°C Continuous operation, zero thermal throttling · algorithm stability ensured</p>
+          </div>
+          <div class="card" style="flex:1;padding:12px 18px;">
+            <p style="font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:5px;">Challenge 04 — Mass Production Philosophy</p>
+            <p style="font-size:14px;font-weight:700;color:var(--text-primary);line-height:1.3;margin-bottom:5px;">No interest in what cannot be mass-produced</p>
+            <p style="font-size:11.5px;color:var(--text-secondary);line-height:1.6;">2D Planar automated winding → robot assembly line compatible · scalable to 1 million units</p>
+          </div>
         </div>
 
-        <!-- Light -->
-        <div class="card" style="padding:24px 26px;">
-          <div style="display:inline-flex;align-items:center;background:rgba(6,182,212,0.12);border:1px solid rgba(6,182,212,0.35);border-radius:20px;padding:4px 14px;margin-bottom:14px;">
-            <span style="font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent-cyan);">Light</span>
-          </div>
-          <p class="card-title" style="font-size:20px;font-weight:700;color:var(--text-primary);line-height:1.3;margin-bottom:12px;">팬케이크<br>구조</p>
-          <p class="card-body" style="font-size:12.5px;color:var(--text-secondary);line-height:1.75;">극히 짧은 축방향 — 로봇 관절 내부 완전 매립<br>기존 모터 대비 무게 30% 절감<br>관절 외경(OD) 최소화 실현</p>
-        </div>
+        <!-- 우측: eFlow 기술 답변 -->
+        <div style="width:58%;display:flex;flex-direction:column;gap:10px;">
 
-        <!-- Honest -->
-        <div class="card" style="padding:24px 26px;">
-          <div style="display:inline-flex;align-items:center;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.35);border-radius:20px;padding:4px 14px;margin-bottom:14px;">
-            <span style="font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent-green);">Honest</span>
+          <!-- 상단: 2×2 핵심 수치 -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;flex:3;">
+            <div class="metric-box">
+              <div style="font-size:28px;font-weight:900;color:var(--accent-blue);line-height:1;margin-bottom:6px;">440Nm<br><span style="font-size:20px;">/ 25 kg</span></div>
+              <div class="metric-label">Top-class Torque Density<br>Quasi-direct drive realized</div>
+            </div>
+            <div class="metric-box">
+              <div style="font-size:26px;font-weight:900;color:var(--accent-cyan);line-height:1.2;margin-bottom:6px;">Zero<br>Cogging</div>
+              <div class="metric-label">SMC Stator<br>Perfect Mechanical Compliance</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-val" style="color:var(--accent-green);font-size:38px;">150°C</div>
+              <div class="metric-label">Continuous operation verified<br>Sealed oil cooling · thermal behavior predictable</div>
+            </div>
+            <div class="metric-box" style="background:var(--bg-card2);">
+              <div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--gold);margin-bottom:8px;">Mass Production</div>
+              <div style="font-size:20px;font-weight:800;color:var(--text-primary);line-height:1.3;margin-bottom:6px;">Automated<br>Winding Design</div>
+              <div class="metric-label">Flat 2D · Robot assembly compatible</div>
+            </div>
           </div>
-          <p class="card-title" style="font-size:20px;font-weight:700;color:var(--text-primary);line-height:1.3;margin-bottom:12px;">Zero Cogging<br>SMC 스테이터</p>
-          <p class="card-body" style="font-size:12.5px;color:var(--text-secondary);line-height:1.75;">코깅토크 완전 제거 — 제어 신호에 즉각 응답(지연 없음)<br>밀폐 오일냉각으로 열거동 예측 가능<br>알고리즘 안정성 극대화</p>
+
+          <!-- 하단: Strong / Light / Honest 포지셔닝 -->
+          <div style="display:flex;gap:8px;flex-shrink:0;">
+            <div style="flex:1;background:rgba(59,130,246,0.07);border:1px solid rgba(59,130,246,0.3);border-radius:10px;padding:10px 14px;">
+              <div style="display:inline-flex;align-items:center;background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.4);border-radius:14px;padding:3px 10px;margin-bottom:6px;">
+                <span style="font-size:10px;font-weight:800;letter-spacing:1px;color:var(--accent-blue);">Strong</span>
+              </div>
+              <p style="font-size:11px;color:var(--text-secondary);line-height:1.6;">440 Nm@25 kg · Overwhelming torque density · Minimized joint stress</p>
+            </div>
+            <div style="flex:1;background:rgba(6,182,212,0.06);border:1px solid rgba(6,182,212,0.28);border-radius:10px;padding:10px 14px;">
+              <div style="display:inline-flex;align-items:center;background:rgba(6,182,212,0.15);border:1px solid rgba(6,182,212,0.4);border-radius:14px;padding:3px 10px;margin-bottom:6px;">
+                <span style="font-size:10px;font-weight:800;letter-spacing:1px;color:var(--accent-cyan);">Light</span>
+              </div>
+              <p style="font-size:11px;color:var(--text-secondary);line-height:1.6;">Pancake structure · fully embedded inside joint · 30% lighter than conventional</p>
+            </div>
+            <div style="flex:1;background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.25);border-radius:10px;padding:10px 14px;">
+              <div style="display:inline-flex;align-items:center;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.4);border-radius:14px;padding:3px 10px;margin-bottom:6px;">
+                <span style="font-size:10px;font-weight:800;letter-spacing:1px;color:var(--accent-green);">Honest</span>
+              </div>
+              <p style="font-size:11px;color:var(--text-secondary);line-height:1.6;">Zero Cogging · immediate control response · thermal behavior predictable</p>
+            </div>
+          </div>
+
         </div>
       </div>
+
+      <!-- 하단 강조 -->
+      <div style="background:rgba(59,130,246,0.07);border:1px solid rgba(59,130,246,0.28);border-radius:9px;padding:11px 22px;text-align:center;flex-shrink:0;">
+        <p style="font-size:13px;font-weight:700;color:var(--text-primary);line-height:1.6;">
+          Optimus Gen2 57 kg · 2-3× body weight impact with every step —
+          <span style="color:var(--accent-blue);">eFlow AFPM absorbs it</span>
+          &nbsp;|&nbsp; <span style="color:var(--text-secondary);font-weight:400;">1 million units = 28 million joint motors · Designed for mass-producible architecture</span>
+        </p>
+      </div>
+
     </div>
 
-    <div class="progress-bar" style="width:50%"></div>
+    <div class="progress-bar" style="width:60%"></div>
   </section>
 
 
-  <!-- ═══════════════════════════
-       SLIDE 4 — 백드라이버빌리티 + 열관리
-  ════════════════════════════ -->
+  <!-- ══════════════════════════════════
+       SLIDE 4 — Joint Development Structure Proposal
+  ══════════════════════════════════ -->
   <section class="slide" id="s4">
     <div class="slide-topbar">
-      <span class="slide-logo"><img src="images/Logo_EFLOW_white.svg" alt="EFLOW" style="height:20px; width:auto;"></span>
-      <span class="slide-num">04 / 06</span>
+      <span class="slide-logo"><img src="images/Logo_EFLOW_white.svg" alt="EFLOW" style="height:20px;width:auto;"></span>
+      <span class="slide-num">04 / 05</span>
     </div>
 
     <div class="slide-body" style="display:flex;flex-direction:column;gap:14px;">
-      <div>
-        <p class="sec-label">백드라이버빌리티 + 열관리</p>
-        <h2 style="font-size:32px;font-weight:800;color:var(--text-primary);letter-spacing:-0.5px;">Optimus가 넘어지지 않는 이유</h2>
+
+      <div style="flex-shrink:0;">
+        <p class="sec-label">Joint Development Structure Proposal</p>
+        <h2 style="font-size:30px;font-weight:800;color:var(--text-primary);letter-spacing:-0.5px;">Joint Lab for 1 Million Unit Production</h2>
       </div>
 
-      <div style="display:flex;gap:40px;flex:1;">
-        <!-- 좌측 45%: 백드라이버빌리티 -->
-        <div style="width:45%;display:flex;flex-direction:column;justify-content:center;">
-          <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--accent-blue);margin-bottom:16px;">백드라이버빌리티</p>
-          <div class="timeline">
-            <div class="tl-item">
-              <div class="tl-dot-wrap">
-                <div class="tl-dot" style="background:var(--accent-blue);"></div>
-                <div class="tl-line"></div>
-              </div>
-              <div class="tl-text">
-                <p class="tl-title">외부 충격 저항 없이 흡수</p>
-                <p class="tl-sub">충격을 관절이 자연스럽게 받아 분산<br>기계적 순응성 — 뼈대가 아닌 근육처럼</p>
-              </div>
+      <!-- 좌우 역할 박스 (높이 줄임) -->
+      <div style="display:flex;gap:18px;flex-shrink:0;">
+
+        <!-- Tesla 역할 박스 -->
+        <div class="card" style="flex:1;padding:18px 22px;">
+          <!-- 아이콘: AFPM 축방향 단면 (동심원) -->
+          <svg width="54" height="54" viewBox="0 0 54 54" fill="none" style="display:block;margin-bottom:12px;">
+            <circle cx="27" cy="27" r="25" fill="rgba(59,130,246,0.06)" stroke="#3B82F6" stroke-width="1.2" stroke-dasharray="3,2"/>
+            <circle cx="27" cy="27" r="19" fill="rgba(59,130,246,0.09)" stroke="#3B82F6" stroke-width="1.4"/>
+            <circle cx="27" cy="27" r="12" fill="rgba(59,130,246,0.14)" stroke="#3B82F6" stroke-width="1.4"/>
+            <circle cx="27" cy="27" r="5.5" fill="rgba(59,130,246,0.22)" stroke="#3B82F6" stroke-width="1.8"/>
+            <circle cx="27" cy="27" r="2"   fill="#3B82F6"/>
+          </svg>
+          <p style="font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:var(--accent-blue);margin-bottom:12px;">Tesla's Role</p>
+          <div class="timeline" style="gap:0;">
+            <div class="tl-item" style="padding-bottom:14px;">
+              <div class="tl-dot-wrap"><div class="tl-dot" style="background:var(--accent-blue);width:13px;height:13px;"></div><div class="tl-line"></div></div>
+              <div class="tl-text"><p class="tl-title" style="font-size:13px;">Defining a compact joint OD exclusive variant model</p></div>
+            </div>
+            <div class="tl-item" style="padding-bottom:14px;">
+              <div class="tl-dot-wrap"><div class="tl-dot" style="background:var(--accent-blue);width:13px;height:13px;"></div><div class="tl-line"></div></div>
+              <div class="tl-text"><p class="tl-title" style="font-size:13px;">Development cost + equipment capex investment</p></div>
             </div>
             <div class="tl-item">
-              <div class="tl-dot-wrap">
-                <div class="tl-dot" style="background:var(--accent-cyan);"></div>
-                <div class="tl-line"></div>
-              </div>
-              <div class="tl-text">
-                <p class="tl-title">체중 2~3배 충격 대응</p>
-                <p class="tl-sub">Optimus Gen2 57 kg 기준 매 걸음 충격<br>eFlow AFPM이 흡수 — 기어박스 파손 방지</p>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-dot-wrap">
-                <div class="tl-dot" style="background:var(--accent-green);"></div>
-              </div>
-              <div class="tl-text">
-                <p class="tl-title">Zero Cogging = 완벽한 기계적 순응성</p>
-                <p class="tl-sub">기존 유성롤러스크류 한계 극복<br>코깅 없는 SMC 스테이터 — 즉각 역방향 반응</p>
-              </div>
+              <div class="tl-dot-wrap"><div class="tl-dot" style="background:var(--accent-blue);width:13px;height:13px;"></div></div>
+              <div class="tl-text"><p class="tl-title" style="font-size:13px;">Securing exclusive variant usage rights</p></div>
             </div>
           </div>
         </div>
 
-        <!-- 우측 55%: 열관리 2x2 그리드 -->
-        <div style="width:55%;display:grid;grid-template-columns:1fr 1fr;gap:14px;align-content:center;">
-          <div class="metric-box">
-            <div class="metric-val" style="color:var(--accent-blue);font-size:38px;">밀폐</div>
-            <div class="metric-label">섀시 내 발열 제어<br>외기 노출 없이 구동</div>
-          </div>
-          <div class="metric-box">
-            <div class="metric-val" style="color:var(--accent-cyan);font-size:38px;">별도</div>
-            <div class="metric-label">스테이터 · 로터 독립 오일냉각<br>냉각 효율 극대화</div>
-          </div>
-          <div class="metric-box">
-            <div class="metric-val" style="color:var(--accent-green);">150°C</div>
-            <div class="metric-label">연속구동 온도 검증<br>열 스로틀링 없는 출력 유지</div>
-          </div>
-          <div class="metric-box" style="background:var(--bg-card2);">
-            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--gold);margin-bottom:10px;">알고리즘 안정성</div>
-            <div style="font-size:14px;font-weight:600;color:var(--text-primary);line-height:1.65;">열거동 예측 모델<br>확보로 제어 알고리즘<br>최적화 지원</div>
+        <!-- eFlow 역할 박스 -->
+        <div class="card" style="flex:1;padding:18px 22px;border-color:rgba(6,182,212,0.35);background:rgba(6,182,212,0.04);">
+          <!-- 아이콘: AFPM 팬케이크 측면 단면 -->
+          <svg width="70" height="36" viewBox="0 0 70 36" fill="none" style="display:block;margin-bottom:12px;">
+            <ellipse cx="35" cy="10"  rx="32" ry="9"  fill="rgba(6,182,212,0.2)"  stroke="#06B6D4" stroke-width="1.5"/>
+            <rect    x="3"  y="10"  width="64" height="14" fill="rgba(6,182,212,0.1)" stroke="#06B6D4" stroke-width="1.2"/>
+            <ellipse cx="35" cy="24"  rx="32" ry="9"  fill="rgba(6,182,212,0.16)" stroke="#06B6D4" stroke-width="1.5"/>
+            <text x="35" y="19" fill="#06B6D4" font-size="8" font-weight="700" text-anchor="middle" font-family="Inter">AFPM</text>
+          </svg>
+          <p style="font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:var(--accent-cyan);margin-bottom:12px;">eFlow's Role</p>
+          <div class="timeline" style="gap:0;">
+            <div class="tl-item" style="padding-bottom:14px;">
+              <div class="tl-dot-wrap"><div class="tl-dot" style="background:var(--accent-cyan);width:13px;height:13px;"></div><div class="tl-line"></div></div>
+              <div class="tl-text"><p class="tl-title" style="font-size:13px;">Core IP + Planar automated winding know-how</p></div>
+            </div>
+            <div class="tl-item" style="padding-bottom:14px;">
+              <div class="tl-dot-wrap"><div class="tl-dot" style="background:var(--accent-cyan);width:13px;height:13px;"></div><div class="tl-line"></div></div>
+              <div class="tl-text"><p class="tl-title" style="font-size:13px;">Motor architecture + mass production manufacturing</p></div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot-wrap"><div class="tl-dot" style="background:var(--accent-cyan);width:13px;height:13px;"></div></div>
+              <div class="tl-text"><p class="tl-title" style="font-size:13px;">Core IP ownership retained</p></div>
+            </div>
           </div>
         </div>
+
       </div>
 
-      <!-- 하단 강조박스 -->
-      <div style="background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.3);border-radius:10px;padding:14px 24px;text-align:center;">
-        <p style="font-size:13.5px;font-weight:700;color:var(--text-primary);line-height:1.6;">
-          Optimus Gen2 57 kg 기준 매 걸음 체중 2~3배 충격 —
-          <span style="color:var(--accent-blue);">eFlow AFPM이 흡수합니다</span>
-        </p>
+      <!-- 하단: 플로우차트 + 노트 (영역 크게) -->
+      <div style="flex:1;display:flex;flex-direction:column;gap:12px;justify-content:center;">
+
+        <div class="flow-chart" style="padding:16px 20px;">
+          <div class="fc-node" style="padding:14px 16px;">
+            <span class="fn-year" style="font-size:12px;">Step 1</span>
+            <p class="fn-title" style="font-size:13px;">Joint Lab Formation</p>
+          </div>
+          <div class="fc-arrow" style="font-size:22px;">→</div>
+          <div class="fc-node" style="padding:14px 16px;">
+            <span class="fn-year" style="font-size:12px;">Step 2</span>
+            <p class="fn-title" style="font-size:13px;">Dedicated actuator development</p>
+          </div>
+          <div class="fc-arrow" style="font-size:22px;">→</div>
+          <div class="fc-node" style="border-color:rgba(6,182,212,0.4);background:rgba(6,182,212,0.06);padding:14px 16px;">
+            <span class="fn-year" style="color:var(--accent-cyan);font-size:12px;">Step 3</span>
+            <p class="fn-title" style="font-size:13px;">Tesla exclusive variant</p>
+          </div>
+          <div class="fc-arrow" style="font-size:22px;">→</div>
+          <div class="fc-node" style="border-color:rgba(16,185,129,0.4);padding:14px 16px;">
+            <span class="fn-year" style="color:var(--accent-green);font-size:12px;">Target</span>
+            <p class="fn-title" style="font-size:13px;">1 Million Unit Production</p>
+          </div>
+        </div>
+
+        <div style="background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.22);border-radius:10px;padding:18px 28px;text-align:center;">
+          <p style="font-size:15px;font-weight:700;color:var(--text-primary);line-height:1.8;margin-bottom:8px;">
+            For Tesla: <span style="color:var(--accent-blue);">reduced supply chain risk + cost control</span>
+            &nbsp;&nbsp;/&nbsp;&nbsp;
+            For eFlow: <span style="color:var(--accent-cyan);">world-class reference + technology advancement</span>
+          </p>
+          <p style="font-size:13px;color:var(--text-secondary);line-height:1.7;">
+            1 million Optimus units = <span style="color:var(--accent-green);font-weight:600;">28 million joint motors</span> —
+            Achievable with eFlow's automated winding architecture
+          </p>
+        </div>
+
       </div>
+
     </div>
 
-    <div class="progress-bar" style="width:66.67%"></div>
+    <div class="progress-bar" style="width:80%"></div>
   </section>
 
 
-  <!-- ═══════════════════════════
-       SLIDE 5 — 공동개발 구조 제안
-  ════════════════════════════ -->
+  <!-- ══════════════════════════════════
+       SLIDE 5 — NEXT STEPS
+  ══════════════════════════════════ -->
   <section class="slide" id="s5">
-    <div class="slide-topbar">
-      <span class="slide-logo"><img src="images/Logo_EFLOW_white.svg" alt="EFLOW" style="height:20px; width:auto;"></span>
-      <span class="slide-num">05 / 06</span>
-    </div>
-
-    <div class="slide-body" style="display:flex;flex-direction:column;gap:16px;">
-      <div>
-        <p class="sec-label">공동개발 구조 제안</p>
-        <h2 style="font-size:32px;font-weight:800;color:var(--text-primary);letter-spacing:-0.5px;">100만 대 양산을 위한 Joint Lab</h2>
-      </div>
-
-      <!-- 좌우 역할 분담 -->
-      <div style="display:flex;gap:20px;flex:1;">
-        <!-- Tesla 역할 -->
-        <div class="card" style="flex:1;padding:22px 26px;">
-          <p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--accent-blue);margin-bottom:14px;">Tesla 역할</p>
-          <div class="timeline" style="gap:0;">
-            <div class="tl-item" style="padding-bottom:16px;">
-              <div class="tl-dot-wrap"><div class="tl-dot" style="background:var(--accent-blue);width:14px;height:14px;"></div><div class="tl-line"></div></div>
-              <div class="tl-text">
-                <p class="tl-title" style="font-size:13px;">관절 외경(OD) 축소형 독점 변형 모델 정의</p>
-              </div>
-            </div>
-            <div class="tl-item" style="padding-bottom:16px;">
-              <div class="tl-dot-wrap"><div class="tl-dot" style="background:var(--accent-blue);width:14px;height:14px;"></div><div class="tl-line"></div></div>
-              <div class="tl-text">
-                <p class="tl-title" style="font-size:13px;">개발비 + 설비 자본(Capex) 투자</p>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-dot-wrap"><div class="tl-dot" style="background:var(--accent-blue);width:14px;height:14px;"></div></div>
-              <div class="tl-text">
-                <p class="tl-title" style="font-size:13px;">독점 변형 모델 사용권 확보</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- eFlow 역할 -->
-        <div class="card" style="flex:1;padding:22px 26px;border-color:rgba(6,182,212,0.35);background:rgba(6,182,212,0.04);">
-          <p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--accent-cyan);margin-bottom:14px;">eFlow 역할</p>
-          <div class="timeline" style="gap:0;">
-            <div class="tl-item" style="padding-bottom:16px;">
-              <div class="tl-dot-wrap"><div class="tl-dot" style="background:var(--accent-cyan);width:14px;height:14px;"></div><div class="tl-line"></div></div>
-              <div class="tl-text">
-                <p class="tl-title" style="font-size:13px;">원천 IP + 평면 자동화 권선 노하우</p>
-              </div>
-            </div>
-            <div class="tl-item" style="padding-bottom:16px;">
-              <div class="tl-dot-wrap"><div class="tl-dot" style="background:var(--accent-cyan);width:14px;height:14px;"></div><div class="tl-line"></div></div>
-              <div class="tl-text">
-                <p class="tl-title" style="font-size:13px;">모터 아키텍처 + 양산 제조</p>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-dot-wrap"><div class="tl-dot" style="background:var(--accent-cyan);width:14px;height:14px;"></div></div>
-              <div class="tl-text">
-                <p class="tl-title" style="font-size:13px;">핵심 IP 귀속 유지</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 하단 플로우 -->
-      <div class="flow-chart" style="padding:12px 16px;">
-        <div class="fc-node">
-          <span class="fn-year">Step 1</span>
-          <p class="fn-title">Joint Lab 구성</p>
-        </div>
-        <div class="fc-arrow">→</div>
-        <div class="fc-node">
-          <span class="fn-year">Step 2</span>
-          <p class="fn-title">전용 액추에이터 개발</p>
-        </div>
-        <div class="fc-arrow">→</div>
-        <div class="fc-node" style="border-color:rgba(6,182,212,0.4);background:rgba(6,182,212,0.06);">
-          <span class="fn-year" style="color:var(--accent-cyan);">Step 3</span>
-          <p class="fn-title">Tesla 독점 변형</p>
-        </div>
-        <div class="fc-arrow">→</div>
-        <div class="fc-node" style="border-color:rgba(16,185,129,0.4);">
-          <span class="fn-year" style="color:var(--accent-green);">목표</span>
-          <p class="fn-title">100만 대 양산</p>
-        </div>
-      </div>
-
-      <!-- 노트 -->
-      <p style="font-size:11.5px;color:var(--text-secondary);text-align:center;line-height:1.7;">
-        Tesla에는 <span style="color:var(--accent-blue);">공급망 리스크 감소 + 원가 통제권</span> &nbsp;/&nbsp;
-        eFlow에는 <span style="color:var(--accent-cyan);">글로벌 최고 레퍼런스 + 기술 고도화</span>
-      </p>
-    </div>
-
-    <div class="progress-bar" style="width:83.33%"></div>
-  </section>
-
-
-  <!-- ═══════════════════════════
-       SLIDE 6 — NEXT STEPS
-  ════════════════════════════ -->
-  <section class="slide" id="s6">
     <div class="glow-tr"></div>
     <div class="glow-bl"></div>
 
     <div class="slide-topbar">
-      <span class="slide-logo"><img src="images/Logo_EFLOW_white.svg" alt="EFLOW" style="height:20px; width:auto;"></span>
-      <span class="slide-num">06 / 06</span>
+      <span class="slide-logo"><img src="images/Logo_EFLOW_white.svg" alt="EFLOW" style="height:20px;width:auto;"></span>
+      <span class="slide-num">05 / 05</span>
     </div>
 
     <div class="slide-body" style="display:flex;align-items:center;justify-content:center;">
       <div class="s6-content">
         <p class="sec-label" style="margin-bottom:14px;">Next Steps</p>
-        <h1 class="s6-title">Joe, 무엇이 가장 유용할까요?</h1>
-        <p class="s6-sub">우리는 형식에 유연합니다</p>
+        <h1 class="s6-title">What format works best to get started?</h1>
+        <p class="s6-sub">eFlow is flexible to accommodate any format</p>
 
         <!-- 3개 CTA 박스 가로 배치 -->
         <div style="display:flex;gap:16px;width:960px;margin-bottom:24px;">
           <!-- 박스 1 -->
           <div style="flex:1;background:var(--bg-card);border:1px solid rgba(59,130,246,0.5);border-radius:12px;padding:22px 24px;text-align:center;">
-            <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--accent-blue);margin-bottom:14px;">기술 데이터 패키지</p>
+            <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--accent-blue);margin-bottom:14px;">Technical Data Package</p>
             <div style="display:flex;flex-direction:column;gap:8px;align-items:center;">
-              <div class="cta-pill" style="width:100%;text-align:center;font-size:13px;padding:8px 16px;">엔지니어링팀 검토용</div>
-              <div class="cta-pill" style="width:100%;text-align:center;font-size:13px;padding:8px 16px;">모터 스펙 + 토크밀도 데이터</div>
+              <div class="cta-pill" style="width:100%;text-align:center;font-size:13px;padding:8px 16px;">For engineering team review</div>
+              <div class="cta-pill" style="width:100%;text-align:center;font-size:13px;padding:8px 16px;">Motor specs + Torque density data</div>
             </div>
           </div>
-
           <!-- 박스 2 -->
           <div style="flex:1;background:var(--bg-card);border:1px solid rgba(6,182,212,0.5);border-radius:12px;padding:22px 24px;text-align:center;">
-            <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--accent-cyan);margin-bottom:14px;">생산시설 방문</p>
+            <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--accent-cyan);margin-bottom:14px;">Production Facility Visit</p>
             <div style="display:flex;flex-direction:column;gap:8px;align-items:center;">
-              <div class="cta-pill" style="width:100%;text-align:center;font-size:13px;padding:8px 16px;">독일 또는 한국</div>
-              <div class="cta-pill" style="width:100%;text-align:center;font-size:13px;padding:8px 16px;">Frank Heller CTO 직접 미팅</div>
+              <div class="cta-pill" style="width:100%;text-align:center;font-size:13px;padding:8px 16px;">Germany or Korea</div>
+              <div class="cta-pill" style="width:100%;text-align:center;font-size:13px;padding:8px 16px;">Direct meeting with CTO Frank Heller</div>
             </div>
           </div>
-
           <!-- 박스 3 -->
           <div style="flex:1;background:var(--bg-card);border:1px solid rgba(16,185,129,0.5);border-radius:12px;padding:22px 24px;text-align:center;">
-            <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--accent-green);margin-bottom:14px;">CTO 콜</p>
+            <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--accent-green);margin-bottom:14px;">CTO Call</p>
             <div style="display:flex;flex-direction:column;gap:8px;align-items:center;">
-              <div class="cta-pill" style="width:100%;text-align:center;font-size:13px;padding:8px 16px;">Frank Heller 직접 연결</div>
-              <div class="cta-pill" style="width:100%;text-align:center;font-size:13px;padding:8px 16px;">공동개발 구조 논의</div>
+              <div class="cta-pill" style="width:100%;text-align:center;font-size:13px;padding:8px 16px;">Direct connection with Frank Heller</div>
+              <div class="cta-pill" style="width:100%;text-align:center;font-size:13px;padding:8px 16px;">Joint development structure discussion</div>
             </div>
           </div>
         </div>
 
-        <!-- 하단 강조 문구 -->
         <p style="font-size:14px;font-weight:700;color:var(--accent-blue);margin-bottom:20px;letter-spacing:0.2px;">
-          2,800만 개 관절 모터 — 우리가 만들 수 있습니다
+          28 million joint motors — we can make them
         </p>
 
-        <p class="s6-footer">EFLOW Co., Ltd. | eflow.youme@gmail.com | 2026.04.01 San Jose</p>
+        <p class="s6-footer">EFLOW Co., Ltd. &nbsp;|&nbsp; eflow.youme@gmail.com &nbsp;|&nbsp; 2026.04.01 San Jose</p>
       </div>
     </div>
 
@@ -1118,14 +724,12 @@ body {
 </div><!-- /slideshow -->
 
 
-<!-- Dot navigation -->
 <div class="dots-nav" id="dotsNav">
-  <div class="dot active"  onclick="goTo(0)"></div>
-  <div class="dot"         onclick="goTo(1)"></div>
-  <div class="dot"         onclick="goTo(2)"></div>
-  <div class="dot"         onclick="goTo(3)"></div>
-  <div class="dot"         onclick="goTo(4)"></div>
-  <div class="dot"         onclick="goTo(5)"></div>
+  <div class="dot active" onclick="goTo(0)"></div>
+  <div class="dot"        onclick="goTo(1)"></div>
+  <div class="dot"        onclick="goTo(2)"></div>
+  <div class="dot"        onclick="goTo(3)"></div>
+  <div class="dot"        onclick="goTo(4)"></div>
 </div>
 
 
@@ -1143,11 +747,10 @@ body {
   }
 
   document.addEventListener('keydown', e => {
-    if (e.key === 'ArrowRight' || e.key === 'ArrowDown')  goTo(cur + 1);
-    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')    goTo(cur - 1);
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') goTo(cur + 1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')  goTo(cur - 1);
   });
 
-  // Touch/swipe support
   let touchX = 0;
   document.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; });
   document.addEventListener('touchend',   e => {
@@ -1155,17 +758,15 @@ body {
     if (Math.abs(dx) > 50) goTo(dx < 0 ? cur + 1 : cur - 1);
   });
 
-  // Auto-scale to viewport
   function scaleSlideshow() {
     const slideshow = document.querySelector('.slideshow');
-    const scaleX = window.innerWidth / 1280;
+    const scaleX = window.innerWidth  / 1280;
     const scaleY = window.innerHeight / 720;
-    const scale = Math.min(scaleX, scaleY) * 0.95;
+    const scale  = Math.min(scaleX, scaleY) * 0.95;
     slideshow.style.transform = `scale(${scale})`;
   }
-
   window.addEventListener('resize', scaleSlideshow);
-  window.addEventListener('load', scaleSlideshow);
+  window.addEventListener('load',   scaleSlideshow);
 </script>
 </body>
 </html>

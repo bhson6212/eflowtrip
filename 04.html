@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -121,37 +121,26 @@ body {
   gap: 0;
 }
 
-.s1-badge-row {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+.s1-meeting {
+  font-size: 12px; font-weight: 600; color: var(--text-secondary);
+  text-transform: uppercase; letter-spacing: 2px;
+  margin-top: 18px; margin-bottom: 14px;
 }
 
 .s1-title {
-  font-size: 64px;
-  font-weight: 900;
+  font-size: 48px;
+  font-weight: 800;
   color: var(--text-primary);
-  letter-spacing: -2px;
-  line-height: 1.0;
-  margin-bottom: 10px;
-}
-
-.s1-subtitle {
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--accent-cyan);
+  letter-spacing: -0.5px;
+  line-height: 1.12;
   margin-bottom: 20px;
 }
 
 .s1-tagline {
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 400;
   color: var(--text-secondary);
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  border-top: 1px solid var(--border);
-  padding-top: 18px;
-  line-height: 1.9;
+  line-height: 1.75;
 }
 
 .s1-right {
@@ -259,22 +248,21 @@ body {
     <div class="glow-tr"></div>
 
     <div class="slide-topbar">
-      <span class="slide-logo"><img src="images/Logo_EFLOW_white.svg" alt="EFLOW" style="height:28px; width:auto;"></span>
+      <span class="slide-logo"><img src="images/Logo_EFLOW_white.svg" alt="EFLOW" style="height:20px;width:auto;"></span>
       <span class="slide-num">01 / 02</span>
     </div>
 
     <div class="slide-body">
       <div class="s1-left">
-        <div class="s1-badge-row">
+        <div style="display:flex;gap:10px;align-items:center;">
           <div class="pill">2026.04.01  San Jose</div>
           <div class="pill" style="border-color:var(--accent-cyan);color:var(--accent-cyan);">Jewel Li · 2:30 PM</div>
         </div>
+        <p class="s1-meeting">Tensor Auto — Jewel Li</p>
         <h1 class="s1-title">Tensor<br>Auto</h1>
-        <p class="s1-subtitle">Autonomous-Friendly Motor</p>
         <p class="s1-tagline">
-          Zero Cogging<br>
-          Zero Derating<br>
-          Zero Sensor Interference
+          For Level 4 Autonomous Driving Autonomous-Friendly Motor<br>
+          Zero Cogging · Zero Derating · Zero Sensor Interference
         </p>
       </div>
 
@@ -287,13 +275,9 @@ body {
         <svg width="660" height="490" viewBox="0 0 660 490" fill="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <radialGradient id="motorGlowTA" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#06B6D4" stop-opacity="0.22"/>
+              <stop offset="0%" stop-color="#06B6D4" stop-opacity="0.18"/>
               <stop offset="100%" stop-color="#06B6D4" stop-opacity="0"/>
             </radialGradient>
-            <filter id="glowBlue" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="3" result="blur"/>
-              <feComposite in="SourceGraphic" in2="blur" operator="over"/>
-            </filter>
           </defs>
 
           <!-- ── Faint grid background ── -->
@@ -302,218 +286,163 @@ body {
           <line x1="0"   y1="240" x2="660" y2="240" stroke="white" stroke-opacity="0.04" stroke-width="1"/>
           <line x1="0"   y1="320" x2="660" y2="320" stroke="white" stroke-opacity="0.04" stroke-width="1"/>
           <line x1="0"   y1="400" x2="660" y2="400" stroke="white" stroke-opacity="0.04" stroke-width="1"/>
-          <line x1="110" y1="0" x2="110" y2="490" stroke="white" stroke-opacity="0.04" stroke-width="1"/>
-          <line x1="220" y1="0" x2="220" y2="490" stroke="white" stroke-opacity="0.04" stroke-width="1"/>
-          <line x1="330" y1="0" x2="330" y2="490" stroke="white" stroke-opacity="0.04" stroke-width="1"/>
-          <line x1="440" y1="0" x2="440" y2="490" stroke="white" stroke-opacity="0.04" stroke-width="1"/>
-          <line x1="550" y1="0" x2="550" y2="490" stroke="white" stroke-opacity="0.04" stroke-width="1"/>
+          <line x1="110" y1="0"   x2="110" y2="490" stroke="white" stroke-opacity="0.04" stroke-width="1"/>
+          <line x1="220" y1="0"   x2="220" y2="490" stroke="white" stroke-opacity="0.04" stroke-width="1"/>
+          <line x1="330" y1="0"   x2="330" y2="490" stroke="white" stroke-opacity="0.04" stroke-width="1"/>
+          <line x1="440" y1="0"   x2="440" y2="490" stroke="white" stroke-opacity="0.04" stroke-width="1"/>
+          <line x1="550" y1="0"   x2="550" y2="490" stroke="white" stroke-opacity="0.04" stroke-width="1"/>
 
-          <!-- ══ TOP LABEL ══ -->
-          <text x="330" y="26" fill="#06B6D4" font-size="11" font-weight="700" text-anchor="middle"
-                font-family="Inter" letter-spacing="3" fill-opacity="0.85">INVISIBLE ACTUATION — CONTROL FLOW</text>
+          <!-- ══ LEFT BLOCK: Level 4 AI Control System ══ -->
+          <rect x="22" y="100" width="148" height="168" rx="12" fill="#161B22" stroke="#3B82F6" stroke-width="1"/>
+          <!-- Chip icon — 50×50, centered at x=96, y=129–179 -->
+          <rect x="71" y="129" width="50" height="50" rx="5" fill="#1C2333" stroke="#3B82F6" stroke-width="1"/>
+          <line x1="83"  y1="129" x2="83"  y2="179" stroke="#3B82F6" stroke-opacity="0.25" stroke-width="1"/>
+          <line x1="96"  y1="129" x2="96"  y2="179" stroke="#3B82F6" stroke-opacity="0.25" stroke-width="1"/>
+          <line x1="109" y1="129" x2="109" y2="179" stroke="#3B82F6" stroke-opacity="0.25" stroke-width="1"/>
+          <line x1="71"  y1="141" x2="121" y2="141" stroke="#3B82F6" stroke-opacity="0.25" stroke-width="1"/>
+          <line x1="71"  y1="154" x2="121" y2="154" stroke="#3B82F6" stroke-opacity="0.25" stroke-width="1"/>
+          <line x1="71"  y1="167" x2="121" y2="167" stroke="#3B82F6" stroke-opacity="0.25" stroke-width="1"/>
+          <rect x="88" y="146" width="16" height="16" rx="2" fill="#3B82F6" fill-opacity="0.28" stroke="#3B82F6" stroke-width="1"/>
+          <line x1="57" y1="137" x2="71" y2="137" stroke="#3B82F6" stroke-width="1" stroke-opacity="0.7"/>
+          <line x1="57" y1="149" x2="71" y2="149" stroke="#3B82F6" stroke-width="1" stroke-opacity="0.7"/>
+          <line x1="57" y1="161" x2="71" y2="161" stroke="#3B82F6" stroke-width="1" stroke-opacity="0.7"/>
+          <line x1="57" y1="173" x2="71" y2="173" stroke="#3B82F6" stroke-width="1" stroke-opacity="0.7"/>
+          <line x1="121" y1="137" x2="135" y2="137" stroke="#3B82F6" stroke-width="1" stroke-opacity="0.7"/>
+          <line x1="121" y1="149" x2="135" y2="149" stroke="#3B82F6" stroke-width="1" stroke-opacity="0.7"/>
+          <line x1="121" y1="161" x2="135" y2="161" stroke="#3B82F6" stroke-width="1" stroke-opacity="0.7"/>
+          <line x1="121" y1="173" x2="135" y2="173" stroke="#3B82F6" stroke-width="1" stroke-opacity="0.7"/>
 
-          <!-- ══════════════════════════════════════
-               LEFT BLOCK: Level 4 AI Control System
-          ══════════════════════════════════════ -->
-          <!-- Block background -->
-          <rect x="22" y="100" width="148" height="168" rx="12"
-                fill="#161B22" stroke="#3B82F6" stroke-width="2.5"/>
-          <!-- Top accent line -->
-          <rect x="22" y="100" width="148" height="4" rx="2" fill="#3B82F6" fill-opacity="0.8"/>
-
-          <!-- Chip grid icon -->
-          <!-- Outer chip body -->
-          <rect x="58" y="120" width="76" height="68" rx="6" fill="#1C2333" stroke="#3B82F6" stroke-width="2"/>
-          <!-- Internal grid lines -->
-          <line x1="78"  y1="120" x2="78"  y2="188" stroke="#3B82F6" stroke-opacity="0.25" stroke-width="1"/>
-          <line x1="98"  y1="120" x2="98"  y2="188" stroke="#3B82F6" stroke-opacity="0.25" stroke-width="1"/>
-          <line x1="118" y1="120" x2="118" y2="188" stroke="#3B82F6" stroke-opacity="0.25" stroke-width="1"/>
-          <line x1="58"  y1="140" x2="134" y2="140" stroke="#3B82F6" stroke-opacity="0.25" stroke-width="1"/>
-          <line x1="58"  y1="160" x2="134" y2="160" stroke="#3B82F6" stroke-opacity="0.25" stroke-width="1"/>
-          <line x1="58"  y1="180" x2="134" y2="180" stroke="#3B82F6" stroke-opacity="0.25" stroke-width="1"/>
-          <!-- Core highlight -->
-          <rect x="82" y="144" width="28" height="28" rx="3" fill="#3B82F6" fill-opacity="0.35" stroke="#3B82F6" stroke-width="1.5"/>
-          <!-- Chip pins left/right -->
-          <line x1="44" y1="132" x2="58" y2="132" stroke="#3B82F6" stroke-width="2" stroke-opacity="0.7"/>
-          <line x1="44" y1="144" x2="58" y2="144" stroke="#3B82F6" stroke-width="2" stroke-opacity="0.7"/>
-          <line x1="44" y1="156" x2="58" y2="156" stroke="#3B82F6" stroke-width="2" stroke-opacity="0.7"/>
-          <line x1="44" y1="168" x2="58" y2="168" stroke="#3B82F6" stroke-width="2" stroke-opacity="0.7"/>
-          <line x1="44" y1="180" x2="58" y2="180" stroke="#3B82F6" stroke-width="2" stroke-opacity="0.7"/>
-          <line x1="134" y1="132" x2="148" y2="132" stroke="#3B82F6" stroke-width="2" stroke-opacity="0.7"/>
-          <line x1="134" y1="144" x2="148" y2="144" stroke="#3B82F6" stroke-width="2" stroke-opacity="0.7"/>
-          <line x1="134" y1="156" x2="148" y2="156" stroke="#3B82F6" stroke-width="2" stroke-opacity="0.7"/>
-          <line x1="134" y1="168" x2="148" y2="168" stroke="#3B82F6" stroke-width="2" stroke-opacity="0.7"/>
-          <line x1="134" y1="180" x2="148" y2="180" stroke="#3B82F6" stroke-width="2" stroke-opacity="0.7"/>
-
-          <!-- Labels -->
-          <text x="96" y="215" fill="#3B82F6" font-size="9" font-weight="700" text-anchor="middle"
-                font-family="Inter" letter-spacing="1">TENSOR AUTO</text>
-          <text x="96" y="233" fill="#F0F6FC" font-size="15" font-weight="800" text-anchor="middle" font-family="Inter">Level 4</text>
-          <text x="96" y="252" fill="#8B949E" font-size="11" text-anchor="middle" font-family="Inter">AI Control System</text>
-
-          <!-- ══ ARROW: AI → Motor (thick, bold) ══ -->
-          <!-- Arrow line -->
-          <line x1="170" y1="184" x2="226" y2="184" stroke="#06B6D4" stroke-width="3"/>
-          <polygon points="226,177 242,184 226,191" fill="#06B6D4"/>
-          <!-- Label on arrow -->
-          <rect x="172" y="160" width="52" height="20" rx="4" fill="#0D1117"/>
-          <text x="198" y="174" fill="#06B6D4" font-size="10" font-weight="700" text-anchor="middle"
-                font-family="Inter">TORQUE CMD</text>
-
-          <!-- ══════════════════════════════════════
-               CENTER: iDS AX AFPM Motor (BOLD)
-          ══════════════════════════════════════ -->
-          <!-- Glow -->
+          <!-- ══ CENTER MOTOR ══ -->
           <circle cx="330" cy="184" r="100" fill="url(#motorGlowTA)"/>
-
-          <!-- Outer housing — thick, high-contrast -->
-          <circle cx="330" cy="184" r="88" fill="#0D1117" stroke="#06B6D4" stroke-width="3"/>
-
-          <!-- Stator ring -->
-          <circle cx="330" cy="184" r="72" fill="none" stroke="#06B6D4" stroke-opacity="0.55" stroke-width="2"/>
-
-          <!-- Stator teeth — 12 slots, bold -->
-          <!-- 0° → right -->
-          <line x1="402" y1="184" x2="418" y2="184" stroke="#06B6D4" stroke-width="5" stroke-linecap="round"/>
-          <!-- 30° -->
-          <line x1="392" y1="148" x2="404" y2="138" stroke="#06B6D4" stroke-width="5" stroke-linecap="round"/>
-          <!-- 60° -->
-          <line x1="366" y1="122" x2="372" y2="109" stroke="#06B6D4" stroke-width="5" stroke-linecap="round"/>
-          <!-- 90° → top -->
-          <line x1="330" y1="112" x2="330" y2="96"  stroke="#06B6D4" stroke-width="5" stroke-linecap="round"/>
-          <!-- 120° -->
-          <line x1="294" y1="122" x2="288" y2="109" stroke="#06B6D4" stroke-width="5" stroke-linecap="round"/>
-          <!-- 150° -->
-          <line x1="268" y1="148" x2="256" y2="138" stroke="#06B6D4" stroke-width="5" stroke-linecap="round"/>
-          <!-- 180° → left -->
-          <line x1="258" y1="184" x2="242" y2="184" stroke="#06B6D4" stroke-width="5" stroke-linecap="round"/>
-          <!-- 210° -->
-          <line x1="268" y1="220" x2="256" y2="230" stroke="#06B6D4" stroke-width="5" stroke-linecap="round"/>
-          <!-- 240° -->
-          <line x1="294" y1="246" x2="288" y2="259" stroke="#06B6D4" stroke-width="5" stroke-linecap="round"/>
-          <!-- 270° → bottom -->
-          <line x1="330" y1="256" x2="330" y2="272" stroke="#06B6D4" stroke-width="5" stroke-linecap="round"/>
-          <!-- 300° -->
-          <line x1="366" y1="246" x2="372" y2="259" stroke="#06B6D4" stroke-width="5" stroke-linecap="round"/>
-          <!-- 330° -->
-          <line x1="392" y1="220" x2="404" y2="230" stroke="#06B6D4" stroke-width="5" stroke-linecap="round"/>
-
+          <circle cx="330" cy="184" r="88"  fill="#0D1117" stroke="#06B6D4" stroke-width="1"/>
+          <circle cx="330" cy="184" r="72"  fill="none"    stroke="#06B6D4" stroke-opacity="0.45" stroke-width="1"/>
+          <!-- Stator teeth — 12 slots -->
+          <line x1="402" y1="184" x2="416" y2="184" stroke="#06B6D4" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="392" y1="148" x2="403" y2="139" stroke="#06B6D4" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="366" y1="122" x2="371" y2="110" stroke="#06B6D4" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="330" y1="112" x2="330" y2="98"  stroke="#06B6D4" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="294" y1="122" x2="289" y2="110" stroke="#06B6D4" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="268" y1="148" x2="257" y2="139" stroke="#06B6D4" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="258" y1="184" x2="244" y2="184" stroke="#06B6D4" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="268" y1="220" x2="257" y2="229" stroke="#06B6D4" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="294" y1="246" x2="289" y2="258" stroke="#06B6D4" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="330" y1="256" x2="330" y2="270" stroke="#06B6D4" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="366" y1="246" x2="371" y2="258" stroke="#06B6D4" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="392" y1="220" x2="403" y2="229" stroke="#06B6D4" stroke-width="1.5" stroke-linecap="round"/>
           <!-- Air gap -->
           <circle cx="330" cy="184" r="56" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+          <!-- Rotor ring -->
+          <circle cx="330" cy="184" r="50" fill="#1C2333" stroke="#3B82F6" stroke-width="1"/>
+          <!-- Rotor poles -->
+          <path d="M330,134 A50,50 0 0,1 375,159 L355,175 A30,30 0 0,0 330,154 Z" fill="#3B82F6" fill-opacity="0.38"/>
+          <path d="M375,159 A50,50 0 0,1 380,209 L357,197 A30,30 0 0,0 355,175 Z" fill="#06B6D4" fill-opacity="0.28"/>
+          <path d="M380,209 A50,50 0 0,1 342,231 L335,209 A30,30 0 0,0 357,197 Z" fill="#3B82F6" fill-opacity="0.38"/>
+          <path d="M342,231 A50,50 0 0,1 283,219 L305,205 A30,30 0 0,0 335,209 Z" fill="#06B6D4" fill-opacity="0.28"/>
+          <path d="M283,219 A50,50 0 0,1 280,169 L303,181 A30,30 0 0,0 305,205 Z" fill="#3B82F6" fill-opacity="0.38"/>
+          <path d="M280,169 A50,50 0 0,1 318,137 L325,159 A30,30 0 0,0 303,181 Z" fill="#06B6D4" fill-opacity="0.28"/>
+          <path d="M318,137 A50,50 0 0,1 330,134 L330,154 A30,30 0 0,0 325,159 Z" fill="#3B82F6" fill-opacity="0.38"/>
+          <!-- Shaft -->
+          <circle cx="330" cy="184" r="22" fill="#0D1117" stroke="#3B82F6" stroke-width="1"/>
 
-          <!-- Rotor ring (BOLD blue) -->
-          <circle cx="330" cy="184" r="50" fill="#1C2333" stroke="#3B82F6" stroke-width="3"/>
 
-          <!-- Rotor poles — 8, alternating blue/cyan -->
-          <path d="M330,134 A50,50 0 0,1 375,159 L355,175 A30,30 0 0,0 330,154 Z" fill="#3B82F6" fill-opacity="0.45"/>
-          <path d="M375,159 A50,50 0 0,1 380,209 L357,197 A30,30 0 0,0 355,175 Z" fill="#06B6D4" fill-opacity="0.35"/>
-          <path d="M380,209 A50,50 0 0,1 342,231 L335,209 A30,30 0 0,0 357,197 Z" fill="#3B82F6" fill-opacity="0.45"/>
-          <path d="M342,231 A50,50 0 0,1 283,219 L305,205 A30,30 0 0,0 335,209 Z" fill="#06B6D4" fill-opacity="0.35"/>
-          <path d="M283,219 A50,50 0 0,1 280,169 L303,181 A30,30 0 0,0 305,205 Z" fill="#3B82F6" fill-opacity="0.45"/>
-          <path d="M280,169 A50,50 0 0,1 318,137 L325,159 A30,30 0 0,0 303,181 Z" fill="#06B6D4" fill-opacity="0.35"/>
-          <path d="M318,137 A50,50 0 0,1 330,134 L330,154 A30,30 0 0,0 325,159 Z" fill="#3B82F6" fill-opacity="0.45"/>
+          <!-- ══ RIGHT BLOCK: Road / Vehicle Output ══ -->
+          <rect x="490" y="100" width="148" height="168" rx="12" fill="#161B22" stroke="#10B981" stroke-width="1"/>
+          <!-- Wheel icon — r=30, centered at cx=564, cy=160 -->
+          <circle cx="564" cy="160" r="30" fill="#1C2333" stroke="#10B981" stroke-width="1"/>
+          <circle cx="564" cy="160" r="11" fill="none"    stroke="#10B981" stroke-width="1"/>
+          <line x1="564" y1="130" x2="564" y2="190" stroke="#10B981" stroke-width="1" stroke-opacity="0.4"/>
+          <line x1="534" y1="160" x2="594" y2="160" stroke="#10B981" stroke-width="1" stroke-opacity="0.4"/>
+          <line x1="543" y1="139" x2="585" y2="181" stroke="#10B981" stroke-width="1" stroke-opacity="0.4"/>
+          <line x1="585" y1="139" x2="543" y2="181" stroke="#10B981" stroke-width="1" stroke-opacity="0.4"/>
 
-          <!-- Shaft — glowing center -->
-          <circle cx="330" cy="184" r="22" fill="#0D1117" stroke="#3B82F6" stroke-width="2.5"/>
-          <circle cx="330" cy="184" r="10" fill="#3B82F6" fill-opacity="0.55"/>
+          <!-- ══ ARROWS ══ -->
+          <line x1="170" y1="184" x2="236" y2="184" stroke="#06B6D4" stroke-width="1.5"/>
+          <polygon points="236,179 242,184 236,189" fill="#06B6D4"/>
+          <line x1="418" y1="184" x2="482" y2="184" stroke="#10B981" stroke-width="1.5"/>
+          <polygon points="482,179 490,184 482,189" fill="#10B981"/>
 
-          <!-- Motor labels -->
-          <text x="330" y="179" fill="#06B6D4" font-size="13" font-weight="800" text-anchor="middle" font-family="Inter">iDS AX</text>
-          <text x="330" y="194" fill="#8B949E" font-size="10" font-weight="600" text-anchor="middle" font-family="Inter">AFPM</text>
-
-          <!-- "SMC" badge on stator ring top -->
-          <rect x="298" y="88" width="64" height="18" rx="4" fill="#161B22" stroke="#06B6D4" stroke-width="1.5"/>
-          <text x="330" y="101" fill="#06B6D4" font-size="9" font-weight="700" text-anchor="middle" font-family="Inter" letter-spacing="1">SMC STATOR</text>
-
-          <!-- ══ ARROW: Motor → Output (thick, green) ══ -->
-          <line x1="418" y1="184" x2="474" y2="184" stroke="#10B981" stroke-width="3"/>
-          <polygon points="474,177 490,184 474,191" fill="#10B981"/>
-          <!-- Label on arrow -->
-          <rect x="420" y="160" width="52" height="20" rx="4" fill="#0D1117"/>
-          <text x="446" y="174" fill="#10B981" font-size="10" font-weight="700" text-anchor="middle"
-                font-family="Inter">PRECISE OUT</text>
-
-          <!-- ══════════════════════════════════════
-               RIGHT BLOCK: Road / Vehicle Output
-          ══════════════════════════════════════ -->
-          <rect x="490" y="100" width="148" height="168" rx="12"
-                fill="#161B22" stroke="#10B981" stroke-width="2.5"/>
-          <rect x="490" y="100" width="148" height="4" rx="2" fill="#10B981" fill-opacity="0.8"/>
-
-          <!-- Signal waveform (clean, green) inside block -->
-          <!-- Path: smooth sine representing clean torque output -->
-          <polyline points="502,154 514,154 524,130 534,178 544,130 554,178 564,154 576,154 586,154"
-                    stroke="#10B981" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-          <!-- Small label above waveform -->
-          <text x="544" y="124" fill="#10B981" font-size="9" font-weight="700" text-anchor="middle"
-                font-family="Inter" letter-spacing="1">TORQUE OUTPUT</text>
-
-          <!-- Wheel icon -->
-          <circle cx="544" cy="196" r="20" fill="#1C2333" stroke="#10B981" stroke-width="2.5"/>
-          <circle cx="544" cy="196" r="8"  fill="none" stroke="#10B981" stroke-width="2"/>
-          <!-- Spokes -->
-          <line x1="544" y1="176" x2="544" y2="216" stroke="#10B981" stroke-width="1.5" stroke-opacity="0.5"/>
-          <line x1="524" y1="196" x2="564" y2="196" stroke="#10B981" stroke-width="1.5" stroke-opacity="0.5"/>
-          <line x1="530" y1="182" x2="558" y2="210" stroke="#10B981" stroke-width="1.5" stroke-opacity="0.5"/>
-          <line x1="558" y1="182" x2="530" y2="210" stroke="#10B981" stroke-width="1.5" stroke-opacity="0.5"/>
-
-          <!-- Labels -->
-          <text x="564" y="228" fill="#10B981" font-size="9" font-weight="700" text-anchor="middle"
-                font-family="Inter" letter-spacing="1">ROAD SURFACE</text>
-          <text x="564" y="246" fill="#F0F6FC" font-size="15" font-weight="800" text-anchor="middle" font-family="Inter">Precise</text>
-          <text x="564" y="263" fill="#8B949E" font-size="11" text-anchor="middle" font-family="Inter">Trajectory</text>
-
-          <!-- ══════════════════════════════════════
-               BOTTOM: 3 Property Badges (BOLD)
-          ══════════════════════════════════════ -->
-
+          <!-- ══ BOTTOM 3 BADGES ══ -->
           <!-- Badge 1: ZERO COGGING -->
-          <rect x="22" y="316" width="192" height="76" rx="10"
-                fill="#161B22" stroke="#3B82F6" stroke-width="2.5"/>
-          <!-- Icon: smooth wave inside box -->
-          <polyline points="30,352 44,352 52,338 60,366 68,338 76,366 84,352 98,352"
-                    stroke="#3B82F6" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-          <text x="152" y="338" fill="#3B82F6" font-size="11" font-weight="800" text-anchor="middle"
-                font-family="Inter" letter-spacing="0.5">ZERO COGGING</text>
-          <text x="152" y="356" fill="#8B949E" font-size="11" text-anchor="middle" font-family="Inter">SMC 스테이터</text>
-          <text x="152" y="374" fill="#8B949E" font-size="11" text-anchor="middle" font-family="Inter">정밀 제어 오차 최소화</text>
+          <rect x="22" y="316" width="192" height="76" rx="10" fill="#161B22" stroke="#3B82F6" stroke-width="1"/>
+          <!-- Wave icon centered at x≈50, y=354 -->
+          <line x1="32" y1="354" x2="68" y2="354" stroke="#3B82F6" stroke-width="0.8" stroke-opacity="0.25" stroke-dasharray="2,2"/>
+          <polyline points="32,354 39,354 43,344 47,364 51,344 55,364 59,354 68,354"
+                    stroke="#3B82F6" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
 
           <!-- Badge 2: ZERO DERATING -->
-          <rect x="234" y="316" width="192" height="76" rx="10"
-                fill="#161B22" stroke="#06B6D4" stroke-width="2.5"/>
-          <!-- Icon: thermometer stable -->
-          <rect x="253" y="334" width="10" height="36" rx="5" fill="none" stroke="#06B6D4" stroke-width="2"/>
-          <rect x="255" y="354" width="6"  height="14" rx="3" fill="#06B6D4" fill-opacity="0.7"/>
-          <circle cx="258" cy="370" r="7" fill="#06B6D4" fill-opacity="0.7" stroke="#06B6D4" stroke-width="1.5"/>
-          <line x1="265" y1="344" x2="275" y2="344" stroke="#06B6D4" stroke-width="1.5" stroke-opacity="0.6"/>
-          <line x1="265" y1="354" x2="272" y2="354" stroke="#06B6D4" stroke-width="1.5" stroke-opacity="0.6"/>
-          <line x1="265" y1="364" x2="275" y2="364" stroke="#06B6D4" stroke-width="1.5" stroke-opacity="0.6"/>
-          <text x="350" y="338" fill="#06B6D4" font-size="11" font-weight="800" text-anchor="middle"
-                font-family="Inter" letter-spacing="0.5">ZERO DERATING</text>
-          <text x="350" y="356" fill="#8B949E" font-size="11" text-anchor="middle" font-family="Inter">밀폐 오일냉각</text>
-          <text x="350" y="374" fill="#8B949E" font-size="11" text-anchor="middle" font-family="Inter">열 스로틀링 Zero</text>
+          <rect x="234" y="316" width="192" height="76" rx="10" fill="#161B22" stroke="#06B6D4" stroke-width="1"/>
+          <!-- Thermometer icon centered at x≈262, y=354 -->
+          <rect x="255" y="334" width="12" height="27" rx="6" fill="none" stroke="#06B6D4" stroke-width="1"/>
+          <rect x="257" y="347" width="8"  height="12" rx="4" fill="#06B6D4" fill-opacity="0.65"/>
+          <circle cx="261" cy="363" r="8"  fill="#06B6D4" fill-opacity="0.65" stroke="#06B6D4" stroke-width="1"/>
+          <line x1="269" y1="340" x2="278" y2="340" stroke="#06B6D4" stroke-width="1" stroke-opacity="0.55"/>
+          <line x1="269" y1="349" x2="275" y2="349" stroke="#06B6D4" stroke-width="1" stroke-opacity="0.55"/>
+          <line x1="269" y1="358" x2="278" y2="358" stroke="#06B6D4" stroke-width="1" stroke-opacity="0.55"/>
 
           <!-- Badge 3: ZERO INTERFERENCE -->
-          <rect x="446" y="316" width="192" height="76" rx="10"
-                fill="#161B22" stroke="#10B981" stroke-width="2.5"/>
-          <!-- Icon: shield with signal waves blocked -->
-          <path d="M466,342 L476,338 L486,342 L486,358 Q476,364 466,358 Z"
-                fill="#10B981" fill-opacity="0.2" stroke="#10B981" stroke-width="2"/>
-          <line x1="472" y1="350" x2="480" y2="350" stroke="#10B981" stroke-width="2"/>
-          <line x1="470" y1="345" x2="482" y2="345" stroke="#10B981" stroke-width="2" stroke-opacity="0.5"/>
+          <rect x="446" y="316" width="192" height="76" rx="10" fill="#161B22" stroke="#10B981" stroke-width="1"/>
+          <!-- Shield icon centered at x≈474, y=348 -->
+          <path d="M462,332 L474,328 L486,332 L486,350 Q474,358 462,350 Z"
+                fill="#10B981" fill-opacity="0.14" stroke="#10B981" stroke-width="1" stroke-linejoin="round"/>
+          <polyline points="467,344 472,350 483,336"
+                    stroke="#10B981" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+          <!-- ══════════════════════════════
+               ALL TEXT LABELS — DRAWN LAST
+          ══════════════════════════════ -->
+
+          <!-- TOP LABEL (moved down slightly) -->
+          <text x="330" y="44" fill="#06B6D4" font-size="11" font-weight="700" text-anchor="middle"
+                font-family="Inter" letter-spacing="3" fill-opacity="0.85">INVISIBLE ACTUATION — CONTROL FLOW</text>
+
+          <!-- Left block labels -->
+          <text x="96" y="203" fill="#3B82F6" font-size="9" font-weight="700" text-anchor="middle"
+                font-family="Inter" letter-spacing="1">TENSOR AUTO</text>
+          <text x="96" y="221" fill="#F0F6FC" font-size="15" font-weight="800" text-anchor="middle" font-family="Inter">Level 4</text>
+          <text x="96" y="240" fill="#8B949E" font-size="11" text-anchor="middle" font-family="Inter">AI Control System</text>
+
+          <!-- Arrow label: TORQUE CMD -->
+          <text x="200" y="170" fill="#06B6D4" font-size="10" font-weight="700" text-anchor="middle" font-family="Inter">TORQUE CMD</text>
+
+          <!-- Motor center labels -->
+          <text x="330" y="177" fill="#06B6D4" font-size="12" font-weight="800" text-anchor="middle" font-family="Inter">iDS AX</text>
+          <text x="330" y="196" fill="#8B949E" font-size="10" font-weight="600" text-anchor="middle" font-family="Inter">AFPM</text>
+
+          <!-- SMC STATOR label -->
+          <text x="330" y="89" fill="#06B6D4" font-size="9" font-weight="700" text-anchor="middle"
+                font-family="Inter" letter-spacing="1">SMC STATOR</text>
+
+          <!-- Arrow label: PRECISE OUT -->
+          <text x="448" y="170" fill="#10B981" font-size="10" font-weight="700" text-anchor="middle" font-family="Inter">PRECISE OUT</text>
+
+          <!-- Right block labels -->
+          <text x="564" y="203" fill="#10B981" font-size="9" font-weight="700" text-anchor="middle"
+                font-family="Inter" letter-spacing="1">ROAD SURFACE</text>
+          <text x="564" y="221" fill="#F0F6FC" font-size="15" font-weight="800" text-anchor="middle" font-family="Inter">Precise</text>
+          <text x="564" y="240" fill="#8B949E" font-size="11" text-anchor="middle" font-family="Inter">Trajectory</text>
+
+          <!-- Bottom badge labels -->
+          <text x="152" y="338" fill="#3B82F6" font-size="11" font-weight="800" text-anchor="middle"
+                font-family="Inter" letter-spacing="0.5">ZERO COGGING</text>
+          <text x="152" y="356" fill="#8B949E" font-size="11" text-anchor="middle" font-family="Inter">SMC Stator</text>
+          <text x="152" y="374" fill="#8B949E" font-size="11" text-anchor="middle" font-family="Inter">Minimizing precision control error</text>
+
+          <text x="350" y="338" fill="#06B6D4" font-size="11" font-weight="800" text-anchor="middle"
+                font-family="Inter" letter-spacing="0.5">ZERO DERATING</text>
+          <text x="350" y="356" fill="#8B949E" font-size="11" text-anchor="middle" font-family="Inter">Sealed Oil Cooling</text>
+          <text x="350" y="374" fill="#8B949E" font-size="11" text-anchor="middle" font-family="Inter">Zero Thermal Throttling</text>
+
           <text x="558" y="338" fill="#10B981" font-size="11" font-weight="800" text-anchor="middle"
                 font-family="Inter" letter-spacing="0.5">ZERO INTERFERENCE</text>
-          <text x="558" y="356" fill="#8B949E" font-size="11" text-anchor="middle" font-family="Inter">저진동·저소음 설계</text>
-          <text x="558" y="374" fill="#8B949E" font-size="11" text-anchor="middle" font-family="Inter">LiDAR·레이더 간섭 차단</text>
+          <text x="558" y="356" fill="#8B949E" font-size="11" text-anchor="middle" font-family="Inter">Low-vibration · low-noise design</text>
+          <text x="558" y="374" fill="#8B949E" font-size="11" text-anchor="middle" font-family="Inter">LiDAR/radar interference blocked</text>
 
-          <!-- ══ Bottom quote ══ -->
+          <!-- Bottom quote -->
           <line x1="22" y1="410" x2="638" y2="410" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
           <text x="330" y="432" fill="#8B949E" font-size="11" text-anchor="middle" font-family="Inter"
-                font-style="italic">
-            "For a Level 4 platform, the motor needs to be invisible to the control system."
-          </text>
+                font-style="italic">"For a Level 4 platform, the motor needs to be invisible to the control system."</text>
           <text x="330" y="450" fill="#06B6D4" font-size="10" text-anchor="middle" font-family="Inter"
-                font-weight="700" letter-spacing="1">— iDS AX AFPM: 433 Arm-core L4 AI에 최적화된 액추에이터</text>
+                font-weight="700" letter-spacing="1">— iDS AX AFPM: 433 Arm-core Actuator optimized for L4 AI</text>
         </svg>
       </div>
     </div>
@@ -528,14 +457,14 @@ body {
   <section class="slide" id="s2">
     <div class="glow-tr"></div>
     <div class="slide-topbar">
-      <span class="slide-logo"><img src="images/Logo_EFLOW_white.svg" alt="EFLOW" style="height:28px; width:auto;"></span>
+      <span class="slide-logo"><img src="images/Logo_EFLOW_white.svg" alt="EFLOW" style="height:20px;width:auto;"></span>
       <span class="slide-num">02 / 02</span>
     </div>
 
     <div class="slide-body" style="display:flex;flex-direction:column;">
       <div class="s2ta-title-block">
-        <p class="sec-label">자율주행의 핵심 과제</p>
-        <h2>AFPM의 자율주행 친화적 특성</h2>
+        <p class="sec-label">Core Challenges of Autonomous Driving</p>
+        <h2>Autonomous-Friendly Properties of AFPM</h2>
       </div>
 
       <div class="s2ta-cards">
@@ -555,10 +484,10 @@ body {
           </div>
           <p class="s2ta-card-title" style="color:var(--accent-blue);">Zero Cogging</p>
           <ul class="s2ta-card-body">
-            <li>SMC(연자성 복합재) 스테이터 → 코깅 토크 제거</li>
-            <li>토크 리플 최소화 → AI 제어 궤적 오차 감소</li>
-            <li>저속 정밀 주차·교차로 기동 정확도 향상</li>
-            <li>FOC 벡터 제어 + 연속 선형 토크 응답</li>
+            <li>SMC (Soft Magnetic Composite) stator → eliminates cogging torque</li>
+            <li>Torque ripple minimized → reduced AI control trajectory error</li>
+            <li>Improved precision at low-speed parking and intersection maneuvers</li>
+            <li>FOC vector control + continuous linear torque response</li>
           </ul>
         </div>
 
@@ -583,10 +512,10 @@ body {
           </div>
           <p class="s2ta-card-title" style="color:var(--accent-cyan);">Zero Derating</p>
           <ul class="s2ta-card-body">
-            <li>밀폐형 오일냉각 → 열 스로틀링 방지</li>
-            <li>150°C 연속 구동 → 출력 편차 Zero</li>
-            <li>고속/고부하 주행 중 예측 모델 안정성 확보</li>
-            <li>알고리즘의 출력 예측값 = 실제 출력값</li>
+            <li>Sealed oil cooling → prevents thermal throttling</li>
+            <li>150°C Continuous Operation → Zero output deviation</li>
+            <li>Predictive model stability maintained at high-speed/high-load</li>
+            <li>Algorithm output prediction = actual output value</li>
           </ul>
         </div>
 
@@ -611,10 +540,10 @@ body {
           </div>
           <p class="s2ta-card-title" style="color:var(--accent-green);">Zero Interference</p>
           <ul class="s2ta-card-body">
-            <li>저진동·저소음 → AFPM 구조적 우위</li>
-            <li>LiDAR 5개·레이더 11개 센서 간섭 원천 차단</li>
-            <li>Level 4 인식 정확도 및 신호 품질 유지</li>
-            <li>센서 퓨전 데이터 신뢰성 확보</li>
+            <li>Low vibration · low noise → AFPM structural advantage</li>
+            <li>Blocks interference from 5 LiDAR and 11 radar sensors at the source</li>
+            <li>Level 4 perception accuracy and signal quality maintained</li>
+            <li>Sensor fusion data reliability ensured</li>
           </ul>
         </div>
 

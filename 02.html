@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -444,19 +444,6 @@ body {
   <section class="slide active" id="s1">
     <div class="glow-tr"></div>
 
-    <!-- Geographic contour background -->
-    <svg style="position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;" viewBox="0 0 1280 720" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0,80 C160,62 320,95 480,74 C640,53 800,88 960,68 C1120,48 1200,76 1280,60" stroke="#3B82F6" stroke-width="1" stroke-opacity="0.06" fill="none"/>
-      <path d="M0,150 C180,130 360,165 540,144 C720,123 900,158 1080,138 C1200,122 1260,150 1280,138" stroke="#06B6D4" stroke-width="1" stroke-opacity="0.05" fill="none"/>
-      <path d="M0,230 C200,208 400,244 600,222 C800,200 1000,236 1200,215 C1240,210 1265,228 1280,218" stroke="#3B82F6" stroke-width="1" stroke-opacity="0.06" fill="none"/>
-      <path d="M0,310 C160,288 320,324 480,302 C640,280 800,316 960,295 C1120,274 1200,304 1280,290" stroke="#06B6D4" stroke-width="1" stroke-opacity="0.05" fill="none"/>
-      <path d="M0,390 C180,368 360,404 540,382 C720,360 900,396 1080,375 C1200,358 1260,386 1280,373" stroke="#3B82F6" stroke-width="1" stroke-opacity="0.06" fill="none"/>
-      <path d="M0,470 C200,448 400,484 600,462 C800,440 1000,476 1200,454 C1240,450 1265,468 1280,458" stroke="#06B6D4" stroke-width="1" stroke-opacity="0.04" fill="none"/>
-      <path d="M0,550 C160,528 320,564 480,542 C640,520 800,556 960,534 C1120,512 1200,542 1280,528" stroke="#3B82F6" stroke-width="1" stroke-opacity="0.05" fill="none"/>
-      <path d="M0,630 C180,608 360,644 540,622 C720,600 900,636 1080,614 C1200,597 1260,624 1280,612" stroke="#06B6D4" stroke-width="1" stroke-opacity="0.04" fill="none"/>
-      <path d="M0,50 C280,190 560,90 840,230 C1040,330 1160,240 1280,360" stroke="#3B82F6" stroke-width="0.8" stroke-opacity="0.035" fill="none"/>
-      <path d="M0,300 C280,440 560,340 840,480 C1040,580 1160,490 1280,610" stroke="#06B6D4" stroke-width="0.8" stroke-opacity="0.03" fill="none"/>
-    </svg>
 
     <div class="slide-topbar">
       <span class="slide-logo"><img src="images/Logo_EFLOW_white.svg" alt="EFLOW" style="height:20px;width:auto;"></span>
@@ -475,16 +462,49 @@ body {
       </div>
 
       <div class="s1-right">
-        <!-- F-150 EREV Powertrain Abstract SVG -->
+        <!-- F-150 EREV — 07.html truck style exterior + original internal boxes -->
         <svg width="730" height="390" viewBox="0 0 730 390" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="30" y="178" width="668" height="92" rx="10" fill="none"
-                stroke="#8B949E" stroke-width="1.5" stroke-opacity="0.28"/>
+
+          <!-- Motor glow background (rear wheel) -->
+          <circle cx="554" cy="276" r="62" fill="rgba(59,130,246,0.07)"/>
+
+          <!-- ── ROAD LINES (under wheels) ── -->
+          <line x1="30"  y1="320" x2="700" y2="320" stroke="rgba(255,255,255,0.10)" stroke-width="1.5"/>
+          <line x1="30"  y1="328" x2="700" y2="328" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+          <line x1="80"  y1="338" x2="650" y2="338" stroke="rgba(255,255,255,0.04)" stroke-width="1" stroke-dasharray="26,17"/>
+
+          <!-- Ground shadow -->
+          <ellipse cx="370" cy="322" rx="290" ry="6" fill="rgba(0,0,0,0.28)"/>
+
+          <!-- ── LOWER BODY / CHASSIS ── -->
+          <rect x="30" y="178" width="668" height="92" rx="8"
+                fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.14)" stroke-width="1.5"/>
+
+          <!-- ── CABIN / ROOF ── -->
           <path d="M158,178 Q180,106 262,97 L468,97 Q544,106 572,178"
-                fill="none" stroke="#8B949E" stroke-width="1.5" stroke-opacity="0.18"/>
-          <circle cx="158" cy="276" r="30" fill="none" stroke="#8B949E" stroke-width="1.8" stroke-opacity="0.3"/>
-          <circle cx="158" cy="276" r="14" fill="none" stroke="#8B949E" stroke-width="1" stroke-opacity="0.18"/>
-          <circle cx="554" cy="276" r="30" fill="none" stroke="#8B949E" stroke-width="1.8" stroke-opacity="0.3"/>
-          <circle cx="554" cy="276" r="14" fill="none" stroke="#8B949E" stroke-width="1" stroke-opacity="0.18"/>
+                fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
+          <!-- Roof highlight strip -->
+          <path d="M164,178 Q185,112 264,101 L466,101"
+                stroke="rgba(255,255,255,0.22)" stroke-width="1.2" fill="none"/>
+
+          <!-- ── WINDSHIELD (front) ── -->
+          <path d="M158,178 Q182,108 262,97 L340,97 L340,178 Z"
+                fill="rgba(59,130,246,0.08)" stroke="rgba(59,130,246,0.20)" stroke-width="1.2"/>
+          <!-- Windshield glare -->
+          <path d="M174,165 L189,133 L220,112 Z" fill="rgba(255,255,255,0.03)"/>
+
+          <!-- ── REAR WINDOW ── -->
+          <path d="M340,97 L468,97 Q544,108 572,178 L340,178 Z"
+                fill="rgba(59,130,246,0.04)" stroke="rgba(59,130,246,0.10)" stroke-width="1"/>
+
+          <!-- B-pillar -->
+          <line x1="340" y1="97" x2="340" y2="178" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+
+          <!-- ── HEADLIGHTS ── -->
+          <rect x="32" y="196" width="9" height="24" rx="2" fill="#3B82F6" fill-opacity="0.82"/>
+          <rect x="32" y="224" width="9" height="14" rx="2" fill="#3B82F6" fill-opacity="0.38"/>
+
+          <!-- ══ INTERNAL BOXES (positions/content unchanged) ══ -->
           <!-- FRUNK -->
           <rect x="42" y="192" width="104" height="64" rx="6"
                 fill="#10B981" fill-opacity="0.12" stroke="#10B981" stroke-width="1.5"/>
@@ -498,14 +518,14 @@ body {
           <text x="315" y="218" fill="#3B82F6" font-size="11" font-weight="700"
                 text-anchor="middle" font-family="Inter">BATTERY PACK</text>
           <text x="315" y="238" fill="#8B949E" font-size="10"
-                text-anchor="middle" font-family="Inter">고전압 배터리 시스템</text>
+                text-anchor="middle" font-family="Inter">High-Voltage Battery System</text>
           <!-- ENGINE -->
           <rect x="488" y="192" width="70" height="64" rx="6"
                 fill="#1C2333" stroke="#8B949E" stroke-width="1" stroke-opacity="0.35"/>
           <text x="523" y="220" fill="#8B949E" font-size="10" font-weight="600"
                 text-anchor="middle" font-family="Inter">ENGINE</text>
           <text x="523" y="238" fill="#8B949E" font-size="9"
-                text-anchor="middle" font-family="Inter">가솔린</text>
+                text-anchor="middle" font-family="Inter">Gasoline</text>
           <!-- iDS AX REX Generator -->
           <rect x="566" y="192" width="76" height="64" rx="6"
                 fill="rgba(6,182,212,0.08)" stroke="#06B6D4" stroke-width="2"/>
@@ -514,7 +534,7 @@ body {
           <text x="604" y="230" fill="#06B6D4" font-size="9"
                 text-anchor="middle" font-family="Inter">AFPM</text>
           <text x="604" y="244" fill="#06B6D4" font-size="9"
-                text-anchor="middle" font-family="Inter">발전기</text>
+                text-anchor="middle" font-family="Inter">Generator</text>
           <!-- Flow arrows -->
           <line x1="146" y1="224" x2="198" y2="224" stroke="#3B82F6" stroke-width="1.5"
                 stroke-dasharray="5,3" stroke-opacity="0.6"/>
@@ -527,9 +547,27 @@ body {
           <line x1="488" y1="162" x2="488" y2="174" stroke="#06B6D4" stroke-width="1" stroke-opacity="0.5"/>
           <line x1="642" y1="162" x2="642" y2="174" stroke="#06B6D4" stroke-width="1" stroke-opacity="0.5"/>
           <text x="565" y="161" fill="#06B6D4" font-size="9.5" font-weight="600"
-                text-anchor="middle" font-family="Inter">축방향 최소화 → 프렁크 공간 확보</text>
-          <text x="365" y="344" fill="#8B949E" font-size="13" text-anchor="middle"
-                font-family="Inter">F-150 EREV 파워트레인 구조 — eFlow AFPM 발전기 적용</text>
+                text-anchor="middle" font-family="Inter">Axial minimized → Frunk space secured</text>
+
+          <!-- ── FRONT WHEEL — passive (no motor) ── -->
+          <circle cx="158" cy="276" r="42" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+          <circle cx="158" cy="276" r="35" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="4" stroke-dasharray="10 8"/>
+          <circle cx="158" cy="276" r="14" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+
+          <!-- ── REAR WHEEL — eFlow AFPM cross-section ── -->
+          <circle cx="554" cy="276" r="42" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+          <circle cx="554" cy="276" r="35" fill="none" stroke="rgba(59,130,246,0.12)" stroke-width="4" stroke-dasharray="10 8"/>
+          <circle cx="554" cy="276" r="29" fill="rgba(59,130,246,0.10)" stroke="#3B82F6" stroke-width="2.5"/>
+          <circle cx="554" cy="276" r="19" fill="rgba(59,130,246,0.18)" stroke="#3B82F6" stroke-width="1.8" stroke-dasharray="5 3"/>
+          <circle cx="554" cy="276" r="8"  fill="rgba(59,130,246,0.65)" stroke="#3B82F6" stroke-width="1.5"/>
+          <line x1="554" y1="243" x2="554" y2="268" stroke="#3B82F6" stroke-width="2" opacity="0.75"/>
+          <line x1="554" y1="284" x2="554" y2="309" stroke="#3B82F6" stroke-width="2" opacity="0.75"/>
+          <line x1="521" y1="276" x2="546" y2="276" stroke="#3B82F6" stroke-width="2" opacity="0.75"/>
+          <line x1="562" y1="276" x2="587" y2="276" stroke="#3B82F6" stroke-width="2" opacity="0.75"/>
+
+          <!-- Caption -->
+          <text x="365" y="360" fill="#8B949E" font-size="13" text-anchor="middle"
+                font-family="Inter">F-150 EREV Powertrain Architecture — eFlow AFPM Generator Applied</text>
         </svg>
       </div>
     </div>
@@ -554,8 +592,8 @@ body {
 
       <!-- Header -->
       <div class="s2-hdr">
-        <p class="sec-label">EREV REX — 프렁크 사수의 선택</p>
-        <h2>엔진 직결 시 축방향 점유 — 라디얼 모터 vs iDS AX AFPM</h2>
+        <p class="sec-label">EREV REX — The Choice to Keep the Frunk</p>
+        <h2>Axial Footprint When Engine-Direct — Radial Motor vs iDS AX AFPM</h2>
       </div>
 
       <!-- Two comparison panels -->
@@ -563,79 +601,78 @@ body {
 
         <!-- ─── Radial (bad) ─── -->
         <div class="pkg-panel rad">
-          <div class="pkg-tag" style="margin-top:6px;">기존 라디얼 플럭스 모터</div>
+          <div class="pkg-tag" style="margin-top:6px;">Conventional Radial Flux Motor</div>
 
           <div class="pkg-svg-wrap">
-            <svg viewBox="0 -22 320 306" style="width:100%;max-height:270px;" fill="none"
+            <svg viewBox="0 -10 320 322" style="width:100%;max-height:285px;" fill="none"
                  xmlns="http://www.w3.org/2000/svg">
 
-              <!-- Axial length indicator -->
-              <line x1="52" y1="18" x2="52" y2="32" stroke="#EF4444" stroke-width="1.2" stroke-opacity="0.55"/>
-              <line x1="268" y1="18" x2="268" y2="32" stroke="#EF4444" stroke-width="1.2" stroke-opacity="0.55"/>
-              <line x1="52" y1="24" x2="268" y2="24" stroke="#EF4444" stroke-width="0.8" stroke-opacity="0.4" stroke-dasharray="4,3"/>
-              <text x="160" y="14" fill="#EF4444" font-size="11" font-weight="700"
-                    text-anchor="middle" font-family="Inter">← 축방향 길이 : LONG →</text>
+              <!-- Axial length indicator (shifted up) -->
+              <line x1="52" y1="2"  x2="52" y2="16" stroke="#EF4444" stroke-width="1.2" stroke-opacity="0.55"/>
+              <line x1="268" y1="2" x2="268" y2="16" stroke="#EF4444" stroke-width="1.2" stroke-opacity="0.55"/>
+              <line x1="52" y1="8"  x2="268" y2="8"  stroke="#EF4444" stroke-width="0.8" stroke-opacity="0.4" stroke-dasharray="4,3"/>
+              <text x="160" y="-2" fill="#EF4444" font-size="11" font-weight="700"
+                    text-anchor="middle" font-family="Inter">← Axial Length : LONG →</text>
 
               <!-- Shaft top -->
-              <rect x="144" y="32" width="32" height="22" rx="3"
+              <rect x="144" y="16" width="32" height="22" rx="3"
                     fill="#8B949E" fill-opacity="0.35" stroke="#8B949E" stroke-width="0.8" stroke-opacity="0.4"/>
 
-              <!-- Motor body: tall cylinder (height reduced) -->
-              <rect x="52" y="54" width="216" height="160" rx="8"
+              <!-- Motor body: taller cylinder (200px height, shifted up) -->
+              <rect x="52" y="38" width="216" height="200" rx="8"
                     fill="rgba(239,68,68,0.07)" stroke="#EF4444" stroke-width="2" stroke-opacity="0.6"/>
 
-              <!-- Internal layer lines -->
-              <line x1="52" y1="94"  x2="268" y2="94"  stroke="#EF4444" stroke-width="0.6" stroke-opacity="0.2"/>
-              <line x1="52" y1="134" x2="268" y2="134" stroke="#EF4444" stroke-width="0.6" stroke-opacity="0.2"/>
-              <line x1="52" y1="174" x2="268" y2="174" stroke="#EF4444" stroke-width="0.6" stroke-opacity="0.2"/>
+              <!-- Internal layer lines (4 lines, 40px intervals) -->
+              <line x1="52" y1="78"  x2="268" y2="78"  stroke="#EF4444" stroke-width="0.6" stroke-opacity="0.2"/>
+              <line x1="52" y1="118" x2="268" y2="118" stroke="#EF4444" stroke-width="0.6" stroke-opacity="0.2"/>
+              <line x1="52" y1="158" x2="268" y2="158" stroke="#EF4444" stroke-width="0.6" stroke-opacity="0.2"/>
+              <line x1="52" y1="198" x2="268" y2="198" stroke="#EF4444" stroke-width="0.6" stroke-opacity="0.2"/>
 
-              <!-- Winding coil suggestion (center) -->
-              <ellipse cx="160" cy="134" rx="52" ry="44"
+              <!-- Winding coil suggestion (center, scaled) -->
+              <ellipse cx="160" cy="138" rx="52" ry="55"
                        fill="none" stroke="#EF4444" stroke-width="0.8" stroke-opacity="0.18"/>
-              <ellipse cx="160" cy="134" rx="30" ry="26"
+              <ellipse cx="160" cy="138" rx="30" ry="32"
                        fill="none" stroke="#EF4444" stroke-width="0.6" stroke-opacity="0.13"/>
 
               <!-- Shaft bottom -->
-              <rect x="144" y="214" width="32" height="22" rx="3"
+              <rect x="144" y="238" width="32" height="22" rx="3"
                     fill="#8B949E" fill-opacity="0.35" stroke="#8B949E" stroke-width="0.8" stroke-opacity="0.4"/>
 
               <!-- OD annotation -->
-              <line x1="52" y1="248" x2="268" y2="248" stroke="#8B949E" stroke-width="0.9" stroke-opacity="0.4"/>
-              <line x1="52"  y1="242" x2="52"  y2="254" stroke="#8B949E" stroke-width="0.9" stroke-opacity="0.4"/>
-              <line x1="268" y1="242" x2="268" y2="254" stroke="#8B949E" stroke-width="0.9" stroke-opacity="0.4"/>
-              <text x="160" y="270" fill="#8B949E" font-size="10" text-anchor="middle" font-family="Inter">
-                OD ≈ 180 mm (참고)
+              <line x1="52" y1="272" x2="268" y2="272" stroke="#8B949E" stroke-width="0.9" stroke-opacity="0.4"/>
+              <line x1="52"  y1="266" x2="52"  y2="278" stroke="#8B949E" stroke-width="0.9" stroke-opacity="0.4"/>
+              <line x1="268" y1="266" x2="268" y2="278" stroke="#8B949E" stroke-width="0.9" stroke-opacity="0.4"/>
+              <text x="160" y="294" fill="#8B949E" font-size="10" text-anchor="middle" font-family="Inter">
+                OD ≈ 180 mm (ref)
               </text>
 
             </svg>
           </div>
 
           <div class="pkg-verdict">
-            프렁크 공간 소멸 ✗<br>
+            Frunk space eliminated ✗<br>
             <span style="font-size:11px;font-weight:400;color:var(--text-secondary);">
-              파워트레인 전체 길이 ↑↑ — 앞 공간 잠식
+              Total powertrain length ↑↑ — front space consumed
             </span>
           </div>
         </div>
 
         <!-- ─── iDS AX AFPM (good) ─── -->
         <div class="pkg-panel afp">
-          <div class="pkg-tag" style="margin-top:6px;">iDS AX AFPM — 팬케이크 구조</div>
+          <div class="pkg-tag" style="margin-top:6px;">iDS AX AFPM — Pancake Structure</div>
 
           <div class="pkg-svg-wrap">
             <svg viewBox="0 0 380 342" style="width:100%;max-height:310px;" fill="none"
                  xmlns="http://www.w3.org/2000/svg">
 
-              <!-- ── Frunk reclaimed space (top, height reduced) ── -->
-              <rect x="20" y="12" width="340" height="80" rx="10"
+              <!-- ── Frunk reclaimed space (top) ── -->
+              <rect x="20" y="12" width="340" height="62" rx="10"
                     fill="rgba(16,185,129,0.07)" stroke="rgba(16,185,129,0.35)"
                     stroke-width="1.5" stroke-dasharray="7,4"/>
-              <text x="190" y="42" fill="#10B981" font-size="18" font-weight="700"
+              <text x="190" y="33" fill="#10B981" font-size="13" font-weight="700"
                     text-anchor="middle" font-family="Inter">FRUNK</text>
-              <text x="190" y="63" fill="#10B981" font-size="13" font-weight="600"
-                    text-anchor="middle" font-family="Inter">프렁크 공간 유지 ✓</text>
-              <text x="190" y="82" fill="rgba(16,185,129,0.55)" font-size="10"
-                    text-anchor="middle" font-family="Inter">AFPM 구조로 확보된 공간</text>
+              <text x="190" y="56" fill="#10B981" font-size="11" font-weight="600"
+                    text-anchor="middle" font-family="Inter">Space recovered by AFPM structure</text>
 
               <!-- Shaft top connector -->
               <rect x="176" y="92" width="28" height="22" rx="3"
@@ -646,7 +683,7 @@ body {
               <line x1="360" y1="114" x2="376" y2="114" stroke="#10B981" stroke-width="1.4" stroke-opacity="0.6"/>
               <line x1="360" y1="190" x2="376" y2="190" stroke="#10B981" stroke-width="1.4" stroke-opacity="0.6"/>
               <text x="378" y="156" fill="#10B981" font-size="10" font-weight="700"
-                    font-family="Inter" writing-mode="tb" text-anchor="middle">극히 짧음</text>
+                    font-family="Inter" writing-mode="tb" text-anchor="middle">Very Short</text>
 
               <!-- ── Motor body: flat pancake ── -->
               <!-- Top ellipse face -->
@@ -699,9 +736,9 @@ body {
           </div>
 
           <div class="pkg-verdict">
-            프렁크 공간 유지 ✓<br>
+            Frunk space preserved ✓<br>
             <span style="font-size:11px;font-weight:400;color:var(--text-secondary);">
-              파워트레인 전체 길이 ↓↓ — 앞 공간 그대로 확보
+              Total powertrain length ↓↓ — front space fully retained
             </span>
           </div>
         </div>
@@ -720,7 +757,7 @@ body {
         </div>
         <div class="sc">
           <div class="sc-val">25 kg</div>
-          <div class="sc-label">무게</div>
+          <div class="sc-label">Weight</div>
         </div>
         <div class="sc">
           <div class="sc-val">330 mm</div>
@@ -732,11 +769,11 @@ body {
         </div>
         <div class="sc">
           <div class="sc-val">800 V</div>
-          <div class="sc-label">절연 대응</div>
+          <div class="sc-label">Insulation Ready</div>
         </div>
         <div class="sc">
           <div class="sc-val">98%</div>
-          <div class="sc-label">유럽 B2B 재주문률</div>
+          <div class="sc-label">European B2B Reorder Rate</div>
         </div>
       </div>
 
@@ -744,8 +781,8 @@ body {
       <div class="concl">
         <div class="concl-icon">✓</div>
         <div class="concl-text">
-          iDS AX 탑재 시 <em>700마일 주행거리</em>와 <em>프렁크 공간 유지</em>를 동시 충족 —
-          라디얼 모터로 해결 불가능한 패키징 딜레마를 팬케이크 AFPM 구조로 돌파.
+          With iDS AX, <em>700-mile range</em> and <em>frunk space preservation</em> achieved simultaneously —
+          the packaging dilemma unsolvable by radial motors, broken through by pancake AFPM architecture.
         </div>
       </div>
 
