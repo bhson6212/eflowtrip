@@ -607,6 +607,11 @@ body {
           <div class="pkg-svg-wrap">
             <svg viewBox="0 -10 320 322" style="width:100%;max-height:285px;" fill="none"
                  xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <clipPath id="radClip">
+                  <rect x="52" y="38" width="216" height="200" rx="8"/>
+                </clipPath>
+              </defs>
 
               <!-- Axial length indicator (shifted up) -->
               <line x1="52" y1="2"  x2="52" y2="16" stroke="#EF4444" stroke-width="1.2" stroke-opacity="0.55"/>
@@ -620,8 +625,10 @@ body {
                     fill="#8B949E" fill-opacity="0.35" stroke="#8B949E" stroke-width="0.8" stroke-opacity="0.4"/>
 
               <!-- Motor body: taller cylinder (200px height, shifted up) -->
+              <image href="images/radial_motor_2.png" x="52" y="38" width="216" height="200"
+                     clip-path="url(#radClip)" preserveAspectRatio="xMidYMid slice" opacity="0.28"/>
               <rect x="52" y="38" width="216" height="200" rx="8"
-                    fill="rgba(239,68,68,0.07)" stroke="#EF4444" stroke-width="2" stroke-opacity="0.6"/>
+                    fill="rgba(239,68,68,0.04)" stroke="#EF4444" stroke-width="2" stroke-opacity="0.6"/>
 
               <!-- Internal layer lines (4 lines, 40px intervals) -->
               <line x1="52" y1="78"  x2="268" y2="78"  stroke="#EF4444" stroke-width="0.6" stroke-opacity="0.2"/>
@@ -665,6 +672,11 @@ body {
           <div class="pkg-svg-wrap">
             <svg viewBox="0 0 380 342" style="width:100%;max-height:310px;" fill="none"
                  xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <clipPath id="afpClip">
+                  <ellipse cx="190" cy="143" rx="152" ry="47"/>
+                </clipPath>
+              </defs>
 
               <!-- ── Frunk reclaimed space (top) ── -->
               <rect x="20" y="12" width="340" height="62" rx="10"
@@ -687,9 +699,11 @@ body {
                     font-family="Inter" writing-mode="tb" text-anchor="middle">Very Short</text>
 
               <!-- ── Motor body: flat pancake ── -->
+              <image href="images/iDS_AX-4.png" x="38" y="96" width="304" height="94"
+                     clip-path="url(#afpClip)" preserveAspectRatio="xMidYMid meet" opacity="0.32"/>
               <!-- Top ellipse face -->
               <ellipse cx="190" cy="120" rx="152" ry="22"
-                       fill="rgba(6,182,212,0.14)" stroke="#06B6D4" stroke-width="2"/>
+                       fill="rgba(6,182,212,0.06)" stroke="#06B6D4" stroke-width="2"/>
               <!-- Side wall -->
               <rect x="38" y="120" width="304" height="46" rx="0"
                     fill="rgba(6,182,212,0.09)" stroke="#06B6D4" stroke-width="1.5"/>
