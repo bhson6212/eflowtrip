@@ -159,17 +159,19 @@ body {
 ───────────────────────────────── */
 #s1 .slide-body {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   gap: 0;
 }
 
 .s1-left {
   width: 40%;
   padding-right: 40px;
+  padding-top: 22px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0;
+  height: 100%;
 }
 
 .s1-meeting {
@@ -264,6 +266,10 @@ body {
             <span style="background:rgba(245,158,11,0.10);border:1px solid rgba(245,158,11,0.3);border-radius:6px;padding:3px 10px;font-size:12px;font-weight:600;color:var(--gold);">Drop-in Compatible</span>
           </span>
         </p>
+        <div style="margin-top:24px;position:relative;width:300px;height:210px;">
+          <img src="images/iDS_AX-3.png" style="position:absolute;left:0;bottom:0;width:240px;height:auto;filter:drop-shadow(0 4px 24px rgba(0,0,0,0.7));" alt="EFLOW iDS AX Motor Assembly"/>
+          <img src="images/iDS_AX-2.png" style="position:absolute;right:0;bottom:0;width:180px;height:auto;filter:drop-shadow(0 6px 20px rgba(0,0,0,0.6));" alt="EFLOW iDS AX Rotor"/>
+        </div>
       </div>
 
       <div class="s1-right">
