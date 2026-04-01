@@ -411,6 +411,23 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.s4-card-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.13;
+  filter: brightness(0.7) saturate(0.8);
+  border-radius: 12px;
+  z-index: 0;
+}
+.s4-card-label, .s4-card-value, .s4-card-sub {
+  position: relative;
+  z-index: 1;
 }
 
 .s4-card-label {
@@ -963,16 +980,19 @@ body {
 
         <div class="s4-cards">
           <div class="s4-card">
+            <img class="s4-card-img" src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600&q=80" alt="">
             <p class="s4-card-label">Pre-money Valuation</p>
             <p class="s4-card-value">₩62B</p>
             <p class="s4-card-sub">Post-money ₩80B</p>
           </div>
           <div class="s4-card">
+            <img class="s4-card-img" src="https://images.unsplash.com/photo-1543699565-003b8adda5fc?w=600&q=80" alt="">
             <p class="s4-card-label">Target Raise</p>
             <p class="s4-card-value" style="color:var(--accent-cyan);">₩18B</p>
             <p class="s4-card-sub">Opening H2 2026</p>
           </div>
           <div class="s4-card">
+            <img class="s4-card-img" src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&q=80" alt="">
             <p class="s4-card-label">Syndicate Structure</p>
             <p class="s4-card-value" style="font-size:22px;color:var(--accent-green);line-height:1.3;margin-top:4px;">Strategic Investors<br>Focused</p>
             <p class="s4-card-sub">Selectively composing</p>
